@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import Reward
 
-# Create your views here.
+def rewards_list(request):
+    """View to display a list of rewards."""
+    rewards = Reward.objects.all()
+    return render(request, 'rewards/rewards_list.html', {'rewards': rewards})
