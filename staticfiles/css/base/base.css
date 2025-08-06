@@ -1,0 +1,61 @@
+:root {
+    --primary-color: #e1b522;
+}
+
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--primary-color) !important;
+    text-decoration: underline;
+}
+
+.message-container {
+    position: absolute;
+    z-index: 1000; 
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    background-color: rgba(255, 248, 230, 0.95);
+    padding: 1rem 1rem;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 0.95rem;
+    color: #4B3B2A;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+    border-top: 1px solid #ddd5c5;
+}
+
+footer p {
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+}
+
+footer a {
+    color: #b66a3b;
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

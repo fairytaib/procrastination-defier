@@ -1,5 +1,6 @@
 {% load static %}
 {% url 'home' as home_url %}
+{% url 'rewards_list' as rewards_list_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,10 +40,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" aria-label="Home">Home</a>
+                  <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}" aria-label="Home" >Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="" aria-label="People of history">Rewards</a>
+                  <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" aria-label="Frequently asked questions">FAQ</a>
