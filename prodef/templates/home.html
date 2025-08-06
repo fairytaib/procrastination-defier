@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+{% endblock %}
+{% block title %}
+{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+  <div class="container text-center hero-section mt-3">
+    <h1 class="hero-title">Welcome to End of your Procrastination</h1>
+    <p class="hero-subtitle">
+      Text <br />
+     Text
+    </p>
+    <a href="" class="btn btn-primary hero-btn" aria-label="Register">Start Your Journey</a>
+  </div>
+  <div class="container my-5 py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10 text-center">
+        <h2 class="mb-4">What is Proc defier?</h2>
+        <p class="lead">
+          Text
+        </p>
+        <p>Text</p>
+      </div>
+    </div>
+  </div>
+
+  {% comment %}Expore Features Section{% endcomment %}
+  <div class="container my-5 py-5 bg-light rounded" id="feature-section">
+    <div class="row text-center mb-4">
+      <div class="col">
+        <h2>Header 2</h2>
+        <p class="text-muted">Text.</p>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-md-3 mb-4">
+        <div>
+          <i class="bi bi-diagram-3-fill" style="font-size: 2rem; color:white;"></i>
+          <h5 class="mt-2">Header 5</h5>
+          <p class="text-muted">Text.</p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div>
+          <i class="bi bi-person-lock" style="font-size: 2rem; color:white;"></i>
+          <h5 class="mt-2">Header 5</h5>
+          <p class="text-muted">Text.</p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div>
+          <i class="bi bi-arrow-left-right" style="font-size: 2rem; color:white;"></i>
+          <h5 class="mt-2">Header</h5>
+          <p class="text-muted">Text.</p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div>
+          <i class="bi bi-link-45deg" style="font-size: 2rem; color:white;"></i>
+          <h5 class="mt-2">Header 5</h5>
+          <p class="text-muted">Text.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center mt-4">
+      <div class="col">
+        <p class="text-muted mt-2" style="font-size: 0.9rem;">Text.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5 py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10 text-center">
+        <h2 class="mb-4">H2</h2>
+        <p class="lead mb-4">Text</p>
+        <p class="mb-3">Text</p>
+        <p class="mb-3">
+          <strong>Text</strong> Text.
+        </p>
+        <p class="text-muted fst-italic mt-4">"Text."</p>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5 py-5 text-center" id="end-container">
+    <h2 class="mb-4">H2</h2>
+    <p class="lead mb-4">Text.</p>
+    
+      <a href="" class="btn btn-primary btn-lg px-5 me-3" aria-label="Register">
+        {% comment %} {% if user.is_authenticated %} {% endcomment %}
+        Start your Familytree
+      {% comment %} {% else %} {% endcomment %}
+        Create an Account
+      {% comment %} {% endif %} {% endcomment %}
+    </a>
+    
+    <p class="text-muted mt-3" style="font-size: 0.9rem;">Text.</p>
+  </div>
+{% endblock %}

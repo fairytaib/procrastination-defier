@@ -19,9 +19,13 @@ if os.path.isfile("env.py"):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 ENVIRONMENT = os.environ.get("ENV", "dev")  # dev means development
 DEBUG = ENVIRONMENT == "dev"
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
+
 DEBUG = ENVIRONMENT == "dev"
 
 ALLOWED_HOSTS = [
@@ -58,7 +62,7 @@ ROOT_URLCONF = 'prodef.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

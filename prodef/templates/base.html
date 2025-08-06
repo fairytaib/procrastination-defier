@@ -1,0 +1,116 @@
+{% load static %}
+{% url 'home' as home_url %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block meta %}
+      <!-- Default Meta Tags -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="Sophjan Moubarrid">
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta property="og:title" content="" />
+      <meta property="og:description" content=""/>
+      <meta property="og:image" content="" />
+      <meta property="og:type" content="website" />
+    {% endblock %}
+    {% block title %}
+
+    {% endblock %}
+    {% block css %}
+        {% comment %}Bootstrap CDN{% endcomment %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous" />
+    {% endblock %}
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}" aria-label="Procrastination defier logo"><img src="{% static 'images/logos/procrastination_defier_logo.webp' %}" alt="Procrastination defier Logo" class="logo-image" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navbarText">
+              
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                   <a class="nav-link " aria-label="Home">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="" aria-label="People of history">People of History</a> 
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " aria-label="Frequently asked questions">FAQ</a>
+                </li>
+                {% comment %}
+                {% if user.is_authenticated %}
+                  {% if person and person.id %}
+                    {% url 'family_view' person.id as family_view_url %}
+                    <li class="nav-item">
+                      <a class="nav-link {% if request.path == family_view_url %}active{% endif %}" href="{{ family_view_url }}" aria-label="Fiew your Family">View your Family</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link {% if request.path == add_self_url %}active{% endif %}" href="{{ add_self_url }}" aria-label="Start your familytree">Start your familytree</a>
+                    </li>
+                  {% endif %}
+                {% endif %}
+              </ul>
+                
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" aria-label="Register">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                  </li>
+                {% endif %}
+                {% endcomment %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        {% if messages %}
+          <div class="container mt-3 message-container">
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% block content %}
+
+        {% endblock %}
+      </main>
+    </div>
+    <footer class="footer text-center bg-white">
+      <div class="container">
+        <p class="footer-text">
+          © {{ year }} Procrastination Defier. All rights reserved. Created by<a href="https://github.com/fairytaib" target="_blank" rel="noopener noreferrer" aria-label="Link to Github">Sophjan Moubarrid</a>
+        </p>
+        <nav class="footer-nav">
+          <a href="" target="_blank" rel="noopener noreferrer" aria-label="Legal notice">Legal Notice</a> |
+          <a href="" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy">Privacy Policy</a> |
+        </nav>
+      </div>
+    </footer>
+
+    {% block javascript %}
+
+    {% endblock %}
+  </body>
+</html>
