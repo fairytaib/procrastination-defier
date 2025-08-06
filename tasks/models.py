@@ -48,7 +48,6 @@ class Task(models.Model):
     fee = models.DecimalField(max_digits=10, decimal_places=2,
                               help_text="Fee for failing this task.")
     points = models.PositiveIntegerField(
-        max_digits=10,
         help_text="Points awarded for completing this task."
     )
     checkup_date = models.DateField(
