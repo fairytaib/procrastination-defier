@@ -93,11 +93,11 @@
     <p class="lead mb-4">Start your personal battle against procrastination – and win it, one task at a time.</p>
 
     <a href="" class="btn btn-primary btn-lg px-5 me-3" aria-label="Register">
-      {% comment %} {% if user.is_authenticated %}
-        {% endcomment %}Register your next task{% comment %}
+      {% if user.is_authenticated %}
+        Register your next task
       {% else %}
-        {% endcomment %}Create an Account{% comment %}
-      {% endif %} {% endcomment %}
+        Create an Account
+      {% endif %}
     </a>
 
     <p class="text-muted mt-3" style="font-size: 0.9rem;">You’ve waited long enough. Let’s make action your new default.</p>
