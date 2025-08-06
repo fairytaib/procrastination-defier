@@ -1,6 +1,10 @@
 {% load static %}
 {% url 'home' as home_url %}
 {% url 'rewards_list' as rewards_list_url %}
+{% url 'reward_details' as reward_details_url %}
+{% url 'account_logout' as logout_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_login' as login_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +52,7 @@
                 <li class="nav-item">
                   <a class="nav-link" aria-label="Frequently asked questions">FAQ</a>
                 </li>
-                {% comment %}
+                
                 {% if user.is_authenticated %}
                   {% if person and person.id %}
                     {% url 'family_view' person.id as family_view_url %}
@@ -76,7 +80,7 @@
                     <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                   </li>
                 {% endif %}
-                {% endcomment %}
+                
               </ul>
             </div>
           </div>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  <title>{{ reward.name }} Details</title>
+{% endblock %}
+
+{% block css %}
+    <style>
+        #titel-div {
+            background-image: url("{{ reward.image }}");
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+    </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div id="titel-div">
+        <h1>{{ reward.name }}</h1>
+    </div>
+    <h1>{{ reward.name }}</h1>
+    <div class="reward-details">
+      {% if 'placeholder' in reward.image.url %}
+        <img src="{% static 'images/placeholder/placeholder.webp' %}" alt="Reward Image" class="reward-image" />
+      {% else %}
+        <img src="{{ reward.image }}" alt="{{ reward.name }} image" class="reward-image" />
+      {% endif %}
+      <p>{{ reward.description }}</p>
+    </div>
+  </div>
+{% endblock %}

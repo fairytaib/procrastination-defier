@@ -21,7 +21,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ reward.name }}</h5>
             <p class="card-text">{{ reward.description }}</p>
-            <a href="#" class="btn btn-primary">See Details</a>
+            <a href="{% url 'reward_details' reward.id %}" class="btn btn-primary">See Details</a>
           </div>
         </div>
       {% endfor %}
