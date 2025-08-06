@@ -89,6 +89,10 @@ class Task_Checkup(models.Model):
         'audio_file', blank=True, null=True,
         help_text="Upload an audio file for this checkup."
     )
+    comments = models.TextField(
+        blank=True, null=True,
+        help_text="Add any comments for this checkup."
+    )
     uploaded_at = models.DateTimeField(auto_now_add=True)
     delete_after_days = models.PositiveIntegerField(default=30)
     deleted = models.BooleanField(default=False)
