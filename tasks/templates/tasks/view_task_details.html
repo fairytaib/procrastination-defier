@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+
+{% endblock %}
+{% block title %}
+
+{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1>Task Details</h1>
+    <div class="task-details">
+      <h2>{{ task.title }}</h2>
+      <p>{{ task.description }}</p>
+      <p>Checkup Interval: {{ task.interval }}</p>
+      <p>Fee for Failure: {{ task.fee }}</p>
+      <p>Points for Completion: {{ task.points }}</p>
+      {% if task_checkup %}
+        <p>Last Checkup Date: {{ task_checkup.checkup_date }}</p>
+        <p>Status: {{ task_checkup.status }}</p>
+      {% else %}
+        <p>No checkup has been recorded for this task yet.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

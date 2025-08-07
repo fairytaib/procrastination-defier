@@ -45,9 +45,12 @@ class Task(models.Model):
     interval = models.CharField(max_length=10,
                                 choices=INTERVAL,
                                 default='weekly')
-    fee = models.DecimalField(max_digits=10, decimal_places=2,
+    fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True,
+                              null=True,
                               help_text="Fee for failing this task.")
     points = models.PositiveIntegerField(
+        blank=True,
+        null=True,
         help_text="Points awarded for completing this task."
     )
     checkup_date = models.DateField(
