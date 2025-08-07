@@ -26,8 +26,6 @@ DEBUG = ENVIRONMENT == "dev"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = ENVIRONMENT == "dev"
-
 ALLOWED_HOSTS = [
     ".herokuapp.com",
     "127.0.0.1",
@@ -100,7 +98,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = os.environ.get("EMAIL_VERIFICATION")
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
