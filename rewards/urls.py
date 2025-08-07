@@ -1,5 +1,5 @@
 from . import views
-from django.urls import path, include
+from django.urls import path
 
 urlpatterns = [
     path('', views.rewards_list, name='rewards_list'),

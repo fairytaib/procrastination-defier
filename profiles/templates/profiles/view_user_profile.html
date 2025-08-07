@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ user.user.username }}'s Profile</h1>
+    <p>Email: {{ user.user_information.email }}</p>
+    <p>First Name: {{ user.user_information.first_name }}</p>
+    <p>Last Name: {{ user.user_information.last_name }}</p>
+    <h2>Profile Picture</h2>
+    {% if user.profile_picture %}
+      <img src="{{ user.user_information.profile_picture.url }}" alt="{{ user.user_information.username }}'s Profile Picture" />
+    {% else %}
+      <img src="{% static 'images/placeholder/default_profile_image.webp' %}" alt="{{ user.user_information.username }}'s Profile Picture" />
+    {% endif %}
+  </div>
+{% endblock %}
