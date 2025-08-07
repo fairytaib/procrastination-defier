@@ -23,6 +23,7 @@
           <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary hero-btn" aria-label="View Task Details">View Task Details</a>
         </div>
       {% endfor %}
+      <a href="{% url 'add_task' %}" class="btn btn-primary hero-btn" aria-label="Add Task">Add Task</a>
     {% endif %}
   </div>
 {% endblock %}
