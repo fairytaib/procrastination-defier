@@ -8,11 +8,11 @@
 {% endblock %}
 
 {% block content %}
+  <h1>Rewards List</h1>
   <div class="container">
-    <h1>Rewards List</h1>
-    <div>
+    <div class="row">
       {% for reward in rewards %}
-        <div class="card" style="width: 18rem;">
+        <div class="col-lg-2 col-md-4 col-sm-12 card m-1" style="width: 18rem; padding: 0;">
           {% if 'placeholder' in reward.image.url %}
             <img src="{% static 'images/placeholder/placeholder.webp' %}" class="card-img-top" alt="Reward Cup" />
           {% else %}
