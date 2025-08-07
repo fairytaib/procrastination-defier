@@ -13,6 +13,9 @@ class UserProfile(models.Model):
     user_last_name = models.CharField(
         max_length=30, blank=True, null=True)
     user_email = models.EmailField()
+    user_password = models.CharField(
+        max_length=128
+    )
     profile_picture = CloudinaryField(
         'image', blank=True, null=True,
         help_text="Upload a profile picture.")
