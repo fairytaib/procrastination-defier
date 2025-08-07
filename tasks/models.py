@@ -15,7 +15,6 @@ INTERVAL_TO_CHECKUP = {
     'monthly': 30,
 }
 
-
 INTERVAL_TO_FEE = {
     'weekly': 0.70,
     'biweekly': 1.40,
@@ -33,8 +32,8 @@ class UserPoints(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='points')
     points = models.PositiveIntegerField(
-        default=0,
-        help_text="Total points earned by the user.")
+        help_text="Total points earned by the user."
+        )
 
     def __str__(self):
         return f"{self.user.username} - {self.points} points"

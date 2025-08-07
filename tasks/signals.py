@@ -5,10 +5,9 @@ from .models import UserPoints
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_points(sender, instance, created, **kwargs):
     if created:
         UserPoints.objects.create(
             user=instance,
             points=0,
-            help_text="Initial points for new user."
         )
