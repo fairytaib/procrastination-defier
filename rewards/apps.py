@@ -6,4 +6,4 @@ class RewardsConfig(AppConfig):
     name = 'rewards'
 
     def ready(self):
-        import profiles.signals
+        import rewards.signals
