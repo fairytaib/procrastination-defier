@@ -67,7 +67,7 @@
                   <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'images/logos/procrastination_defier_logo_1.jpg' %}" alt="Logo" class="logo-image" /></button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item disabled" href="#">Points {{ user.points }}</a>
+                      <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
                       <a class="dropdown-item" href="#">Account settings</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                     </div>
