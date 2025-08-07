@@ -20,6 +20,7 @@
         <div class="task">
           <h2>{{ task.title }}</h2>
           <p>{{ task.description }}</p>
+          <a href="{% url 'task_details' task.id %}" class="btn btn-primary hero-btn" aria-label="View Task Details">View Task Details</a>
         </div>
       {% endfor %}
     {% endif %}

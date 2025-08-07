@@ -50,15 +50,16 @@
                 <li class="nav-item">
                   <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-label="Frequently asked questions">FAQ</a>
-                </li>
-                
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                       <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}" href="{{ user_task_overview_url }}" aria-label="View your Tasks">View your current Tasks</a>
                     </li>
                 {% endif %} 
+                <li class="nav-item">
+                  <a class="nav-link" aria-label="Frequently asked questions">FAQ</a>
+                </li>
+                
+                
               </ul>
 
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
