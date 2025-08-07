@@ -3,6 +3,8 @@ from cloudinary.models import CloudinaryField
 from multiselectfield import MultiSelectField
 import pycountry
 
+from django.contrib.auth.models import User
+
 REWARD_TYPES = [
     ('digital', 'Digital'),
     ('discount', 'Discount Code'),
@@ -45,3 +47,18 @@ class Reward(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class RewardHistory(models.Model):
+    """A model to track the history of rewards bought by users."""
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='reward_history')
+    reward = models.ForeignKey(Reward, on_delete=models.CASCADE,
+                               related_name='reward_history')
+    bought_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{
+            self.user.username
+            } bought {self.reward.name} on {self.bought_at}"

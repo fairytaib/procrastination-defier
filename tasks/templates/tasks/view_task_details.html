@@ -16,8 +16,8 @@
       <h2>{{ task.title }}</h2>
       <p>{{ task.description }}</p>
       <p>Checkup Interval: {{ task.interval }}</p>
-      <p>Fee for Failure: {{ task.fee }}</p>
-      <p>Points for Completion: {{ task.points }}</p>
+      <p>Fee for Failure: {{ task.fee }}€</p>
+      <p>Points for Completion: {{ task.points }} Points</p>
       {% if task_checkup %}
         <p>Last Checkup Date: {{ task_checkup.checkup_date }}</p>
         <p>Status: {{ task_checkup.status }}</p>

@@ -29,6 +29,17 @@ INTERVAL_TO_POINTS = {
 }
 
 
+class UserPoints(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                related_name='points')
+    points = models.PositiveIntegerField(
+        default=0,
+        help_text="Total points earned by the user.")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.points} points"
+
+
 class Task(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
@@ -62,7 +73,7 @@ class Task(models.Model):
     def save(self, *args, **kwargs):
         '''Override save method to set fee,
         points and checkup_date based on interval'''
-        if self.interval in INTERVAL:
+        if self.interval in dict(INTERVAL):
             self.fee = INTERVAL_TO_FEE[self.interval]
             self.points = INTERVAL_TO_POINTS[self.interval]
             self.checkup_date = date.today() + timedelta(
