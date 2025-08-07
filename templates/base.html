@@ -2,6 +2,7 @@
 {% url 'home' as home_url %}
 {% url 'rewards_list' as rewards_list_url %}
 {% url 'reward_details' as reward_details_url %}
+{% url 'user_task_overview' as user_task_overview_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_login' as login_url %}
@@ -53,18 +54,11 @@
                   <a class="nav-link" aria-label="Frequently asked questions">FAQ</a>
                 </li>
                 
-                {% comment %} {% if user.is_authenticated %}
-                  {% if person and person.id %}
-                    {% url 'family_view' person.id as family_view_url %}
+                {% if user.is_authenticated %}
                     <li class="nav-item">
-                      <a class="nav-link {% if request.path == family_view_url %}active{% endif %}" href="{{ family_view_url }}" aria-label="Fiew your Family">View your Family</a>
+                      <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}" href="{{ user_task_overview_url }}" aria-label="View your Tasks">View your current Tasks</a>
                     </li>
-                  {% else %}
-                    <li class="nav-item">
-                      <a class="nav-link {% if request.path == add_self_url %}active{% endif %}" href="{{ add_self_url }}" aria-label="Start your familytree">Start your familytree</a>
-                    </li>
-                  {% endif %}
-                {% endif %} {% endcomment %}
+                {% endif %} 
               </ul>
 
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

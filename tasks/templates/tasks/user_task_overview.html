@@ -12,4 +12,16 @@
   <div class="container">
     <h1>Task Overview</h1>
   </div>
+  <div>
+    {% if not tasks %}
+      <p>You have no current tasks.</p>
+    {% else %}
+      {% for task in tasks %}
+        <div class="task">
+          <h2>{{ task.title }}</h2>
+          <p>{{ task.description }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
 {% endblock %}
