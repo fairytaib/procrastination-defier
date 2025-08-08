@@ -19,8 +19,7 @@
       <p>Fee for Failure: {{ task.fee }}€</p>
       <p>Points for Completion: {{ task.points }} Points</p>
       {% if task_checkup %}
-        <p>Last Checkup Date: {{ task_checkup.checkup_date }}</p>
-        <p>Status: {{ task_checkup.status }}</p>
+        <p>Last Checkup Date: {{ task.checkup_date }}</p>
       {% else %}
         <p>No checkup has been recorded for this task yet.</p>
       {% endif %}
