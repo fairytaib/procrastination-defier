@@ -41,6 +41,7 @@ urlpatterns = [
     path('privacy_policy/', TemplateView.as_view(template_name="privacy_policy.html"), name='privacy policy'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('blog/', include('blog_posts.urls')),
     path('rewards/', include('rewards.urls')),
     path('tasks/', include('tasks.urls')),
     path('profiles/', include('profiles.urls')),
