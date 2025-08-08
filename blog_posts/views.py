@@ -4,7 +4,7 @@ from .models import Post, Comment
 
 def view_all_posts(request):
     posts = Post.objects.all()
-    return render(request, "blog_posts/view_all_posts.html", {"posts": posts})
+    return render(request, "blog_posts/all_posts.html", {"posts": posts})
 
 
 def view_details(request, post_id):

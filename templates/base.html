@@ -1,13 +1,15 @@
 {% load static %}
+
+{% url 'add_task' as add_task_url %}
+{% url 'account_logout' as logout_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_login' as login_url %}
+{% url 'blog_posts' as blog_posts_url %}
 {% url 'home' as home_url %}
 {% url 'rewards_list' as rewards_list_url %}
 {% url 'reward_details' as reward_details_url %}
 {% url 'user_task_overview' as user_task_overview_url %}
 {% url 'view_task_details' as task_details_url %}
-{% url 'add_task' as add_task_url %}
-{% url 'account_logout' as logout_url %}
-{% url 'account_signup' as signup_url %}
-{% url 'account_login' as login_url %}
 {% url 'privacy_policy' as privacy_policy_url %}
 {% url 'legal_notice' as legal_notice_url %}
 {% url 'view_user_profile' as view_user_profile_url %}
@@ -56,6 +58,9 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == blog_posts_url %}active{% endif %}" href="{% url 'blog_posts' %}" aria-label="List of Blog Posts">Blog</a>
                 </li>
                 {% if user.is_authenticated %}
                   <li class="nav-item">
