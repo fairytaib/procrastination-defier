@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
+    'blog_posts',
     'profiles',
     'tasks',
     'rewards',
