@@ -11,6 +11,6 @@ def view_details(request, post_id):
     post = Post.objects.get(id=post_id)
     comments = Comment.objects.filter(post=post)
     return render(
-        request, "blog_posts/view_details.html",
+        request, "blog_posts/post_details.html",
         {"post": post, "comments": comments}
     )
