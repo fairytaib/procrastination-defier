@@ -17,11 +17,7 @@
       <p>You have no current tasks.</p>
     {% else %}
       {% for task in tasks %}
-        <div class="task">
-          <h2>{{ task.title }}</h2>
-          <p>{{ task.description }}</p>
-          <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary hero-btn" aria-label="View Task Details">View Task Details</a>
-        </div>
+        {% include 'tasks/_task_card.html' with task=task %} 
       {% endfor %}
       
     {% endif %}
