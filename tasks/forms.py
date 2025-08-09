@@ -40,8 +40,7 @@ class TaskForm(forms.ModelForm):
 class CheckTaskForm(forms.ModelForm):
     class Meta:
         model = Task_Checkup
-        fields = ['task',
-                  'comments',
+        fields = ['comments',
                   'image',
                   'text_file',
                   'audio_file']

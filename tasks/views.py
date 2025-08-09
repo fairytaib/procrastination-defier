@@ -48,7 +48,7 @@ def view_task_details(request, task_id):
                 messages.success(
                     request, "Task checkup recorded successfully."
                     )
-                return redirect("view_task_details", task_id=task.id)
+                return redirect("user_task_overview")
         elif "proof_upload" in request.POST:
             if user.has_perm('tasks.mark_done'):
                 task.completed = True

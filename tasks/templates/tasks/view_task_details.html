@@ -18,10 +18,8 @@
       <p>Checkup Interval: {{ task.interval }}</p>
       <p>Fee for Failure: {{ task.fee }}€</p>
       <p>Points for Completion: {{ task.points }} Points</p>
-      {% if task_checkup %}
-        <p>Last Checkup Date: {{ task.checkup_date }}</p>
-      {% else %}
-        <p>No checkup has been recorded for this task yet.</p>
+      {% if task.completed == True %}
+        <p>Task done succesfully: Yes</p>
       {% endif %}
       {% if not perms.tasks.mark_done %}
         <form method="post" enctype="multipart/form-data">
