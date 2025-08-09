@@ -1,8 +1,8 @@
-from email.mime import image
 from django import forms
 from .models import Task, Task_Checkup
 from datetime import date
 from django.core.exceptions import ValidationError
+from PIL import Image
 import re
 
 
@@ -61,52 +61,67 @@ class CheckTaskForm(forms.ModelForm):
                 attrs={'class': 'form-control-file'}),
         }
 
-        def __init__(self, *args, **kwargs):
-            """Initialize the form and set CSS classes for fields."""
-            super().__init__(*args, **kwargs)
-            self.fields[
-                'image',
-                'text_file',
-                'audio_file'
-            ].widget.attrs['class'] = 'form-control-file'
+    def __init__(self, *args, **kwargs):
+        """Initialize the form and set CSS classes for fields."""
+        super().__init__(*args, **kwargs)
+        self.fields[
+            'image',
+            'text_file',
+            'audio_file'
+        ].widget.attrs['class'] = 'form-control-file'
 
-        def clean_image(self):
-            """Validate the uploaded image file."""
-            image = self.cleaned_data.get('image')
+    def clean_image(self):
+        """Validate the uploaded image file."""
+        image = self.cleaned_data.get('image')
 
-            if not image or not hasattr(image, 'file') or image.size == 0:
-                return None
+        if not image or not hasattr(image, 'file') or image.size == 0:
+            return None
 
-            try:
-                img = image.open(image)
-                img.verify()
-            except Exception:
-                raise ValidationError("Uploaded file is not a valid image.")
+        try:
+            img = image.open(image)
+            img.verify()
+        except Exception:
+            raise ValidationError("Uploaded file is not a valid image.")
 
-            allowed_types = ['jpeg', 'png', 'jpg', 'webp']
-            if img.format.lower() not in allowed_types:
-                raise ValidationError(
-                    f"Only {', '.join(allowed_types)} images are allowed.")
+        allowed_types = ['jpeg', 'png', 'jpg', 'webp']
+        if img.format.lower() not in allowed_types:
+            raise ValidationError(
+                f"Only {', '.join(allowed_types)} images are allowed.")
 
-            return image
+        return image
 
-        def clean_text_file(self):
-            """Validate the uploaded text file."""
-            text_file = self.cleaned_data.get('text_file')
+    def clean_text_file(self):
+        """Validate the uploaded text file."""
+        text_file = self.cleaned_data.get('text_file')
 
-            if not text_file or not hasattr(
-                    text_file, 'file') or text_file.size == 0:
-                return None
+        if not text_file or not hasattr(
+                text_file, 'file') or text_file.size == 0:
+            return None
 
-            try:
-                img = text_file.open(text_file)
-                img.verify()
-            except Exception:
-                raise ValidationError("Uploaded file is not a valid image.")
+        try:
+            text_file = text_file.open(text_file)
+            text_file.verify()
+        except Exception:
+            raise ValidationError("Uploaded file is not a valid text file.")
 
-            allowed_types = ['jpeg', 'png', 'jpg', 'webp']
-            if img.format.lower() not in allowed_types:
-                raise ValidationError(
-                    f"Only {', '.join(allowed_types)} images are allowed.")
+        allowed_types = {'pdf'}
+        allowed_cts = {'application/pdf'}
+        ct = getattr(text_file, 'content_type', None)
+        ext = text_file.name.rsplit(
+            '.', 1
+            )[-1].lower() if '.' in text_file.name else ''
 
-            return text_file
+        if (ct not in allowed_cts) and (ext not in allowed_types):
+            raise ValidationError("Only PDF files are allowed.")
+
+        return text_file
+
+    def clean_audio_file(self):
+        audio_file = self.cleaned_data.get('audio_file')
+        if not audio_file:
+            return None
+
+        allowed_ct = {'audio/mpeg', 'audio/wav'}
+        if getattr(audio_file, 'content_type', None) not in allowed_ct:
+            raise ValidationError("Only MP3 or WAV files are allowed.")
+        return audio_file
