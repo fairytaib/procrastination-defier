@@ -23,10 +23,17 @@
       {% else %}
         <p>No checkup has been recorded for this task yet.</p>
       {% endif %}
-      {% if perms.tasks.mark_done %}
-        <form method="post" action="">
+      {% if not perms.tasks.mark_done %}
+        <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          <button type="submit">Mark as Done</button>
+          {{ check_form.as_p }}
+          <button type="submit" name="proof_upload">Upload proof</button>
+        </form>
+      {% endif %}
+      {% if perms.tasks.mark_done %}
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" name="done_checkbox">Mark as Done</button>
         </form>
       {% endif %}
     </div>

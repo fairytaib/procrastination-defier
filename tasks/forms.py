@@ -65,8 +65,12 @@ class CheckTaskForm(forms.ModelForm):
         """Initialize the form and set CSS classes for fields."""
         super().__init__(*args, **kwargs)
         self.fields[
-            'image',
-            'text_file',
+            'image'
+        ].widget.attrs['class'] = 'form-control-file'
+        self.fields[
+            'text_file'
+        ].widget.attrs['class'] = 'form-control-file'
+        self.fields[
             'audio_file'
         ].widget.attrs['class'] = 'form-control-file'
 

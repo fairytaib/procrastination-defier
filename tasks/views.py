@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from .models import Task, Task_Checkup
-from .forms import TaskForm
+from .forms import TaskForm, CheckTaskForm
 
 
 @login_required
@@ -35,21 +35,36 @@ def view_task_details(request, task_id):
     user = request.user
     task = get_object_or_404(Task, id=task_id)
     task_checkup = Task_Checkup.objects.filter(task=task).first()
+    check_form = CheckTaskForm()
+
     if request.method == "POST":
-        if user.has_perm('tasks.mark_done'):
-            task.completed = True
-            task.save()
-            messages.success(request, "Task marked as done.")
-        else:
-            messages.error(
-                request,
-                "You do not have permission to mark this task as done."
-                )
+        if "done_checkbox" in request.POST:
+            form = CheckTaskForm(request.POST)
+            if form.is_valid():
+                checkup = form.save(commit=False)
+                checkup.task = task
+                checkup.user = user
+                checkup.save()
+                messages.success(
+                    request, "Task checkup recorded successfully."
+                    )
+                return redirect("view_task_details", task_id=task.id)
+        elif "proof_upload" in request.POST:
+            if user.has_perm('tasks.mark_done'):
+                task.completed = True
+                task.save()
+                messages.success(request, "Task marked as done.")
+            else:
+                messages.error(
+                    request,
+                    "You do not have permission to mark this task as done."
+                    )
 
     context = {
         "task": task,
         "task_id": task_id,
         "task_checkup": task_checkup,
+        "check_form": check_form,
     }
 
     return render(request, "tasks/view_task_details.html", context)
