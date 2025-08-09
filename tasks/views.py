@@ -20,8 +20,20 @@ def user_task_overview(request):
 @login_required
 def view_task_details(request, task_id):
     """Display the details of a task."""
+    user = request.user
     task = get_object_or_404(Task, id=task_id)
     task_checkup = Task_Checkup.objects.filter(task=task).first()
+
+    if request.method == "POST":
+        if user.has_perm('tasks.mark_done'):
+            task.completed = True
+            task.save()
+            messages.success(request, "Task marked as done.")
+        else:
+            messages.error(
+                request,
+                "You do not have permission to mark this task as done."
+                )
 
     context = {
         "task": task,

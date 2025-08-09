@@ -23,6 +23,12 @@
       {% else %}
         <p>No checkup has been recorded for this task yet.</p>
       {% endif %}
+      {% if user.has_perm('tasks.mark_done') %}
+        <form method="post" action="{% url 'tasks:mark_done' task.id %}">
+          {% csrf_token %}
+          <button type="submit">Mark as Done</button>
+        </form>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
