@@ -13,7 +13,7 @@ class TasksConfig(AppConfig):
         from django.contrib.contenttypes.models import ContentType
 
         content_type = ContentType.objects.get_for_model(Task)
-        permission = Permission.objects.create(
+        permission, created = Permission.objects.get_or_create(
             codename="mark_done",
             name="Mark Task as done",
             content_type=content_type,

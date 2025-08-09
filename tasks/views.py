@@ -9,11 +9,20 @@ from .forms import TaskForm
 @login_required
 def user_task_overview(request):
     """Render a user's task overview page."""
-    tasks = Task.objects.filter(
-        user=request.user, completed=False).order_by('-created_at')
-    context = {
-        'tasks': tasks,
-    }
+    admin = request.user.has_perm('tasks.mark_done')
+    if not admin:
+        tasks = Task.objects.filter(
+            user=request.user, completed=False).order_by('-created_at')
+        context = {
+            'tasks': tasks,
+        }
+    else:
+        tasks = Task.objects.all().order_by(
+            '-user', '-created_at'
+            ).filter(completed=False)
+        context = {
+            'tasks': tasks,
+        }
     return render(request, 'tasks/user_task_overview.html', context)
 
 
@@ -23,7 +32,6 @@ def view_task_details(request, task_id):
     user = request.user
     task = get_object_or_404(Task, id=task_id)
     task_checkup = Task_Checkup.objects.filter(task=task).first()
-
     if request.method == "POST":
         if user.has_perm('tasks.mark_done'):
             task.completed = True

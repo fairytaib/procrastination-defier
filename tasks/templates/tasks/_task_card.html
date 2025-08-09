@@ -4,6 +4,11 @@
         <div class="col">
             <h5 class="card-title">{{ task.title }}</h5>
         </div>
+        {% if perms.tasks.mark_done %}
+            <div class="col">
+                <p class="card-text">Created by: <br> {{ task.user }}</p>
+            </div>
+        {% endif %}
         <div class="col">
             <p class="card-text">Created at: <br> {{ task.created_at }}</p>
         </div>
@@ -21,7 +26,8 @@
             <p class="card-text">{{ task.points }}</p>
         </div> -->
         <div class="col">
-            <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary hero-btn" aria-label="View Task Details">View Details</a>
+            <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary hero-btn"
+                aria-label="View Task Details">View Details</a>
         </div>
     </div>
 
