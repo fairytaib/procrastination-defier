@@ -13,14 +13,18 @@
     <h1>Task Overview</h1>
   </div>
   <div>
-    {% if not tasks %}
+    {% if tasks_undone.count == 0 %}
       <p>You have no current tasks.</p>
     {% else %}
-      {% for task in tasks %}
-        {% include 'tasks/_task_card.html' with task=task %} 
+      {% for task in tasks_undone %}
+        {% include 'tasks/_task_card.html' with task=task %}
       {% endfor %}
-      
     {% endif %}
+
+    {% for task in tasks_done %}
+      {% include 'tasks/_task_card.html' with task=task %}
+    {% endfor %}
+
     <a href="{% url 'add_task' %}" class="btn btn-primary hero-btn" aria-label="Add Task">Add Task</a>
   </div>
 {% endblock %}

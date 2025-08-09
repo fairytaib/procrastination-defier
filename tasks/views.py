@@ -11,17 +11,20 @@ def user_task_overview(request):
     """Render a user's task overview page."""
     admin = request.user.has_perm('tasks.mark_done')
     if not admin:
-        tasks = Task.objects.filter(
+        tasks_undone = Task.objects.filter(
             user=request.user, completed=False).order_by('-created_at')
+        task_done = Task.objects.filter(
+            user=request.user, completed=True).order_by('created_at')
         context = {
-            'tasks': tasks,
+            'tasks_undone': tasks_undone,
+            'tasks_done': task_done,
         }
     else:
-        tasks = Task.objects.all().order_by(
+        tasks_undone = Task.objects.all().order_by(
             '-user', '-created_at'
             ).filter(completed=False)
         context = {
-            'tasks': tasks,
+            'tasks_undone': tasks_undone,
         }
     return render(request, 'tasks/user_task_overview.html', context)
 
