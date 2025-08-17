@@ -10,30 +10,50 @@
 
 {% endblock %}
 {% block content %}
-  <div class="container">
-    <h1>Task Details</h1>
-    <div class="task-details">
-      <h2>{{ task.title }}</h2>
-      <p>{{ task.description }}</p>
-      <p>Checkup Interval: {{ task.interval }}</p>
-      <p>Fee for Failure: {{ task.fee }}€</p>
-      <p>Points for Completion: {{ task.points }} Points</p>
-      {% if task.completed == True %}
-        <p>Task done succesfully: Yes</p>
+<div class="container">
+  <h1>Task Details</h1>
+  <div class="task-details">
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <p>Checkup Interval: {{ task.interval }}</p>
+    <p>Fee for Failure: {{ task.fee }}€</p>
+    <p>Points for Completion: {{ task.points }} Points</p>
+    {% if task.completed == True %}
+    <p>Task done succesfully: Yes</p>
+    {% endif %}
+    {% if not perms.tasks.mark_done %}
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ check_form.as_p }}
+      <button type="submit" name="proof_upload">Upload proof</button>
+    </form>
+    {% endif %}
+    {% if perms.tasks.mark_done %}
+      {% if task_checkup.comments %}
+        <p>Comments: {{ task_checkup.comments }}</p>
       {% endif %}
-      {% if not perms.tasks.mark_done %}
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ check_form.as_p }}
-          <button type="submit" name="proof_upload">Upload proof</button>
-        </form>
+      {% if task_checkup.image %}
+        <img src="{{ task_checkup.image.url }}" alt="Task Checkup Image">
       {% endif %}
-      {% if perms.tasks.mark_done %}
-        <form method="post">
-          {% csrf_token %}
-          <button type="submit" name="done_checkbox">Mark as Done</button>
-        </form>
+       {% if task_checkup.text_file %}
+      <iframe src="{{ task_checkup.text_file.url }}" width="600" height="400"></iframe>
+       {% endif %}
+       {% if task_checkup.audio_file %}
+      <audio controls>
+        <source src="{{ task_checkup.audio_file.url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
       {% endif %}
-    </div>
+
+
+
+      <p>Task Checkup Status: {{ task_checkup.completed|yesno:"Completed,Not Completed" }}</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="done_checkbox">Mark as Done</button>
+      </form>
+    {% endif %}
   </div>
+</div>
 {% endblock %}

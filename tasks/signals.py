@@ -17,5 +17,5 @@ def create_user_points(sender, instance, created, **kwargs):
 def connect_task_to_checkup(sender, instance, created, **kwargs):
     if created:
         Task_Checkup.objects.create(
-            task=instance.task
+            task=instance
         )
