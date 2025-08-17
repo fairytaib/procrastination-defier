@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from .models import Task, Task_Checkup
+from tasks.models import UserPoints
 from .forms import TaskForm, CheckTaskForm
 
 
@@ -33,6 +34,7 @@ def user_task_overview(request):
 def view_task_details(request, task_id):
     """Display the details of a task."""
     user = request.user
+    user_points = UserPoints.objects.filter(user=user).first()
     task = get_object_or_404(Task, id=task_id)
     task_checkup = Task_Checkup.objects.filter(task=task).first()
     check_form = CheckTaskForm()
@@ -53,7 +55,9 @@ def view_task_details(request, task_id):
         elif "done_checkbox" in request.POST:
             if user.has_perm('tasks.mark_done'):
                 task.completed = True
+                user_points.points += task.points or 0
                 task.save(update_fields=["completed"])
+                user_points.save(update_fields=["points"])
                 messages.success(request, "Task marked as done.")
                 return redirect("user_task_overview")
             else:
