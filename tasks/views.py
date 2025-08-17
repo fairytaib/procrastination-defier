@@ -20,9 +20,9 @@ def user_task_overview(request):
             'tasks_done': task_done,
         }
     else:
-        tasks_undone = Task.objects.all().order_by(
+        tasks_undone = Task.objects.filter(completed=False).order_by(
             '-user', '-created_at'
-            ).filter(completed=False)
+            )
         context = {
             'tasks_undone': tasks_undone,
         }
@@ -38,22 +38,24 @@ def view_task_details(request, task_id):
     check_form = CheckTaskForm()
 
     if request.method == "POST":
-        if "done_checkbox" in request.POST:
+        if "proof_upload" in request.POST:
             form = CheckTaskForm(request.POST)
             if form.is_valid():
                 checkup = form.save(commit=False)
                 checkup.task = task
                 checkup.user = user
+                checkup.completed = True
                 checkup.save()
                 messages.success(
-                    request, "Task checkup recorded successfully."
+                    request, "Proof uploaded successfully."
                     )
                 return redirect("user_task_overview")
-        elif "proof_upload" in request.POST:
+        elif "done_checkbox" in request.POST:
             if user.has_perm('tasks.mark_done'):
                 task.completed = True
-                task.save()
+                task.save(update_fields=["completed"])
                 messages.success(request, "Task marked as done.")
+                return redirect("user_task_overview")
             else:
                 messages.error(
                     request,
