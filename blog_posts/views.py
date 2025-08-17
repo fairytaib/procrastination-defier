@@ -8,7 +8,7 @@ def view_all_posts(request):
 
 
 def view_details(request, post_id):
-    post = Post.objects.get(id=post_id)
+    post = Post.objects.get(Post, id=post_id)
     comments = Comment.objects.filter(post=post)
     return render(
         request, "blog_posts/post_details.html",

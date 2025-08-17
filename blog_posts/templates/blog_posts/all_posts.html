@@ -9,6 +9,6 @@
 {% block content %}
     <h1>All Community Posts</h1>
     {% for post in posts %}
-        <a href="{% url 'view_details' post.id %}">{{ post.title }}</a>
+        <a href="{% url 'post_details' post.id %}">{{ post.title }}</a>
     {% endfor %}
 {% endblock %}
