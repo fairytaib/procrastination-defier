@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post, Comment
 
 
@@ -8,7 +8,7 @@ def view_all_posts(request):
 
 
 def view_details(request, post_id):
-    post = Post.objects.get(Post, id=post_id)
+    post = get_object_or_404(Post, id=post_id)
     comments = Comment.objects.filter(post=post)
     return render(
         request, "blog_posts/post_details.html",

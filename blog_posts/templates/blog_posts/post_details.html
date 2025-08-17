@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{post.title}}
+{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <div class="comment">
+            <p><strong>{{ comment.author.username }}</strong>: {{ comment.content }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
