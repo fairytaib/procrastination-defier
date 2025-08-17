@@ -20,11 +20,17 @@ def view_details(request, post_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.author = request.user
             comment.save()
             messages.success(
                     request, "Comment posted successfully."
                     )
-            return redirect("view_details", post_id=post.id)
+            return redirect("post_details", post_id=post.id)
+        else:
+            messages.error(
+                    request, "Failed to post comment."
+                    )
+            return redirect("post_details", post_id=post.id)
     
     context = {
         "post": post,

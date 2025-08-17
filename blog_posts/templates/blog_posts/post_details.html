@@ -12,9 +12,10 @@
 <p>{{ post.content }}</p>
 <h2>Comments</h2>
 {% for comment in comments %}
-<div class="comment">
-    <p><strong>{{ comment.author.username }}</strong>: {{ comment.content }} <i>{{ comment.created_at }}</i></p>
-</div>
+    <div class="comment">
+        <p><strong>{{ comment.author.username }}</strong>: {{ comment.content }} <i>{{ comment.created_at }}</i></p>
+    </div>
+{% endfor %}
 <div>
     <form method="POST">
         {% csrf_token %}
@@ -22,5 +23,5 @@
         <button type="submit" class="btn btn-primary">Post comment</button>
     </form>
 </div>
-{% endfor %}
+
 {% endblock %}
