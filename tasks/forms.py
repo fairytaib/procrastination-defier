@@ -2,7 +2,7 @@ from django import forms
 from .models import Task, Task_Checkup
 from datetime import date
 from django.core.exceptions import ValidationError
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import re
 
 
@@ -74,50 +74,38 @@ class CheckTaskForm(forms.ModelForm):
         ].widget.attrs['class'] = 'form-control-file'
 
     def clean_image(self):
-        """Validate the uploaded image file."""
-        image = self.cleaned_data.get('image')
-
-        if not image or not hasattr(image, 'file') or image.size == 0:
+        f = self.cleaned_data.get('image')
+        if not f or getattr(f, 'size', 0) == 0:
             return None
-
         try:
-            img = image.open(image)
-            img.verify()
-        except Exception:
+            # 1. Format auslesen
+            with Image.open(f) as im:
+                fmt = (im.format or '').lower()
+            # 2. Integrität prüfen (separat, da verify() das File schließt)
+            with Image.open(f) as im:
+                im.verify()
+        except (UnidentifiedImageError, Exception):
             raise ValidationError("Uploaded file is not a valid image.")
 
-        allowed_types = ['jpeg', 'png', 'jpg', 'webp']
-        if img.format.lower() not in allowed_types:
-            raise ValidationError(
-                f"Only {', '.join(allowed_types)} images are allowed.")
-
-        return image
+        if fmt not in {'jpeg', 'jpg', 'png', 'webp'}:
+            raise ValidationError("Only JPEG, JPG, PNG or WEBP images are allowed.")
+        return f
 
     def clean_text_file(self):
-        """Validate the uploaded text file."""
-        text_file = self.cleaned_data.get('text_file')
-
-        if not text_file or not hasattr(
-                text_file, 'file') or text_file.size == 0:
+        f = self.cleaned_data.get('text_file')
+        if not f or getattr(f, 'size', 0) == 0:
             return None
-
-        try:
-            text_file = text_file.open(text_file)
-            text_file.verify()
-        except Exception:
-            raise ValidationError("Uploaded file is not a valid text file.")
-
-        allowed_types = {'pdf'}
-        allowed_cts = {'application/pdf'}
-        ct = getattr(text_file, 'content_type', None)
-        ext = text_file.name.rsplit(
-            '.', 1
-            )[-1].lower() if '.' in text_file.name else ''
-
-        if (ct not in allowed_cts) and (ext not in allowed_types):
-            raise ValidationError("Only PDF files are allowed.")
-
-        return text_file
+        ext = f.name.rsplit('.', 1)[-1].lower() if '.' in f.name else ''
+        ct  = getattr(f, 'content_type', '')
+        allowed_ext = {'pdf','txt','docx'}
+        allowed_ct  = {
+            'application/pdf',
+            'text/plain',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        }
+        if ext not in allowed_ext and ct not in allowed_ct:
+            raise ValidationError("Only PDF, TXT or DOCX files are allowed.")
+        return f
 
     def clean_audio_file(self):
         audio_file = self.cleaned_data.get('audio_file')

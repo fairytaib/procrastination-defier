@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import timedelta, date
+from datetime import timedelta, date, timezone
 from cloudinary.models import CloudinaryField
 
 INTERVAL = (
@@ -94,11 +94,11 @@ class Task_Checkup(models.Model):
         help_text="Upload an image for this checkup."
     )
     text_file = CloudinaryField(
-        'text_file', blank=True, null=True,
+        'raw', blank=True, null=True,
         help_text="Upload a text file for this checkup."
     )
     audio_file = CloudinaryField(
-        'audio_file', blank=True, null=True,
+        'video', blank=True, null=True,
         help_text="Upload an audio file for this checkup."
     )
     comments = models.TextField(
@@ -114,10 +114,15 @@ class Task_Checkup(models.Model):
 
     def delete_files(self):
         from cloudinary.uploader import destroy
-        for field in ['image', 'text_file', 'audio_file']:
-            file = getattr(self, field)
-            if file:
-                destroy(file.public_id, resource_type=file.resource_type)
+        mapping = {
+            'image': 'image',
+            'text_file': 'raw',
+            'audio_file': 'video',
+        }
+        for field, rtype in mapping.items():
+            f = getattr(self, field)
+            if f and getattr(f, 'public_id', None):
+                destroy(f.public_id, resource_type=rtype)
                 setattr(self, field, None)
         self.deleted = True
         self.save()

@@ -1,10 +1,11 @@
+from datetime import timezone
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from .models import Task, Task_Checkup
-from tasks.models import UserPoints
+from .models import Task, Task_Checkup, UserPoints
 from .forms import TaskForm, CheckTaskForm
+
 
 
 @login_required
@@ -36,17 +37,16 @@ def view_task_details(request, task_id):
     user = request.user
     user_points = UserPoints.objects.filter(user=user).first()
     task = get_object_or_404(Task, id=task_id)
-    task_checkup = Task_Checkup.objects.filter(task=task).first()
+    task_checkup = Task_Checkup.objects.filter(task=task).all()
     check_form = CheckTaskForm()
 
     if request.method == "POST":
         if "proof_upload" in request.POST:
-            form = CheckTaskForm(request.POST)
+            form = CheckTaskForm(request.POST, request.FILES)
             if form.is_valid():
                 checkup = form.save(commit=False)
                 checkup.task = task
-                checkup.user = user
-                checkup.completed = True
+                checkup.uploaded_at = timezone.now()
                 checkup.save()
                 messages.success(
                     request, "Proof uploaded successfully."
