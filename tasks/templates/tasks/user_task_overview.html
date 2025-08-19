@@ -13,14 +13,14 @@
     <h1>Task Overview</h1>
   </div>
   <div>
-    {% if tasks_undone.count == 0 %}
+    {% if tasks_done.count == 0 %}
       <p>You have no current tasks.</p>
     {% else %}
       {% for task in tasks_undone %}
         {% include 'tasks/_task_card.html' with task=task %}
       {% endfor %}
     {% endif %}
-
+    <h3>Done Tasks below</h3>
     {% for task in tasks_done %}
       {% include 'tasks/_task_card.html' with task=task %}
     {% endfor %}
