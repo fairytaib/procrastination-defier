@@ -90,15 +90,15 @@ class Task_Checkup(models.Model):
                              on_delete=models.CASCADE,
                              related_name='checkups')
     image = CloudinaryField(
-        'image', blank=True, null=True,
+        resource_type='image', blank=True, null=True,
         help_text="Upload an image for this checkup."
     )
     text_file = CloudinaryField(
-        'raw', blank=True, null=True,
+        resource_type='raw', blank=True, null=True,
         help_text="Upload a text file for this checkup."
     )
     audio_file = CloudinaryField(
-        'video', blank=True, null=True,
+        resource_type='video', blank=True, null=True,
         help_text="Upload an audio file for this checkup."
     )
     comments = models.TextField(

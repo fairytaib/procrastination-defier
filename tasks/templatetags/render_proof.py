@@ -1,48 +1,54 @@
-# tasks/templatetags/proof_tags.py
 from django import template
 from django.utils.html import format_html
+from urllib.parse import urlparse
+import os
+
 
 register = template.Library()
 
 
-def _name_and_url(file_field):
+def _name_url_ct(file_field):
     if not file_field:
-        return None, None
-    return getattr(file_field, "name", "").lower(), file_field.url
+        return "", "", ""
+    url = getattr(file_field, "url", "") or ""
+    parsed = urlparse(url)
+    filename = os.path.basename(parsed.path).lower()
+    content_type = getattr(file_field, "content_type", "") or ""
+    return filename, url, content_type
 
 
 @register.filter
 def render_textfile(file_field):
-    """
-    Rendert PDF/TXT/DOCX passend.
-    """
-    name, url = _name_and_url(file_field)
+    filename, url, ct = _name_url_ct(file_field)
     if not url:
         return ""
 
-    if name.endswith(".pdf"):
+    is_pdf = filename.endswith(".pdf") or ct == "application/pdf"
+    is_txt = filename.endswith(".txt") or ct == "text/plain"
+    is_docx = filename.endswith(".docx") or ct == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+    if is_pdf:
         return format_html(
             '<embed src="{}" type="application/pdf" width="800" height="600" />'
-            '<p><a href="{}" target="_blank" rel="noopener">Open in a new Tab</a></p>',
+            '<p><a href="{}" target="_blank" rel="noopener">PDF in neuem Tab öffnen</a></p>',
             url, url
         )
-    elif name.endswith(".txt"):
+    if is_txt:
         return format_html(
             '<iframe src="{}" width="800" height="600"></iframe>'
             '<p><a href="{}" target="_blank" rel="noopener">TXT öffnen</a></p>',
             url, url
         )
-    elif name.endswith(".docx"):
+    if is_docx:
         return format_html(
-            '<p><a href="{}" target="_blank" rel="noopener">Download DOCX</a></p>',
+            '<p><a href="{}" target="_blank" rel="noopener">DOCX herunterladen</a></p>',
             url
         )
-    else:
-        # Fallback
-        return format_html(
-            '<p><a href="{}" target="_blank" rel="noopener">Open</a></p>',
-            url
-        )
+    # Fallback
+    return format_html(
+        '<p><a href="{}" target="_blank" rel="noopener">Datei öffnen</a></p>',
+        url
+    )
 
 
 @register.filter
@@ -50,7 +56,7 @@ def render_image(image_field):
     """
     Rendert Bilder (jpg/jpeg/png/webp) – Browser erkennt Typ selbst.
     """
-    name, url = _name_and_url(image_field)
+    name, url = _name_url_ct(image_field)
     if not url:
         return ""
     return format_html(
@@ -63,7 +69,7 @@ def render_audio(audio_field):
     Rendert Audio (mp3/wav).
     Eine Source reicht, du kannst optional zwei angeben.
     """
-    name, url = _name_and_url(audio_field)
+    name, url = _name_url_ct(audio_field)
     if not url:
         return ""
     type_attr = "audio/mpeg" if name.endswith(".mp3") else (

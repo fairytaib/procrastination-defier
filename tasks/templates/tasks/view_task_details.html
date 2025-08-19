@@ -33,16 +33,19 @@
     {% if task_checkup.comments %}
     <p>Comments: {{ task_checkup.comments }}</p>
     {% endif %}
-    
+
     {% if task_checkup.image %}
+    <h4>Uploaded proof Image</h4>
       {{ task_checkup.image|render_image }}
     {% endif %}
 
     {% if task_checkup.text_file %}
+    <h4>Uploaded proof Text File</h4>
       {{ task_checkup.text_file|render_textfile }}
     {% endif %}
 
     {% if task_checkup.audio_file %}
+    <h4>Uploaded proof Audio File</h4>
       {{ task_checkup.audio_file|render_audio }}
     {% endif %}
 
