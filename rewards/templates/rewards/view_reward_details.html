@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block css %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
         #titel-div {
             {% if 'placeholder' in reward.image.url %}
@@ -21,6 +22,7 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'rewards_list' %}"><i class="bi bi-arrow-left-circle-fill"></i></a>
   <div class="container">
     <div id="titel-div">
         <h1>{{ reward.name }}</h1>
