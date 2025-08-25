@@ -92,7 +92,7 @@
     <h2 class="mb-4">Join the Defiers</h2>
     <p class="lead mb-4">Start your personal battle against procrastination – and win it, one task at a time.</p>
 
-    <a href="" class="btn btn-primary btn-lg px-5 me-3" aria-label="Register">
+    <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg px-5 me-3" aria-label="Register">
       {% if user.is_authenticated %}
         Register your next task
       {% else %}
