@@ -23,13 +23,15 @@
 
 {% block content %}
 <a href="{% url 'rewards_list' %}"><i class="bi bi-arrow-left-circle-fill"></i></a>
-  <div class="container">
-    <div id="titel-div">
-        <h1>{{ reward.name }}</h1>
-    </div>
-    
-    <div class="reward-details">
-      <p>{{ reward.description }}</p>
-    </div>
+<div class="container">
+  <div id="titel-div">
+      <h1>{{ reward.name }}</h1>
   </div>
+  <div class="reward-details">
+    <p>{{ reward.description }}</p>
+    <p>Available for {{ reward.point_cost }} points</p>
+    <a href="" class="btn btn-primary">Redeem Reward</a>
+  </div>
+</div>
+  
 {% endblock %}
