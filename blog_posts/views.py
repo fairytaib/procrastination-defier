@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.shortcuts import redirect
 from django.contrib import messages
 
@@ -43,3 +43,24 @@ def view_details(request, post_id):
         request, "blog_posts/post_details.html",
         context
     )
+
+
+def create_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            messages.success(request, "Post created successfully.")
+            return redirect("post_details", post_id=post.id)
+        else:
+            messages.error(request, "Failed to create post.")
+    else:
+        form = PostForm()
+
+    context = {
+        "form": form
+    }
+
+    return render(request, "blog_posts/create_post.html", context)

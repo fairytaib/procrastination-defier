@@ -79,6 +79,10 @@ main {
     object-fit: cover;
 }
 
+.dropdown-menu[data-bs-popper] {
+    left: -75%;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid rgba(2, 6, 23, 0.06);

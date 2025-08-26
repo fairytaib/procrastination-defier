@@ -5,6 +5,7 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_login' as login_url %}
 {% url 'blog_posts' as blog_posts_url %}
+{% url 'create_post' as create_post_url %}
 {% url 'faq' as faq_url %}
 {% url 'home' as home_url %}
 {% url 'rewards_list' as rewards_list_url %}
@@ -34,6 +35,7 @@
   <meta property="og:type" content="website" />
   {% endblock %}
   <title>
+    Procdef -
     {% block title %}
 
     {% endblock %}
@@ -147,7 +149,7 @@
   <footer class="footer text-center">
     <div class="container">
       <p class="footer-text">
-        © {{ year }} Procrastination Defier. All rights reserved. Created by<a href="https://github.com/fairytaib"
+        © {{ year }} Procrastination Defier. All rights reserved. Created by <a href="https://github.com/fairytaib"
           target="_blank" rel="noopener noreferrer" aria-label="Link to Github">Sophjan Moubarrid</a>
       </p>
       <nav class="footer-nav">

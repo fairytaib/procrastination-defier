@@ -10,7 +10,7 @@
       </div>
 
       {% if perms.tasks.mark_done %}
-        <div class="col-6 col-lg-2">
+        <div class="col-6 col-lg-3">
           <p class="card-text mb-0">
             <span class="d-block small text-body-secondary">Created by</span>
             {{ task.user }}
@@ -18,28 +18,21 @@
         </div>
       {% endif %}
 
-      <div class="col-6 col-lg-2">
+      <div class="col-6 col-lg-3">
         <p class="card-text mb-0">
-          <span class="d-block small text-body-secondary">Created at</span>
-          {{ task.created_at }}
-        </p>
-      </div>
-
-      <div class="col-6 col-lg-2">
-        <p class="card-text mb-0">
-          <span class="d-block small text-body-secondary">Finish at</span>
+          <span class="d-block small text-body-secondary">Deadline:</span>
           {{ task.checkup_date }}
         </p>
       </div>
 
-      <div class="col-6 col-lg-1">
+      <div class="col-6 col-lg-2">
         <p class="card-text mb-0">
           <span class="d-block small text-body-secondary">Fee</span>
           {{ task.fee }}
         </p>
       </div>
 
-      <div class="col-6 col-lg-1">
+      <div class="col-6 col-lg-2">
         <p class="card-text mb-0">
           <span class="d-block small text-body-secondary">Points</span>
           {{ task.points }}
