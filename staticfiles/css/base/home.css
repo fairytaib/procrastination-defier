@@ -1,0 +1,23 @@
+/* Hero Section with soft gradient */
+.hero-section {
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.06), rgba(37, 99, 235, 0));
+    border-radius: var(--bs-border-radius-lg);
+    padding: clamp(2rem, 3vw + 1rem, 4rem);
+}
+
+.hero-btn {
+    padding: .75rem 1.5rem;
+    font-weight: 600;
+}
+
+/* Feature grid cards (using .section class) */
+#feature-section {
+    border-radius: var(--bs-border-radius-lg);
+    box-shadow: var(--bs-box-shadow);
+}
+
+/* Icon sizing hint for Bootstrap Icons used in home.html */
+.icon-2xl {
+    font-size: 2.25rem;
+    line-height: 1;
+}

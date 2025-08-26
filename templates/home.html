@@ -7,10 +7,10 @@
 
 {% endblock %}
 {% block css %}
-
+  <link rel="stylesheet" href="{% static 'css/base/home.css' %}">
 {% endblock %}
 {% block content %}
-  <div class="container text-center hero-section mt-3">
+  <div class="container text-center hero-section section mt-3">
     <h1 class="hero-title">Welcome to the End of Your Procrastination</h1>
     <p class="hero-subtitle">
       Procrastination isn't a habit – it's a trap.
@@ -23,7 +23,7 @@
       <a href="{% url 'account_signup' %}" class="btn btn-primary hero-btn" aria-label="Register">Start Your Journey</a>
     {% endif %}
   </div>
-  <div class="container my-5 py-5">
+  <div class="container my-5 py-5 section">
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <h2 class="mb-4">What is Procrastination Defier?</h2>
@@ -34,7 +34,7 @@
   </div>
 
   {% comment %}Expore Features Section{% endcomment %}
-  <div class="container my-5 py-5 bg-light rounded" id="feature-section">
+  <div class="container my-5 py-5 rounded section" id="feature-section">
     <div class="row text-center mb-4">
       <div class="col">
         <h2>How It Works</h2>
@@ -79,7 +79,7 @@
       </div>
     </div>
   </div>
-  <div class="container my-5 py-5">
+  <div class="container my-5 py-5 section">
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
         <h2 class="mb-4">Why It Works</h2>
@@ -92,7 +92,7 @@
       </div>
     </div>
   </div>
-  <div class="container my-5 py-5 text-center" id="end-container">
+  <div class="container my-5 py-5 text-center section" id="end-container">
     <h2 class="mb-4">Join the Defiers</h2>
     <p class="lead mb-4">Start your personal battle against procrastination – and win it, one task at a time.</p>
 

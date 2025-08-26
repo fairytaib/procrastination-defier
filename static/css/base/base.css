@@ -1,70 +1,190 @@
+/* === Bootstrap Theme Overrides =============================== */
 :root {
-    --primary-color: #e1b522;
+    /* Brand */
+    --bs-primary: #2563eb;
+    /* Calm Focus Blue */
+    --bs-primary-rgb: 37, 99, 235;
+    --complementary-color: #e7c16e;
+
+    --bs-success: #10b981;
+    --bs-warning: #f59e0b;
+    --bs-danger: #ef4444;
+
+    /* Typography & radius */
+    --bs-body-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-body-color: #1f2937;
+    /* slate-800 */
+    --bs-secondary-color: #6b7280;
+    /* slate-500 */
+    --bs-link-color: var(--bs-primary);
+    --bs-border-radius: 0.75rem;
+    /* 12px */
+    --bs-border-radius-lg: 1rem;
+    /* 16px */
+    --bs-box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+
+    /* Surfaces */
+    --surface: #ffffff;
+    --surface-alt: #f8fafc;
+    /* slate-50 */
 }
 
-.dropdown-menu[data-bs-popper] {
-    left: -75%;
+/* Dark mode (auto) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bs-body-bg: #0b1220;
+        /* navy-900 */
+        --surface: #0f172a;
+        /* slate-900 */
+        --surface-alt: #0b1220;
+        --bs-body-color: #e5e7eb;
+        /* slate-200 */
+        --bs-secondary-color: #94a3b8;
+        --bs-link-color: #eff1f3;
+        --bs-border-color: #243144;
+        --bs-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
 }
 
+/* === Layout scaffolding ====================================== */
 body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
+    background: var(--surface-alt);
 }
 
+.wrapper {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
 
-.logo-image {
-    width: 50px;
-    height: 50px;
+main {
+    flex: 1 1 auto;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: var(--bs-box-shadow);
+    border-bottom: 1px solid rgba(2, 6, 23, 0.04);
+}
+
+.navbar-nav .nav-link.active,
+.nav-link:hover {
+    color: var(--complementary-color);
+}
+
+.navbar .logo-image {
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    object-fit: cover;
 }
 
+/* Footer */
+.footer {
+    border-top: 1px solid rgba(2, 6, 23, 0.06);
+    padding: 2rem 0;
+}
 
-.navbar a:hover,
-.navbar a.active {
-    color: var(--primary-color) !important;
+.footer p,
+.footer a {
+    color: var(--bs-secondary-color);
+}
+
+.footer a:hover {
+    color: var(--bs-link-color);
+}
+
+/* Utility helpers */
+.section {
+    background: var(--surface);
+    border-radius: var(--bs-border-radius-lg);
+    box-shadow: var(--bs-box-shadow);
+}
+
+.section+.section {
+    margin-top: 2rem;
+}
+
+.hover-raise {
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.hover-raise:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(2, 6, 23, 0.1);
+}
+
+/* Buttons – crisp, modern */
+.btn {
+    border-radius: var(--bs-border-radius);
+}
+
+.btn-primary {
+    box-shadow: 0 6px 16px rgba(var(--bs-primary-rgb), .25);
+}
+
+.btn-outline-primary {
+    border-width: 2px;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    letter-spacing: -0.015em;
+}
+
+/* Alerts / Messages container in base.html */
+.message-container .alert {
+    border-radius: var(--bs-border-radius);
+    box-shadow: var(--bs-box-shadow);
+}
+
+/* Images in error pages */
+img.img-fluid.mb-3 {
+    box-shadow: var(--bs-box-shadow);
+}
+
+/* Accordion refinement */
+.accordion-button {
+    font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--bs-primary);
+    background-color: rgba(var(--bs-primary-rgb), .06);
+}
+
+.accordion-item {
+    border-radius: var(--bs-border-radius);
+    overflow: hidden;
+    box-shadow: var(--bs-box-shadow);
+    margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+    text-underline-offset: 2px;
+}
+
+a:hover {
     text-decoration: underline;
 }
 
-.message-container {
-    position: absolute;
-    z-index: 1000; 
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
+/* Hero defaults (common if multiple pages use hero) */
+.hero-title {
+    font-weight: 800;
 }
 
-footer {
-    background-color: rgba(255, 248, 230, 0.95);
-    padding: 1rem 1rem;
-    text-align: center;
-    font-family: 'Merriweather', serif;
-    font-size: 0.95rem;
-    color: #4B3B2A;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin-top: 3rem;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
-    border-top: 1px solid #ddd5c5;
+.hero-subtitle {
+    color: var(--bs-secondary-color);
+    max-width: 56ch;
+    margin-inline: auto;
 }
 
-footer p {
-    color: rgb(0, 0, 0);
-    font-size: 1rem;
-}
-
-footer a {
-    color: #b66a3b;
-    margin: 0 0.5rem;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 940px) {
-    .dropdown-menu[data-bs-popper] {
-    left: 0;
-}
+/* Accessibility focus ring */
+:focus-visible {
+    outline: 3px solid rgba(var(--bs-primary-rgb), .55);
+    outline-offset: 3px;
+    border-radius: 8px;
 }
