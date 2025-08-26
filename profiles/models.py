@@ -1,21 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from rewards.models import Reward
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='profile')
-    user_username = models.CharField(
-        max_length=150, unique=True, blank=True, null=True)
-    user_first_name = models.CharField(
-        max_length=30, blank=True, null=True)
-    user_last_name = models.CharField(
-        max_length=30, blank=True, null=True)
-    user_email = models.EmailField()
-    user_password = models.CharField(
-        max_length=128
-    )
     profile_picture = CloudinaryField(
         'image', blank=True, null=True,
         help_text="Upload a profile picture.")
@@ -25,10 +16,13 @@ class UserProfile(models.Model):
         return f"{self.user.username}'s Profile"
 
 
-class UserAddress(models.Model):
+class Order(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
         related_name='addresses'
+    )
+    order_item = models.ForeignKey(
+        Reward, on_delete=models.CASCADE, related_name='order_items'
     )
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
