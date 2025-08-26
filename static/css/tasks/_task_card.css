@@ -1,0 +1,68 @@
+:root {
+    --task-primary: #2563eb;
+    /* Brand Blue */
+    --task-accent: #DAA520;
+    /* Gold */
+    --task-surface: #ffffff;
+    --task-border: rgba(2, 6, 23, .06);
+    --task-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --task-title: #0f172a;
+    /* slate-900 */
+    --task-muted: #6b7280;
+    /* slate-500 */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --task-surface: #0f172a;
+        /* slate-900 */
+        --task-border: #243144;
+        --task-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --task-title: #e5e7eb;
+        /* slate-200 */
+        --task-muted: #94a3b8;
+        /* slate-400 */
+    }
+}
+
+/* Card look */
+.card {
+    background-color: var(--task-surface);
+    border-color: var(--task-border);
+    border-radius: 1rem;
+    box-shadow: var(--task-shadow);
+    transition: box-shadow .2s ease, transform .12s ease, filter .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 44px rgba(2, 6, 23, .18);
+}
+
+/* Typography in card */
+.card-title {
+    color: var(--task-title);
+    letter-spacing: -0.01em;
+}
+
+.card .small,
+.card .text-body-secondary {
+    color: var(--task-muted) !important;
+}
+
+/* Primary button (visuals) */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    border: none;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    font-weight: 700;
+}
+
+.btn.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn.btn-primary:active {
+    filter: brightness(.98);
+}

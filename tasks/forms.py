@@ -52,6 +52,8 @@ class CheckTaskForm(forms.ModelForm):
             }
 
         widgets = {
+            'comments': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': 3}),
             'image': forms.FileInput(
                 attrs={'class': 'form-control-file'}),
             'text_file': forms.FileInput(

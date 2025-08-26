@@ -1,0 +1,191 @@
+:root {
+    --task-primary: #2563eb;
+    --task-accent: #DAA520;
+    --task-surface: #ffffff;
+    --task-border: rgba(2, 6, 23, .06);
+    --task-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --task-title: #0f172a;
+    --task-muted: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --task-surface: #0f172a;
+        --task-border: #243144;
+        --task-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --task-title: #e5e7eb;
+        --task-muted: #94a3b8;
+    }
+}
+
+/* Cards */
+.card {
+    background-color: var(--task-surface);
+    border-color: var(--task-border);
+    border-radius: 1rem;
+    box-shadow: var(--task-shadow);
+}
+
+/* Titles & copy */
+h1.h3,
+h2.h4 {
+    color: var(--task-title);
+    letter-spacing: -0.01em;
+}
+
+.text-body-secondary {
+    color: var(--task-muted) !important;
+}
+
+/* Definition list (labels vs values) */
+dl.row dt {
+    color: color-mix(in srgb, var(--task-title) 80%, #000);
+    font-weight: 700;
+}
+
+dl.row dd {
+    color: var(--task-title);
+}
+
+/* Proof block subtitles */
+h3.h5,
+h4.h6 {
+    color: var(--task-title);
+}
+
+/* Buttons */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    border: none;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    font-weight: 700;
+}
+
+/* === Upload-Proof Button === */
+input[type="file"].form-control-file {
+    font: inherit;
+    color: var(--task-title);
+    background-color: color-mix(in srgb, var(--task-surface) 95%, #ffffff 5%);
+    border: 1px solid var(--task-border);
+    border-radius: .75rem;
+    /* rein optisch */
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset;
+    transition: box-shadow .2s ease, filter .2s ease, border-color .2s ease;
+}
+
+input[type="file"].form-control-file:hover {
+    filter: brightness(1.02);
+}
+
+input[type="file"].form-control-file:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--task-primary) 55%, transparent);
+    outline-offset: 3px;
+}
+
+input[type="file"].form-control-file::file-selector-text {
+    color: var(--task-title);
+}
+
+input[type="file"].form-control-file::file-selector-button {
+    font: inherit;
+    border: 0;
+    color: #fff;
+    border-inline-end: 1px solid color-mix(in srgb, var(--task-border) 80%, transparent);
+    border-top-left-radius: .75rem;
+    border-bottom-left-radius: .75rem;
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    transition: filter .2s ease, box-shadow .2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+}
+
+input[type="file"].form-control-file:hover::file-selector-button {
+    filter: brightness(1.05);
+}
+
+input[type="file"].form-control-file::-webkit-file-upload-button {
+    font: inherit;
+    border: 0;
+    color: #fff;
+    border-inline-end: 1px solid color-mix(in srgb, var(--task-border) 80%, transparent);
+    border-top-left-radius: .75rem;
+    border-bottom-left-radius: .75rem;
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    transition: filter .2s ease, box-shadow .2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+}
+
+form button[name="proof_upload"].btn.btn-primary {
+    --proof-bg-top: color-mix(in srgb, var(--task-primary) 92%, white 8%);
+    --proof-bg-bot: var(--task-primary);
+    background-image: linear-gradient(180deg, var(--proof-bg-top), var(--proof-bg-bot));
+    border: none;
+    color: #fff;
+
+    box-shadow:
+        0 10px 24px rgba(37, 99, 235, .35),
+        /* outer glow */
+        inset 0 0 0 1px rgba(255, 255, 255, .12);
+    font-weight: 700;
+    letter-spacing: .2px;
+    position: relative;
+    overflow: hidden;
+    transition: filter .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+form button[name="proof_upload"].btn.btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: -150% -20%;
+    background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, .22) 50%, transparent 60%);
+    transform: translateX(-40%) rotate(8deg);
+    pointer-events: none;
+    transition: transform .6s ease;
+}
+
+form button[name="proof_upload"].btn.btn-primary:hover::after {
+    transform: translateX(40%) rotate(8deg);
+}
+
+form button[name="proof_upload"].btn.btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow:
+        0 14px 30px rgba(37, 99, 235, .45),
+        inset 0 0 0 1px rgba(255, 255, 255, .18);
+}
+
+form button[name="proof_upload"].btn.btn-primary:active {
+    transform: translateY(1px);
+    /* haptischer Klick-Effekt */
+    filter: brightness(.98);
+}
+
+form button[name="proof_upload"].btn.btn-primary:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--task-primary) 55%, transparent);
+    outline-offset: 3px;
+    box-shadow:
+        0 0 0 6px color-mix(in srgb, var(--task-primary) 28%, transparent),
+        0 10px 24px rgba(37, 99, 235, .35),
+        inset 0 0 0 1px rgba(255, 255, 255, .14);
+}
+
+
+
+/* Back link */
+.btn-link {
+    color: var(--task-accent);
+}
+
+.btn-link:hover {
+    color: color-mix(in srgb, var(--task-accent) 85%, white);
+    text-decoration: none;
+}
+
+/* Media preview tweaks (visual) */
+img,
+video,
+audio {
+    border-radius: .75rem;
+}
