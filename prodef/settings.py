@@ -96,7 +96,9 @@ AUTHENTICATION_BACKENDS = [
     ]
 
 SITE_ID = 1
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+PASSWORD_RESET_TIMEOUT = 60 * 60 * 24
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = ENVIRONMENT != "dev"
@@ -105,6 +107,15 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = ENVIRONMENT != "dev"
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/tasks/'
+
+EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST", "smtp.sendgrid.net")
+EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT", 587)
+EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS", True)
+EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER", "apikey")
+EMAIL_HOST_PASSWORD = os.environ.get(
+    "DJANGO_EMAIL_HOST_PASSWORD", "SG.xxxxx_dein_api_key_xxxxx")
+DEFAULT_FROM_EMAIL = os.environ.get(
+    "DJANGO_DEFAULT_FROM_EMAIL", "no-reply@deine-domain.de")
 
 WSGI_APPLICATION = 'prodef.wsgi.application'
 
