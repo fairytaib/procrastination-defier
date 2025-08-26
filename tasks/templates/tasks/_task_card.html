@@ -1,34 +1,51 @@
 {% load static %}
-<div class="container task_card m-3">
-    <div class="row">
-        <div class="col">
-            <h5 class="card-title">{{ task.title }}</h5>
-        </div>
-        {% if perms.tasks.mark_done %}
-            <div class="col">
-                <p class="card-text">Created by: <br> {{ task.user }}</p>
-            </div>
-        {% endif %}
-        <div class="col">
-            <p class="card-text">Created at: <br> {{ task.created_at }}</p>
-        </div>
-        <div class="col">
-            <p class="card-text">Finish at: <br> {{ task.checkup_date }}</p>
-        </div>
-        <div class="col">
-            <p class="card-text">Potential Fee: <br> {{ task.fee }}</p>
-        </div>
-        <div class="col">
-            <p class="card-text">Potential Points: <br> {{ task.points }}</p>
-        </div>
-        <!-- Here comes a day counter till the end of task -->
-        <!-- <div class="col">
-            <p class="card-text">{{ task.points }}</p>
-        </div> -->
-        <div class="col">
-            <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary hero-btn"
-                aria-label="View Task Details">View Details</a>
-        </div>
-    </div>
+<div class="card h-100">
+  <div class="card-body">
+    <div class="row align-items-center g-3">
+      <div class="col-12 col-lg-3">
+        <h5 class="card-title mb-0">{{ task.title }}</h5>
+      </div>
 
+      {% if perms.tasks.mark_done %}
+        <div class="col-6 col-lg-2">
+          <p class="card-text mb-0">
+            <span class="d-block small text-body-secondary">Created by</span>
+            {{ task.user }}
+          </p>
+        </div>
+      {% endif %}
+
+      <div class="col-6 col-lg-2">
+        <p class="card-text mb-0">
+          <span class="d-block small text-body-secondary">Created at</span>
+          {{ task.created_at }}
+        </p>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <p class="card-text mb-0">
+          <span class="d-block small text-body-secondary">Finish at</span>
+          {{ task.checkup_date }}
+        </p>
+      </div>
+
+      <div class="col-6 col-lg-1">
+        <p class="card-text mb-0">
+          <span class="d-block small text-body-secondary">Fee</span>
+          {{ task.fee }}
+        </p>
+      </div>
+
+      <div class="col-6 col-lg-1">
+        <p class="card-text mb-0">
+          <span class="d-block small text-body-secondary">Points</span>
+          {{ task.points }}
+        </p>
+      </div>
+
+      <div class="col-12 col-lg-auto ms-lg-auto">
+        <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="View Task Details">View Details</a>
+      </div>
+    </div>
+  </div>
 </div>

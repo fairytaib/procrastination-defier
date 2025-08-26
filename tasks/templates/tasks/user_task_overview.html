@@ -9,23 +9,44 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h1>Task Overview</h1>
-  </div>
-  <div>
-    {% if tasks_done.count == 0 %}
-      <p>You have no current tasks.</p>
-    {% else %}
-      {% for task in tasks_undone %}
-        {% include 'tasks/_task_card.html' with task=task %}
-      {% endfor %}
-    {% endif %}
-    <h3>Done Tasks below</h3>
-    {% for task in tasks_done %}
-      {% include 'tasks/_task_card.html' with task=task %}
-    {% endfor %}
-    {% if not perms.tasks.mark_done %}
-      <a href="{% url 'add_task' %}" class="btn btn-primary hero-btn" aria-label="Add Task">Add Task</a>
-    {% endif %}
-  </div>
+  <section class="container py-5">
+    <header class="d-flex align-items-center justify-content-between mb-4">
+      <h1 class="h2 mb-0">Task Overview</h1>
+      {% if not perms.tasks.mark_done %}
+        <a href="{% url 'add_task' %}" class="btn btn-primary" aria-label="Add Task">Add Task</a>
+      {% endif %}
+    </header>
+
+    <!-- Open / Undone -->
+    <section class="mb-5" aria-labelledby="open-tasks">
+      <h2 id="open-tasks" class="h4 mb-3">Open Tasks</h2>
+      {% if tasks_undone and tasks_undone.count > 0 %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for task in tasks_undone %}
+            <div class="col">
+              {% include 'tasks/_task_card.html' with task=task %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="alert alert-info mb-0" role="alert">You have no current tasks.</div>
+      {% endif %}
+    </section>
+
+    <!-- Done -->
+    <section aria-labelledby="done-tasks">
+      <h2 id="done-tasks" class="h4 mb-3">Done Tasks</h2>
+      {% if tasks_done and tasks_done.count > 0 %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for task in tasks_done %}
+            <div class="col">
+              {% include 'tasks/_task_card.html' with task=task %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="alert alert-secondary mb-0" role="alert">No tasks completed yet.</div>
+      {% endif %}
+    </section>
+  </section>
 {% endblock %}

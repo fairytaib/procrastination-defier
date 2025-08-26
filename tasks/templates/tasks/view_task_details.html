@@ -11,53 +11,93 @@
 
 {% endblock %}
 {% block content %}
-<div class="container">
-  <h1>Task Details</h1>
-  <div class="task-details">
-    <h2>{{ task.title }}</h2>
-    <p>{{ task.description }}</p>
-    <p>Checkup Interval: {{ task.interval }}</p>
-    <p>Fee for Failure: {{ task.fee }}€</p>
-    <p>Points for Completion: {{ task.points }} Points</p>
-    {% if task.completed == True %}
-    <p>Task done succesfully: Yes</p>
-    {% endif %}
-    {% if not perms.tasks.mark_done %}
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ check_form.as_p }}
-      <button type="submit" name="proof_upload">Upload proof</button>
-    </form>
-    {% endif %}
-    {% if perms.tasks.mark_done %}
-    {% if task_checkup.comments %}
-    <p>Comments: {{ task_checkup.comments }}</p>
-    {% endif %}
+  <section class="container py-5">
+    <div class="mb-3">
+      <a href="{% url 'user_task_overview' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> Back to Overview</a>
+    </div>
 
-    {% if task_checkup.image %}
-    <h4>Uploaded proof Image</h4>
-      {{ task_checkup.image|render_image }}
-    {% endif %}
+    <div class="row g-4">
+      <!-- Details -->
+      <div class="col-lg-7">
+        <article class="card">
+          <div class="card-body">
+            <h1 class="h3 mb-3">Task Details</h1>
+            <h2 class="h4 mb-2">{{ task.title }}</h2>
 
-    {% if task_checkup.text_file %}
-    <h4>Uploaded proof Text File</h4>
-      {{ task_checkup.text_file|render_textfile }}
-    {% endif %}
+            <dl class="row">
+              <dt class="col-sm-5">Description</dt>
+              <dd class="col-sm-7">{{ task.description }}</dd>
 
-    {% if task_checkup.audio_file %}
-    <h4>Uploaded proof Audio File</h4>
-      {{ task_checkup.audio_file|render_audio }}
-    {% endif %}
+              <dt class="col-sm-5">Checkup Interval</dt>
+              <dd class="col-sm-7">{{ task.interval }}</dd>
 
+              <dt class="col-sm-5">Fee for Failure</dt>
+              <dd class="col-sm-7">{{ task.fee }}€</dd>
 
+              <dt class="col-sm-5">Points for Completion</dt>
+              <dd class="col-sm-7">{{ task.points }} Points</dd>
 
-    <p>Task Checkup Status: {{ task_checkup.completed|yesno:"Completed,Not Completed" }}</p>
+              {% if task.completed == True %}
+                <dt class="col-sm-5">Task done successfully</dt>
+                <dd class="col-sm-7">Yes</dd>
+              {% endif %}
+            </dl>
+          </div>
+        </article>
+      </div>
 
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit" name="done_checkbox">Mark as Done</button>
-    </form>
-    {% endif %}
-  </div>
-</div>
+      <!-- Proof & Actions -->
+      <div class="col-lg-5">
+        {% if not perms.tasks.mark_done %}
+          <section class="card">
+            <div class="card-body">
+              <h3 class="h5 mb-3">Upload Proof</h3>
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ check_form.as_p }}
+                <div class="d-grid d-sm-flex gap-2">
+                  <button type="submit" name="proof_upload" class="btn btn-primary">Upload proof</button>
+                </div>
+              </form>
+            </div>
+          </section>
+        {% endif %}
+
+        {% if perms.tasks.mark_done %}
+          <section class="card">
+            <div class="card-body">
+              {% if task_checkup.comments %}
+                <h4 class="h6 mb-2">Comments</h4>
+                <p class="mb-3">{{ task_checkup.comments }}</p>
+              {% endif %}
+
+              {% if task_checkup.image %}
+                <h4 class="h6 mb-2">Uploaded proof Image</h4>
+                <div class="mb-3">{{ task_checkup.image|render_image }}</div>
+              {% endif %}
+
+              {% if task_checkup.text_file %}
+                <h4 class="h6 mb-2">Uploaded proof Text File</h4>
+                <div class="mb-3">{{ task_checkup.text_file|render_textfile }}</div>
+              {% endif %}
+
+              {% if task_checkup.audio_file %}
+                <h4 class="h6 mb-2">Uploaded proof Audio File</h4>
+                <div class="mb-3">{{ task_checkup.audio_file|render_audio }}</div>
+              {% endif %}
+
+              <p class="mb-3">Task Checkup Status: {{ task_checkup.completed|yesno:'Completed,Not Completed' }}</p>
+
+              <form method="post">
+                {% csrf_token %}
+                <div class="d-grid d-sm-flex gap-2">
+                  <button type="submit" name="done_checkbox" class="btn btn-primary">Mark as Done</button>
+                </div>
+              </form>
+            </div>
+          </section>
+        {% endif %}
+      </div>
+    </div>
+  </section>
 {% endblock %}
