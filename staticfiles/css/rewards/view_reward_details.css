@@ -1,0 +1,78 @@
+:root {
+    --rewards-accent: #DAA520;
+    /* Gold-Akzent */
+    --reward-surface: #ffffff;
+    --reward-border: rgba(2, 6, 23, .06);
+    --reward-shadow: 0 8px 24px rgba(2, 6, 23, .08);
+    --reward-title: #0f172a;
+    --reward-muted: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --reward-surface: #0f172a;
+        --reward-border: #243144;
+        --reward-shadow: 0 12px 32px rgba(0, 0, 0, .45);
+        --reward-title: #e5e7eb;
+        --reward-muted: #94a3b8;
+    }
+}
+
+.card {
+    background-color: var(--reward-surface);
+    border-color: var(--reward-border);
+    box-shadow: var(--reward-shadow);
+    border-radius: 1rem;
+    transition: box-shadow .2s ease, transform .15s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+.ratio img {
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.ratio:hover img {
+    transform: scale(1.02);
+}
+
+h1.h3 {
+    color: var(--reward-title);
+    letter-spacing: -0.01em;
+}
+
+.text-body-secondary {
+    color: var(--reward-muted) !important;
+}
+
+.badge.bg-primary-subtle {
+    font-weight: 600;
+    background-color: color-mix(in srgb, var(--bs-primary) 12%, transparent);
+    color: var(--bs-primary);
+    border: 1px solid color-mix(in srgb, var(--bs-primary) 35%, transparent);
+    border-radius: 9999px;
+}
+
+.btn-link {
+    color: var(--rewards-accent);
+}
+
+.btn-link:hover {
+    color: color-mix(in srgb, var(--rewards-accent) 85%, white);
+    text-decoration: none;
+}
+
+.btn.btn-primary.btn-lg {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--bs-primary) 90%, white 10%), var(--bs-primary));
+    border: none;
+    box-shadow: 0 10px 24px rgba(var(--bs-primary-rgb), .35);
+    font-weight: 700;
+}
+
+.btn.btn-primary.btn-lg:active {
+    transform: translateY(1px);
+}

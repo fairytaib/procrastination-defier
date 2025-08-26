@@ -1,0 +1,66 @@
+/* Rewards List – Visual Theme only (no spacing/positioning) */
+
+:root {
+    --rewards-accent: #DAA520;
+    --rewards-card-bg: #ffffff;
+    --rewards-card-border: rgba(2, 6, 23, .06);
+    --rewards-card-shadow: 0 8px 24px rgba(2, 6, 23, .08);
+    --rewards-title: #111827;
+    --rewards-muted: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --rewards-card-bg: #0f172a;
+        --rewards-card-border: #243144;
+        --rewards-card-shadow: 0 12px 32px rgba(0, 0, 0, .45);
+        --rewards-title: #e5e7eb;
+        --rewards-muted: #94a3b8;
+    }
+}
+
+.card {
+    background-color: var(--rewards-card-bg);
+    border-color: var(--rewards-card-border);
+    box-shadow: var(--rewards-card-shadow);
+    border-radius: 1rem;
+    transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(2, 6, 23, .16);
+}
+
+.card-img-top {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+.card-title {
+    color: var(--rewards-title);
+    letter-spacing: -0.01em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-text {
+    color: var(--rewards-muted);
+}
+
+
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--bs-primary) 90%, white 10%), var(--bs-primary));
+    border: none;
+    box-shadow: 0 8px 20px rgba(var(--bs-primary-rgb), .35);
+    font-weight: 600;
+}
+
+.btn.btn-primary:hover {
+    filter: brightness(1.05);
+}

@@ -12,6 +12,7 @@
 
 /* Feature grid cards (using .section class) */
 #feature-section {
+    background-color: linear-gradient(180deg, rgba(37, 99, 235, 0.06), rgba(37, 99, 235, 0));
     border-radius: var(--bs-border-radius-lg);
     box-shadow: var(--bs-box-shadow);
 }

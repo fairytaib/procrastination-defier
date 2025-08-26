@@ -4,7 +4,7 @@
     --bs-primary: #2563eb;
     /* Calm Focus Blue */
     --bs-primary-rgb: 37, 99, 235;
-    --complementary-color: #da9c14
+    --complementary-color: #e7c16e;
 
     --bs-success: #10b981;
     --bs-warning: #f59e0b;
@@ -40,17 +40,9 @@
         --bs-body-color: #e5e7eb;
         /* slate-200 */
         --bs-secondary-color: #94a3b8;
-        --bs-link-color: #60a5fa;
+        --bs-link-color: #eff1f3;
         --bs-border-color: #243144;
         --bs-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-    }
-
-    .bg-light {
-        background-color: var(--surface-alt) !important;
-    }
-
-    .bg-white {
-        background-color: var(--surface) !important;
     }
 }
 
@@ -75,7 +67,8 @@ main {
     border-bottom: 1px solid rgba(2, 6, 23, 0.04);
 }
 
-.navbar a:hover, .navbar a.active {
+.navbar-nav .nav-link.active,
+.nav-link:hover {
     color: var(--complementary-color);
 }
 

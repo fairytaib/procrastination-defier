@@ -1,14 +1,37 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Community Posts
+  Community Posts
 {% endblock %}
 {% block css %}
+    <link rel="stylesheet" href="{% static 'css/blog_posts/all_posts.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1>All Community Posts</h1>
-    {% for post in posts %}
-        <a href="{% url 'post_details' post.id %}">{{ post.title }}</a>
-    {% endfor %}
+  <section class="container py-5">
+    <header class="d-flex align-items-center justify-content-between mb-4">
+      <h1 class="h2 mb-0">All Community Posts</h1>
+    </header>
+
+    {% if posts %}
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for post in posts %}
+          <div class="col">
+            <a href="{% url 'post_details' post.id %}" class="text-decoration-none d-block h-100">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h2 class="h5 card-title mb-2 text-truncate">{{ post.title }}</h2>
+                  {% if post.excerpt %}
+                    <p class="card-text text-body-secondary mb-0">{{ post.excerpt }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-info mb-0" role="alert">No posts yet.</div>
+    {% endif %}
+  </section>
 {% endblock %}

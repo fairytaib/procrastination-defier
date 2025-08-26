@@ -1,30 +1,61 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %}
-    {{post.title}}
+  {{ post.title }}
 {% endblock %}
 {% block css %}
+    <link rel="stylesheet" href="{% static 'css/blog_posts/post_details.css' %}">
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'blog_posts' %}"><i class="bi bi-arrow-left-circle-fill"></i></a>
-<h1>{{ post.title }}</h1>
-<p>{{ post.content }}</p>
-<h2>Comments</h2>
-{% for comment in comments %}
-    <div class="comment">
-        <p><strong>{{ comment.author.username }}</strong>: {{ comment.content }} <i>{{ comment.created_at }}</i></p>
+  <section class="container py-5">
+    <div class="mb-3">
+      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> Back to Posts</a>
     </div>
-{% endfor %}
-{% if user.is_authenticated %}
-    <div>
-        <form method="POST">
+
+    <article class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        <h1 class="h2 mb-3">{{ post.title }}</h1>
+        <div class="text-body">{{ post.content }}</div>
+      </div>
+    </article>
+
+    <section aria-labelledby="comments-title" class="mb-4">
+      <h2 id="comments-title" class="h4 mb-3">Comments</h2>
+
+      {% if comments %}
+        <div class="list-group mb-4">
+          {% for comment in comments %}
+            <div class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <strong>{{ comment.author.username }}</strong>
+                  <div class="small text-body-secondary">{{ comment.created_at }}</div>
+                </div>
+              </div>
+              <p class="mb-0 mt-2">{{ comment.content }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="alert alert-secondary" role="alert">No comments yet.</div>
+      {% endif %}
+    </section>
+
+    {% if user.is_authenticated %}
+      <section aria-labelledby="add-comment-title">
+        <h3 id="add-comment-title" class="h5 mb-3">Add a comment</h3>
+        <form method="POST" class="card border-0 shadow-sm">
+          <div class="card-body">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Post comment</button>
+            <div class="d-grid d-sm-flex gap-2">
+              <button type="submit" class="btn btn-primary">Post comment</button>
+            </div>
+          </div>
         </form>
-    </div>
-{% endif %}
-
+      </section>
+    {% endif %}
+  </section>
 {% endblock %}

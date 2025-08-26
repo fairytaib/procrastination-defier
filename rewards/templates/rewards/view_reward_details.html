@@ -15,22 +15,47 @@
             height: 300px;
             background-size: cover;
             background-position: center;
-        }
+          }
         
     </style>
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'rewards_list' %}"><i class="bi bi-arrow-left-circle-fill"></i></a>
-<div class="container">
-  <div id="titel-div">
-      <h1>{{ reward.name }}</h1>
-  </div>
-  <div class="reward-details">
-    <p>{{ reward.description }}</p>
-    <p>Available for {{ reward.point_cost }} points</p>
-    <a href="" class="btn btn-primary">Redeem Reward</a>
-  </div>
-</div>
-  
+  <section class="container py-5">
+    <div class="mb-3">
+      <a href="{% url 'rewards_list' %}" class="btn btn-link p-0 text-decoration-none">
+        <i class="bi bi-arrow-left-circle-fill me-2"></i> Back to Rewards
+      </a>
+    </div>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm">
+          <div class="ratio ratio-16x9 rounded-top overflow-hidden">
+            {% if 'placeholder' in reward.image.url %}
+              <img src="{% static 'images/placeholder/placeholder.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image">
+            {% else %}
+              <img src="{{ reward.image.url }}" class="w-100 h-100 object-fit-cover" alt="{{ reward.name }} image">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h1 class="h3 fw-bold mb-2">{{ reward.name }}</h1>
+            <p class="text-body-secondary mb-3">{{ reward.description }}</p>
+
+            <div class="d-flex align-items-center gap-2 mb-4">
+              <span class="fw-semibold">Available for</span>
+              <span class="badge bg-primary-subtle text-primary px-3 py-2">{{ reward.point_cost }} points</span>
+            </div>
+
+            <a href="" class="btn btn-primary btn-lg w-100 mt-auto">Redeem Reward</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

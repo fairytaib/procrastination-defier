@@ -1,11 +1,30 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Community Posts
+  Community Posts
 {% endblock %}
-{% block css}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/blog_posts/create_post.css' %}">
 {% endblock %}
 
 {% block content %}
+  <section class="container py-5">
+    <div class="mb-3">
+      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> Back to Posts</a>
+    </div>
 
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form method="POST" class="card border-0 shadow-sm">
+          <div class="card-body">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="d-grid d-sm-flex gap-2">
+              <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 {% endblock %}
