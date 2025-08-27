@@ -1,0 +1,181 @@
+:root {
+    --checkout-primary: #2563eb;
+    /* Brand Blue */
+    --checkout-accent: #DAA520;
+    /* Gold accent */
+    --checkout-surface: #ffffff;
+    --checkout-border: rgba(2, 6, 23, .06);
+    --checkout-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --checkout-title: #0f172a;
+    /* slate-900 */
+    --checkout-muted: #6b7280;
+    /* slate-500 */
+    --checkout-good: #10b981;
+    /* success tone */
+    --checkout-warn: #f59e0b;
+    /* warn tone */
+    --checkout-danger: #ef4444;
+    /* danger tone */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --checkout-surface: #0f172a;
+        /* slate-900 */
+        --checkout-border: #243144;
+        --checkout-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --checkout-title: #e5e7eb;
+        /* slate-200 */
+        --checkout-muted: #94a3b8;
+        /* slate-400 */
+    }
+}
+
+/* Cards (summary + form) */
+.card {
+    background-color: var(--checkout-surface);
+    border-color: var(--checkout-border);
+    border-radius: 1rem;
+    box-shadow: var(--checkout-shadow);
+    transition: box-shadow .2s ease, transform .12s ease, filter .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+.card-img-top {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+/* Headings & body tone */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--checkout-title);
+    letter-spacing: -.01em;
+}
+
+.text-body-secondary,
+.small,
+.form-text {
+    color: var(--checkout-muted) !important;
+}
+
+/* Summary Image */
+.card-img-top {
+    object-fit: cover;
+    border-radius: .75rem;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+/* Summary badge “Reward” */
+.badge.bg-primary-subtle {
+    background-color: color-mix(in srgb, var(--checkout-primary) 12%, transparent);
+    color: var(--checkout-primary) !important;
+    border: 1px solid color-mix(in srgb, var(--checkout-primary) 30%, transparent);
+    letter-spacing: .06em;
+}
+
+/* Icons in the meta row */
+.bi {
+    opacity: .9;
+}
+
+.bi.bi-stars {
+    color: var(--checkout-primary);
+}
+
+.bi.bi-currency-euro {
+    color: var(--checkout-primary);
+}
+
+/* Emphasis for values inside the summary line */
+.fw-semibold {
+    color: var(--checkout-title);
+}
+
+/* Alerts (fallback when no reward selected) */
+.alert-warning {
+    background-color: color-mix(in srgb, var(--checkout-warn) 14%, transparent);
+    color: color-mix(in srgb, var(--checkout-warn) 75%, black);
+    border: none;
+    border-radius: .75rem;
+}
+
+/* Form fields */
+.form-label {
+    color: var(--checkout-title);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    background-color: color-mix(in srgb, var(--checkout-surface) 95%, #ffffff 5%);
+    border-color: var(--checkout-border);
+    color: var(--checkout-title);
+    border-radius: .75rem;
+}
+
+.form-control::placeholder {
+    color: color-mix(in srgb, var(--checkout-muted) 70%, transparent);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: color-mix(in srgb, var(--checkout-primary) 55%, transparent);
+    box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--checkout-primary) 25%, transparent);
+    outline: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--checkout-primary);
+    border-color: var(--checkout-primary);
+}
+
+/* Buttons */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--checkout-primary) 92%, white 8%), var(--checkout-primary));
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    transition: filter .2s ease, box-shadow .2s ease, transform .1s ease;
+}
+
+.btn.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn.btn-primary:active {
+    transform: translateY(1px);
+    filter: brightness(.98);
+}
+
+.btn.btn-outline-secondary {
+    border-color: color-mix(in srgb, var(--checkout-muted) 45%, transparent);
+    color: var(--checkout-title);
+}
+
+.btn.btn-outline-secondary:hover {
+    background-color: color-mix(in srgb, var(--checkout-surface) 90%, var(--checkout-muted) 10%);
+}
+
+/* Focus accessibility */
+:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--checkout-primary) 55%, transparent);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+/* Optional: visual tone for user's available points (keine Logik, nur Farbe) */
+.text-body-secondary[data-available] {
+    color: var(--checkout-muted) !important;
+}

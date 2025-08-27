@@ -7,7 +7,7 @@
   {% trans 'Checkout' %}
 {% endblock %}
 {% block css %}
-
+  <link rel="stylesheet" href="{% static 'css/checkout/checkout.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -19,23 +19,8 @@
     {% if reward %}
       <section class="card border-0 shadow-sm mb-4">
         <div class="card-body">
-          <div class="row g-3 align-items-center">
-
-            {% if 'placeholder' in reward.image.url %}
-              <img src="{% static 'images/placeholder/placeholder.webp' %}" class="card-img-top" alt="Reward Cup" />
-            {% else %}
-              <img src="{{ reward.image.url }}" class="card-img-top" alt="{{ reward.name }} image" />
-            {% endif %}
-
-            <div class="{% if reward.image %}
-                
-                col-9 col-sm-10
-
-              {% else %}
-                
-                col-12
-
-              {% endif %}">
+          <div class="row g-3 align-items-center h-100">
+            <div>
               <div class="d-flex flex-wrap align-items-center gap-2">
                 <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">{% trans 'Reward' %}</span>
                 <h2 class="h5 mb-0">{{ reward.name }}</h2>
