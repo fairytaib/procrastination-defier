@@ -1,0 +1,225 @@
+/* Auth Pages — Visual Theme Only (no layout spacing/positioning) */
+:root {
+    --auth-primary: #2563eb;
+    /* Brand Blue */
+    --auth-accent: #DAA520;
+    /* Gold accent */
+    --auth-surface: #ffffff;
+    --auth-surface-alt: #f8fafc;
+    --auth-border: rgba(2, 6, 23, .06);
+    --auth-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --auth-title: #0f172a;
+    /* slate-900 */
+    --auth-muted: #6b7280;
+    /* slate-500 */
+    --auth-danger: #ef4444;
+    --auth-success: #10b981;
+    --auth-link: var(--auth-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --auth-surface: #0f172a;
+        /* slate-900 */
+        --auth-surface-alt: #0b1220;
+        --auth-border: #243144;
+        --auth-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --auth-title: #e5e7eb;
+        /* slate-200 */
+        --auth-muted: #94a3b8;
+        /* slate-400 */
+        --auth-link: #60a5fa;
+    }
+}
+
+/* Card shells used on all pages */
+.card {
+    background-color: var(--auth-surface);
+    border-color: var(--auth-border);
+    border-radius: 1rem;
+    box-shadow: var(--auth-shadow);
+    transition: box-shadow .2s ease, transform .12s ease, filter .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* Headings & text */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--auth-title);
+    letter-spacing: -0.01em;
+}
+
+.text-body-secondary,
+.form-text,
+.small {
+    color: var(--auth-muted) !important;
+}
+
+/* Links (e.g., "Forgot password?", inline action links) */
+a {
+    color: var(--auth-link);
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    color: color-mix(in srgb, var(--auth-link) 85%, white);
+    text-decoration: underline;
+}
+
+/* Forms — visual only */
+.form-label {
+    color: var(--auth-title);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    background-color: color-mix(in srgb, var(--auth-surface) 95%, #ffffff 5%);
+    border-color: var(--auth-border);
+    color: var(--auth-title);
+    border-radius: .75rem;
+}
+
+.form-control::placeholder {
+    color: color-mix(in srgb, var(--auth-muted) 70%, transparent);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: color-mix(in srgb, var(--auth-primary) 55%, transparent);
+    box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--auth-primary) 25%, transparent);
+    outline: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--auth-primary);
+    border-color: var(--auth-primary);
+}
+
+/* Buttons — primary/secondary/link styles (visual only) */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--auth-primary) 92%, white 8%), var(--auth-primary));
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    transition: filter .2s ease, box-shadow .2s ease, transform .1s ease;
+}
+
+.btn.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn.btn-primary:active {
+    transform: translateY(1px);
+    filter: brightness(.98);
+}
+
+.btn.btn-outline-secondary {
+    border-color: color-mix(in srgb, var(--auth-muted) 50%, transparent);
+    color: var(--auth-title);
+}
+
+.btn.btn-outline-secondary:hover {
+    background-color: color-mix(in srgb, var(--auth-surface) 90%, var(--auth-muted) 10%);
+}
+
+.btn.btn-link {
+    color: var(--auth-accent);
+    text-decoration: none;
+}
+
+.btn.btn-link:hover {
+    color: color-mix(in srgb, var(--auth-accent) 85%, white);
+    text-decoration: underline;
+}
+
+/* Alerts & status notes (success/info/error) */
+.alert {
+    border: none;
+    border-radius: .75rem;
+}
+
+.alert-info {
+    background-color: color-mix(in srgb, var(--auth-primary) 12%, transparent);
+    color: color-mix(in srgb, var(--auth-primary) 70%, black);
+}
+
+.alert-success {
+    background-color: color-mix(in srgb, var(--auth-success) 14%, transparent);
+    color: color-mix(in srgb, var(--auth-success) 70%, black);
+}
+
+.alert-danger,
+.alert-error {
+    background-color: color-mix(in srgb, var(--auth-danger) 12%, transparent);
+    color: color-mix(in srgb, var(--auth-danger) 75%, black);
+}
+
+/* Social login block (if present) — mild visual harmonization */
+.card .list-unstyled a.btn {
+    border-radius: .75rem;
+    box-shadow: 0 4px 14px rgba(2, 6, 23, .08);
+}
+
+/* Inputs with errors (Django form errors) */
+.is-invalid,
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: color-mix(in srgb, var(--auth-danger) 60%, transparent);
+}
+
+.invalid-feedback {
+    color: var(--auth-danger);
+}
+
+/* Focus accessibility (visual) */
+:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--auth-primary) 55%, transparent);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+/* Subtle page header separators (e.g., h1 on pages without cards) */
+header:not(.navbar) h1::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--auth-accent), color-mix(in srgb, var(--auth-accent) 30%, transparent));
+    border-radius: 9999px;
+}
+
+/* Links inside alerts/text paragraphs */
+.card p a,
+.alert a {
+    color: var(--auth-link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.card p a:hover,
+.alert a:hover {
+    color: color-mix(in srgb, var(--auth-link) 85%, white);
+}
+
+/* Token error headline (password_reset_from_key Bad Token) */
+h1,
+h2,
+h3,
+h4 .text-danger,
+.text-danger {
+    color: var(--auth-danger) !important;
+}
+
+/* “Already logged in” snippet tone-down */
+.card .small a {
+    color: var(--auth-link);
+}

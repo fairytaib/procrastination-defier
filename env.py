@@ -27,3 +27,4 @@ os.environ.setdefault("DJANGO_EMAIL_USE_TLS", "true")
 os.environ.setdefault("DJANGO_EMAIL_HOST_USER", "email_verification")
 os.environ.setdefault("DJANGO_EMAIL_HOST_PASSWORD", "SG.SK67c41bc8d15f2453368f6eb605a5d64b")
 os.environ.setdefault("DJANGO_DEFAULT_FROM_EMAIL", "fairytaib@gmail.com")
+

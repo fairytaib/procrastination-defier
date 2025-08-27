@@ -44,6 +44,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('blog/', include('blog_posts.urls')),
+    path('checkout/', include('checkout.urls')),
     path('rewards/', include('rewards.urls')),
     path('tasks/', include('tasks.urls')),
     path('profiles/', include('profiles.urls')),

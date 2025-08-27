@@ -7,6 +7,7 @@
   {% trans 'Sign In' %}
 {% endblock %}
 {% block css %}
+  <link rel="stylesheet" href="{% static 'css/allauth/generic_allauth.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -30,9 +31,6 @@
               </ul>
 
               {% include 'socialaccount/snippets/login_extra.html' %}
-              <div class="text-center small text-body-secondary">
-                {% trans 'or' %}
-              </div>
             </div>
           </div>
         {% else %}

@@ -18,18 +18,3 @@ def view_details(request, reward_id):
     }
 
     return render(request, "rewards/view_reward_details.html", context)
-
-
-def reward_checkout(request, reward_id):
-    """Handle the checkout process for redeeming a reward."""
-    reward = get_object_or_404(Reward, id=reward_id)
-
-    if request.method == "POST":
-        pass
-
-    context = {
-        "reward": reward,
-        "reward_id": reward_id,
-    }
-    return render(request,
-                  "rewards/reward_checkout.html", context)
