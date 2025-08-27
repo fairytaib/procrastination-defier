@@ -7,34 +7,34 @@
   {% trans 'Checkout' %}
 {% endblock %}
 {% block css %}
+
 {% endblock %}
 
 {% block content %}
   <section class="container py-5">
-    <!-- Seite: Titel -->
     <header class="mb-4 d-flex align-items-center justify-content-between">
       <h1 class="h3 mb-0">{% trans 'Checkout' %}</h1>
     </header>
 
-    <!-- Zusammenfassung oben -->
     {% if reward %}
       <section class="card border-0 shadow-sm mb-4">
         <div class="card-body">
           <div class="row g-3 align-items-center">
-            <!-- Bild (optional) -->
-            {% if reward.image %}
-              <div class="col-3 col-sm-2">
-                <div class="ratio ratio-1x1">
-                  <img src="{{ reward.image.url }}" alt="{{ reward.name }}" class="img-fluid rounded object-fit-cover" />
-                </div>
-              </div>
+
+            {% if 'placeholder' in reward.image.url %}
+              <img src="{% static 'images/placeholder/placeholder.webp' %}" class="card-img-top" alt="Reward Cup" />
+            {% else %}
+              <img src="{{ reward.image.url }}" class="card-img-top" alt="{{ reward.name }} image" />
             {% endif %}
 
-            <!-- Text-Infos -->
             <div class="{% if reward.image %}
+                
                 col-9 col-sm-10
+
               {% else %}
+                
                 col-12
+
               {% endif %}">
               <div class="d-flex flex-wrap align-items-center gap-2">
                 <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">{% trans 'Reward' %}</span>
@@ -42,19 +42,11 @@
               </div>
 
               <div class="mt-2 d-flex flex-wrap gap-3">
-                {% if reward.point_cost %}
+                {% if reward.cost %}
                   <div class="d-inline-flex align-items-center gap-2">
                     <i class="bi bi-stars" aria-hidden="true"></i>
                     <span class="fw-semibold">{% trans 'Point cost' %}:</span>
-                    <span>{{ reward.point_cost }}</span>
-                  </div>
-                {% endif %}
-
-                {% if reward.price or reward.cost %}
-                  <div class="d-inline-flex align-items-center gap-2">
-                    <i class="bi bi-currency-euro" aria-hidden="true"></i>
-                    <span class="fw-semibold">{% trans 'Price' %}:</span>
-                    <span>{{ reward.price|default:reward.cost }}</span>
+                    <span>{{ reward.cost }}</span>
                   </div>
                 {% endif %}
               </div>
