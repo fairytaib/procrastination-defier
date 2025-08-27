@@ -108,14 +108,12 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/tasks/'
 
-EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST", "smtp.sendgrid.net")
-EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT", 587)
-EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS", True)
-EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER", "apikey")
-EMAIL_HOST_PASSWORD = os.environ.get(
-    "DJANGO_EMAIL_HOST_PASSWORD", "SG.xxxxx_dein_api_key_xxxxx")
-DEFAULT_FROM_EMAIL = os.environ.get(
-    "DJANGO_DEFAULT_FROM_EMAIL", "no-reply@deine-domain.de")
+EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST")
+EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT")
+EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS")
+EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = os.environ.get("DJANGO_DEFAULT_FROM_EMAIL")
 
 WSGI_APPLICATION = 'prodef.wsgi.application'
 
