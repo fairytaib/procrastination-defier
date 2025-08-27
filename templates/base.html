@@ -1,23 +1,29 @@
 {% load static %}
+{% comment %} Django Account Links {% endcomment %}
 {% url 'account_logout' as logout_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_update' as account_update_url %}
 {% url 'account_change_password' as account_change_password_url %}
 
+{% comment %} User Profile {% endcomment %}
 {% url 'view_user_profile' as view_user_profile_url %}
 
+{% comment %} Generic Links {% endcomment %}
 {% url 'faq' as faq_url %}
 {% url 'home' as home_url %}
 {% url 'privacy_policy' as privacy_policy_url %}
 {% url 'legal_notice' as legal_notice_url %}
 
+{% comment %} Blog Posts {% endcomment %}
 {% url 'blog_posts' as blog_posts_url %}
 {% url 'create_post' as create_post_url %}
 
+{% comment %} Rewards {% endcomment %}
 {% url 'rewards_list' as rewards_list_url %}
 {% url 'reward_details' as reward_details_url %}
 
+{% comment %} Tasks {% endcomment %}
 {% url 'add_task' as add_task_url %}
 {% url 'user_task_overview' as user_task_overview_url %}
 {% url 'view_task_details' as task_details_url %}
