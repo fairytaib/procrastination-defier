@@ -31,7 +31,7 @@ def view_details(request, post_id):
                     request, "Failed to post comment."
                     )
             return redirect("post_details", post_id=post.id)
-    
+
     context = {
         "post": post,
         "comments": comments,
