@@ -1,0 +1,88 @@
+:root {
+    --task-primary: #2563eb;
+    --task-surface: #ffffff;
+    --task-border: rgba(2, 6, 23, .06);
+    --task-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --task-title: #0f172a;
+    --task-muted: #6b7280;
+    --task-accent: #DAA520;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --task-surface: #0f172a;
+        --task-border: #243144;
+        --task-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --task-title: #e5e7eb;
+        --task-muted: #94a3b8;
+    }
+}
+
+/* Form card shell */
+form.card {
+    background-color: var(--task-surface);
+    border-color: var(--task-border);
+    border-radius: 1rem;
+    box-shadow: var(--task-shadow);
+}
+
+/* Headings & text */
+h1,
+h2,
+h3 {
+    color: var(--task-title);
+    letter-spacing: -0.01em;
+}
+
+.text-body-secondary {
+    color: var(--task-muted) !important;
+}
+
+/* Inputs (visuals only) */
+.form-label {
+    color: var(--task-title);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    background-color: color-mix(in srgb, var(--task-surface) 95%, #ffffff 5%);
+    border-color: var(--task-border);
+    color: var(--task-title);
+    border-radius: .75rem;
+}
+
+.form-control::placeholder {
+    color: color-mix(in srgb, var(--task-muted) 70%, transparent);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: color-mix(in srgb, var(--task-primary) 55%, transparent);
+    box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--task-primary) 25%, transparent);
+    outline: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--task-primary);
+    border-color: var(--task-primary);
+}
+
+/* Buttons & back link */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    border: none;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    font-weight: 700;
+}
+
+.btn-link {
+    color: var(--task-accent);
+}
+
+.btn-link:hover {
+    color: color-mix(in srgb, var(--task-accent) 85%, white);
+    text-decoration: none;
+}

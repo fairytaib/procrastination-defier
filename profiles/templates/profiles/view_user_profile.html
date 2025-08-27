@@ -21,5 +21,7 @@ Profile
   <p>Email: {{ profile.user_email }}</p>
   <p>First Name: {{ profile.first_name }}</p>
   <p>Last Name: {{ profile.last_name }}</p>
+  <a href="{{ account_update_url }}" class="btn btn-primary">Edit Profile</a>
+  <a href="{{ account_change_password_url }}" class="btn btn-primary">Change Password</a>
 </div>
 {% endblock %}

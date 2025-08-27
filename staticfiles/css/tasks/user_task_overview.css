@@ -1,0 +1,64 @@
+:root {
+    --task-primary: #2563eb;
+    --task-accent: #DAA520;
+    --task-title: #0f172a;
+    --task-muted: #6b7280;
+    --task-info-bg: rgba(37, 99, 235, .08);
+    --task-info-text: #1e3a8a;
+    --task-sec-bg: rgba(2, 6, 23, .06);
+    --task-sec-text: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --task-title: #e5e7eb;
+        --task-muted: #94a3b8;
+        --task-info-bg: rgba(96, 165, 250, .15);
+        --task-info-text: #bfdbfe;
+        --task-sec-bg: rgba(148, 163, 184, .15);
+        --task-sec-text: #cbd5e1;
+    }
+}
+
+/* Headings */
+h1.h2,
+h2.h4 {
+    color: var(--task-title);
+    letter-spacing: -0.01em;
+}
+
+/* Alerts (visual tone only) */
+.alert-info {
+    background-color: var(--task-info-bg);
+    color: var(--task-info-text);
+    border: none;
+}
+
+.alert-secondary {
+    background-color: var(--task-sec-bg);
+    color: var(--task-sec-text);
+    border: none;
+}
+
+/* Primary button look */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    border: none;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    font-weight: 700;
+}
+
+/* Section titles underline (decorative) */
+h2.h4 {
+    position: relative;
+}
+
+h2.h4::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--task-accent), color-mix(in srgb, var(--task-accent) 30%, transparent));
+    border-radius: 9999px;
+}

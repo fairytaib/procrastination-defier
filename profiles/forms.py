@@ -13,5 +13,5 @@ class AccountForm(forms.ModelForm):
         if User.objects.exclude(
                 pk=self.instance.pk
                 ).filter(email__iexact=email).exists():
-            raise forms.ValidationError("Diese E-Mail wird bereits verwendet.")
+            raise forms.ValidationError("This Email already exists")
         return email

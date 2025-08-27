@@ -23,4 +23,4 @@ def account_update(request):
             return redirect("view_user_profile")
     else:
         form = AccountForm(instance=request.user)
-    return render(request, "account/update.html", {"form": form})
+    return render(request, "profiles/update.html", {"form": form})
