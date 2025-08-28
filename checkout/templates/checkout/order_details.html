@@ -145,17 +145,18 @@
       <div class="col-lg-5">
         <section class="card border-0 shadow-sm h-100">
           <div class="card-body">
-            <h2 class="h5 mb-3">{% trans 'Fulfillment' %}</h2>
-            
-            <form method="POST" class="card">
-              <div class="card-body">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="d-grid d-sm-flex gap-2">
-                  <button type="submit" class="btn btn-primary">Add Task</button>
-                </div>
-              </div>
-            </form>
+            <h2 class="h5 mb-3">{% trans 'Order status' %}</h2>
+            {% if perms.tasks.mark_done %}
+                <form method="POST" class="card">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid d-sm-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Mark done</button>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
           </div>
         </section>
       </div>

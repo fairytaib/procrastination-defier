@@ -55,7 +55,11 @@ def place_order(request, reward_id):
 @login_required
 def user_order_overview(request):
     """Render all ordered rewards."""
-    orders = RewardHistory.objects.filter(reward_sent=False).order_by(
+    if request.user.has_perm('tasks.mark_done'):
+        orders = RewardHistory.objects.filter(
+            reward_sent=False).order_by('-bought_at')
+    else:
+        orders = RewardHistory.objects.filter(user=request.user).order_by(
             '-bought_at'
             )
     context = {
