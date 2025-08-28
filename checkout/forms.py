@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
+        exclude = ['user', 'order_item']
         fields = [
             'first_name', 'last_name', 'email', 'phone_number',
             'street_address', 'apartment', 'city', 'postal_code', 'country',
