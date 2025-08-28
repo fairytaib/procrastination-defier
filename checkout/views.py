@@ -55,7 +55,7 @@ def place_order(request, reward_id):
 @login_required
 def user_order_overview(request):
     """Render all ordered rewards."""
-    orders = RewardHistory.objects.all().order_by(
+    orders = RewardHistory.objects.filter(reward_sent=False).order_by(
             '-bought_at'
             )
     context = {

@@ -90,7 +90,7 @@
                       {% if perms.tasks.mark_done %}
                         Check Tasks
                       {% else %}
-                        View your current Tasks
+                        Your current Tasks
                       {% endif %}
                     </a>
                   </li>
@@ -98,7 +98,7 @@
                 {% if user.is_authenticated %}
                   {% if perms.tasks.mark_done %}
                     <li class="nav-item">
-                      <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">View placed Orders</a>
+                      <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">Orders</a>
                     </li>
                   {% endif %}
                 {% endif %}
