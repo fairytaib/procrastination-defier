@@ -47,7 +47,7 @@ def place_order(request, reward_id):
 
 
 @login_required
-def user_task_overview(request):
+def user_order_overview(request):
     """Render a user's task overview page."""
     order = RewardHistory.objects.all().order_by(
             '-bought_at'
