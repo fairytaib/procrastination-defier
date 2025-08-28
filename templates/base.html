@@ -96,11 +96,9 @@
                   </li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                  {% if perms.tasks.mark_done %}
-                    <li class="nav-item">
-                      <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">Orders</a>
-                    </li>
-                  {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">Orders</a>
+                  </li>
                 {% endif %}
                 <li class="nav-item">
                   <a class="nav-link {% if request.path == faq_url %}active{% endif %}" href="{% url 'faq' %}" aria-label="Frequently asked questions">FAQ</a>
@@ -118,9 +116,6 @@
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                     </div>
                   </div>
-                  {% comment %} <li class="nav-item">
-                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
-                  </li> {% endcomment %}
                 {% else %}
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" aria-label="Register">Register</a>

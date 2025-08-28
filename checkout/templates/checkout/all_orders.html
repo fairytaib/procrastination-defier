@@ -15,17 +15,40 @@
     </header>
 
     <!-- Open / Undone -->
-    <section class="mb-5" aria-labelledby="open-tasks">
+    <section class="mb-5" aria-labelledby="open-orders">
       <h2 id="open-tasks" class="h4 mb-3">Open Orders</h2>
-      
+      {% if orders_undone.count == 0 %}
+        <div class="alert alert-info" role="alert">
+          No open orders found.
+        </div>
+      {% else %}
         <div class="row row-cols-1 row-cols-md-2 g-4">
-          {% for order in orders %}
+          {% for order in orders_undone %}
             <div class="col">
               {% include 'checkout/_order_card.html' with order=order %}
             </div>
           {% endfor %}
         </div>
-      
+      {% endif %}
+
+    </section>
+
+    <section class="mb-5" aria-labelledby="past-orders">
+      <h2 id="past-orders" class="h4 mb-3">Past Orders</h2>
+      {% if orders_done.count == 0 %}
+        <div class="alert alert-info" role="alert">
+          No past orders found.
+        </div>
+      {% else %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for order in orders_done %}
+            <div class="col">
+              {% include 'checkout/_order_card.html' with order=order %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
     </section>
 
 

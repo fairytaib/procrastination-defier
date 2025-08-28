@@ -56,14 +56,20 @@ def place_order(request, reward_id):
 def user_order_overview(request):
     """Render all ordered rewards."""
     if request.user.has_perm('tasks.mark_done'):
-        orders = RewardHistory.objects.filter(
+        orders_undone = RewardHistory.objects.filter(
             reward_sent=False).order_by('-bought_at')
+        orders_done = RewardHistory.objects.filter(
+            reward_sent=True).order_by('-bought_at')
     else:
-        orders = RewardHistory.objects.filter(user=request.user).order_by(
+        orders_undone = RewardHistory.objects.filter(
+            user=request.user, reward_sent=False).order_by(
             '-bought_at'
             )
+        orders_done = RewardHistory.objects.filter(
+            user=request.user, reward_sent=True).order_by('-bought_at')
     context = {
-        'orders': orders
+        'orders_undone': orders_undone,
+        'orders_done': orders_done
     }
     return render(request, 'checkout/all_orders.html', context)
 
@@ -71,7 +77,11 @@ def user_order_overview(request):
 @login_required
 def view_order_details(request, order_id):
     """Render a specific order's details."""
-    order = get_object_or_404(RewardHistory, id=order_id, user=request.user)
+    if not request.user.has_perm('tasks.mark_done'):
+        order = get_object_or_404(
+            RewardHistory, id=order_id, user=request.user)
+    else:
+        order = get_object_or_404(RewardHistory, id=order_id)
     order_details = get_object_or_404(Order, id=order.id)
     form = RewardHistoryForm(instance=order)
     if request.method == "POST":
