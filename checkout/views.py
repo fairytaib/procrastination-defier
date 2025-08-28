@@ -55,4 +55,4 @@ def user_order_overview(request):
     context = {
         'order': order
     }
-    return render(request, 'tasks/user_task_overview.html', context)
+    return render(request, 'checkout/all_orders.html', context)

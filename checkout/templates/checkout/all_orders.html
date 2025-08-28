@@ -29,21 +29,5 @@
         <div class="alert alert-info mb-0" role="alert">You have no current orders.</div>
       {% endif %}
     </section>
-
-    <!-- Done -->
-    <section aria-labelledby="done-tasks">
-      <h2 id="done-tasks" class="h4 mb-3">Done Orders</h2>
-      {% if order.reward_sent %}
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          {% for order in orders %}
-            <div class="col">
-              {% include 'checkout/_order_card.html' with order=order %}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="alert alert-secondary mb-0" role="alert">No orders completed yet.</div>
-      {% endif %}
-    </section>
   </section>
 {% endblock %}

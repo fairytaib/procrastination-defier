@@ -1,187 +1,170 @@
 {% load static %}
-{% comment %} Django Account Links {% endcomment %}
+{% comment %}Django Account Links{% endcomment %}
 {% url 'account_logout' as logout_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_update' as account_update_url %}
 {% url 'account_change_password' as account_change_password_url %}
 
-{% comment %} User Profile {% endcomment %}
+{% comment %}User Profile{% endcomment %}
 {% url 'view_user_profile' as view_user_profile_url %}
 
-{% comment %} Generic Links {% endcomment %}
+{% comment %}Generic Links{% endcomment %}
 {% url 'faq' as faq_url %}
 {% url 'home' as home_url %}
 {% url 'privacy_policy' as privacy_policy_url %}
 {% url 'legal_notice' as legal_notice_url %}
 
-{% comment %} Blog Posts {% endcomment %}
+{% comment %}Blog Posts{% endcomment %}
 {% url 'blog_posts' as blog_posts_url %}
 {% url 'create_post' as create_post_url %}
 
-{% comment %} Rewards {% endcomment %}
+{% comment %}Rewards{% endcomment %}
 {% url 'rewards_list' as rewards_list_url %}
 {% url 'reward_details' as reward_details_url %}
 
-{% comment %} Tasks {% endcomment %}
+{% comment %}Tasks{% endcomment %}
 {% url 'add_task' as add_task_url %}
 {% url 'user_task_overview' as user_task_overview_url %}
 {% url 'view_task_details' as task_details_url %}
 
-{% comment %} Checkout {% endcomment %}
-  {% url 'place_order' as place_order_url %}
+{% comment %}Checkout{% endcomment %}
+{% url 'place_order' as place_order_url %}
+{% url 'user_order_overview' as user_order_overview_url %}
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% block meta %}
-  <!-- Default Meta Tags -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="Sophjan Moubarrid" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta property="og:title" content="" />
-  <meta property="og:description" content="" />
-  <meta property="og:image" content="" />
-  <meta property="og:type" content="website" />
-  {% endblock %}
-  <title>
-    Procdef -
-    {% block title %}
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block meta %}
+      <!-- Default Meta Tags -->
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="author" content="Sophjan Moubarrid" />
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta property="og:title" content="" />
+      <meta property="og:description" content="" />
+      <meta property="og:image" content="" />
+      <meta property="og:type" content="website" />
     {% endblock %}
-  </title>
-  {% comment %}Bootstrap CDN{% endcomment %}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-  <link rel="stylesheet" href="{% static 'css/base/base.css' %}" />
-  {% block css %}
-
-  {% endblock %}
-</head>
-
-<body>
-  <div class="wrapper">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark sticky-top py-2">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}" aria-label="Procrastination defier logo"><img
-              src="{% static 'images/logos/procrastination_defier_logo_1.jpg' %}" alt="Procrastination defier Logo"
-              class="logo-image" /></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span
-              class="navbar-toggler-icon"></span></button>
-
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}"
-                  aria-label="Home">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}"
-                  href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == blog_posts_url %}active{% endif %}"
-                  href="{% url 'blog_posts' %}" aria-label="List of Blog Posts">Blog</a>
-              </li>
-              {% if user.is_authenticated %}
-
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}"
-                  href="{{ user_task_overview_url }}" aria-label="View your Tasks">
-                  {% if perms.tasks.mark_done %}
-                  Check Tasks
-                  {% else %}
-                  View your current Tasks
-                  {% endif %}
-                </a>
-              </li>
-
-              {% endif %}
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == faq_url %}active{% endif %}" href="{% url 'faq' %}" aria-label="Frequently asked questions">FAQ</a>
-              </li>
-            </ul>
-
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              {% if user.is_authenticated %}
-              <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false"><img
-                    src="{% static 'images/logos/procrastination_defier_logo_1.jpg' %}" alt="Logo"
-                    class="logo-image" /></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
-                  <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account settings</a>
-                  <a class="dropdown-item" href="{% url 'view_user_profile' %}">My Subscription</a>
-                  <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                </div>
-              </div>
-              {% comment %} <li class="nav-item">
-                <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                  href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
-              </li> {% endcomment %}
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                  href="{% url 'account_signup' %}" aria-label="Register">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}"
-                  aria-label="Login">Login</a>
-              </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      {% if messages %}
-      <div class="container mt-3 message-container">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-          {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-      {% block content %}
+    <title>
+      Procdef -{% block title %}
 
       {% endblock %}
-    </main>
-  </div>
-  <footer class="footer text-center">
-    <div class="container">
-      <p class="footer-text">
-        © {{ year }} Procrastination Defier. All rights reserved. Created by <a href="https://github.com/fairytaib"
-          target="_blank" rel="noopener noreferrer" aria-label="Link to Github">Sophjan Moubarrid</a>
-      </p>
-      <nav class="footer-nav">
-        <a href="{% url 'legal_notice' %}" target="_blank" rel="noopener noreferrer" aria-label="Legal notice">Legal
-          Notice</a> |
-        <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener noreferrer"
-          aria-label="Privacy Policy">Privacy Policy</a>
-      </nav>
+    </title>
+    {% comment %}Bootstrap CDN{% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="{% static 'css/base/base.css' %}" />
+    {% block css %}
+
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top py-2">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}" aria-label="Procrastination defier logo"><img src="{% static 'images/logos/procrastination_defier_logo_1.jpg' %}" alt="Procrastination defier Logo" class="logo-image" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}" aria-label="Home">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == blog_posts_url %}active{% endif %}" href="{% url 'blog_posts' %}" aria-label="List of Blog Posts">Blog</a>
+                </li>
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}" href="{{ user_task_overview_url }}" aria-label="View your Tasks">
+                      {% if perms.tasks.mark_done %}
+                        Check Tasks
+                      {% else %}
+                        View your current Tasks
+                      {% endif %}
+                    </a>
+                  </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                  {% if perms.tasks.mark_done %}
+                    <li class="nav-item">
+                      <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">View placed Orders</a>
+                    </li>
+                  {% endif %}
+                {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == faq_url %}active{% endif %}" href="{% url 'faq' %}" aria-label="Frequently asked questions">FAQ</a>
+                </li>
+              </ul>
+
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'images/logos/procrastination_defier_logo_1.jpg' %}" alt="Logo" class="logo-image" /></button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
+                      <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account settings</a>
+                      <a class="dropdown-item" href="{% url 'view_user_profile' %}">My Subscription</a>
+                      <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                    </div>
+                  </div>
+                  {% comment %} <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
+                  </li> {% endcomment %}
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" aria-label="Register">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        {% if messages %}
+          <div class="container mt-3 message-container">
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% block content %}
+
+        {% endblock %}
+      </main>
     </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous" defer>
-  </script>
-  <script src="{% static 'javascript/timer.js' %}" defer></script>
-  {% block javascript %}
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="footer-text">
+          © {{ year }} Procrastination Defier. All rights reserved. Created by <a href="https://github.com/fairytaib" target="_blank" rel="noopener noreferrer" aria-label="Link to Github">Sophjan Moubarrid</a>
+        </p>
+        <nav class="footer-nav">
+          <a href="{% url 'legal_notice' %}" target="_blank" rel="noopener noreferrer" aria-label="Legal notice">Legal Notice</a> |
+          <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy">Privacy Policy</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous" defer></script>
+    <script src="{% static 'javascript/timer.js' %}" defer></script>
+    {% block javascript %}
 
-  {% endblock %}
-</body>
-
+    {% endblock %}
+  </body>
 </html>
