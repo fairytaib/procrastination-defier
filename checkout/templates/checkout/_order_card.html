@@ -1,0 +1,24 @@
+{% load static %}
+{% block css %}
+
+{% endblock %}
+<div class="card h-100">
+  <div class="card-body">
+    <div class="row align-items-center g-3">
+      <div class="col-12 col-lg-3">
+        <h5 class="card-title mb-0">{{ order.reward.name }}</h5>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <p class="card-text mb-0">
+          <span class="d-block small text-body-secondary">Ordered at:</span>
+          {{ order.bought_at }}
+        </p>
+      </div>
+
+      <div class="col-12 col-lg-auto ms-lg-auto">
+        <a href="{% url 'view_order_details' order.id %}" class="btn btn-primary" aria-label="View Order Details">View Details</a>
+      </div>
+    </div>
+  </div>
+</div>

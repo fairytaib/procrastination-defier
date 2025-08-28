@@ -31,7 +31,7 @@ class Reward(models.Model):
     cost = models.PositiveIntegerField(
         help_text="Cost in points to redeem this reward.", default=1000)
     stock = models.PositiveIntegerField(
-        help_text="Number of items available for this reward.", default=0)
+        help_text="Number of items available for this reward.", default=10)
     reward_type = models.CharField(
         choices=REWARD_TYPES,
         max_length=50,
@@ -57,6 +57,7 @@ class RewardHistory(models.Model):
     reward = models.ForeignKey(Reward, on_delete=models.CASCADE,
                                related_name='reward_history')
     bought_at = models.DateTimeField(auto_now_add=True)
+    reward_sent = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{

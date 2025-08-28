@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import OrderForm
-from rewards.models import Reward
+from rewards.models import Reward, RewardHistory
 from tasks.models import UserPoints
 
 
@@ -19,18 +19,20 @@ def place_order(request, reward_id):
                 order.user = request.user
                 order.reward = reward
                 order.save()
-                item = reward.objects.create(
-                    order=order,
-                    reward=reward,
-                    quantity=1,
-                    unit_price=reward.cost,
-                )
+                item = reward
                 order.order_item = item
-                order.save(update_fields=["order_item"])
-
+                reward.stock -= 1
+                reward.save(update_fields=["stock"])
                 user_points.points -= reward.cost
                 user_points.save(update_fields=["points"])
-                messages.success(request, "Order placed successfully.")
+                RewardHistory.objects.create(
+                    user=request.user,
+                    reward=reward
+                )
+                messages.success(
+                    request, "Order placed successfully."
+                    "We will send it to you shortly."
+                )
                 return redirect("rewards_list")
             else:
                 messages.warning(
@@ -42,3 +44,15 @@ def place_order(request, reward_id):
             "form": form, "reward": reward, "user_points": user_points
         }
     )
+
+
+@login_required
+def user_task_overview(request):
+    """Render a user's task overview page."""
+    order = RewardHistory.objects.all().order_by(
+            '-bought_at'
+            )
+    context = {
+        'order': order
+    }
+    return render(request, 'tasks/user_task_overview.html', context)

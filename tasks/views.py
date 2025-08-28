@@ -6,7 +6,6 @@ from .models import Task, Task_Checkup, UserPoints
 from .forms import TaskForm, CheckTaskForm
 
 
-
 @login_required
 def user_task_overview(request):
     """Render a user's task overview page."""
