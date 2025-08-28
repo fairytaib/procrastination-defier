@@ -1,7 +1,10 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+
+from tasks.forms import TaskForm
 from .forms import OrderForm
+from rewards.forms import RewardHistoryForm
 from .models import Order
 from rewards.models import Reward, RewardHistory
 from tasks.models import UserPoints
@@ -66,8 +69,20 @@ def view_order_details(request, order_id):
     """Render a specific order's details."""
     order = get_object_or_404(RewardHistory, id=order_id, user=request.user)
     order_details = get_object_or_404(Order, id=order.id)
+    form = RewardHistoryForm(instance=order)
+    if request.method == "POST":
+        form = RewardHistoryForm(request.POST, instance=order)
+        if form.is_valid():
+            order.reward_sent = True
+            order.save(update_fields=["reward_sent"])
+            form.save()
+            messages.success(request, "Order marked as done.")
+            return redirect("user_order_overview")
+        else:
+            form = RewardHistoryForm(instance=order)
     context = {
         'order': order,
-        'order_details': order_details
+        'order_details': order_details,
+        'form': form
     }
     return render(request, 'checkout/order_details.html', context)

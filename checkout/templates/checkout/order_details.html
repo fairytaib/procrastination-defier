@@ -1,1 +1,164 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+  {% trans 'Order Details' %}
+{% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+  <section class="container py-5">
+    <!-- Back -->
+    <div class="mb-3">
+      <a href="{% url 'user_order_overview' %}" class="btn btn-link p-0 text-decoration-none">
+        <i class="bi bi-arrow-left-circle-fill me-2 align-middle" aria-hidden="true"></i>
+        {% trans 'Back to all orders' %}
+      </a>
+    </div>
+
+    <!-- Summary -->
+    <header class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        <div class="row g-3 align-items-center">
+          <!-- Reward image -->
+          <div class="col-3 col-sm-2">
+            <div class="ratio ratio-1x1 rounded overflow-hidden">
+              {% if order.reward.image %}
+                {% if 'placeholder' in order.reward.image.url %}
+                  <img src="{% static 'images/placeholder/placeholder.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
+                {% else %}
+                  <img src="{{ order.reward.image.url }}" class="w-100 h-100 object-fit-cover" alt="{{ order.reward.name }}" />
+                {% endif %}
+              {% else %}
+                <img src="{% static 'images/placeholder/placeholder.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Text info -->
+          <div class="col-9 col-sm-10">
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">{% trans 'Order' %}#{{ order.id }}</span>
+              <h1 class="h5 mb-0">{{ order.reward.name }}</h1>
+            </div>
+
+            <div class="mt-2 d-flex flex-wrap gap-3">
+              <div class="d-inline-flex align-items-center gap-2">
+                <i class="bi bi-stars" aria-hidden="true"></i>
+                <span class="fw-semibold">{% trans 'Points' %}:</span>
+                <span>{{ order.reward.cost }}</span>
+              </div>
+              <div class="d-inline-flex align-items-center gap-2">
+                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                <span class="fw-semibold">{% trans 'Purchased on' %}:</span>
+                <time datetime="{{ order.bought_at|date:'c' }}">{{ order.bought_at }}</time>
+              </div>
+              <div class="d-inline-flex align-items-center gap-2">
+                <i class="bi bi-truck" aria-hidden="true"></i>
+                <span class="fw-semibold">{% trans 'Status' %}:</span>
+                <span>
+                  {% if order.reward_sent %}
+                    {% trans 'Sent' %}
+                  {% else %}
+                    {% trans 'Not sent yet' %}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-2 small text-body-secondary">
+              {% trans 'User' %}: {{ order.user.username }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="row g-4">
+      <!-- Shipping / contact -->
+      <div class="col-lg-7">
+        <article class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h2 class="h5 mb-3">{% trans 'Shipping & Contact' %}</h2>
+            <div class="row">
+              <div class="col-sm-6">
+                <dl class="row mb-0">
+                  <dt class="col-5">
+                    {% trans 'First name' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.first_name }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'Last name' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.last_name }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'Email' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.email }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'Phone' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.phone_number|default:'—' }}</dd>
+                </dl>
+              </div>
+              <div class="col-sm-6">
+                <dl class="row mb-0">
+                  <dt class="col-5">
+                    {% trans 'Street' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.street_address }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'Apartment' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.apartment|default:'—' }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'City' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.city }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'Postal code' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.postal_code }}</dd>
+
+                  <dt class="col-5">
+                    {% trans 'Country' %}
+                  </dt>
+                  <dd class="col-7">{{ order_details.country }}</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Admin / sent control -->
+      <div class="col-lg-5">
+        <section class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h2 class="h5 mb-3">{% trans 'Fulfillment' %}</h2>
+            
+            <form method="POST" class="card">
+              <div class="card-body">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-grid d-sm-flex gap-2">
+                  <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{% endblock %}
