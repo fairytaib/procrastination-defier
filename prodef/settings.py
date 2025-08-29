@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'tasks',
     'rewards',
+    'subscription',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
