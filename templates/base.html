@@ -79,22 +79,20 @@
                   <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}" aria-label="Home">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link {% if request.path == blog_posts_url %}active{% endif %}" href="{% url 'blog_posts' %}" aria-label="List of Blog Posts">Blog</a>
                 </li>
                 {% if user.is_authenticated %}
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}" href="{{ user_task_overview_url }}" aria-label="View your Tasks">
-                      {% if perms.tasks.mark_done %}
-                        Check Tasks
-                      {% else %}
-                        Your current Tasks
-                      {% endif %}
+                      Tasks
                     </a>
                   </li>
                 {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
+                </li>
+                
+                
                 {% if user.is_authenticated %}
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">Orders</a>

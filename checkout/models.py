@@ -24,3 +24,12 @@ class Order(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Address"
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user'],
+                condition=models.Q(is_default=True),
+                name='unique_default_address_per_user'
+            )
+        ]

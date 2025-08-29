@@ -1,10 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
-from tasks.forms import TaskForm
-from .forms import OrderForm
-from rewards.forms import RewardHistoryForm
+from .forms import OrderForm, RewardHistoryForm
 from .models import Order
 from rewards.models import Reward, RewardHistory
 from tasks.models import UserPoints
@@ -15,7 +12,30 @@ def place_order(request, reward_id):
     reward = get_object_or_404(Reward, id=reward_id)
     user_points = get_object_or_404(UserPoints, user=request.user)
     form = OrderForm()
-    if request.method == "POST":
+
+    if request.method == "GET":
+        default_addr = Order.objects.filter(
+            user=request.user, is_default=True
+        ).order_by('-id').first()
+
+        if default_addr:
+            initial = {
+                'first_name': default_addr.first_name,
+                'last_name': default_addr.last_name,
+                'email': default_addr.email,
+                'phone_number': default_addr.phone_number,
+                'street_address': default_addr.street_address,
+                'apartment': default_addr.apartment,
+                'city': default_addr.city,
+                'postal_code': default_addr.postal_code,
+                'country': default_addr.country,
+                'is_default': True,
+            }
+            form = OrderForm(initial=initial)
+        else:
+            form = OrderForm()
+
+    elif request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
             if reward.stock <= 0:
@@ -31,6 +51,10 @@ def place_order(request, reward_id):
                 order.user = request.user
                 item = reward
                 order.order_item = item
+                if form.cleaned_data.get('is_default'):
+                    Order.objects.filter(
+                        user=request.user, is_default=True
+                        ).update(is_default=False)
                 order.save()
                 reward.stock -= 1
                 reward.save(update_fields=["stock"])

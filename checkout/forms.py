@@ -1,5 +1,6 @@
 from django import forms
 from .models import Order
+from .models import RewardHistory
 from django.core.exceptions import ValidationError
 
 
@@ -26,9 +27,28 @@ class OrderForm(forms.ModelForm):
         'country': forms.TextInput(attrs={'placeholder': 'Country'}),
         'is_default': forms.CheckboxInput()
     }
+    labels = {
+            'is_default': 'Save for the future'
+        }
 
     def clean_postal_code(self):
         postal_code = self.cleaned_data.get('postal_code')
         if not postal_code.isdigit():
             raise ValidationError("Postal code must be numeric.")
         return postal_code
+
+
+class RewardHistoryForm(forms.ModelForm):
+    class Meta:
+        model = RewardHistory
+        exclude = ['user', 'reward', 'bought_at']
+        fields = ['reward_sent']
+
+        widgets = {
+            'reward_sent': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'})
+        }
+
+        labels = {
+            'reward_sent': 'Reward Sent'
+        }
