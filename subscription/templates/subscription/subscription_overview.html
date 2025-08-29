@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+  Your Subscription
+{% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+  <section class="container py-5">
+    <header class="mb-4">
+      <h1 class="h3 mb-1">Your subscription</h1>
+      <p class="text-body-secondary mb-0">View your current plan, task limits, billing period and status. You can change your plan, cancel at the end of the period or resume anytime.</p>
+    </header>
+
+    <!-- Summary -->
+    <section class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-md-7">
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">Plan</span>
+              <h2 class="h5 mb-0 text-capitalize">{{ current_plan }}</h2>
+              <span class="badge bg-secondary-subtle text-secondary">{{ tasks_limit }} tasks / month</span>
+            </div>
+
+            <div class="mt-2 d-flex flex-wrap gap-3">
+              <div class="d-inline-flex align-items-center gap-2">
+                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                <span class="fw-semibold">Current period:</span>
+                <time datetime="{{ start_date|date:'c' }}">{{ start_date }}</time> –
+                <time datetime="{{ end_date|date:'c' }}">{{ end_date }}</time>
+              </div>
+              <div class="d-inline-flex align-items-center gap-2">
+                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                <span class="fw-semibold">Status:</span>
+                <span class="text-capitalize">
+                  {% if end_date %}
+                    canceling (ends {{ end_date }})
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-2 small text-body-secondary">
+              Started on: <time datetime="{{ start_date|date:'c' }}">{{ start_date }}</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <section class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h3 class="h5 mb-3">Manage subscription</h3>
+
+            <div class="d-grid d-sm-flex gap-2">
+              <a href="" class="btn btn-primary"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Change plan</a>
+
+              {% if end_date %}
+                <form method="post" action="{% url 'subscription_resume' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-secondary"><i class="bi bi-play-circle" aria-hidden="true"></i> Resume subscription</button>
+                </form>
+              {% else %}
+                <form method="post" action="">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-secondary"><i class="bi bi-x-circle" aria-hidden="true"></i> Cancel at period end</button>
+                </form>
+              {% endif %}
+            </div>
+
+            {% if end_date %}
+              <p class="small text-body-secondary mb-0 mt-3">
+                Your subscription will end on <strong>{{ end_date }}</strong>. You can resume any time before it ends.
+              </p>
+            {% endif %}
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{% endblock %}
