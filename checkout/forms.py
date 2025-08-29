@@ -1,6 +1,6 @@
 from django import forms
 from .models import Order
-from .models import RewardHistory
+from rewards.models import RewardHistory
 from django.core.exceptions import ValidationError
 
 
@@ -14,28 +14,29 @@ class OrderForm(forms.ModelForm):
             'is_default'
         ]
 
-    widgets = {
-        'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
-        'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
-        'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
-        'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number'}),
-        'street_address': forms.TextInput(
-            attrs={'placeholder': 'Street Address'}),
-        'apartment': forms.TextInput(attrs={'placeholder': 'Apartment'}),
-        'city': forms.TextInput(attrs={'placeholder': 'City'}),
-        'postal_code': forms.TextInput(attrs={'placeholder': 'Postal Code'}),
-        'country': forms.TextInput(attrs={'placeholder': 'Country'}),
-        'is_default': forms.CheckboxInput()
-    }
-    labels = {
-            'is_default': 'Save for the future'
+        labels = {
+                'is_default': 'Save for the future'
+            }
+
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
+            'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+            'street_address': forms.TextInput(
+                attrs={'placeholder': 'Street Address'}),
+            'apartment': forms.TextInput(attrs={'placeholder': 'Apartment'}),
+            'city': forms.TextInput(attrs={'placeholder': 'City'}),
+            'postal_code': forms.TextInput(attrs={'placeholder': 'Postal Code'}),
+            'country': forms.TextInput(attrs={'placeholder': 'Country'}),
+            'is_default': forms.CheckboxInput()
         }
 
-    def clean_postal_code(self):
-        postal_code = self.cleaned_data.get('postal_code')
-        if not postal_code.isdigit():
-            raise ValidationError("Postal code must be numeric.")
-        return postal_code
+        def clean_postal_code(self):
+            postal_code = self.cleaned_data.get('postal_code')
+            if not postal_code.isdigit():
+                raise ValidationError("Postal code must be numeric.")
+            return postal_code
 
 
 class RewardHistoryForm(forms.ModelForm):
