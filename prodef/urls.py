@@ -48,4 +48,5 @@ urlpatterns = [
     path('rewards/', include('rewards.urls')),
     path('tasks/', include('tasks.urls')),
     path('profiles/', include('profiles.urls')),
+    path('subscription/', include('subscription.urls')),
 ]
