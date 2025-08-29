@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 ALLOWED_HOSTS = [
     ".herokuapp.com",
+    "procrastination-defier-4f6bef0e1e54.herokuapp.com",
     "127.0.0.1",
     ]
 
@@ -121,7 +122,7 @@ DEFAULT_FROM_EMAIL = os.environ.get("DJANGO_DEFAULT_FROM_EMAIL")
 
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
-DOMAIN = "https://procrastination-defier-4f6bef0e1e54.herokuapp.com"
+DOMAIN = os.getenv("APP_DOMAIN")
 
 STRIPE_PLANS = {
     "prod_SwfZ8i9q9xhOm6": {"code": "standard", "name": "Standard", "limit": 7},
@@ -149,7 +150,8 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://procrastination-defier-4f6bef0e1e54.herokuapp.com"
 ]
 
 # Password validation

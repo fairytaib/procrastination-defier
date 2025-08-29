@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 from rewards.models import Reward
 
@@ -33,3 +34,34 @@ class Order(models.Model):
                 name='unique_default_address_per_user'
             )
         ]
+
+
+class Subscription(models.Model):
+    STATUS_CHOICES = [
+        ("active", "active"),
+        ("trialing", "trialing"),
+        ("past_due", "past_due"),
+        ("canceled", "canceled"),
+        ("incomplete", "incomplete"),
+        ("incomplete_expired", "incomplete_expired"),
+        ("unpaid", "unpaid"),
+        ("paused", "paused"),
+    ]
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name="subscription"
+    )
+    stripe_customer_id = models.CharField(max_length=255, unique=True)
+    stripe_subscription_id = models.CharField(max_length=255, unique=True)
+    stripe_price_id = models.CharField(max_length=255)
+    plan_code = models.CharField(max_length=50)  # "standard" | "premium"
+    status = models.CharField(max_length=32, choices=STATUS_CHOICES)
+    current_period_start = models.DateTimeField()
+    current_period_end = models.DateTimeField()
+
+    def monthly_limit(self) -> int:
+        from django.conf import settings
+        return settings.STRIPE_PLANS[self.stripe_price_id]["limit"]
+
+    def is_active(self) -> bool:
+        return self.status in {"active", "trialing"}

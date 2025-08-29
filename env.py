@@ -33,3 +33,5 @@ os.environ.setdefault("STRIPE_SECRET_KEY",
 
 os.environ.setdefault("STRIPE_WEBHOOK_SECRET",
                       "whsec_kgX9n9ISn51IhVZPg10H3KjQSJoZWz9o")
+
+os.environ.setdefault("APP_DOMAIN", "http://127.0.0.1:8000")
