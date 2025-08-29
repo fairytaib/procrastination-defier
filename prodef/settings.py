@@ -125,11 +125,8 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 DOMAIN = os.getenv("APP_DOMAIN")
 
-STRIPE_PLANS = {
-    "prod_SwfZ8i9q9xhOm6": {"code": "standard", "name": "Standard", "limit": 7},
-    "prod_SwfZw5ngDxAyiv":  {"code": "premium",  "name": "Premium",  "limit": 10},
-}
-
+STRIPE_SUCCESS_URL = "/tasks/"
+STRIPE_CANCEL_URL = "/subscription/"
 
 WSGI_APPLICATION = 'prodef.wsgi.application'
 
