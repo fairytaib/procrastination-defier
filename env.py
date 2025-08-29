@@ -28,3 +28,8 @@ os.environ.setdefault("DJANGO_EMAIL_HOST_USER", "email_verification")
 os.environ.setdefault("DJANGO_EMAIL_HOST_PASSWORD", "SG.SK67c41bc8d15f2453368f6eb605a5d64b")
 os.environ.setdefault("DJANGO_DEFAULT_FROM_EMAIL", "fairytaib@gmail.com")
 
+os.environ.setdefault("STRIPE_SECRET_KEY",
+                      "sk_test_51S022XALgEprtAEc2G1oaQKCFjCzbNAIr5H6vQz9Oidflowp9v7pkFFE5NLKEepaALtbM3msZQPGSdUYjC0PoDtn00vmhZxihq")
+
+os.environ.setdefault("STRIPE_WEBHOOK_SECRET",
+                      "whsec_kgX9n9ISn51IhVZPg10H3KjQSJoZWz9o")

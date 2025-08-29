@@ -119,6 +119,16 @@ EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = os.environ.get("DJANGO_DEFAULT_FROM_EMAIL")
 
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
+DOMAIN = "https://procrastination-defier-4f6bef0e1e54.herokuapp.com"
+
+STRIPE_PLANS = {
+    "prod_SwfZ8i9q9xhOm6": {"code": "standard", "name": "Standard", "limit": 7},
+    "prod_SwfZw5ngDxAyiv":  {"code": "premium",  "name": "Premium",  "limit": 10},
+}
+
+
 WSGI_APPLICATION = 'prodef.wsgi.application'
 
 
