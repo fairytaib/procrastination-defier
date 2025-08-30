@@ -33,6 +33,10 @@
 {% url 'user_order_overview' as user_order_overview_url %}
 {% url 'view_order_details' as view_order_details_url %}
 
+{% comment %} Subscription {% endcomment %}
+{% url 'subscription_view' as subscription_view_url %}
+{% url 'subscriptions_overview' as subscriptions_overview_url %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,11 +95,14 @@
                 <li class="nav-item">
                   <a class="nav-link {% if request.path == rewards_list_url %}active{% endif %}" href="{% url 'rewards_list' %}" aria-label="List of Rewards">Rewards</a>
                 </li>
-                
-                
                 {% if user.is_authenticated %}
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">Orders</a>
+                  </li>
+                {% endif %}
+                {% if not user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == subscription_view_url %}active{% endif %}" href="{{ subscription_view_url }}" aria-label="View Subscription Plans">Subscription Plans</a>
                   </li>
                 {% endif %}
                 <li class="nav-item">
@@ -110,7 +117,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
                       <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account settings</a>
-                      <a class="dropdown-item" href="{% url 'view_user_profile' %}">My Subscription</a>
+                      <a class="dropdown-item" href="{% url 'subscriptions_overview' %}">My Subscription</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                     </div>
                   </div>

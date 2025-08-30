@@ -1,7 +1,9 @@
 from .models import Subscription
 from django.contrib.auth.models import User
-from datetime import datetime
-from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse
+from datetime import datetime, timezone
+from django.contrib.auth import login
+from django.shortcuts import redirect, render
 import stripe
 from django.conf import settings
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -10,64 +12,89 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 def subscription_view(request):
     """ A view to return the subscription page """
     subscription = {
-        'standard': 'prod_SwfZ8i9q9xhOm6',
-        'premium': 'prod_SwfZw5ngDxAyiv',
+        'standard': 'price_1S0mDxALgEprtAEcMgbbm4ua',
+        'premium': 'price_1S0mEeALgEprtAEctIhtB5JX',
     }
-    active_subscription = get_object_or_404(Subscription, user=request.user)
     if request.method == 'POST':
-        plan_id = request.POST.get('plan_id')
+        plan = request.POST.get('plan_id')
+
+        candidate = subscription.get(plan, plan)
+
+        if str(candidate).startswith('prod_'):
+            product = stripe.Product.retrieve(candidate)
+            price_id = product['default_price']
+        elif str(candidate).startswith('price_'):
+            price_id = candidate
+        else:
+            return redirect('subscription_view')
+
         checkout_session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    'price': subscription[plan_id],
-                    'quantity': 1,
-                }
-            ],
-            payment_method_types=['card'],
             mode='subscription',
-            success_url=settings.STRIPE_SUCCESS_URL,
-            cancel_url=settings.STRIPE_CANCEL_URL,
-            customer_email=request.user.email,
-            metadata={
-                'user_id': request.user.id,
-                'email': request.user.email,
-            }
+            payment_method_types=['card'],
+            line_items=[{'price': price_id, 'quantity': 1}],
+            success_url=(
+                settings.DOMAIN
+                + reverse('create_subscription')
+                + '?session_id={CHECKOUT_SESSION_ID}'
+            ),
+            cancel_url=settings.DOMAIN + settings.STRIPE_CANCEL_URL,
         )
         return redirect(checkout_session.url, code=303)
 
-    return render(
-        request, 'subscription/subscription.html',
-        {
-            'subscription': subscription,
-            'active_subscription': active_subscription
-        }
-    )
+    return render(request, 'subscription/subscription.html')
 
 
 def create_subscription(request):
-    """ A view to create a subscription after checkout """
-    checkout_session_id = request.GET.get('session_id', None)
+    """
+    Called via success_url after Stripe Checkout (guest-friendly).
+    Creates/gets the user from Stripe email, logs them in,
+    stores Subscription, then sends them to set a password.
+    """
+    checkout_session_id = request.GET.get('session_id')
+    if not checkout_session_id:
+        return redirect('subscription_view')
 
     session = stripe.checkout.Session.retrieve(checkout_session_id)
-    user_id = session.metadata.get('user_id')
-    user = User.objects.get(id=user_id)
-    subscription = stripe.Subscription.retrieve(session.subscription)
-    price = subscription['items']['data'][0]['price']
-    product_id = price['product']
-    product = stripe.Product.retrieve(product_id)
+    email = (session.get('customer_details') or {}).get('email')
+    if not email:
+        customer = stripe.Customer.retrieve(session['customer'])
+        email = customer.get('email')
 
-    if checkout_session_id:
-        Subscription.objects.create(
-            user=user,
-            customer_id=session.customer,
-            subscription_id=session.subscription,
-            product_name=product.name,
-            price=price['unit_amount'] / 100,
-            interval=price['recurring']['interval'],
-            start_date=datetime.fromtimestamp(subscription['current_period_start']),
+    if not email:
+        return redirect('subscription_view')
 
-        )
-    return redirect('tasks')
+    user, created = User.objects.get_or_create(
+        username=email,
+        defaults={'email': email}
+    )
+
+    login(request, user, backend=_login_backend_path())
+    
+    sub = stripe.Subscription.retrieve(session['subscription'])
+    item = sub['items']['data'][0]
+    price = item['price']
+    product = stripe.Product.retrieve(price['product'])
+
+    ts_start = sub.get('current_period_start') or sub.get('created')
+    ts_end = sub.get('current_period_end')
+    ts_cancel = sub.get('cancel_at')
+
+    start_dt = datetime.fromtimestamp(
+        ts_start, tz=timezone.utc) if ts_start else timezone.now()
+    end_dt = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
+    cancel_dt = datetime.fromtimestamp(ts_cancel, tz=timezone.utc) if ts_cancel else None
+
+    Subscription.objects.create(
+        user=user,
+        customer_id=session['customer'],
+        stripe_subscription_id=session['subscription'],
+        product_name=product['name'],
+        price=price['unit_amount'] // 100,
+        interval=price['recurring']['interval'],
+        start_date=start_dt
+    )
+
+    return redirect('account_set_password')  # oder 'tasks
 
 
 def subscriptions_overview(request):
@@ -80,3 +107,19 @@ def subscriptions_overview(request):
         'subscription/subscription_overview.html',
         {'subscription': subscription}
         )
+
+
+def _login_backend_path() -> str:
+    """
+    Select an auth backend path for login():
+    - Prefer allauth if available
+    - Otherwise take the first configured backend
+    - Fallback: Django ModelBackend
+    """
+    backends = list(getattr(settings, "AUTHENTICATION_BACKENDS", []))
+    preferred = "allauth.account.auth_backends.AuthenticationBackend"
+    if preferred in backends:
+        return preferred
+    if backends:
+        return backends[0]
+    return "django.contrib.auth.backends.ModelBackend"

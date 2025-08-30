@@ -6,6 +6,7 @@
   Subscriptions
 {% endblock %}
 {% block css %}
+
 {% endblock %}
 
 {% block content %}
@@ -40,15 +41,11 @@
               </li>
             </ul>
 
-            {% if active_subscription.product_name == 'standard' %}
-              <button class="btn btn-outline-secondary mt-auto" type="button" disabled>Current plan</button>
-            {% else %}
-              <form action="POST">
+            <form method="post" action="{% url 'subscription_view' %}">
               {% csrf_token %}
-              <input type="hidden" name="plan_id" value="{{ subscription.standard }}">
+              <input type="hidden" name="plan_id" value="standard" />
               <button class="btn btn-outline-secondary mt-auto" type="submit">Subscribe</button>
-              </form>
-            {% endif %}
+            </form>
           </div>
         </div>
       </div>
@@ -73,15 +70,11 @@
               </li>
             </ul>
 
-            {% if active_subscription.product_name == 'premium' %}
-              <button class="btn btn-outline-secondary mt-auto" type="button" disabled>Current plan</button>
-            {% else %}
-              <form action="POST">
+            <form method="post" action="{% url 'subscription_view' %}">
               {% csrf_token %}
-              <input type="hidden" name="plan_id" value="{{ subscription.premium }}">
+              <input type="hidden" name="plan_id" value="premium" />
               <button class="btn btn-outline-secondary mt-auto" type="submit">Subscribe</button>
-              </form>
-            {% endif %}
+            </form>
           </div>
         </div>
       </div>
@@ -109,12 +102,5 @@
         </table>
       </div>
     </section>
-
-    <!-- Sign-in hint (if needed) -->
-    {% if not user.is_authenticated %}
-      <p class="small text-body-secondary mt-4 mb-0">
-        You need an account to subscribe. <a href="{% url 'account_login' %}">Sign in</a> or <a href="{% url 'account_signup' %}">create an account</a>.
-      </p>
-    {% endif %}
   </section>
 {% endblock %}
