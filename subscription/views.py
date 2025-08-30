@@ -68,8 +68,14 @@ def create_subscription(request):
         defaults={'email': email}
     )
 
+    needs_set_password = not user.has_usable_password()
+
+    if created:
+        user.set_unusable_password()
+        user.save()
+
     login(request, user, backend=_login_backend_path())
-    
+
     sub = stripe.Subscription.retrieve(session['subscription'])
     item = sub['items']['data'][0]
     price = item['price']
@@ -81,8 +87,10 @@ def create_subscription(request):
 
     start_dt = datetime.fromtimestamp(
         ts_start, tz=timezone.utc) if ts_start else timezone.now()
-    end_dt = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
-    cancel_dt = datetime.fromtimestamp(ts_cancel, tz=timezone.utc) if ts_cancel else None
+    end_dt = datetime.fromtimestamp(
+        ts_end, tz=timezone.utc) if ts_end else None
+    cancel_dt = datetime.fromtimestamp(
+        ts_cancel, tz=timezone.utc) if ts_cancel else None
 
     Subscription.objects.create(
         user=user,
@@ -94,7 +102,10 @@ def create_subscription(request):
         start_date=start_dt
     )
 
-    return redirect('account_set_password')  # oder 'tasks
+    if needs_set_password:
+        return redirect('account_set_password')
+    else:
+        return redirect('tasks/') 
 
 
 def subscriptions_overview(request):

@@ -10,7 +10,7 @@ Profile
 
 {% block content %}
 <div class="container">
-  <h1>{{ profile.user_username }}'s Profile</h1>
+  <h1>Profile</h1>
   <h2>Profile Picture</h2>
   {% if profile.profile_picture %}
   <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user_username }}'s Profile Picture" />
