@@ -1,17 +1,39 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title%}
 
+{% block title %}
+  Edit Profile
 {% endblock %}
-
 {% block css %}
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-    </form>
+  <section class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7">
+        <header class="d-flex align-items-center justify-content-between mb-3">
+          <h1 class="h4 mb-0">Edit account</h1>
+          <a href="javascript:history.back()" class="btn btn-link p-0 text-decoration-none">Back</a>
+        </header>
+
+        <form method="post" class="card border-0 shadow-sm" novalidate>
+          <div class="card-body">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger" role="alert">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            {{ form|crispy }}
+
+            <div class="d-grid d-sm-flex gap-2">
+              <a href="javascript:history.back()" class="btn btn-outline-secondary">Cancel</a>
+              <button type="submit" class="btn btn-primary ms-sm-auto">Save changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 {% endblock %}
