@@ -98,7 +98,7 @@ def create_subscription(request):
         try:
             quota = int(metadata['task_quota'])
         except (TypeError, ValueError):
-        quota = 0
+            quota = 0
 
     Subscription.objects.create(
         user=user,
