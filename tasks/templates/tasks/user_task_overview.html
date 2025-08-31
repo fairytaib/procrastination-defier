@@ -48,6 +48,23 @@
       {% endif %}
     </section>
 
+    {% comment %} Fees to pay {% endcomment %}
+    {% if tasks_with_fee and tasks_with_fee.count > 0 %}
+      <section class="mb-5" aria-labelledby="fees-to-pay">
+        <h2 id="fees-to-pay" class="h4 mb-3">Fees to Pay</h2>
+        {% if tasks_with_fee and tasks_with_fee.count > 0 %}
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for task in tasks_with_fee %}
+              <div class="col">
+                {% include 'tasks/_task_card.html' with task=task %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-info mb-0" role="alert">No fee to pay.</div>
+        {% endif %}
+      </section>
+    {% endif %}
     <!-- Done -->
     <section aria-labelledby="done-tasks">
       <h2 id="done-tasks" class="h4 mb-3">Done Tasks</h2>
