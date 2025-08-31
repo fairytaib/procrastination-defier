@@ -128,6 +128,12 @@ DOMAIN = os.getenv("APP_DOMAIN")
 STRIPE_SUCCESS_URL = "/tasks/"
 STRIPE_CANCEL_URL = "/subscription/"
 
+STRIPE_FEE_PRICES = {
+    'weekly':   'price_1S2BCbALgEprtAEc9qnwr8aJ',
+    'biweekly': 'price_1S2BDAALgEprtAEcTG4LG7wG',
+    'monthly':  'price_1S2BDeALgEprtAEcKy0XsA4R',
+}
+
 WSGI_APPLICATION = 'prodef.wsgi.application'
 
 
