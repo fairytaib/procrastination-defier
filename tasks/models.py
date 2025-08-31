@@ -130,3 +130,21 @@ class Task_Checkup(models.Model):
                 setattr(self, field, None)
         self.deleted = True
         self.save()
+
+
+class FeePaymentBatch(models.Model):
+    STATUS_CHOICES = [
+        ("created", "created"), ("paid", "paid"), ("canceled", "canceled")
+    ]
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tasks = models.ManyToManyField("Task", related_name="fee_batches")
+    session_id = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default="created"
+        )
+    amount_cents = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    paid_at = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Batch #{self.id} for {self.user} ({self.status})"
