@@ -11,13 +11,9 @@
 {% block content %}
   <section class="container py-5">
     <header class="d-flex align-items-center justify-content-between mb-4">
-      <h1 class="h2 mb-0">Task Overview</h1>
-      {% if not perms.tasks.mark_done %}
-        <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="Add Task">Add Task</a>
-      {% endif %}
-    </header>
-    <section class="container py-5">
-      <h2 class="h4 mb-3">
+      <div>
+        <h1 class="h2 mb-0">Task Overview</h1>
+        <p class="text-muted">
         Your Task Slots: <span>
           {% if tasks %}
             {{ tasks.count }}
@@ -26,7 +22,15 @@
           {% endif %}/
           {{ subscription.tasks_quota }}
         </span>
-      </h2>
+      </p>
+      </div>
+      
+      {% if not perms.tasks.mark_done %}
+        <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="Add Task">Add Task</a>
+      {% endif %}
+    </header>
+    <section class="container py-5">
+      
     </section>
     <!-- Open / Undone -->
     <section class="mb-5" aria-labelledby="open-tasks">
