@@ -84,13 +84,21 @@ def create_subscription(request):
     ts_start = sub.get('current_period_start') or sub.get('created')
     ts_end = sub.get('current_period_end')
     ts_cancel = sub.get('cancel_at')
-
+    
     start_dt = datetime.fromtimestamp(
         ts_start, tz=timezone.utc) if ts_start else timezone.now()
     end_dt = datetime.fromtimestamp(
         ts_end, tz=timezone.utc) if ts_end else None
     cancel_dt = datetime.fromtimestamp(
         ts_cancel, tz=timezone.utc) if ts_cancel else None
+    
+    quota = 0
+    metadata = price.get('metadata') or {}
+    if 'task_quota' in metadata:
+        try:
+            quota = int(metadata['task_quota'])
+        except (TypeError, ValueError):
+        quota = 0
 
     Subscription.objects.create(
         user=user,
@@ -99,7 +107,8 @@ def create_subscription(request):
         product_name=product['name'],
         price=price['unit_amount'] // 100,
         interval=price['recurring']['interval'],
-        start_date=start_dt
+        start_date=start_dt,
+        tasks_quota=quota
     )
 
     if needs_set_password:
