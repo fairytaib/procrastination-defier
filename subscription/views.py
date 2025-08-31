@@ -1,3 +1,4 @@
+from prodef.settings import STRIPE_SUCCESS_URL
 from .models import Subscription
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -84,7 +85,7 @@ def create_subscription(request):
     ts_start = sub.get('current_period_start') or sub.get('created')
     ts_end = sub.get('current_period_end')
     ts_cancel = sub.get('cancel_at')
-    
+
     start_dt = datetime.fromtimestamp(
         ts_start, tz=timezone.utc) if ts_start else timezone.now()
     end_dt = datetime.fromtimestamp(
@@ -114,7 +115,7 @@ def create_subscription(request):
     if needs_set_password:
         return redirect('account_set_password')
     else:
-        return redirect('tasks/') 
+        return redirect(STRIPE_SUCCESS_URL)
 
 
 def subscriptions_overview(request):
