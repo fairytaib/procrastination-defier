@@ -16,7 +16,23 @@
         <a href="{% url 'add_task' %}" class="btn btn-primary" aria-label="Add Task">Add Task</a>
       {% endif %}
     </header>
+    <section class="container py-5">
+      <h2 class="h4 mb-3">Your Task Slots: <span>
+        {% if tasks %}
+          {{ tasks.count }}
+        {% else %}
+          0
+        {% endif %}
+        /
+        {% if subscription.product_name == "standard" %}
+          7
+        {% else %}
+          10
+        {% endif %}
+      </span>
+    </h2>
 
+    </section>
     <!-- Open / Undone -->
     <section class="mb-5" aria-labelledby="open-tasks">
       <h2 id="open-tasks" class="h4 mb-3">Open Tasks</h2>

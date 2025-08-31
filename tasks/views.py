@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from .models import Task, Task_Checkup, UserPoints
+from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
 
 
@@ -10,6 +11,7 @@ from .forms import TaskForm, CheckTaskForm
 def user_task_overview(request):
     """Render a user's task overview page."""
     admin = request.user.has_perm('tasks.mark_done')
+    subscription = Subscription.objects.filter(user=request.user).first()
     if not admin:
         tasks_undone = Task.objects.filter(
             user=request.user, completed=False).order_by('-created_at')
@@ -18,6 +20,7 @@ def user_task_overview(request):
         context = {
             'tasks_undone': tasks_undone,
             'tasks_done': task_done,
+            'subscription': subscription,
         }
     else:
         tasks_undone = Task.objects.filter(completed=False).order_by(
