@@ -1,3 +1,4 @@
+from collections import Counter
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
@@ -7,9 +8,9 @@ from django.utils import timezone
 import stripe
 from django.conf import settings
 from django.urls import reverse
-
 from subscription.utils import can_add_task, refresh_overdue_flags
 from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
+from .models import FeePaymentBatch
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
 
@@ -24,7 +25,7 @@ def user_task_overview(request):
     refresh_overdue_flags(request.user)
     if not admin:
         tasks_undone = Task.objects.filter(
-            user=request.user, completed=False).order_by('-created_at')
+            user=request.user, completed=False, fee_to_pay=False).order_by('-created_at')
         task_done = Task.objects.filter(
             user=request.user, completed=True).order_by('created_at')
         task_with_fee = Task.objects.filter(
@@ -102,20 +103,20 @@ def view_task_details(request, task_id):
 @login_required
 def add_task(request):
     """Render the add task form."""
+    form = TaskForm(request.POST or None)
     if request.method == "POST":
         if not can_add_task(request.user):
             messages.error(request, "You cannot add more tasks.")
             return redirect("user_task_overview")
+
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            messages.success(request, "Task added successfully.")
+            return redirect("user_task_overview")
         else:
-            form = TaskForm(request.POST)
-            if form.is_valid():
-                task = form.save(commit=False)
-                task.user = request.user
-                task.save()
-                messages.success(request, "Task added successfully.")
-                return redirect("user_task_overview")
-            else:
-                form = TaskForm()
+            form = TaskForm()
     context = {
         "form": form,
     }
@@ -175,10 +176,114 @@ def pay_task_fee_success(request, task_id):
         return redirect('user_task_overview')
 
     # Remove lock flag and close task (no points awarded!)
-    task.fee_to_pay = False
-    task.completed = True
-    task.penalty_paid_at = timezone.now()
-    task.save(update_fields=['fee_to_pay', 'completed', 'penalty_paid_at'])
+    if task.repetition:
+        # Release slot again, but leave task active and reschedule
+        task.fee_to_pay = False
+        task.completed = False
+        task.penalty_paid_at = timezone.now()
+        # Set next checkup:
+        task.checkup_date = timezone.now().date() + timedelta(
+            days=INTERVAL_TO_CHECKUP[task.interval])
+        task.save(update_fields=[
+            'fee_to_pay', 'completed', 'penalty_paid_at', 'checkup_date'])
+    else:
+        task.fee_to_pay = False
+        task.completed = True
+        task.penalty_paid_at = timezone.now()
+        task.save(update_fields=['fee_to_pay', 'completed', 'penalty_paid_at'])
 
     messages.success(request, "Fee paid. Task closed.")
     return redirect('user_task_overview')
+
+
+@login_required
+def pay_all_fees(request):
+    """Initiate the payment process for all task fees."""
+    qs = Task.objects.filter(
+        user=request.user, completed=False, fee_to_pay=True).order_by("id")
+    if not qs.exists():
+        messages.info(request, "No fees open.")
+        return redirect("user_task_overview")
+
+    counts = Counter(qs.values_list("interval", flat=True))
+    line_items = []
+    for interval, qty in counts.items():
+        price_id = settings.STRIPE_FEE_PRICES.get(interval)
+        if not price_id:
+            messages.error(
+                request, f"Price for interval '{interval}' is not configured.")
+            return redirect("user_task_overview")
+        line_items.append({"price": price_id, "quantity": qty})
+
+    batch = FeePaymentBatch.objects.create(user=request.user, status="created")
+
+    session = stripe.checkout.Session.create(
+        mode="payment",
+        line_items=line_items,
+        success_url=(
+            settings.DOMAIN
+            + reverse("pay_all_fees_success")
+            + "?session_id={CHECKOUT_SESSION_ID}"
+        ),
+        cancel_url=settings.DOMAIN + reverse("user_task_overview"),
+        customer_email=(request.user.email or None),
+        metadata={"batch_id": str(batch.id), "user_id": request.user.id},
+    )
+
+    batch.session_id = session.id
+    batch.tasks.set(qs)
+    batch.save(update_fields=["session_id"])
+
+    return redirect(session.url, code=303)
+
+
+@login_required
+def pay_all_fees_success(request):
+    """Handle successful payment for all task fees."""
+    session_id = request.GET.get("session_id")
+    if not session_id:
+        messages.error(request, "Session is missing.")
+        return redirect("user_task_overview")
+
+    session = stripe.checkout.Session.retrieve(session_id)
+    if session.payment_status != "paid":
+        messages.warning(request, "Payment not yet confirmed.")
+        return redirect("user_task_overview")
+
+    # find Batch
+    batch = get_object_or_404(
+        FeePaymentBatch, user=request.user, session_id=session_id
+    )
+    if batch.status == "paid":
+        messages.info(request, "The batch has already been processed.")
+        return redirect("user_task_overview")
+
+    # Unlock/complete all tasks in the batch
+    now = timezone.now()
+    for task in batch.tasks.select_for_update():
+        task.fee_to_pay = False
+        task.penalty_paid_at = now
+        if task.repetition:
+            from datetime import timedelta
+            task.completed = False
+            task.checkup_date = timezone.now().date() + timedelta(
+                days=INTERVAL_TO_CHECKUP[task.interval]
+                )
+            task.save(
+                update_fields=["fee_to_pay",
+                               "penalty_paid_at",
+                               "completed",
+                               "checkup_date"]
+                               )
+        else:
+            task.completed = True
+            task.save(
+                update_fields=["fee_to_pay", "penalty_paid_at", "completed"]
+                )
+
+    batch.status = "paid"
+    batch.paid_at = now
+    batch.save(update_fields=["status", "paid_at"])
+
+    messages.success(request, "All open fees have been paid.")
+    return redirect("user_task_overview")
