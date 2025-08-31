@@ -3,11 +3,17 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.utils import timezone
+import stripe
+from django.conf import settings
+from django.urls import reverse
 
-from subscription.utils import can_add_task
+from subscription.utils import can_add_task, refresh_overdue_flags
 from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 @login_required
@@ -15,14 +21,18 @@ def user_task_overview(request):
     """Render a user's task overview page."""
     admin = request.user.has_perm('tasks.mark_done')
     subscription = Subscription.objects.filter(user=request.user).first()
+    refresh_overdue_flags(request.user)
     if not admin:
         tasks_undone = Task.objects.filter(
             user=request.user, completed=False).order_by('-created_at')
         task_done = Task.objects.filter(
             user=request.user, completed=True).order_by('created_at')
+        task_with_fee = Task.objects.filter(
+            user=request.user, completed=False, fee_to_pay=True).order_by('-created_at')
         context = {
             'tasks_undone': tasks_undone,
             'tasks_done': task_done,
+            'tasks_with_fee': task_with_fee,
             'subscription': subscription,
             'can_add_task': can_add_task(request.user)
         }
@@ -110,3 +120,65 @@ def add_task(request):
         "form": form,
     }
     return render(request, "tasks/add_task_form.html", context)
+
+
+@login_required
+def pay_task_fee(request, task_id):
+    """Initiate the payment process for a task fee."""
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if task.completed:
+        messages.info(request, "This Task has already been completed.")
+        return redirect("user_task_overview")
+    if not task.fee_to_pay:
+        messages.info(request, "Currently, there is no fee due for this task.")
+        return redirect("user_task_overview")
+
+    price_id = settings.STRIPE_FEE_PRICES.get(task.interval)
+    if not price_id:
+        messages.error(request, "Price ID for this fee is missing.")
+        return redirect("user_task_overview")
+
+    session = stripe.checkout.Session.create(
+        mode='payment',
+        line_items=[{'price': price_id, 'quantity': 1}],
+        success_url=(
+            settings.DOMAIN
+            + reverse('pay_task_fee_success', args=[task.id])
+            + '?session_id={CHECKOUT_SESSION_ID}'
+        ),
+        cancel_url=settings.DOMAIN + reverse('user_task_overview'),
+        customer_email=(request.user.email or None),
+        payment_intent_data={
+            'metadata': {'task_id': task.id, 'user_id': request.user.id}
+        },
+        metadata={'task_id': task.id, 'user_id': request.user.id},
+    )
+
+    task.fee_payment_session_id = session.id
+    task.save(update_fields=['fee_payment_session_id'])
+    return redirect(session.url, code=303)
+
+
+@login_required
+def pay_task_fee_success(request, task_id):
+    """Handle successful payment for a task fee."""
+    session_id = request.GET.get('session_id')
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+
+    if not session_id or session_id != task.fee_payment_session_id:
+        messages.error(request, "Session could not be verified.")
+        return redirect('user_task_overview')
+
+    session = stripe.checkout.Session.retrieve(session_id)
+    if session.payment_status != 'paid':
+        messages.warning(request, "Payment not yet confirmed.")
+        return redirect('user_task_overview')
+
+    # Remove lock flag and close task (no points awarded!)
+    task.fee_to_pay = False
+    task.completed = True
+    task.penalty_paid_at = timezone.now()
+    task.save(update_fields=['fee_to_pay', 'completed', 'penalty_paid_at'])
+
+    messages.success(request, "Fee paid. Task closed.")
+    return redirect('user_task_overview')
