@@ -1,6 +1,6 @@
 {% load static %}
-{% block css%}
-    <link rel="stylesheet" href="{% static 'css/tasks/_task_card.css' %}">
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/tasks/_task_card.css' %}" />
 {% endblock %}
 <div class="card h-100">
   <div class="card-body">
@@ -20,7 +20,7 @@
 
       <div class="col-6 col-lg-3">
         <p class="card-text mb-0">
-          <span class="d-block small text-body-secondary">Deadline:</span>
+          <span class="d-block small text-body-secondary">Deadline{% if task.fee_to_pay %} was due at {% endif %}:</span>
           {{ task.checkup_date }}
         </p>
       </div>
@@ -28,20 +28,24 @@
       <div class="col-6 col-lg-2">
         <p class="card-text mb-0">
           <span class="d-block small text-body-secondary">Fee</span>
-          {{ task.fee }}
+          {{ task.fee }}€
         </p>
       </div>
-
-      <div class="col-6 col-lg-2">
-        <p class="card-text mb-0">
-          <span class="d-block small text-body-secondary">Points</span>
-          {{ task.points }}
-        </p>
-      </div>
-
-      <div class="col-12 col-lg-auto ms-lg-auto">
-        <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="View Task Details">View Details</a>
-      </div>
+      {% if not task.fee_to_pay %}
+        <div class="col-6 col-lg-2">
+          <p class="card-text mb-0">
+            <span class="d-block small text-body-secondary">Points</span>
+            {{ task.points }}
+          </p>
+        </div>
+      {% endif %}
+      {% if not task.fee_to_pay or perms.tasks.mark_done %}
+        <div class="col-12 col-lg-auto ms-lg-auto">
+          <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="View Task Details">View Details</a>
+        </div>
+      {% else %}
+        <a class="btn btn-warning" href="{% url 'pay_task_fee' task.id %}">Pay Fee</a>
+      {% endif %}
     </div>
   </div>
 </div>

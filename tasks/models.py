@@ -133,6 +133,7 @@ class Task_Checkup(models.Model):
 
 
 class FeePaymentBatch(models.Model):
+    """Model representing a batch of fee payments for tasks."""
     STATUS_CHOICES = [
         ("created", "created"), ("paid", "paid"), ("canceled", "canceled")
     ]
