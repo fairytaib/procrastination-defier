@@ -58,6 +58,11 @@ class Task(models.Model):
     fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True,
                               null=True,
                               help_text="Fee for failing this task.")
+    fee_to_pay = models.BooleanField(default=False)
+    fee_payment_session_id = models.CharField(
+        max_length=255, blank=True, null=True
+    )
+    penalty_paid_at = models.DateTimeField(blank=True, null=True)
     points = models.PositiveIntegerField(
         blank=True,
         null=True,
@@ -67,7 +72,6 @@ class Task(models.Model):
         help_text="Next checkup date for this task.",
         null=True, blank=True
     )
-    # user_comments = models.TextField(blank=True)
 
     def save(self, *args, **kwargs):
         '''Override save method to set fee,
