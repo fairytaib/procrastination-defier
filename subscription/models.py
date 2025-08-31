@@ -10,6 +10,7 @@ class Subscription(models.Model):
     product_name = models.CharField(max_length=255)
     price = models.IntegerField()
     interval = models.CharField(max_length=50, default='month')
+    tasks_quota = models.PositiveIntegerField(default=0)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField(null=True, blank=True)
     cancel_at = models.DateTimeField(null=True, blank=True)
