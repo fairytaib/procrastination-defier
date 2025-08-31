@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from django.contrib.auth.models import User
+from .models import UserProfile
 
 
 class AccountForm(forms.ModelForm):
@@ -15,3 +16,9 @@ class AccountForm(forms.ModelForm):
                 ).filter(email__iexact=email).exists():
             raise forms.ValidationError("This Email already exists")
         return email
+
+
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ["profile_picture"]
