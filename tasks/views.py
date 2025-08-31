@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+
+from subscription.utils import can_add_task
 from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
@@ -22,6 +24,7 @@ def user_task_overview(request):
             'tasks_undone': tasks_undone,
             'tasks_done': task_done,
             'subscription': subscription,
+            'can_add_task': can_add_task(request.user)
         }
     else:
         tasks_undone = Task.objects.filter(completed=False).order_by(
@@ -90,15 +93,19 @@ def view_task_details(request, task_id):
 def add_task(request):
     """Render the add task form."""
     if request.method == "POST":
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            task = form.save(commit=False)
-            task.user = request.user
-            task.save()
-            messages.success(request, "Task added successfully.")
+        if not can_add_task(request.user):
+            messages.error(request, "You cannot add more tasks.")
             return redirect("user_task_overview")
-    else:
-        form = TaskForm()
+        else:
+            form = TaskForm(request.POST)
+            if form.is_valid():
+                task = form.save(commit=False)
+                task.user = request.user
+                task.save()
+                messages.success(request, "Task added successfully.")
+                return redirect("user_task_overview")
+            else:
+                form = TaskForm()
     context = {
         "form": form,
     }
