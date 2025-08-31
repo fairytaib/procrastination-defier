@@ -91,7 +91,7 @@ def create_subscription(request):
         ts_end, tz=timezone.utc) if ts_end else None
     cancel_dt = datetime.fromtimestamp(
         ts_cancel, tz=timezone.utc) if ts_cancel else None
-    
+
     quota = 0
     metadata = price.get('metadata') or {}
     if 'task_quota' in metadata:
