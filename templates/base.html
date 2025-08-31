@@ -123,7 +123,7 @@
                   </div>
                 {% else %}
                   <li class="nav-item">
-                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" aria-label="Register">Register</a>
+                    <a class="nav-link {% if request.path == subscription_view_url %}active{% endif %}" href="{% url 'subscription_view' %}" aria-label="Register">Register</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" aria-label="Login">Login</a>
