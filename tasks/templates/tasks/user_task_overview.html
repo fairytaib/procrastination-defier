@@ -13,25 +13,20 @@
     <header class="d-flex align-items-center justify-content-between mb-4">
       <h1 class="h2 mb-0">Task Overview</h1>
       {% if not perms.tasks.mark_done %}
-        <a href="{% url 'add_task' %}" class="btn btn-primary" aria-label="Add Task">Add Task</a>
+        <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="Add Task">Add Task</a>
       {% endif %}
     </header>
     <section class="container py-5">
-      <h2 class="h4 mb-3">Your Task Slots: <span>
-        {% if tasks %}
-          {{ tasks.count }}
-        {% else %}
-          0
-        {% endif %}
-        /
-        {% if subscription.product_name == "Standard" %}
-          7
-        {% else %}
-          10
-        {% endif %}
-      </span>
-    </h2>
-
+      <h2 class="h4 mb-3">
+        Your Task Slots: <span>
+          {% if tasks %}
+            {{ tasks.count }}
+          {% else %}
+            0
+          {% endif %}/
+          {{ subscription.tasks_quota }}
+        </span>
+      </h2>
     </section>
     <!-- Open / Undone -->
     <section class="mb-5" aria-labelledby="open-tasks">
