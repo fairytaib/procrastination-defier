@@ -77,10 +77,16 @@ def create_subscription(request):
 
     login(request, user, backend=_login_backend_path())
 
-    sub = stripe.Subscription.retrieve(session['subscription'])
+    sub = stripe.Subscription.retrieve(session['subscription'],
+                                       expand=["items.data.price.product"])
     item = sub['items']['data'][0]
     price = item['price']
-    product = stripe.Product.retrieve(price['product'])
+    product = price['product']
+
+    md_price = dict(price.get("metadata") or {})
+    md_prod = dict(product.get("metadata") or {})
+    quota_raw = md_price.get("task_quota") or md_price.get("tasks_quota") \
+        or md_prod.get("task_quota") or md_prod.get("tasks_quota")
 
     ts_start = sub.get('current_period_start') or sub.get('created')
     ts_end = sub.get('current_period_end')
@@ -93,13 +99,10 @@ def create_subscription(request):
     cancel_dt = datetime.fromtimestamp(
         ts_cancel, tz=timezone.utc) if ts_cancel else None
 
-    quota = 0
-    metadata = price.get('metadata') or {}
-    if 'task_quota' in metadata:
-        try:
-            quota = int(metadata['task_quota'])
-        except (TypeError, ValueError):
-            quota = 0
+    try:
+        quota = int(str(quota_raw))
+    except (TypeError, ValueError):
+        quota = 0
 
     Subscription.objects.create(
         user=user,
