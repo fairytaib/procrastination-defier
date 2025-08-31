@@ -1,8 +1,9 @@
+from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from .models import Task, Task_Checkup, UserPoints
+from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
 
@@ -58,6 +59,13 @@ def view_task_details(request, task_id):
             if user.has_perm('tasks.mark_done'):
                 task.completed = True
                 user_points.points += task.points or 0
+                if task.repetition:
+                    task.completed = False
+                    task.checkup_date = task.checkup_date + timedelta(
+                        days=INTERVAL_TO_CHECKUP[task.interval]
+                        )
+                else:
+                    task.completed = False
                 task.save(update_fields=["completed"])
                 user_points.save(update_fields=["points"])
                 messages.success(request, "Task marked as done.")
