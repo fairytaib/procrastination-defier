@@ -8,7 +8,7 @@ from django.utils import timezone
 import stripe
 from django.conf import settings
 from django.urls import reverse
-from subscription.utils import can_add_task, refresh_overdue_flags
+from subscription.utils import can_add_task, refresh_overdue_flags, open_tasks_count
 from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from .models import FeePaymentBatch
 from subscription.models import Subscription
@@ -35,7 +35,8 @@ def user_task_overview(request):
             'tasks_done': task_done,
             'tasks_with_fee': task_with_fee,
             'subscription': subscription,
-            'can_add_task': can_add_task(request.user)
+            'can_add_task': can_add_task(request.user),
+            'open_tasks_count': open_tasks_count(request.user)
         }
     else:
         tasks_undone = Task.objects.filter(completed=False).order_by(

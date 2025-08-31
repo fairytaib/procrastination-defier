@@ -41,7 +41,9 @@ def can_add_task(user):
     if not sub:
         return False
 
-    open_count = Task.objects.filter(user=user, completed=False).count()
     if sub.tasks_quota == 0:
         return True
-    return open_count < sub.tasks_quota < sub.tasks_quota
+
+    open_count = Task.objects.filter(user=user, completed=False).count()
+
+    return open_count < sub.tasks_quota
