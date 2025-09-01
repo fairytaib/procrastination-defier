@@ -13,4 +13,7 @@ urlpatterns = [
     path("tasks/pay-all/", views.pay_all_fees, name="pay_all_fees"),
     path("tasks/pay-all/success/",
          views.pay_all_fees_success, name="pay_all_fees_success"),
+    path('change_plan/', views.change_plan, name='subscription_change'),
+    path('cancel_plan/', views.cancel_plan, name='subscription_cancel'),
+    path('resume_plan/', views.resume_plan, name='subscription_resume'),
 ]
