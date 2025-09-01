@@ -5,6 +5,8 @@ from django.urls import reverse
 from datetime import datetime, timezone
 from django.contrib.auth import login
 from django.shortcuts import redirect, render
+from django.views.decorators.http import require_POST
+from .utils import get_current_subscription
 import stripe
 from django.conf import settings
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -147,3 +149,134 @@ def _login_backend_path() -> str:
     if backends:
         return backends[0]
     return "django.contrib.auth.backends.ModelBackend"
+
+
+def _resolve_price_id(candidate: str):
+    """
+    candidate can upgrade/downgrade his subscription
+    Returns the specific price_... ID or None if unknown.
+    """
+    subscription_map = {
+        'standard': 'price_1S0mDxALgEprtAEcMgbbm4ua',
+        'premium': 'price_1S0mEeALgEprtAEctIhtB5JX',
+    }
+
+    if not candidate:
+        return None
+
+    cand = subscription_map.get(candidate, candidate)
+    if str(cand).startswith('price_'):
+        return cand
+    if str(cand).startswith('prod_'):
+        product = stripe.Product.retrieve(cand)
+        return product.get('default_price')
+    return None
+
+
+@require_POST
+def change_plan(request):
+    """
+    Change plan (upgrade/downgrade) of the existing Stripe subscription.
+    - proration_behavior='create_prorations' for fair billing
+    - Updates local subscription fields (name, price, interval, quota)
+    """
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    sub = get_current_subscription(request.user)
+    if not sub:
+        return redirect('subscription_view')
+
+    plan_candidate = request.POST.get('plan_id')
+    new_price_id = _resolve_price_id(plan_candidate)
+    if not new_price_id:
+        return redirect('subscriptions_overview')
+
+    s = stripe.Subscription.retrieve(
+        sub.stripe_subscription_id,
+        expand=["items.data.price.product"]
+    )
+    item = s['items']['data'][0]  # 1 Preis/Item Setup
+    item_id = item['id']
+
+    s_updated = stripe.Subscription.modify(
+        sub.stripe_subscription_id,
+        items=[{'id': item_id, 'price': new_price_id}],
+        proration_behavior='create_prorations',
+        expand=["items.data.price.product"]
+    )
+
+    new_item = s_updated['items']['data'][0]
+    new_price = new_item['price']
+    new_product = new_price['product']
+    md_price = dict(new_price.get("metadata") or {})
+    md_prod = dict(new_product.get("metadata") or {})
+    quota_raw = (
+        md_price.get("task_quota") or md_price.get("tasks_quota")
+        or md_prod.get("task_quota") or md_prod.get("tasks_quota")
+    )
+    try:
+        new_quota = int(str(quota_raw))
+    except (TypeError, ValueError):
+        new_quota = 0
+
+    sub.product_name = new_product['name']
+    sub.price = new_price['unit_amount'] // 100
+    sub.interval = new_price['recurring']['interval']
+    sub.tasks_quota = new_quota
+    sub.save()
+
+    return redirect('subscriptions_overview')
+
+
+@require_POST
+def cancel_plan(request):
+    """
+    Cancel Subscription at the end (cancel_at_period_end=True).
+    Set local end_date/cancel_at to current_period_end.
+    """
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    sub = get_current_subscription(request.user)
+    if not sub:
+        return redirect('subscription_view')
+
+    s = stripe.Subscription.modify(
+        sub.stripe_subscription_id,
+        cancel_at_period_end=True
+    )
+    ts_end = s.get('current_period_end')
+    end_dt = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
+
+    sub.end_date = end_dt
+    sub.cancel_at = end_dt
+    sub.save()
+
+    return redirect('subscriptions_overview')
+
+
+@require_POST
+def resume_plan(request):
+    """
+    Resume a scheduled cancellation.
+    cancel_at_period_end=False + cancel_at=None and clear local fields.
+    """
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+
+    sub = get_current_subscription(request.user)
+    if not sub:
+        return redirect('subscription_view')
+
+    stripe.Subscription.modify(
+        sub.stripe_subscription_id,
+        cancel_at_period_end=False,
+        cancel_at=None
+    )
+
+    sub.end_date = None
+    sub.cancel_at = None
+    sub.save()
+
+    return redirect('subscriptions_overview')
