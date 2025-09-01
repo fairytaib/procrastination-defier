@@ -17,13 +17,7 @@ class Subscription(models.Model):
 
     @property
     def is_active(self):
-        if self.end_date:
-            if now() < self.end_date:
-                return True
-            else:
-                return False
-        else:
-            return False
+        return not self.end_date or now() < self.end_date
 
     @property
     def tier(self):
