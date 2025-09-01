@@ -288,3 +288,14 @@ def pay_all_fees_success(request):
 
     messages.success(request, "All open fees have been paid.")
     return redirect("user_task_overview")
+
+
+@login_required
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == "POST":
+        task.delete()
+        messages.success(request, "Task deleted successfully.")
+        return redirect("user_task_overview")
+    # We won't render a separate page; POST only from the inline modal.
+    return redirect("view_task_details", task_id=task_id)
