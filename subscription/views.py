@@ -127,12 +127,14 @@ def subscriptions_overview(request):
     """ A view to return the subscription overview page """
     if not request.user.is_authenticated:
         return redirect('account_login')
-    subscription = Subscription.objects.filter(user=request.user).first()
-    return render(
-        request,
-        'subscription/subscription_overview.html',
-        {'subscription': subscription}
-        )
+
+    subscription = get_current_subscription(request.user)
+    if subscription:
+        _sync_local_from_stripe(subscription)
+
+    return render(request, 'subscription/subscription_overview.html', {
+        'subscription': subscription
+    })
 
 
 def _login_backend_path() -> str:
@@ -173,68 +175,45 @@ def _resolve_price_id(candidate: str):
     return None
 
 
-@require_POST
-def change_plan(request):
-    """
-    Change plan (upgrade/downgrade) of the existing Stripe subscription.
-    - proration_behavior='create_prorations' for fair billing
-    - Updates local subscription fields (name, price, interval, quota)
-    """
-    if not request.user.is_authenticated:
-        return redirect('account_login')
-
-    sub = get_current_subscription(request.user)
-    if not sub:
-        return redirect('subscription_view')
-
-    plan_candidate = request.POST.get('plan_id')
-    new_price_id = _resolve_price_id(plan_candidate)
-    if not new_price_id:
-        return redirect('subscriptions_overview')
-
+def _sync_local_from_stripe(sub):
+    """Sync local subscription data with Stripe."""
     s = stripe.Subscription.retrieve(
         sub.stripe_subscription_id,
         expand=["items.data.price.product"]
     )
-    item = s['items']['data'][0]  # 1 Preis/Item Setup
-    item_id = item['id']
+    item = s["items"]["data"][0]
+    price = item["price"]
+    product = price["product"]
 
-    s_updated = stripe.Subscription.modify(
-        sub.stripe_subscription_id,
-        items=[{'id': item_id, 'price': new_price_id}],
-        proration_behavior='create_prorations',
-        expand=["items.data.price.product"]
-    )
-
-    new_item = s_updated['items']['data'][0]
-    new_price = new_item['price']
-    new_product = new_price['product']
-    md_price = dict(new_price.get("metadata") or {})
-    md_prod = dict(new_product.get("metadata") or {})
-    quota_raw = (
-        md_price.get("task_quota") or md_price.get("tasks_quota")
-        or md_prod.get("task_quota") or md_prod.get("tasks_quota")
-    )
+    md_price = dict(price.get("metadata") or {})
+    md_prod = dict(product.get("metadata") or {})
+    quota_raw = (md_price.get("task_quota") or md_price.get("tasks_quota")
+                 or md_prod.get("task_quota") or md_prod.get("tasks_quota"))
     try:
-        new_quota = int(str(quota_raw))
+        quota = int(str(quota_raw))
     except (TypeError, ValueError):
-        new_quota = 0
+        quota = sub.tasks_quota
 
-    sub.product_name = new_product['name']
-    sub.price = new_price['unit_amount'] // 100
-    sub.interval = new_price['recurring']['interval']
-    sub.tasks_quota = new_quota
+    sub.product_name = product["name"]
+    sub.price = price["unit_amount"] // 100
+    sub.interval = price["recurring"]["interval"]
+    sub.tasks_quota = quota
+
+    # Kündigungsstatus/Periodenende abbilden
+    if s.get("cancel_at_period_end"):
+        # Plan endet am Periodenende
+        ts_end = s.get("current_period_end")
+        sub.end_date = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
+        sub.cancel_at = sub.end_date
+    else:
+        sub.end_date = None
+        sub.cancel_at = None
+
     sub.save()
 
-    return redirect('subscriptions_overview')
 
-
-@require_POST
-def cancel_plan(request):
-    """
-    Cancel Subscription at the end (cancel_at_period_end=True).
-    Set local end_date/cancel_at to current_period_end.
-    """
+def manage_in_stripe(request):
+    """Sync local subscription data with Stripe."""
     if not request.user.is_authenticated:
         return redirect('account_login')
 
@@ -242,41 +221,9 @@ def cancel_plan(request):
     if not sub:
         return redirect('subscription_view')
 
-    s = stripe.Subscription.modify(
-        sub.stripe_subscription_id,
-        cancel_at_period_end=True
+    session = stripe.billing_portal.Session.create(
+        customer=sub.customer_id,
+        return_url=settings.DOMAIN + reverse('subscriptions_overview')
     )
-    ts_end = s.get('current_period_end')
-    end_dt = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
+    return redirect(session.url, code=303)
 
-    sub.end_date = end_dt
-    sub.cancel_at = end_dt
-    sub.save()
-
-    return redirect('subscriptions_overview')
-
-
-@require_POST
-def resume_plan(request):
-    """
-    Resume a scheduled cancellation.
-    cancel_at_period_end=False + cancel_at=None and clear local fields.
-    """
-    if not request.user.is_authenticated:
-        return redirect('account_login')
-
-    sub = get_current_subscription(request.user)
-    if not sub:
-        return redirect('subscription_view')
-
-    stripe.Subscription.modify(
-        sub.stripe_subscription_id,
-        cancel_at_period_end=False,
-        cancel_at=None
-    )
-
-    sub.end_date = None
-    sub.cancel_at = None
-    sub.save()
-
-    return redirect('subscriptions_overview')
