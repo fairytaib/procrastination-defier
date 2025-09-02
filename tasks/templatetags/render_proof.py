@@ -1,85 +1,126 @@
 from django import template
-from django.utils.html import format_html
-from urllib.parse import urlparse
-import os
+from django.utils.safestring import mark_safe
+from cloudinary.utils import cloudinary_url
 
 
 register = template.Library()
 
 
-def _name_url_ct(file_field):
-    if not file_field:
-        return "", "", ""
-    url = getattr(file_field, "url", "") or ""
-    parsed = urlparse(url)
-    filename = os.path.basename(parsed.path).lower()
-    content_type = getattr(file_field, "content_type", "") or ""
-    return filename, url, content_type
+def _extract(value):
+    """Return (public_id, resource_type, format, direct_url) from a CloudinaryField or string."""
+    if not value:
+        return None, None, None, None
+    public_id = getattr(value, "public_id", None)
+    rtype     = getattr(value, "resource_type", None)
+    fmt       = getattr(value, "format", None)
+    direct    = getattr(value, "url", None)
+
+    # Strings: could be a public_id or a full URL
+    if isinstance(value, str) and not public_id:
+        if value.startswith("http"):
+            direct = value
+        else:
+            public_id = value
+    return public_id, rtype, fmt, direct
+
+
+def _get_public_id_and_rtype(value, fallback_rtype):
+    """
+    Accepts:
+      - CloudinaryResource from CloudinaryField (has .public_id, .resource_type)
+      - A plain public_id string
+      - A full Cloudinary URL string
+    Returns (public_id, resource_type) or (None, None).
+    """
+    if not value:
+        return None, None
+
+    # CloudinaryResource-like
+    public_id = getattr(value, "public_id", None)
+    rtype = getattr(value, "resource_type", None)
+
+    # Some CloudinaryField proxies expose .public_id/.resource_type via .metadata/.data — be lenient
+    if not public_id:
+        data = getattr(value, "data", None)
+        if isinstance(data, dict):
+            public_id = data.get("public_id", public_id)
+            rtype = data.get("resource_type", rtype)
+
+    # If it's a plain string (could be public_id or a full URL)
+    if not public_id and isinstance(value, str):
+        if "res.cloudinary.com" in value:
+            # Last path segment without extension is a reasonable approximation of public_id.
+            # Example: .../upload/v123/abc/def/ghi.jpg -> public_id='abc/def/ghi'
+            path = value.split("?")[0].rstrip("/")
+            last = path.split("/")[-1]
+            # strip extension if present
+            if "." in last:
+                last = ".".join(last.split(".")[:-1])
+            # Reconstruct the folder part if present
+            segments = path.split("/upload/")[-1].split("/")
+            if segments and "." in segments[-1]:
+                segments[-1] = ".".join(segments[-1].split(".")[:-1])
+            public_id = "/".join(segments[1:]) if len(segments) > 1 else last
+            rtype = rtype or fallback_rtype
+        else:
+            public_id = value
+            rtype = rtype or fallback_rtype
+
+    return public_id, (rtype or fallback_rtype)
 
 
 @register.filter
-def render_textfile(file_field):
-    filename, url, ct = _name_url_ct(file_field)
-    if not url:
+def render_image(value):
+    """
+    Render an <img> for a Cloudinary image (or a URL/public_id).
+    """
+    public_id, rtype = _get_public_id_and_rtype(value, "image")
+    if not public_id:
         return ""
 
-    is_pdf = filename.endswith(".pdf") or ct == "application/pdf"
-    is_txt = filename.endswith(".txt") or ct == "text/plain"
-    is_docx = filename.endswith(".docx") or ct == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-
-    if is_pdf:
-        return format_html(
-            '<embed src="{}" type="application/pdf" width="800" height="600" />'
-            '<p><a href="{}" target="_blank" rel="noopener">PDF in neuem Tab öffnen</a></p>',
-            url, url
-        )
-    if is_txt:
-        return format_html(
-            '<iframe src="{}" width="800" height="600"></iframe>'
-            '<p><a href="{}" target="_blank" rel="noopener">TXT öffnen</a></p>',
-            url, url
-        )
-    if is_docx:
-        return format_html(
-            '<p><a href="{}" target="_blank" rel="noopener">DOCX herunterladen</a></p>',
-            url
-        )
-    # Fallback
-    return format_html(
-        '<p><a href="{}" target="_blank" rel="noopener">Datei öffnen</a></p>',
-        url
+    url, _ = cloudinary_url(
+        public_id,
+        resource_type=rtype,
+        secure=True,
+        crop="limit",
+        width=1200,
+        fetch_format="auto",
+        quality="auto"
     )
+    html = f'<img src="{url}" alt="uploaded image" class="img-fluid rounded border" loading="lazy" />'
+    return mark_safe(html)
 
 
 @register.filter
-def render_image(image_field):
-    """
-    Rendert Bilder (jpg/jpeg/png/webp) – Browser erkennt Typ selbst.
-    """
-    name, url = _name_url_ct(image_field)
-    if not url:
-        return ""
-    return format_html(
-        '<img src="{}" alt="Task Checkup Image" style="max-width:100%;height:auto;">', url)
+def render_textfile(value):
+    public_id, rtype, fmt, direct = _extract(value)
+    rtype = rtype or "raw"
+
+    # If Cloudinary gave us a ready URL, use it (safest, includes extension/version).
+    if direct:
+        url = direct
+    else:
+        # Ensure we include the format (e.g., pdf, txt, docx)
+        url, _ = cloudinary_url(public_id, resource_type=rtype, format=(fmt or "pdf"), secure=True)
+
+    html = f'<a href="{url}" target="_blank" rel="noopener">Open uploaded file</a>'
+    return mark_safe(html)
 
 
 @register.filter
-def render_audio(audio_field):
-    """
-    Rendert Audio (mp3/wav).
-    Eine Source reicht, du kannst optional zwei angeben.
-    """
-    name, url = _name_url_ct(audio_field)
-    if not url:
-        return ""
-    type_attr = "audio/mpeg" if name.endswith(".mp3") else (
-        "audio/wav" if name.endswith(".wav") else "")
-    if type_attr:
-        return format_html(
-            '<audio controls><source src="{}" type="{}">Not Supported.</audio>',
-            url, type_attr
-        )
-    return format_html(
-        '<audio controls src="{}">Not Supported.</audio>',
-        url
+def render_audio(value):
+    public_id, rtype, fmt, direct = _extract(value)
+    rtype = rtype or "video"  # mp3/wav are delivered as resource_type=video
+    if direct:
+        url = direct
+    else:
+        # mp3/wav need their extension in the URL
+        url, _ = cloudinary_url(public_id, resource_type=rtype, format=(fmt or "mp3"), secure=True)
+
+    html = (
+        f'<audio controls preload="none" style="width:100%;">'
+        f'  <source src="{url}">'
+        f'  Your browser does not support the audio element.'
+        f'</audio>'
     )
+    return mark_safe(html)
