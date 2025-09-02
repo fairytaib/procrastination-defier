@@ -40,12 +40,15 @@
                 Email support
               </li>
             </ul>
-
-            <form method="post" action="{% url 'subscription_view' %}">
-              {% csrf_token %}
-              <input type="hidden" name="plan_id" value="standard" />
-              <button class="btn btn-outline-secondary mt-auto" type="submit">Subscribe</button>
-            </form>
+            {% if user.is_authenticated %}
+              <form method="post" action="{% url 'subscription_view' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan_id" value="standard" />
+                <button class="btn btn-outline-secondary mt-auto" type="submit">Subscribe</button>
+              </form>
+            {% else %}
+              <a href="{% url 'account_signup' %}" class="btn btn-primary">Log in to subscribe</a>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -69,12 +72,15 @@
                 Priority support
               </li>
             </ul>
-
-            <form method="post" action="{% url 'subscription_view' %}">
-              {% csrf_token %}
-              <input type="hidden" name="plan_id" value="premium" />
-              <button class="btn btn-outline-secondary mt-auto" type="submit">Subscribe</button>
-            </form>
+            {% if user.is_authenticated %}
+              <form method="post" action="{% url 'subscription_view' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan_id" value="premium" />
+                <button class="btn btn-outline-secondary mt-auto" type="submit">Subscribe</button>
+              </form>
+            {% else %}
+              <a href="{% url 'account_signup' %}" class="btn btn-primary">Log in to subscribe</a>
+            {% endif %}
           </div>
         </div>
       </div>

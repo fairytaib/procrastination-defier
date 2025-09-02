@@ -1,4 +1,3 @@
-from prodef.settings import STRIPE_SUCCESS_URL
 from .models import Subscription
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -8,6 +7,8 @@ from django.shortcuts import redirect, render
 from .utils import get_current_subscription
 import stripe
 from django.conf import settings
+from django.utils import timezone as dj_timezone  # <-- NEU
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -23,7 +24,7 @@ def subscription_view(request):
 
         kwargs = {
             "mode": "subscription",
-            "payment_method_types": ["card"],
+            "payment_method_types": {"enabled": True},
             "line_items": [{"price": price_id, "quantity": 1}],
             "success_url": settings.DOMAIN + reverse(
                 'create_subscription'
@@ -44,101 +45,71 @@ def subscription_view(request):
 
 
 def create_subscription(request):
-    """
-    Called via success_url after Stripe Checkout (guest-friendly).
-    Creates/gets the user from Stripe email, logs them in,
-    stores Subscription, then sends them to set a password.
-    """
-    checkout_session_id = request.GET.get('session_id')
-    if not checkout_session_id:
+    """Handle successful Stripe Checkout for subscriptions."""
+    session_id = request.GET.get('session_id')
+    if not session_id:
         return redirect('subscription_view')
 
-    session = stripe.checkout.Session.retrieve(checkout_session_id)
-    client_ref = session.get("client_reference_id")
-
-    email = (session.get('customer_details') or {}).get('email')
-    if not email and session.get('customer'):
-        customer = stripe.Customer.retrieve(session['customer'])
-        email = customer.get('email')
-
-    if not email:
+    try:
+        session = stripe.checkout.Session.retrieve(session_id)
+    except stripe.error.StripeError:
         return redirect('subscription_view')
 
-    user = None
-    login_allowed = False
-    needs_set_password = False
+    if session.get('mode') != 'subscription' or not session.get('subscription'):
+        return redirect('subscription_view')
 
+    user = request.user if request.user.is_authenticated else None
+    client_ref = session.get('client_reference_id')
     if client_ref:
         try:
-            user = User.objects.get(pk=int(client_ref))
-            login_allowed = (
-                request.user.is_authenticated and request.user.id == user.id)
-        except (User.DoesNotExist, ValueError):
-            user = None
-
-    if user is None and request.user.is_authenticated:
-        user = request.user
-        login_allowed = True
-
-    if user is None:
-        if not email:
-            return redirect('subscription_view')
-
-        try:
-            user = User.objects.get(username=email)
-            login_allowed = False  # wichtig!
+            ref_user = User.objects.get(pk=client_ref)
+            if not user or user.pk != ref_user.pk:
+                login(request, ref_user, backend=_login_backend_path())
+                user = ref_user
         except User.DoesNotExist:
-            user = User.objects.create(username=email, email=email)
-            user.set_unusable_password()
-            user.save()
-            login_allowed = True
-            needs_set_password = True
+            return redirect('account_login')
+    elif not user:
+        return redirect('account_login')
 
-    if login_allowed and not request.user.is_authenticated:
-        login(request, user, backend=_login_backend_path())
-
-    sub = stripe.Subscription.retrieve(session['subscription'],
-                                       expand=["items.data.price.product"])
-    item = sub['items']['data'][0]
+    s = stripe.Subscription.retrieve(session['subscription'],
+                                     expand=["items.data.price.product"])
+    item = s['items']['data'][0]
     price = item['price']
     product = price['product']
 
     md_price = dict(price.get("metadata") or {})
     md_prod = dict(product.get("metadata") or {})
-    quota_raw = md_price.get("task_quota") or md_price.get("tasks_quota") \
-        or md_prod.get("task_quota") or md_prod.get("tasks_quota")
-
-    ts_start = sub.get('current_period_start') or sub.get('created')
-    ts_end = sub.get('current_period_end')
-    ts_cancel = sub.get('cancel_at')
-
-    start_dt = datetime.fromtimestamp(
-        ts_start, tz=timezone.utc) if ts_start else timezone.now()
-    end_dt = datetime.fromtimestamp(
-        ts_end, tz=timezone.utc) if ts_end else None
-    cancel_dt = datetime.fromtimestamp(
-        ts_cancel, tz=timezone.utc) if ts_cancel else None
-
+    quota_raw = (md_price.get("task_quota") or md_price.get("tasks_quota")
+                 or md_prod.get("task_quota") or md_prod.get("tasks_quota"))
     try:
         quota = int(str(quota_raw))
     except (TypeError, ValueError):
         quota = 0
 
-    Subscription.objects.create(
-        user=user,
-        customer_id=session['customer'],
-        stripe_subscription_id=session['subscription'],
-        product_name=product['name'],
-        price=price['unit_amount'] // 100,
-        interval=price['recurring']['interval'],
-        start_date=start_dt,
-        tasks_quota=quota
+    ts_start = s.get('current_period_start') or s.get('created')
+    ts_end = s.get('current_period_end')
+    ts_cancel = s.get('cancel_at')
+
+    start_dt = datetime.fromtimestamp(ts_start, tz=timezone.utc) if ts_start else dj_timezone.now()
+    end_dt = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
+    cancel_dt = datetime.fromtimestamp(ts_cancel, tz=timezone.utc) if ts_cancel else None
+
+    Subscription.objects.update_or_create(
+        stripe_subscription_id=s['id'],
+        defaults={
+            'user': user,
+            'customer_id': session['customer'],
+            'product_name': product['name'],
+            'price': (price.get('unit_amount') or 0) // 100,
+            'interval': (price.get('recurring') or {}).get('interval', 'month'),
+            'tasks_quota': quota,
+            'start_date': start_dt,
+            'end_date': end_dt,
+            'cancel_at': cancel_dt,
+        }
     )
 
-    if needs_set_password:
-        return redirect('account_set_password')
-    else:
-        return redirect(STRIPE_SUCCESS_URL)
+    return redirect('tasks')
 
 
 def subscriptions_overview(request):
