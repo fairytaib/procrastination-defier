@@ -12,10 +12,12 @@
   <section class="container py-5">
     <header class="d-flex align-items-center justify-content-between mb-4">
       <div>
-        <h1 class="h2 mb-0">Task Overview</h1>
+        <h1 class="h2 mb-0">Task {% if perms.tasks.has_perm %}Checkup{% else %}Overview{% endif %}</h1>
+        {% if not perms.tasks.has_perm %}
         <p class="text-muted">
           Your Task Slots: <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
         </p>
+        {% endif %}
       </div>
 
       {% if not perms.tasks.mark_done %}
@@ -29,20 +31,6 @@
         </div>
       {% endif %}
     </header>
-
-    {% comment %}Due Task{% endcomment %}
-    {% comment %} {% if tasks_undone %}
-      <section class="mb-5" aria-labelledby="due-tasks">
-        <h2 id="open-tasks" class="h4 mb-3">Almost Due Tasks</h2>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          {% for task in tasks_undone %}
-            <div class="col">
-              {% include 'tasks/_task_card.html' with task=task %}
-            </div>
-          {% endfor %}
-        </div>
-      </section>
-    {% endif %} {% endcomment %}
 
     <!-- Open / Undone -->
     {% if not perms.tasks.mark_done %}
