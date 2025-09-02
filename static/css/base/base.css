@@ -79,6 +79,14 @@ main {
     object-fit: cover;
 }
 
+.message-container {
+    position: absolute;
+    z-index: 1000; 
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+}
+
 .dropdown-menu[data-bs-popper] {
     left: -75%;
 }
