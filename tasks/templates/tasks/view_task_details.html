@@ -86,7 +86,7 @@
       <!-- Proof & Actions -->
       <div class="col-lg-5">
         {% if not perms.tasks.mark_done %}
-          <section class="card">
+          <section class="card mb-2">
             <div class="card-body">
               <h3 class="h5 mb-3">Upload Proof</h3>
               {% if not task_checkup %}
@@ -142,9 +142,9 @@
           </section>
         {% endif %}
 
-        {% if perms.tasks.mark_done %}
+        
           <section class="card">
-            <div class="card-body">
+            <div class="card-body d-flex flex-column align-center justify-center">
               {% if task_checkup.comments %}
                 <h4 class="h6 mb-2">Comments</h4>
                 <p class="mb-3">{{ task_checkup.comments }}</p>
@@ -165,23 +165,23 @@
                 <div class="mb-3">{{ task_checkup.audio_file|render_audio }}</div>
               {% endif %}
 
-              <p class="mb-3">Task Checkup Status: {{ task_checkup.completed|yesno:'Completed,Not Completed' }}</p>
-
-              <form method="post" class="mb-2">
-                {% csrf_token %}
-                <div class="d-grid d-sm-flex gap-2">
-                  <button type="submit" name="done_checkbox" class="btn btn-primary">Mark as Done</button>
-                </div>
-              </form>
-              <form method="post">
-                {% csrf_token %}
-                <div class="d-grid d-sm-flex gap-2">
-                  <button type="submit" name="failed_checkbox" class="btn btn-primary">Mark as Failed</button>
+              {% if perms.tasks.mark_done %}
+                <form method="post" class="mb-2 mt-2">
+                  {% csrf_token %}
+                  <div class="d-grid d-sm-flex gap-2">
+                    <button type="submit" name="done_checkbox" class="btn btn-primary">Mark as Done</button>
+                  </div>
+                </form>
+                <form method="post">
+                  {% csrf_token %}
+                  <div class="d-grid d-sm-flex gap-2">
+                    <button type="submit" name="failed_checkbox" class="btn btn-primary">Mark as Failed</button>
+              {% endif %}
                 </div>
               </form>
             </div>
           </section>
-        {% endif %}
+        
       </div>
     </div>
   </section>
