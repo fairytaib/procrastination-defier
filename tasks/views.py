@@ -26,25 +26,38 @@ def user_task_overview(request):
     refresh_overdue_flags(request.user)
     if not admin:
         tasks_undone = Task.objects.filter(
-            user=request.user, completed=False, fee_to_pay=False).order_by('-created_at')
+            user=request.user, completed=False,
+            fee_to_pay=False, checkup_state=False).order_by('-created_at')
         task_done = Task.objects.filter(
             user=request.user, completed=True).order_by('created_at')
+        task_to_check = Task.objects.filter(
+            user=request.user, completed=False,
+            fee_to_pay=False, checkup_state=True).order_by('-created_at')
         task_with_fee = Task.objects.filter(
             user=request.user, completed=False, fee_to_pay=True).order_by('-created_at')
         context = {
             'tasks_undone': tasks_undone,
             'tasks_done': task_done,
             'tasks_with_fee': task_with_fee,
+            'task_to_check': task_to_check,
             'subscription': subscription,
             'can_add_task': can_add_task(request.user),
             'open_tasks_count': open_tasks_count(request.user)
         }
     else:
-        tasks_undone = Task.objects.filter(completed=False).order_by(
+        tasks_undone = Task.objects.filter(completed=False,
+                                           fee_to_pay=False,
+                                           checkup_state=False).order_by(
             '-user', '-created_at'
             )
+        task_to_check = Task.objects.filter(
+            completed=False,
+            fee_to_pay=False, checkup_state=True).order_by(
+                'checkup_date', '-user'
+                )
         context = {
             'tasks_undone': tasks_undone,
+            'task_to_check': task_to_check,
         }
     return render(request, 'tasks/user_task_overview.html', context)
 
@@ -72,6 +85,8 @@ def view_task_details(request, task_id):
             if form.is_valid():
                 checkup = form.save(commit=False)
                 checkup.task = task
+                task.checkup_state = True
+                task.save(update_fields=["checkup_state"])
                 checkup.save()
                 messages.success(
                     request, "Proof uploaded successfully."

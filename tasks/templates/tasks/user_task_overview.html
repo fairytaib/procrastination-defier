@@ -29,6 +29,7 @@
         </div>
       {% endif %}
     </header>
+
     {% comment %}Due Task{% endcomment %}
     {% comment %} {% if tasks_undone %}
       <section class="mb-5" aria-labelledby="due-tasks">
@@ -44,20 +45,36 @@
     {% endif %} {% endcomment %}
 
     <!-- Open / Undone -->
-    <section class="mb-5" aria-labelledby="open-tasks">
-      <h2 id="open-tasks" class="h4 mb-3">Open Tasks</h2>
-      {% if tasks_undone and tasks_undone.count > 0 and not task.is_due_soon %}
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          {% for task in tasks_undone %}
-            <div class="col">
-              {% include 'tasks/_task_card.html' with task=task %}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="alert alert-info mb-0" role="alert">You have no current tasks.</div>
-      {% endif %}
-    </section>
+    {% if not perms.tasks.mark_done %}
+      <section class="mb-5" aria-labelledby="open-tasks">
+        <h2 id="open-tasks" class="h4 mb-3">Open Tasks</h2>
+        {% if tasks_undone %}
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for task in tasks_undone %}
+              <div class="col">
+                {% include 'tasks/_task_card.html' with task=task %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-info mb-0" role="alert">You have no current tasks.</div>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    {% comment %} Task to Check {% endcomment %}
+    {% if task_to_check %}
+      <section class="mb-5" aria-labelledby="open-tasks">
+        <h2 id="open-tasks" class="h4 mb-3">Tasks in Checkup</h2>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for task in task_to_check %}
+              <div class="col">
+                {% include 'tasks/_task_card.html' with task=task %}
+              </div>
+            {% endfor %}
+          </div>
+      </section>
+    {% endif %}
 
     {% comment %}Fees to pay{% endcomment %}
     {% if tasks_with_fee and tasks_with_fee.count > 0 %}
@@ -80,19 +97,21 @@
       </section>
     {% endif %}
     <!-- Done -->
-    <section aria-labelledby="done-tasks">
-      <h2 id="done-tasks" class="h4 mb-3">Done Tasks</h2>
-      {% if tasks_done and tasks_done.count > 0 %}
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          {% for task in tasks_done %}
-            <div class="col">
-              {% include 'tasks/_task_card.html' with task=task %}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="alert alert-secondary mb-0" role="alert">No tasks completed yet.</div>
-      {% endif %}
-    </section>
+    {% if not perms.tasks.mark_done %}
+      <section aria-labelledby="done-tasks">
+        <h2 id="done-tasks" class="h4 mb-3">Done Tasks</h2>
+        {% if tasks_done and tasks_done.count > 0 %}
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for task in tasks_done %}
+              <div class="col">
+                {% include 'tasks/_task_card.html' with task=task %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-secondary mb-0" role="alert">No tasks completed yet.</div>
+        {% endif %}
+      </section>
+    {% endif %}
   </section>
 {% endblock %}
