@@ -10,7 +10,7 @@ def refresh_overdue_flags(user):
         completed=False,
         fee_to_pay=False,
         checkup_date__lt=date.today()
-    ).update(fee_to_pay=True)
+    ).update(checkup_state=True)
 
 
 def mark_for_checkup(user):

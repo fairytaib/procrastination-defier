@@ -85,6 +85,19 @@ def view_task_details(request, task_id):
                 user_points.save(update_fields=["points"])
                 messages.success(request, "Task marked as done.")
                 return redirect("user_task_overview")
+        elif "failed_checkbox" in request.POST:
+            if user.has_perm('tasks.mark_done'):
+                task.fee_to_pay = True
+                if task.repetition:
+                    task.completed = False
+                    task.checkup_date = task.checkup_date + timedelta(
+                        days=INTERVAL_TO_CHECKUP[task.interval]
+                        )
+                else:
+                    task.completed = False
+                task.save(update_fields=["fee_to_pay"])
+                messages.success(request, "Task marked as failed.")
+                return redirect("user_task_overview")
             else:
                 messages.error(
                     request,

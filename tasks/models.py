@@ -68,6 +68,7 @@ class Task(models.Model):
         null=True,
         help_text="Points awarded for completing this task."
     )
+    checkup_state = models.BooleanField(default=False)
     checkup_date = models.DateField(
         help_text="Next checkup date for this task.",
         null=True, blank=True

@@ -163,10 +163,16 @@
 
               <p class="mb-3">Task Checkup Status: {{ task_checkup.completed|yesno:'Completed,Not Completed' }}</p>
 
-              <form method="post">
+              <form method="post" class="mb-2">
                 {% csrf_token %}
                 <div class="d-grid d-sm-flex gap-2">
                   <button type="submit" name="done_checkbox" class="btn btn-primary">Mark as Done</button>
+                </div>
+              </form>
+              <form method="post">
+                {% csrf_token %}
+                <div class="d-grid d-sm-flex gap-2">
+                  <button type="submit" name="failed_checkbox" class="btn btn-primary">Mark as Failed</button>
                 </div>
               </form>
             </div>

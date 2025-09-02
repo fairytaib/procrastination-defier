@@ -30,7 +30,7 @@
       {% endif %}
     </header>
     {% comment %}Due Task{% endcomment %}
-    {% if tasks_undone and tasks_undone.count > 0 and tasks_undone.is_due_soon %}
+    {% comment %} {% if tasks_undone %}
       <section class="mb-5" aria-labelledby="due-tasks">
         <h2 id="open-tasks" class="h4 mb-3">Almost Due Tasks</h2>
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -41,7 +41,7 @@
           {% endfor %}
         </div>
       </section>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
     <!-- Open / Undone -->
     <section class="mb-5" aria-labelledby="open-tasks">
