@@ -14,34 +14,39 @@
       <div>
         <h1 class="h2 mb-0">Task Overview</h1>
         <p class="text-muted">
-          Your Task Slots: <span>
-            {{ open_tasks_count }}/{{ subscription.tasks_quota }}
-          </span>
+          Your Task Slots: <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
         </p>
       </div>
 
       {% if not perms.tasks.mark_done %}
-      <div class="d-flex align-items-center flex-column">
-        <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="Add Task">Add Task</a>
-        {% if task_with_fee %}
-        <p class="text-muted mt-2">
-          You can not add tasks until you paid your fees
-        </p>
-        {% elif not can_add_task %}
-        <p class="text-muted mt-2">
-          You have reached your task limit.
-        </p>
-        {% endif %}
-      </div>
-        
-        
+        <div class="d-flex align-items-center flex-column">
+          <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="Add Task">Add Task</a>
+          {% if tasks_with_fee.count >= 1 %}
+            <p class="text-muted mt-2">You can not add tasks until you paid your fees</p>
+          {% elif not can_add_task %}
+            <p class="text-muted mt-2">You have reached your task limit.</p>
+          {% endif %}
+        </div>
       {% endif %}
     </header>
-    <section class="container py-5"></section>
+    {% comment %}Due Task{% endcomment %}
+    {% if tasks_undone and tasks_undone.count > 0 and tasks_undone.is_due_soon %}
+      <section class="mb-5" aria-labelledby="due-tasks">
+        <h2 id="open-tasks" class="h4 mb-3">Almost Due Tasks</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for task in tasks_undone %}
+            <div class="col">
+              {% include 'tasks/_task_card.html' with task=task %}
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
     <!-- Open / Undone -->
     <section class="mb-5" aria-labelledby="open-tasks">
       <h2 id="open-tasks" class="h4 mb-3">Open Tasks</h2>
-      {% if tasks_undone and tasks_undone.count > 0 %}
+      {% if tasks_undone and tasks_undone.count > 0 and not task.is_due_soon %}
         <div class="row row-cols-1 row-cols-md-2 g-4">
           {% for task in tasks_undone %}
             <div class="col">

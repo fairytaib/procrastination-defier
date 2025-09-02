@@ -14,5 +14,4 @@ urlpatterns = [
     path('manage_in_stripe/',
          views.manage_in_stripe,
          name='subscription_manage_stripe'),
-
 ]

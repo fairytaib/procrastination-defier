@@ -5,7 +5,6 @@ from django.urls import reverse
 from datetime import datetime, timezone
 from django.contrib.auth import login
 from django.shortcuts import redirect, render
-from django.views.decorators.http import require_POST
 from .utils import get_current_subscription
 import stripe
 from django.conf import settings
@@ -20,28 +19,25 @@ def subscription_view(request):
     }
     if request.method == 'POST':
         plan = request.POST.get('plan_id')
+        price_id = subscription.get(plan, plan)
 
-        candidate = subscription.get(plan, plan)
+        kwargs = {
+            "mode": "subscription",
+            "payment_method_types": ["card"],
+            "line_items": [{"price": price_id, "quantity": 1}],
+            "success_url": settings.DOMAIN + reverse(
+                'create_subscription'
+                ) + '?session_id={CHECKOUT_SESSION_ID}',
+            "cancel_url": settings.DOMAIN + settings.STRIPE_CANCEL_URL,
+            }
 
-        if str(candidate).startswith('prod_'):
-            product = stripe.Product.retrieve(candidate)
-            price_id = product['default_price']
-        elif str(candidate).startswith('price_'):
-            price_id = candidate
-        else:
-            return redirect('subscription_view')
+        if request.user.is_authenticated:
+            sub = get_current_subscription(request.user)
+            if sub and sub.customer_id:
+                kwargs["customer"] = sub.customer_id
+            kwargs["client_reference_id"] = str(request.user.id)
 
-        checkout_session = stripe.checkout.Session.create(
-            mode='subscription',
-            payment_method_types=['card'],
-            line_items=[{'price': price_id, 'quantity': 1}],
-            success_url=(
-                settings.DOMAIN
-                + reverse('create_subscription')
-                + '?session_id={CHECKOUT_SESSION_ID}'
-            ),
-            cancel_url=settings.DOMAIN + settings.STRIPE_CANCEL_URL,
-        )
+        checkout_session = stripe.checkout.Session.create(**kwargs)
         return redirect(checkout_session.url, code=303)
 
     return render(request, 'subscription/subscription.html')
@@ -58,26 +54,48 @@ def create_subscription(request):
         return redirect('subscription_view')
 
     session = stripe.checkout.Session.retrieve(checkout_session_id)
+    client_ref = session.get("client_reference_id")
+
     email = (session.get('customer_details') or {}).get('email')
-    if not email:
+    if not email and session.get('customer'):
         customer = stripe.Customer.retrieve(session['customer'])
         email = customer.get('email')
 
     if not email:
         return redirect('subscription_view')
 
-    user, created = User.objects.get_or_create(
-        username=email,
-        defaults={'email': email}
-    )
+    user = None
+    login_allowed = False
+    needs_set_password = False
 
-    needs_set_password = not user.has_usable_password()
+    if client_ref:
+        try:
+            user = User.objects.get(pk=int(client_ref))
+            login_allowed = (
+                request.user.is_authenticated and request.user.id == user.id)
+        except (User.DoesNotExist, ValueError):
+            user = None
 
-    if created:
-        user.set_unusable_password()
-        user.save()
+    if user is None and request.user.is_authenticated:
+        user = request.user
+        login_allowed = True
 
-    login(request, user, backend=_login_backend_path())
+    if user is None:
+        if not email:
+            return redirect('subscription_view')
+
+        try:
+            user = User.objects.get(username=email)
+            login_allowed = False  # wichtig!
+        except User.DoesNotExist:
+            user = User.objects.create(username=email, email=email)
+            user.set_unusable_password()
+            user.save()
+            login_allowed = True
+            needs_set_password = True
+
+    if login_allowed and not request.user.is_authenticated:
+        login(request, user, backend=_login_backend_path())
 
     sub = stripe.Subscription.retrieve(session['subscription'],
                                        expand=["items.data.price.product"])
@@ -226,4 +244,3 @@ def manage_in_stripe(request):
         return_url=settings.DOMAIN + reverse('subscriptions_overview')
     )
     return redirect(session.url, code=303)
-

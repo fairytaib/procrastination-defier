@@ -1,5 +1,5 @@
 from django.apps import apps
-from datetime import date
+from datetime import date, timedelta
 
 
 def refresh_overdue_flags(user):
@@ -11,6 +11,17 @@ def refresh_overdue_flags(user):
         fee_to_pay=False,
         checkup_date__lt=date.today()
     ).update(fee_to_pay=True)
+
+
+def mark_for_checkup(user):
+    """Mark tasks for checkup if they are due soon."""
+    Task = apps.get_model('tasks', 'Task')
+    Task.objects.filter(
+        user=user,
+        completed=False,
+        checkup_state=False,
+        checkup_date__lt=date.today() + timedelta(days=2)
+    ).update(checkup_state=True)
 
 
 def get_current_subscription(user):

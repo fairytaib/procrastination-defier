@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import timedelta, date, timezone
+from datetime import timedelta, date
 from cloudinary.models import CloudinaryField
 
 INTERVAL = (
@@ -86,7 +86,21 @@ class Task(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} (User: {self.user.username}),{self.checkup_date}"
+
+    @property
+    def due_in_days(self):
+        if self.checkup_date:
+            return (self.checkup_date - date.today()).days
+        return None
+
+    @property
+    def is_due_soon(self):
+        d = self.due_in_days
+        return d is not None and d <= 2
+
+        def __str__(self):
+            return self.title
 
 
 class Task_Checkup(models.Model):
