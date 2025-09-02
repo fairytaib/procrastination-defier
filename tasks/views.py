@@ -1,4 +1,5 @@
 from collections import Counter
+from django.db.models import Q
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
@@ -55,8 +56,14 @@ def view_task_details(request, task_id):
     user_points = UserPoints.objects.filter(user=user).first()
     task = get_object_or_404(Task, id=task_id)
     task_checkup = Task_Checkup.objects.filter(
-        task=task
-        ).order_by('-uploaded_at').first()
+        task=task,
+        deleted=False
+        ).filter(
+        Q(image__isnull=False) |
+        Q(text_file__isnull=False) |
+        Q(audio_file__isnull=False) |
+        Q(comments__isnull=False)
+    ).order_by('-uploaded_at').first()
     check_form = CheckTaskForm()
 
     if request.method == "POST":

@@ -89,7 +89,8 @@
           <section class="card">
             <div class="card-body">
               <h3 class="h5 mb-3">Upload Proof</h3>
-              <form method="post" enctype="multipart/form-data">
+              {% if not task_checkup %}
+                <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {# Comments #}
                 <div class="mb-3">
@@ -133,7 +134,10 @@
                 <div class="d-grid d-sm-flex gap-2">
                   <button type="submit" name="proof_upload" class="btn btn-primary">Upload proof</button>
                 </div>
-              </form>
+                </form>
+              {% else %}
+                <div class="alert alert-info mb-0" role="alert">You already uploaded proof for that task.</div>
+              {% endif %}
             </div>
           </section>
         {% endif %}
