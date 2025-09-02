@@ -40,9 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% block meta %}
-      <!-- Default Meta Tags -->
-      <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="author" content="Sophjan Moubarrid" />
       <meta name="keywords" content="" />
@@ -51,6 +49,9 @@
       <meta property="og:description" content="" />
       <meta property="og:image" content="" />
       <meta property="og:type" content="website" />
+    {% block meta %}
+      <!-- Default Meta Tags -->
+      
     {% endblock %}
     <title>
       Procdef -{% block title %}
