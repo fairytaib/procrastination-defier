@@ -180,11 +180,15 @@ def add_task(request):
             task.user = request.user
             task.save()
             messages.success(request, "Task added successfully.")
-            return redirect("user_task_overview")
+            if 'save_and_add' in request.POST:
+                return redirect("add_task")
+            else:
+                return redirect("user_task_overview")
         else:
             form = TaskForm()
     context = {
         "form": form,
+        'can_add_task': can_add_task(request.user)
     }
     return render(request, "tasks/add_task_form.html", context)
 
