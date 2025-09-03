@@ -1,6 +1,5 @@
 from django import forms
 from .models import Task, Task_Checkup
-from datetime import date
 from django.core.exceptions import ValidationError
 from PIL import Image, UnidentifiedImageError
 import re
@@ -90,7 +89,9 @@ class CheckTaskForm(forms.ModelForm):
             raise ValidationError("Uploaded file is not a valid image.")
 
         if fmt not in {'jpeg', 'jpg', 'png', 'webp'}:
-            raise ValidationError("Only JPEG, JPG, PNG or WEBP images are allowed.")
+            raise ValidationError(
+                "Only JPEG, JPG, PNG or WEBP images are allowed."
+                )
         return f
 
     def clean_text_file(self):
@@ -98,9 +99,9 @@ class CheckTaskForm(forms.ModelForm):
         if not f or getattr(f, 'size', 0) == 0:
             return None
         ext = f.name.rsplit('.', 1)[-1].lower() if '.' in f.name else ''
-        ct  = getattr(f, 'content_type', '')
-        allowed_ext = {'pdf','txt','docx'}
-        allowed_ct  = {
+        ct = getattr(f, 'content_type', '')
+        allowed_ext = {'pdf', 'txt', 'docx'}
+        allowed_ct = {
             'application/pdf',
             'text/plain',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',

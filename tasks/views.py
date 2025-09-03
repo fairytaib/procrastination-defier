@@ -10,7 +10,8 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 
 # App imports
-from subscription.utils import can_add_task, refresh_overdue_flags, open_tasks_count
+from subscription.utils import can_add_task, refresh_overdue_flags
+from subscription.utils import open_tasks_count
 from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from .models import FeePaymentBatch
 from subscription.models import Subscription
@@ -41,7 +42,10 @@ def user_task_overview(request):
             user=request.user, completed=False,
             fee_to_pay=False, checkup_state=True).order_by('-created_at')
         task_with_fee = Task.objects.filter(
-            user=request.user, completed=False, fee_to_pay=True).order_by('-created_at')
+            user=request.user,
+            completed=False,
+            fee_to_pay=True
+            ).order_by('-created_at')
         context = {
             'tasks_undone': tasks_undone,
             'tasks_done': task_done[:5],
