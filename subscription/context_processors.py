@@ -16,4 +16,5 @@ def subscription_context(request):
     return {
         "subscription": subscription,
         "has_subscription": has_subscription,
+        "subscription_check": has_subscription,
     }
