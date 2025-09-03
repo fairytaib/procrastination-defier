@@ -110,7 +110,7 @@
                 {% if user.is_authenticated %}
                   <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% if user_profile.profile_picture %}
+                    {% if user.is_authenticated and user_profile.profile_picture %}
                       <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" class="logo-image" />
                     {% else %}
                       <img src="{% static 'images/placeholder/default_profile_image.webp' %}" alt="Logo" class="logo-image" />
@@ -120,7 +120,7 @@
                       <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
                       <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account settings</a>
                       <a class="dropdown-item" 
-                      {% if subscription_check %}
+                      {% if user.is_authenticated and subscription_check %}
                         href="{% url 'subscriptions_overview' %}"
                       {% else %}
                         href="{{ subscription_view_url }}"

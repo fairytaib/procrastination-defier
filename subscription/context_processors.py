@@ -2,10 +2,18 @@ from subscription.models import Subscription
 
 
 def subscription_context(request):
-    """Check if the user has an active subscription."""
-    if Subscription.objects.filter(user=request.user).exists():
-        return {"subscription_check": True}
-    else:
-        return {"subscription_check": False}
+    has_subscription = False
+    subscription = None
 
-    return {"subscription_check": False}
+    if request.user.is_authenticated:
+        subscription = (
+            Subscription.objects
+            .filter(user=request.user)
+            .first()
+        )
+        has_subscription = subscription is not None
+
+    return {
+        "subscription": subscription,
+        "has_subscription": has_subscription,
+    }
