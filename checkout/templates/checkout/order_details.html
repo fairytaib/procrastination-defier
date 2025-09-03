@@ -29,12 +29,12 @@
             <div class="ratio ratio-1x1 rounded overflow-hidden">
               {% if order.reward.image %}
                 {% if 'placeholder' in order.reward.image.url %}
-                  <img src="{% static 'images/placeholder/placeholder.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
+                  <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
                 {% else %}
                   <img src="{{ order.reward.image.url }}" class="w-100 h-100 object-fit-cover" alt="{{ order.reward.name }}" />
                 {% endif %}
               {% else %}
-                <img src="{% static 'images/placeholder/placeholder.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
+                <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
               {% endif %}
             </div>
           </div>

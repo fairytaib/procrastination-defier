@@ -79,10 +79,8 @@ class CheckTaskForm(forms.ModelForm):
         if not f or getattr(f, 'size', 0) == 0:
             return None
         try:
-            # 1. Format auslesen
             with Image.open(f) as im:
                 fmt = (im.format or '').lower()
-            # 2. Integrität prüfen (separat, da verify() das File schließt)
             with Image.open(f) as im:
                 im.verify()
         except (UnidentifiedImageError, Exception):
