@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import UserProfile
 from django.contrib.auth.decorators import login_required
-from .forms import AccountForm
+from .forms import AccountForm, ProfilePictureForm
 
 
 @login_required
@@ -16,11 +16,25 @@ def view_user_profile(request):
 
 @login_required
 def account_update(request):
+    """View to update the user's account information."""
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
+
     if request.method == "POST":
+        profile_image = ProfilePictureForm(
+            request.POST, request.FILES, instance=profile
+            )
         form = AccountForm(request.POST, instance=request.user)
-        if form.is_valid():
+        if form.is_valid() and profile_image.is_valid():
             form.save()
+            profile_image.save()
             return redirect("view_user_profile")
     else:
         form = AccountForm(instance=request.user)
-    return render(request, "profiles/update.html", {"form": form})
+        profile_image = ProfilePictureForm(
+            request.POST, request.FILES
+            )
+
+    return render(
+        request, "profiles/update.html",
+        {"form": form, "profile_image": profile_image}
+        )
