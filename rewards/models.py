@@ -23,19 +23,23 @@ COUNTRY_CHOICES = [
 class Reward(models.Model):
     """A reward model to represent the rewards in the system."""
 
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True,
+                            null=False, blank=False)
     image = CloudinaryField(
         'image', default='placeholder',
         blank=True, null=True)
-    description = models.TextField()
+    description = models.TextField(max_length=1000, null=False, blank=False)
     cost = models.PositiveIntegerField(
-        help_text="Cost in points to redeem this reward.", default=1000)
+        help_text="Cost in points to redeem this reward.",
+        default=1000, blank=False, null=False)
     stock = models.PositiveIntegerField(
-        help_text="Number of items available for this reward.", default=10)
+        help_text="Number of items available for this reward.",
+        default=10, blank=False, null=False)
     reward_type = models.CharField(
         choices=REWARD_TYPES,
         max_length=50,
         verbose_name="Reward Type",
+        null=False, blank=False
     )
     available_countries = MultiSelectField(
         choices=COUNTRY_CHOICES,

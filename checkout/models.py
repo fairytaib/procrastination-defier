@@ -12,15 +12,15 @@ class Order(models.Model):
     order_item = models.ForeignKey(
         Reward, on_delete=models.CASCADE, related_name='order_items'
     )
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.EmailField()
+    first_name = models.CharField(max_length=30, blank=False)
+    last_name = models.CharField(max_length=30, blank=False)
+    email = models.EmailField(blank=False)
     phone_number = models.CharField(max_length=20, blank=True)
-    street_address = models.CharField(max_length=255)
+    street_address = models.CharField(max_length=255, blank=False)
     apartment = models.CharField(max_length=255, blank=True)
-    city = models.CharField(max_length=100)
-    postal_code = models.CharField(max_length=20)
-    country = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, blank=False)
+    postal_code = models.CharField(max_length=20, blank=False)
+    country = models.CharField(max_length=100, blank=False)
     is_default = models.BooleanField(default=False)
 
     def __str__(self):
