@@ -1,19 +1,26 @@
-from collections import Counter
+# Django Imports
 from django.db.models import Q
-from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.utils import timezone
-import stripe
 from django.conf import settings
 from django.urls import reverse
+from django.core.paginator import Paginator
+
+# App imports
 from subscription.utils import can_add_task, refresh_overdue_flags, open_tasks_count
 from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from .models import FeePaymentBatch
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
+
+# More
+from datetime import timedelta
+import stripe
+from collections import Counter
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -37,7 +44,8 @@ def user_task_overview(request):
             user=request.user, completed=False, fee_to_pay=True).order_by('-created_at')
         context = {
             'tasks_undone': tasks_undone,
-            'tasks_done': task_done,
+            'tasks_done': task_done[:5],
+            'more_tasks_done': task_done[5:],
             'tasks_with_fee': task_with_fee,
             'task_to_check': task_to_check,
             'subscription': subscription,
@@ -60,6 +68,24 @@ def user_task_overview(request):
             'task_to_check': task_to_check,
         }
     return render(request, 'tasks/user_task_overview.html', context)
+
+
+@login_required
+def tasks_history(request):
+    qs = (Task.objects
+          .filter(user=request.user, completed=True)
+          .order_by('-created_at'))
+
+    paginator = Paginator(qs, 20)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        "tasks": page_obj.object_list,
+        "page_obj": page_obj,
+        "is_paginated": page_obj.has_other_pages()
+    }
+    return render(request, "tasks/task_history.html", context)
 
 
 @login_required

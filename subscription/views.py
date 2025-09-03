@@ -23,21 +23,29 @@ def subscription_view(request):
         plan = request.POST.get('plan_id')
         price_id = subscription.get(plan, plan)
 
+        email = request.user.email if request.user.is_authenticated else None
+
         kwargs = {
             "mode": "subscription",
-            "payment_method_types": {"enabled": True},
+            "payment_method_types": ['card'],
             "line_items": [{"price": price_id, "quantity": 1}],
-            "success_url": settings.DOMAIN + reverse(
-                'create_subscription'
-                ) + '?session_id={CHECKOUT_SESSION_ID}',
+            "success_url": settings.DOMAIN + reverse('create_subscription') + '?session_id={CHECKOUT_SESSION_ID}',
             "cancel_url": settings.DOMAIN + settings.STRIPE_CANCEL_URL,
-            }
-
+            "client_reference_id": str(request.user.pk)
+        }
         if request.user.is_authenticated:
-            sub = get_current_subscription(request.user)
-            if sub and sub.customer_id:
-                kwargs["customer"] = sub.customer_id
             kwargs["client_reference_id"] = str(request.user.id)
+
+        sub = get_current_subscription(request.user)
+
+        if sub and getattr(sub, "customer_id", None):
+            kwargs["customer"] = sub.customer_id
+        elif request.user.email:
+            kwargs["customer_email"] = request.user.email
+        else:
+            email = request.POST.get("email")
+            if email:
+                kwargs["customer_email"] = email
 
         checkout_session = stripe.checkout.Session.create(**kwargs)
         return redirect(checkout_session.url, code=303)
@@ -110,7 +118,7 @@ def create_subscription(request):
         }
     )
 
-    return redirect('tasks')
+    return redirect('/tasks/')
 
 
 def subscriptions_overview(request):
@@ -120,7 +128,6 @@ def subscriptions_overview(request):
 
     subscription = Subscription.objects.filter(
         user=request.user,
-        deleted=False
         ).filter(
         Q(stripe_subscription_id__isnull=False) |
         Q(product_name__isnull=False) |
@@ -130,7 +137,7 @@ def subscriptions_overview(request):
         Q(start_date__isnull=False) |
         Q(end_date__isnull=False) |
         Q(cancel_at__isnull=False)
-    ).order_by('-uploaded_at').first()
+    ).first()
 
     subscription = get_current_subscription(request.user)
     if subscription:

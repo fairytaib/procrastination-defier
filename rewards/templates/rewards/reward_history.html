@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="container py-5">
+    <header class="d-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0">Completed rewards ({{ page_obj.paginator.count }})</h1>
+      <a href="{% url 'rewards_overview' %}" class="btn btn-outline-secondary">Back to overview</a>
+    </header>
+
+    {% if rewards %}
+      <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+        {% for reward in rewards %}
+          <div class="col">
+            {% include 'rewards/_reward_card.html' with reward=reward %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if is_paginated %}
+        <nav aria-label="Completed rewards pages">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+              </li>
+            {% endif %}
+
+            <li class="page-item active">
+              <span class="page-link">{{ page_obj.number }}</span>
+            </li>
+
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">Next</span>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+    {% else %}
+      <div class="alert alert-secondary">No completed rewards yet.</div>
+    {% endif %}
+  </section>
+{% endblock %}

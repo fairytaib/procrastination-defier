@@ -119,6 +119,9 @@
                 </div>
               {% endfor %}
             </div>
+            {% if more_tasks_done %}
+              <a href="{% url 'tasks_history' %}" class="btn btn-primary">View all completed tasks</a>
+            {% endif %}
           {% else %}
             <div class="alert alert-secondary mb-0" role="alert">No tasks completed yet.</div>
           {% endif %}

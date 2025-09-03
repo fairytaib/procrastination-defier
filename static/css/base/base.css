@@ -62,7 +62,7 @@ main {
 }
 
 /* Navbar */
-header {
+.navbar-header {
     background-color: rgba(20, 22, 23, 0.822);
     position: sticky;
     top: 0;
