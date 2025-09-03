@@ -1,4 +1,5 @@
 from .models import Subscription
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, timezone
@@ -116,6 +117,20 @@ def subscriptions_overview(request):
     """ A view to return the subscription overview page """
     if not request.user.is_authenticated:
         return redirect('account_login')
+
+    subscription = Subscription.objects.filter(
+        user=request.user,
+        deleted=False
+        ).filter(
+        Q(stripe_subscription_id__isnull=False) |
+        Q(product_name__isnull=False) |
+        Q(price__isnull=False) |
+        Q(interval__isnull=False) |
+        Q(tasks_quota__isnull=False) |
+        Q(start_date__isnull=False) |
+        Q(end_date__isnull=False) |
+        Q(cancel_at__isnull=False)
+    ).order_by('-uploaded_at').first()
 
     subscription = get_current_subscription(request.user)
     if subscription:
