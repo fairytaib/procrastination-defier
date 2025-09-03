@@ -56,6 +56,8 @@
           </div>
         </form>
       </section>
+    {% else %}
+      <a href="{{ login_url }}" class="btn btn-primary" aria-label="Create Post">Login to leave a comment</a>
     {% endif %}
   </section>
 {% endblock %}

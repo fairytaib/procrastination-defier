@@ -12,6 +12,9 @@
     <header class="mb-4 text-center">
       <h1 class="display-6 fw-bold mb-0">Rewards List</h1>
     </header>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center align-center mb-2">
+      <p class="text-center">You have enough points to treat yourself to a reward? Pick and choose your favorite!</p>
+    </div>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
       {% for reward in rewards %}
@@ -25,6 +28,7 @@
 
             <div class="card-body d-flex flex-column">
               <h5 class="card-title mb-2 text-truncate">{{ reward.name }}</h5>
+              <p class="card-text text-body-secondary mb-3">{{ reward.cost }} Points</p>
               <p class="card-text text-body-secondary mb-3">{{ reward.description }}</p>
               <a href="{% url 'reward_details' reward.id %}" class="btn btn-primary mt-auto w-100">See Details</a>
             </div>
