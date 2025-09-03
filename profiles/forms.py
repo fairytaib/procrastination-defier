@@ -1,5 +1,5 @@
 # forms.py
-from tkinter import Image
+from PIL import Image
 from PIL import UnidentifiedImageError
 from django import forms
 from django.contrib.auth.models import User
