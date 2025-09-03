@@ -56,8 +56,8 @@ class Task(models.Model):
     interval = models.CharField(max_length=10,
                                 choices=INTERVAL,
                                 default='weekly')
-    fee = models.DecimalField(max_digits=10, decimal_places=2, blank=False,
-                              null=False,
+    fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True,
+                              null=True,
                               help_text="Fee for failing this task.")
     fee_to_pay = models.BooleanField(default=False)
     fee_payment_session_id = models.CharField(
@@ -65,8 +65,8 @@ class Task(models.Model):
     )
     penalty_paid_at = models.DateTimeField(blank=True, null=True)
     points = models.PositiveIntegerField(
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         help_text="Points awarded for completing this task."
     )
     checkup_state = models.BooleanField(default=False)
