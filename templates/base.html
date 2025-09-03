@@ -113,7 +113,12 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
                       <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account settings</a>
-                      <a class="dropdown-item" href="{% url 'subscriptions_overview' %}">My Subscription</a>
+                      <a class="dropdown-item" 
+                      {% if subscription_check %}
+                        href="{% url 'subscriptions_overview' %}"
+                      {% else %}
+                        href="{{ subscription_view_url }}"
+                        {% endif %}>My Subscription</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                     </div>
                   </div>
