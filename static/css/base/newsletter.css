@@ -1,0 +1,75 @@
+#mc_embed_signup {
+    width: 100%;
+}
+
+#mc_embed_signup h2 {
+    font-family: var(--header-font);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    margin-bottom: .25rem;
+}
+
+/* Asterisk/Required */
+#mc_embed_signup .text-danger,
+#mc_embed_signup .asterisk {
+    color: var(--bs-danger);
+}
+
+/* Input */
+#mc_embed_signup .form-control {
+    background: var(--surface-alt);
+    border-radius: var(--bs-border-radius);
+    border: 1px solid rgba(2, 6, 23, 0.08);
+    box-shadow: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+#mc_embed_signup .form-control:focus {
+    border-color: rgba(var(--bs-primary-rgb), .6);
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .15);
+}
+
+#mc_embed_signup .btn-primary {
+    box-shadow: 0 6px 16px rgba(var(--bs-primary-rgb), .25);
+}
+
+#mc_embed_signup .alert {
+    margin: 0;
+    border: none;
+    border-radius: var(--bs-border-radius);
+}
+
+#mc_embed_signup .referral-badge,
+#mc_embed_signup .refferal_badge {
+    height: 32px;
+    width: auto;
+    opacity: .7;
+    filter: grayscale(1);
+    transition: opacity .2s ease, filter .2s ease, transform .2s ease;
+}
+
+#mc_embed_signup .referral-badge:hover,
+#mc_embed_signup .refferal_badge:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: translateY(-1px);
+}
+
+@media (prefers-color-scheme: dark) {
+    #mc_embed_signup .form-control {
+        background: var(--surface);
+        border-color: var(--bs-border-color, #243144);
+        color: var(--bs-body-color);
+    }
+
+    #mc_embed_signup .referral-badge,
+    #mc_embed_signup .refferal_badge {
+        opacity: .85;
+    }
+}
+
+#mc_embed_signup :focus-visible {
+    outline: 3px solid rgba(var(--bs-primary-rgb), .55);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
