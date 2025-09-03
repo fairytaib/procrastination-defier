@@ -33,7 +33,7 @@
 {% url 'user_order_overview' as user_order_overview_url %}
 {% url 'view_order_details' as view_order_details_url %}
 
-{% comment %} Subscription {% endcomment %}
+{% comment %}Subscription{% endcomment %}
 {% url 'subscription_view' as subscription_view_url %}
 {% url 'subscriptions_overview' as subscriptions_overview_url %}
 
@@ -41,17 +41,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="author" content="Sophjan Moubarrid" />
-      <meta name="keywords" content="" />
-      <meta name="description" content="" />
-      <meta property="og:title" content="" />
-      <meta property="og:description" content="" />
-      <meta property="og:image" content="" />
-      <meta property="og:type" content="website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Sophjan Moubarrid" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:type" content="website" />
     {% block meta %}
       <!-- Default Meta Tags -->
-      
     {% endblock %}
     <title>
       Procdef -{% block title %}
@@ -86,9 +85,7 @@
                 </li>
                 {% if user.is_authenticated %}
                   <li class="nav-item">
-                    <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}" href="{{ user_task_overview_url }}" aria-label="View your Tasks">
-                      Tasks
-                    </a>
+                    <a class="nav-link {% if request.path == user_task_overview_url %}active{% endif %}" href="{{ user_task_overview_url }}" aria-label="View your Tasks">Tasks</a>
                   </li>
                 {% endif %}
                 <li class="nav-item">
@@ -164,7 +161,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous" defer></script>
     <script src="{% static 'javascript/timer.js' %}" defer></script>
     {% block javascript %}
-
+      <script id="mcjs">
+        !(function (c, h, i, m, p) {
+          ;(m = c.createElement(h)), (p = c.getElementsByTagName(h)[0]), (m.async = 1), (m.src = i), p.parentNode.insertBefore(m, p)
+        })(document, 'script', 'https://chimpstatic.com/mcjs-connected/js/users/35aee893da3cd281da4054c8d/730807252aba43260dc85a851.js')
+      </script>
     {% endblock %}
   </body>
 </html>
