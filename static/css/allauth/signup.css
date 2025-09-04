@@ -1,0 +1,135 @@
+/* Signup – Visual Theme only (no spacing/positioning) */
+:root {
+    --signup-primary: #2563eb;
+    /* Brand Blue */
+    --signup-accent: #DAA520;
+    /* Gold accent */
+    --signup-surface: #ffffff;
+    --signup-border: rgba(2, 6, 23, .06);
+    --signup-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --signup-title: #0f172a;
+    /* slate-900 */
+    --signup-muted: #6b7280;
+    /* slate-500 */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --signup-surface: #0f172a;
+        /* slate-900 */
+        --signup-border: #243144;
+        --signup-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --signup-title: #e5e7eb;
+        /* slate-200 */
+        --signup-muted: #94a3b8;
+        /* slate-400 */
+    }
+}
+
+/* Card shell */
+.card {
+    background-color: var(--signup-surface);
+    border-color: var(--signup-border);
+    border-radius: 1rem;
+    box-shadow: var(--signup-shadow);
+    transition: box-shadow .2s ease, transform .12s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* Headings & text */
+h1,
+h2,
+h3 {
+    color: var(--signup-title);
+    letter-spacing: -0.01em;
+}
+
+.text-body-secondary {
+    color: var(--signup-muted) !important;
+}
+
+/* Links */
+a {
+    color: var(--signup-primary);
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    color: color-mix(in srgb, var(--signup-primary) 85%, white);
+}
+
+/* Form visuals */
+.form-label {
+    color: var(--signup-title);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    background-color: color-mix(in srgb, var(--signup-surface) 95%, #ffffff 5%);
+    border-color: var(--signup-border);
+    color: var(--signup-title);
+    border-radius: .75rem;
+}
+
+.form-control::placeholder {
+    color: color-mix(in srgb, var(--signup-muted) 70%, transparent);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: color-mix(in srgb, var(--signup-primary) 55%, transparent);
+    box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--signup-primary) 25%, transparent);
+    outline: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--signup-primary);
+    border-color: var(--signup-primary);
+}
+
+/* Buttons */
+.btn.btn-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--signup-primary) 92%, white 8%), var(--signup-primary));
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, .35);
+    transition: filter .2s ease, transform .1s ease;
+}
+
+.btn.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn.btn-primary:active {
+    transform: translateY(1px);
+    filter: brightness(.98);
+}
+
+.btn.btn-outline-secondary {
+    border-color: color-mix(in srgb, var(--signup-muted) 45%, transparent);
+    color: var(--signup-title);
+}
+
+.btn.btn-outline-secondary:hover {
+    background-color: color-mix(in srgb, var(--signup-surface) 90%, var(--signup-muted) 10%);
+}
+
+/* Error visuals */
+.invalid-feedback,
+.text-danger {
+    color: #ef4444 !important;
+}
+
+/* Focus accessibility */
+:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--signup-primary) 55%, transparent);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
