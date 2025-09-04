@@ -103,19 +103,27 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     ]
 
-SITE_ID = 2
+SITE_ID = 1
 
-SOCIAL_ACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+########################
+# Google authentication settings - to be added later
+# Live Version has phising warning from Google
+# Need my own domain to get rid of this
+
+# SITE_ID = 2
+# SOCIAL_ACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
+########################
+
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 24
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -136,6 +144,7 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
 
 if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
