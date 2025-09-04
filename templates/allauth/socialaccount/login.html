@@ -1,47 +1,19 @@
-{% extends 'socialaccount/base.html' %}
+{% extends "socialaccount/base.html" %}
 {% load i18n %}
 
 {% block content %}
-  <section class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <div class="card border-0 shadow-sm">
-          <div class="card-body p-4">
-            {% if process == 'connect' %}
-              <h1 class="h4 mb-2">{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
-              <p class="text-body-secondary mb-4">
-                {% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}
-              </p>
-            {% else %}
-              <h1 class="h4 mb-2">{% blocktrans with provider.name as provider %}Sign In via {{ provider }}{% endblocktrans %}</h1>
-              <p class="text-body-secondary mb-4">
-                {% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}
-              </p>
-            {% endif %}
+{% if process == "connect" %}
+<h1>{% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}</h1>
 
-            <form method="post" class="d-flex gap-2 align-items-center">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-2">
-                {% if provider.id == 'google' %}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
-                    <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.8 31.9 29.3 35 24 35c-7.2 0-13-5.8-13-13S16.8 9 24 9c3.3 0 6.3 1.2 8.6 3.3l5.7-5.7C34.4 3.5 29.5 1.5 24 1.5 11.6 1.5 1.5 11.6 1.5 24S11.6 46.5 24 46.5 46.5 36.4 46.5 24c0-1.2-.1-2.4-.4-3.5z" />
-                    <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16.4 18.9 14 24 14c3.3 0 6.3 1.1 8.6 3l5.7-5.7C34.4 7.8 29.5 6 24 6c-7.5 0-14 4.3-17.7 10.7z" />
-                    <path fill="#4CAF50" d="M24 42c5.2 0 10-2 13.5-5.2l-6.2-5c-2 1.4-4.5 2.2-7.3 2.2-5.2 0-9.6-3.5-11.2-8.3l-6.6 5.1C9.9 37.7 16.4 42 24 42z" />
-                    <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.2-3.5 5.9-6.6 7.6l6.2 5C39.3 37.5 42 31.3 42 24c0-1.2-.1-2.4-.4-3.5z" />
-                  </svg>
-                {% endif %}
-                {% blocktrans with provider.name as provider %}Continue with {{ provider }}{% endblocktrans %}
-              </button>
+<p>{% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}</p>
+{% else %}
+<h1>{% blocktrans with provider.name as provider %}Sign In Via {{ provider }}{% endblocktrans %}</h1>
 
-              {% if process == 'connect' %}
-                <a href="{% url 'socialaccount_connections' %}" class="btn btn-outline-secondary">{% trans 'Cancel' %}</a>
-              {% else %}
-                <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">{% trans 'Cancel' %}</a>
-              {% endif %}
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<p>{% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}</p>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">{% trans "Continue" %}</button>
+</form>
 {% endblock %}
