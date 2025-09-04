@@ -103,7 +103,19 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     ]
 
-SITE_ID = 1
+SITE_ID = 2
+
+SOCIAL_ACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 24
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -126,6 +138,7 @@ else:
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/subscription/'
+LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_ADAPTER = 'prodef.adapters.CustomAccountAdapter'
 
 
