@@ -139,46 +139,46 @@
             </div>
           </section>
         {% endif %}
+          {% if task_checkup %}
+            <section class="card">
+              <div class="card-body d-flex flex-column align-center justify-center">
+                {% if task_checkup.comments %}
+                  <h4 class="h6 mb-2">Comments</h4>
+                  <p class="mb-3">{{ task_checkup.comments }}</p>
+                {% endif %}
 
-        
-          <section class="card">
-            <div class="card-body d-flex flex-column align-center justify-center">
-              {% if task_checkup.comments %}
-                <h4 class="h6 mb-2">Comments</h4>
-                <p class="mb-3">{{ task_checkup.comments }}</p>
-              {% endif %}
+                {% if task_checkup.image %}
+                  <h4 class="h6 mb-2">Uploaded proof Image</h4>
+                  <div class="mb-3">{{ task_checkup.image|render_image }}</div>
+                {% endif %}
 
-              {% if task_checkup.image %}
-                <h4 class="h6 mb-2">Uploaded proof Image</h4>
-                <div class="mb-3">{{ task_checkup.image|render_image }}</div>
-              {% endif %}
+                {% if task_checkup.text_file %}
+                  <h4 class="h6 mb-2">Uploaded proof Text File</h4>
+                  <div class="mb-3">{{ task_checkup.text_file|render_textfile }}</div>
+                {% endif %}
 
-              {% if task_checkup.text_file %}
-                <h4 class="h6 mb-2">Uploaded proof Text File</h4>
-                <div class="mb-3">{{ task_checkup.text_file|render_textfile }}</div>
-              {% endif %}
+                {% if task_checkup.audio_file %}
+                  <h4 class="h6 mb-2">Uploaded proof Audio File</h4>
+                  <div class="mb-3">{{ task_checkup.audio_file|render_audio }}</div>
+                {% endif %}
 
-              {% if task_checkup.audio_file %}
-                <h4 class="h6 mb-2">Uploaded proof Audio File</h4>
-                <div class="mb-3">{{ task_checkup.audio_file|render_audio }}</div>
-              {% endif %}
-
-              {% if perms.tasks.mark_done %}
-                <form method="post" class="mb-2 mt-2">
-                  {% csrf_token %}
-                  <div class="d-grid d-sm-flex gap-2">
-                    <button type="submit" name="done_checkbox" class="btn btn-primary">Mark as Done</button>
-                  </div>
-                </form>
-                <form method="post">
-                  {% csrf_token %}
-                  <div class="d-grid d-sm-flex gap-2">
-                    <button type="submit" name="failed_checkbox" class="btn btn-primary">Mark as Failed</button>
-                  </div>
-                </form>
-              {% endif %}
-            </div>
-          </section>
+                {% if perms.tasks.mark_done %}
+                  <form method="post" class="mb-2 mt-2">
+                    {% csrf_token %}
+                    <div class="d-grid d-sm-flex gap-2">
+                      <button type="submit" name="done_checkbox" class="btn btn-primary">Mark as Done</button>
+                    </div>
+                  </form>
+                  <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid d-sm-flex gap-2">
+                      <button type="submit" name="failed_checkbox" class="btn btn-primary">Mark as Failed</button>
+                    </div>
+                  </form>
+                {% endif %}
+              </div>
+            </section>
+          {% endif %}
       </div>
     </div>
   </section>

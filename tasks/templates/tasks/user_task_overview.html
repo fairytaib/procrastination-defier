@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-  {% if not subscription %}
+  {% if not subscription and not perms.tasks.mark_done %}
     <section class="container py-5 no-subscription">
       <div class="row justify-content-center">
         <div class="col-lg-8">

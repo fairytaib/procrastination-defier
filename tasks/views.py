@@ -96,7 +96,10 @@ def tasks_history(request):
 def view_task_details(request, task_id):
     """Display the details of a task."""
     user = request.user
-    user_points = UserPoints.objects.filter(user=user).first()
+    user_points, _ = UserPoints.objects.get_or_create(
+        user=request.user,
+        defaults={"points": 0}
+    )
     task = get_object_or_404(Task, id=task_id)
     task_checkup = Task_Checkup.objects.filter(
         task=task,
@@ -125,14 +128,17 @@ def view_task_details(request, task_id):
         elif "done_checkbox" in request.POST:
             if user.has_perm('tasks.mark_done'):
                 task.completed = True
+                user_points, _ = UserPoints.objects.get_or_create(
+                    user=request.user, defaults={"points": 0}
+                )
                 user_points.points += task.points or 0
                 if task.repetition:
                     task.completed = False
                     task.checkup_date = task.checkup_date + timedelta(
                         days=INTERVAL_TO_CHECKUP[task.interval]
                         )
-                else:
-                    task.completed = False
+                task.checkup_state = False
+                task.save(update_fields=["checkup_state"])
                 task.save(update_fields=["completed"])
                 user_points.save(update_fields=["points"])
                 messages.success(request, "Task marked as done.")
