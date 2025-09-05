@@ -107,9 +107,13 @@ def view_order_details(request, order_id):
             RewardHistory, id=order_id, user=request.user)
     else:
         order = get_object_or_404(RewardHistory, id=order_id)
-    order_details = get_object_or_404(
-        Order, order_item=order.reward, user=order.user
-        )
+    order_details = (
+        Order.objects
+        .filter(user=order.user, order_item=order.reward)
+        .order_by('-id')
+        .first()
+    )
+
     form = RewardHistoryForm(instance=order)
     if request.method == "POST":
         form = RewardHistoryForm(request.POST, instance=order)
