@@ -131,3 +131,39 @@ def view_order_details(request, order_id):
         'form': form
     }
     return render(request, 'checkout/order_details.html', context)
+
+
+@login_required
+def paginated_orders(request):
+    """Display a paginated list of user's order history with full details."""
+    # Get all orders with their related reward details
+    orders_list = RewardHistory.objects.select_related(
+        'reward', 'user'
+    ).filter(
+        user=request.user
+    ).order_by('-bought_at')
+
+    # Get shipping details for each order
+    orders_with_details = []
+    for order in orders_list:
+        shipping_details = Order.objects.filter(
+            user=request.user,
+            order_item=order.reward
+        ).order_by('-id').first()
+
+        orders_with_details.append({
+            'history': order,
+            'shipping': shipping_details,
+            'total_points': order.reward.cost if order.reward else 0,
+        })
+
+    # Setup pagination
+    paginator = Paginator(orders_with_details, 5)  # Show 5 orders per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    context = {
+        'page_obj': page_obj,
+        'total_orders': orders_list.count(),
+    }
+    return render(request, 'checkout/order_history.html', context)
