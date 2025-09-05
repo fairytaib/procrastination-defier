@@ -73,6 +73,10 @@
         </section>
       {% endif %}
 
+      {% if task_to_check.count == 0 and perms.tasks.mark_done %}
+        <div class="alert alert-info mb-0" role="alert">No tasks in checkup.</div>
+      {% endif %}
+
       {% comment %}Task to Check{% endcomment %}
       {% if task_to_check %}
         <section class="mb-5" aria-labelledby="open-tasks">

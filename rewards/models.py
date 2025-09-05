@@ -15,8 +15,43 @@ REWARD_TYPES = [
     ('other', 'Other'),
 ]
 
+# COUNTRY_CHOICES = [
+#     (country.alpha_2, country.name) for country in pycountry.countries
+# ]
+
 COUNTRY_CHOICES = [
-    (country.alpha_2, country.name) for country in pycountry.countries
+    # ('US', 'United States'),
+    # ('CA', 'Canada'),
+    # ('GB', 'United Kingdom'),
+    # ('AU', 'Australia'),
+    # ('IN', 'India'),
+    # ('JP', 'Japan'),
+    # ('CN', 'China'),
+    # ('BR', 'Brazil'),
+    # Only European countries for the time being
+    ('FR', 'France'),
+    ('DE', 'Germany'),
+    ('ES', 'Spain'),
+    ('IT', 'Italy'),
+    ('NL', 'Netherlands'),
+    ('SE', 'Sweden'),
+    ('NO', 'Norway'),
+    ('FI', 'Finland'),
+    ('DK', 'Denmark'),
+    ('BE', 'Belgium'),
+    ('CH', 'Switzerland'),
+    ('AT', 'Austria'),
+    ('IE', 'Ireland'),
+    ('PT', 'Portugal'),
+    ('GR', 'Greece'),
+    ('PL', 'Poland'),
+    ('CZ', 'Czech Republic'),
+    ('HU', 'Hungary'),
+    ('RO', 'Romania'),
+    ('BG', 'Bulgaria'),
+    ('HR', 'Croatia'),
+    ('SI', 'Slovenia'),
+    ('SK', 'Slovakia'),
 ]
 
 
