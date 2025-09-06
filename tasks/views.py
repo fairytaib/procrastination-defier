@@ -75,24 +75,6 @@ def user_task_overview(request):
 
 
 @login_required
-def tasks_history(request):
-    qs = (Task.objects
-          .filter(user=request.user, completed=True)
-          .order_by('-created_at'))
-
-    paginator = Paginator(qs, 20)
-    page_number = request.GET.get('page', 1)
-    page_obj = paginator.get_page(page_number)
-
-    context = {
-        "tasks": page_obj.object_list,
-        "page_obj": page_obj,
-        "is_paginated": page_obj.has_other_pages()
-    }
-    return render(request, "tasks/task_history.html", context)
-
-
-@login_required
 def view_task_details(request, task_id):
     """Display the details of a task."""
     user = request.user

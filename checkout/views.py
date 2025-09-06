@@ -134,7 +134,7 @@ def view_order_details(request, order_id):
 
 
 @login_required
-def paginated_orders(request):
+def order_history(request):
     """Display a paginated list of user's order history with full details."""
     # Get all orders with their related reward details
     orders_list = RewardHistory.objects.select_related(
@@ -161,7 +161,7 @@ def paginated_orders(request):
     paginator = Paginator(orders_with_details, 5)  # Show 5 orders per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
+
     context = {
         'page_obj': page_obj,
         'total_orders': orders_list.count(),
