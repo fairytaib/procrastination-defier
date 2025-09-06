@@ -29,6 +29,7 @@
             <div class="card-body d-flex flex-column">
               <h5 class="card-title mb-2 text-truncate">{{ reward.name }}</h5>
               <p class="card-text text-body-secondary mb-3">{{ reward.cost }} Points</p>
+              <p class="card-text text-body-secondary mb-3">Available in: {{ reward.available_countries }}</p>
               <p class="card-text text-body-secondary mb-3">{{ reward.description }}</p>
               <a href="{% url 'reward_details' reward.id %}" class="btn btn-primary mt-auto w-100">See Details</a>
             </div>

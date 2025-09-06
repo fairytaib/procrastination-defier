@@ -1,7 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from multiselectfield import MultiSelectField
-import pycountry
 
 from django.contrib.auth.models import User
 
@@ -11,6 +10,8 @@ REWARD_TYPES = [
     ('travel', 'Travel'),
     ('wellness', 'Wellness'),
     ('food', 'Food'),
+    ('fashion', 'Fashion'),
+    ('electronics', 'Electronics'),
     ('entertainment', 'Entertainment'),
     ('other', 'Other'),
 ]
@@ -29,6 +30,7 @@ COUNTRY_CHOICES = [
     # ('CN', 'China'),
     # ('BR', 'Brazil'),
     # Only European countries for the time being
+    ('NOLIMIT', 'Everywhere'),
     ('FR', 'France'),
     ('DE', 'Germany'),
     ('ES', 'Spain'),
