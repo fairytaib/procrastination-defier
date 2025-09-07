@@ -54,7 +54,9 @@
           </div>
         {% endif %}
       </header>
-
+      <section class="mb-5" aria-labelledby="Page description">
+        <p class="text-muted">Here you can see an overview of your tasks. You can add new tasks, see tasks that are in checkup, and tasks that are done. If a task is not done in time, a fee will be charged to your account.</p>
+      </section>
       <!-- Open / Undone -->
       {% if not perms.tasks.mark_done %}
         <section class="mb-5" aria-labelledby="open-tasks">
