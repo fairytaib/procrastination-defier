@@ -98,13 +98,13 @@ class CheckTaskForm(forms.ModelForm):
             'comments': forms.Textarea(
                 attrs={'class': 'form-control', 'rows': 3}),
             'image': forms.FileInput(
-                attrs={'class': 'form-control-file'}),
+                attrs={'class': 'form-control'}),
             'video': forms.FileInput(
-                attrs={'class': 'form-control-file'}),
+                attrs={'class': 'form-control'}),
             'text_file': forms.FileInput(
-                attrs={'class': 'form-control-file'}),
+                attrs={'class': 'form-control'}),
             'audio_file': forms.FileInput(
-                attrs={'class': 'form-control-file'}),
+                attrs={'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):

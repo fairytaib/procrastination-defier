@@ -31,7 +31,7 @@ class ProfilePictureForm(forms.ModelForm):
 
     widgets = {
             'profile_picture': forms.FileInput(
-                attrs={'class': 'form-control-file'}),
+                attrs={'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):

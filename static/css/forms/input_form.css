@@ -1,0 +1,52 @@
+input[type="file"].form-control {
+    font: inherit;
+    color: var(--task-title);
+    background-color: color-mix(in srgb, var(--task-surface) 95%, #ffffff 5%);
+    border: 1px solid var(--task-border);
+    border-radius: .75rem;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset;
+    transition: box-shadow .2s ease, filter .2s ease, border-color .2s ease;
+}
+
+input[type="file"].form-control:hover {
+    filter: brightness(1.02);
+}
+
+input[type="file"].form-control:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--task-primary) 55%, transparent);
+    outline-offset: 3px;
+}
+
+input[type="file"].form-control::file-selector-text {
+    color: var(--task-title);
+}
+
+input[type="file"].form-control::file-selector-button {
+    font: inherit;
+    border: 0;
+    color: #fff;
+    border-inline-end: 1px solid color-mix(in srgb, var(--task-border) 80%, transparent);
+    border-top-left-radius: .75rem;
+    border-bottom-left-radius: .75rem;
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    transition: filter .2s ease, box-shadow .2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+}
+
+input[type="file"].form-control:hover::file-selector-button {
+    filter: brightness(1.05);
+}
+
+input[type="file"].form-control::-webkit-file-upload-button {
+    font: inherit;
+    border: 0;
+    color: #fff;
+    border-inline-end: 1px solid color-mix(in srgb, var(--task-border) 80%, transparent);
+    border-top-left-radius: .75rem;
+    border-bottom-left-radius: .75rem;
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--task-primary) 92%, white 8%), var(--task-primary));
+    transition: filter .2s ease, box-shadow .2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+}
