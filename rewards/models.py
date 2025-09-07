@@ -5,20 +5,15 @@ from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 
 REWARD_TYPES = [
-    ('digital', 'Digital'),
-    ('discount', 'Discount Code'),
-    ('travel', 'Travel'),
-    ('wellness', 'Wellness'),
-    ('food', 'Food'),
-    ('fashion', 'Fashion'),
-    ('electronics', 'Electronics'),
-    ('entertainment', 'Entertainment'),
-    ('other', 'Other'),
+    ('Digital', 'Digital'),
+    ('Discount Code', 'Discount Code'),
+    ('Travel', 'Travel'),
+    ('Wellness', 'Wellness'),
+    ('Food', 'Food'),
+    ('Electronics', 'Electronics'),
+    ('Entertainment', 'Entertainment'),
+    ('Other', 'Other'),
 ]
-
-# COUNTRY_CHOICES = [
-#     (country.alpha_2, country.name) for country in pycountry.countries
-# ]
 
 COUNTRY_CHOICES = [
     # ('US', 'United States'),
