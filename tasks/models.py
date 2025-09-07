@@ -4,9 +4,9 @@ from datetime import timedelta, date
 from cloudinary.models import CloudinaryField
 
 INTERVAL = (
-    ('weekly', 'Weekly'),
-    ('biweekly', 'Biweekly'),
-    ('monthly', 'Monthly'),
+    ('weekly', 'Weekly / In a week'),
+    ('biweekly', 'Biweekly / In two weeks'),
+    ('monthly', 'Monthly / In a month'),
 )
 
 INTERVAL_TO_CHECKUP = {
@@ -47,7 +47,6 @@ class Task(models.Model):
     description = models.TextField(max_length=500, blank=False, null=False)
     goal_description = models.TextField(
         max_length=500,
-        help_text="Describe the goal of this task.",
         blank=False, null=False
     )
     completed = models.BooleanField(default=False)

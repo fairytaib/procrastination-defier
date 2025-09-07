@@ -26,6 +26,36 @@ class TaskForm(forms.ModelForm):
                   'repetition',
                   'interval']
 
+        labels = {
+            'title': 'Task Title',
+            'description': 'Task Description',
+            'goal_description': 'Goal Description',
+            'repetition': 'Is this a repeating task?',
+            'interval': 'When do you want this task checked?',
+        }
+
+        widgets = {
+            'title': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Task Title'}
+                ),
+            'description': forms.Textarea(
+                attrs={'class': 'form-control',
+                       'placeholder': 'Describe the task as detailed as possible',
+                       'rows': 3}
+                ),
+            'goal_description': forms.Textarea(
+                attrs={'class': 'form-control',
+                       'placeholder': 'Describe what you want to achieve so we can check if you made it',
+                       'rows': 3}
+                ),
+            'repetition': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}
+                ),
+            'interval': forms.Select(
+                attrs={'class': 'form-select'}
+                ),
+        }
+
     def clean_title(self):
         title = self.cleaned_data.get('title')
         if not re.match(r'^[A-Za-z0-9\s]+$', title):
