@@ -42,6 +42,11 @@ def _normalize_codes(value):
     return out
 
 
+def _code_to_label(code, choices):
+    c = str(code).strip().upper()
+    return choices.get(c) or FALLBACK_LABELS.get(c) or c
+
+
 @register.filter(name='country_labels')
 def country_labels(value):
     """Convert country codes to their corresponding labels."""
@@ -52,3 +57,18 @@ def country_labels(value):
         label = code_to_label.get(code) or FALLBACK_LABELS.get(code) or code
         labels.append(label)
     return ", ".join(labels)
+
+
+@register.filter(name='country_labels_preview')
+def country_labels_preview(value, n=3):
+    """Convert country codes to their corresponding labels,
+    limiting to n labels."""
+    try:
+        n = int(n)
+    except Exception:
+        n = 3
+    choices = _choices_map()
+    labels = [_code_to_label(c, choices) for c in _normalize_codes(value)]
+    if len(labels) <= n:
+        return ", ".join(labels)
+    return ", ".join(labels[:n]) + ", ..."
