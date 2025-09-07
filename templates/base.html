@@ -22,6 +22,7 @@
 {% comment %}Rewards{% endcomment %}
 {% url 'rewards_list' as rewards_list_url %}
 {% url 'reward_details' as reward_details_url %}
+{% url 'add_reward' as add_reward_url %}
 
 {% comment %}Tasks{% endcomment %}
 {% url 'add_task' as add_task_url %}
@@ -96,6 +97,12 @@
                     <a class="nav-link {% if request.path == user_order_overview_url %}active{% endif %}" href="{{ user_order_overview_url }}" aria-label="View placed Orders">Orders</a>
                   </li>
                 {% endif %}
+                {% if user.is_authenticated and perms.tasks.mark_done %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if request.path == add_reward_url %}active{% endif %}" href="{{ add_reward_url }}" aria-label="View placed Orders">Add Rewards</a>
+                  </li>
+                {% endif %}
+                
                 {% if not user.is_authenticated %}
                   <li class="nav-item">
                     <a class="nav-link {% if request.path == subscription_view_url %}active{% endif %}" href="{{ subscription_view_url }}" aria-label="View Subscription Plans">Subscription Plans</a>

@@ -7,4 +7,5 @@ urlpatterns = [
          views.view_details,
          name='reward_details'),
     path("rewards/history/", views.order_history, name="rewards_history"),
+    path("add_rewards/", views.add_reward, name="add_reward"),
 ]

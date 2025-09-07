@@ -75,8 +75,9 @@ class Reward(models.Model):
     )
     available_countries = MultiSelectField(
         choices=COUNTRY_CHOICES,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
+        default=['Everywhere'],
         verbose_name="Reward available in Countries",
     )
     created_at = models.DateTimeField(auto_now_add=True)

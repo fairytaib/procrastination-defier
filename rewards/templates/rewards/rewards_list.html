@@ -74,7 +74,12 @@
 
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title mb-2 text-truncate">{{ reward.name }}</h5>
-                <p class="card-text text-body-secondary mb-3">{{ reward.cost }} Points</p>
+                {% if reward.stock > 0 %}
+                  <p class="card-text text-body-secondary mb-3">{{ reward.cost }} Points</p>
+                  
+                {% else %}
+                  <span class="badge bg-primary-subtle text-primary px-3 py-2 m-3">Out of stock</span>
+                {% endif %}
                 <p class="card-text text-body-secondary mb-3">
                   Available in:
                   <span title="{{ reward.available_countries|country_labels }}">

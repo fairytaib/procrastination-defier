@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Reward, RewardHistory
+from .forms import RewardForm
+from django.contrib import messages
 
 # Fallback-Mapping for Old stocks (ISO2 -> Name) + Special values
 COUNTRY_CODE_TO_NAME = {
@@ -80,6 +82,35 @@ def view_details(request, reward_id):
     }
 
     return render(request, "rewards/view_reward_details.html", context)
+
+
+@login_required
+def add_reward(request):
+    """Render the add reward form."""
+    form = RewardForm(request.POST or None)
+    user = request.user
+    if request.method == "POST":
+        if user.has_perm('tasks.mark_done'):
+            if form.is_valid():
+                reward = form.save(commit=False)
+                reward.save()
+                messages.success(request, "Reward added successfully.")
+                if 'save_and_add' in request.POST:
+                    return redirect("add_reward")
+                else:
+                    return redirect("rewards_list")
+            else:
+                form = RewardForm()
+                messages.error(
+                    request, "Failed to add reward. Please correct the errors below.")
+        else:
+            messages.error(
+                request, "You do not have permission to add rewards.")
+            return redirect("rewards_list")
+    context = {
+        "form": form,
+    }
+    return render(request, "rewards/add_reward_form.html", context)
 
 
 @login_required

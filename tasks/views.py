@@ -7,7 +7,6 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.conf import settings
 from django.urls import reverse
-from django.core.paginator import Paginator
 
 # App imports
 from subscription.utils import can_add_task, refresh_overdue_flags
