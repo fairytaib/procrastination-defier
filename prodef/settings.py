@@ -141,6 +141,7 @@ STRIPE_FEE_PRICES = {
     'monthly':  'price_1S2BDeALgEprtAEcKy0XsA4R',
 }
 
+
 WSGI_APPLICATION = 'prodef.wsgi.application'
 
 

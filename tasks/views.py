@@ -88,6 +88,7 @@ def view_task_details(request, task_id):
         deleted=False
         ).filter(
         Q(image__isnull=False) |
+        Q(video__isnull=False) |
         Q(text_file__isnull=False) |
         Q(audio_file__isnull=False) |
         Q(comments__isnull=False)
@@ -107,6 +108,10 @@ def view_task_details(request, task_id):
                     request, "Proof uploaded successfully."
                     )
                 return redirect("user_task_overview")
+            else:
+                messages.error(
+                    request, "There was an error with your submission."
+                    )
         elif "done_checkbox" in request.POST:
             if user.has_perm('tasks.mark_done'):
                 task.completed = True

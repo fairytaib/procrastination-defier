@@ -5,6 +5,18 @@ from PIL import Image, UnidentifiedImageError
 import re
 
 
+TASKS_MAX_UPLOAD_SIZES = {
+    'image': 5 * 1024 * 1024,        # 5 MB
+    'text_file': 10 * 1024 * 1024,   # 10 MB
+    'audio_file': 20 * 1024 * 1024,  # 20 MB
+    'video': 100 * 1024 * 1024,  # 100 MB
+}
+
+
+def _mb(bytes_):
+    return int(bytes_ / (1024*1024))
+
+
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
@@ -41,11 +53,13 @@ class CheckTaskForm(forms.ModelForm):
         model = Task_Checkup
         fields = ['comments',
                   'image',
+                  'video',
                   'text_file',
                   'audio_file']
 
         labels = {
                 'image': 'Image Proof (JPEG, PNG, JPG or WEBP)',
+                'video': 'Video Proof (MP4, WEBM, MOV, AVI, MKV or MPEG)',
                 'text_file': 'Text File Proof (TXT, DOCX, PDF)',
                 'audio_file': 'Audio File Proof (MP3, WAV)',
             }
@@ -55,6 +69,8 @@ class CheckTaskForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'rows': 3}),
             'image': forms.FileInput(
                 attrs={'class': 'form-control-file'}),
+            'video': forms.FileInput(
+                attrs={'class': 'form-control-file'}),
             'text_file': forms.FileInput(
                 attrs={'class': 'form-control-file'}),
             'audio_file': forms.FileInput(
@@ -62,19 +78,37 @@ class CheckTaskForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        """Initialize the form and set CSS classes for fields."""
         super().__init__(*args, **kwargs)
-        self.fields[
-            'image'
-        ].widget.attrs['class'] = 'form-control-file'
-        self.fields[
-            'text_file'
-        ].widget.attrs['class'] = 'form-control-file'
-        self.fields[
-            'audio_file'
-        ].widget.attrs['class'] = 'form-control-file'
+        self.fields['image'].help_text = (
+            f"Upload an image for this checkup – max {
+                _mb(TASKS_MAX_UPLOAD_SIZES['image'])} MB"
+        )
+        self.fields['video'].help_text = (
+            f"Upload a video for this checkup – max {
+                _mb(TASKS_MAX_UPLOAD_SIZES['video'])} MB"
+        )
+        self.fields['text_file'].help_text = (
+            f"Upload a text file for this checkup – max {
+                _mb(TASKS_MAX_UPLOAD_SIZES['text_file'])} MB"
+        )
+        self.fields['audio_file'].help_text = (
+            f"Upload an audio file for this checkup – max {
+                _mb(TASKS_MAX_UPLOAD_SIZES['audio_file'])} MB"
+        )
+
+    def _validate_size(self, f, kind: str):
+        """Validate the size of an uploaded file."""
+        if not f:
+            return
+        max_bytes = TASKS_MAX_UPLOAD_SIZES.get(kind)
+        if max_bytes and getattr(f, 'size', 0) > max_bytes:
+            mb = int(max_bytes / (1024 * 1024))
+            raise ValidationError(
+                f"File too large. Max allowed for {kind} is {mb} MB."
+                )
 
     def clean_image(self):
+        """Validate uploaded image file type."""
         f = self.cleaned_data.get('image')
         if not f or getattr(f, 'size', 0) == 0:
             return None
@@ -90,9 +124,36 @@ class CheckTaskForm(forms.ModelForm):
             raise ValidationError(
                 "Only JPEG, JPG, PNG or WEBP images are allowed."
                 )
+        self._validate_size(f, 'image')
         return f
 
+    def clean_video(self):
+        """Validate uploaded video file type."""
+        f = self.cleaned_data.get('video')
+        if not f:
+            return None
+
+        ext = f.name.rsplit('.', 1)[-1].lower() if '.' in f.name else ''
+        ct = getattr(f, 'content_type', '')
+
+        allowed_ext = {'mp4', 'webm', 'mov', 'avi', 'mkv', 'mpeg', 'mpg'}
+        allowed_ct = {
+            'video/mp4', 'video/webm', 'video/quicktime',  # mov
+            'video/x-msvideo',                             # avi
+            'video/x-matroska', 'video/mpeg'
+        }
+
+        if ext not in allowed_ext and ct not in allowed_ct:
+            raise ValidationError(
+                "Only MP4, WEBM, MOV, AVI, MKV or MPEG are allowed."
+                )
+
+        self._validate_size(f, 'video')
+        return f
+
+
     def clean_text_file(self):
+        """Validate uploaded text file type."""
         f = self.cleaned_data.get('text_file')
         if not f or getattr(f, 'size', 0) == 0:
             return None
@@ -106,6 +167,7 @@ class CheckTaskForm(forms.ModelForm):
         }
         if ext not in allowed_ext and ct not in allowed_ct:
             raise ValidationError("Only PDF, TXT or DOCX files are allowed.")
+        self._validate_size(f, 'text_file')
         return f
 
     def clean_audio_file(self):
@@ -116,4 +178,5 @@ class CheckTaskForm(forms.ModelForm):
         allowed_ct = {'audio/mpeg', 'audio/wav'}
         if getattr(audio_file, 'content_type', None) not in allowed_ct:
             raise ValidationError("Only MP3 or WAV files are allowed.")
+        self._validate_size(audio_file, 'audio_file')
         return audio_file

@@ -124,3 +124,15 @@ def render_audio(value):
         f'</audio>'
     )
     return mark_safe(html)
+
+
+@register.filter(name='render_video')
+def render_video(filefield):
+    if not filefield:
+        return ''
+    html = f'''
+    <video controls style="max-width: 100%; height: auto;">
+      <source src="{filefield.url}">
+      Your browser does not support the video tag.
+    </video>'''
+    return mark_safe(html)

@@ -36,7 +36,7 @@
 }
 
 /* Card look & feel */
-.no-subscription .bg-light {
+.no-subscription {
     background: linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .8)), var(--ns-surface) !important;
     border-color: var(--ns-surface-border) !important;
     border-radius: var(--ns-radius) !important;
@@ -113,7 +113,7 @@
 
 /* Responsive tweaks */
 @media (max-width: 575.98px) {
-    .no-subscription .bg-light {
+    .no-subscription {
         padding: 1.25rem !important;
         /* slightly tighter on XS */
     }
@@ -134,7 +134,7 @@
         --ns-surface-border: rgba(255, 255, 255, .08);
     }
 
-    .no-subscription .bg-light {
+    .no-subscription {
         background: linear-gradient(180deg, rgba(31, 41, 55, .9), rgba(31, 41, 55, .85)), var(--ns-surface) !important;
         color: #e5e7eb;
         /* slate-200 */

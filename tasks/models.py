@@ -111,19 +111,23 @@ class Task_Checkup(models.Model):
                              related_name='checkups')
     image = CloudinaryField(
         resource_type='image', blank=True, null=True,
-        help_text="Upload an image for this checkup."
+        help_text="Upload an image for this checkup"
+    )
+    video = CloudinaryField(
+        resource_type='video', blank=True, null=True,
+        help_text="Upload a video for this checkup"
     )
     text_file = CloudinaryField(
         resource_type='raw', blank=True, null=True,
-        help_text="Upload a text file for this checkup."
+        help_text="Upload a text file for this checkup"
     )
     audio_file = CloudinaryField(
         resource_type='video', blank=True, null=True,
-        help_text="Upload an audio file for this checkup."
+        help_text="Upload an audio file for this checkup"
     )
     comments = models.TextField(
         blank=True, null=True,
-        help_text="Add any comments for this checkup."
+        help_text="Add a comment for this checkup"
     )
     uploaded_at = models.DateTimeField(auto_now_add=True)
     delete_after_days = models.PositiveIntegerField(default=30)
@@ -138,6 +142,7 @@ class Task_Checkup(models.Model):
             'image': 'image',
             'text_file': 'raw',
             'audio_file': 'video',
+            'video': 'video',
         }
         for field, rtype in mapping.items():
             f = getattr(self, field)

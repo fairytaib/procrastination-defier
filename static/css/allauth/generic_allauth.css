@@ -141,27 +141,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Alerts & status notes (success/info/error) */
-.alert {
-    border: none;
-    border-radius: .75rem;
-}
-
-.alert-info {
-    background-color: color-mix(in srgb, var(--auth-primary) 12%, transparent);
-    color: color-mix(in srgb, var(--auth-primary) 70%, black);
-}
-
-.alert-success {
-    background-color: color-mix(in srgb, var(--auth-success) 14%, transparent);
-    color: color-mix(in srgb, var(--auth-success) 70%, black);
-}
-
-.alert-danger,
-.alert-error {
-    background-color: color-mix(in srgb, var(--auth-danger) 12%, transparent);
-    color: color-mix(in srgb, var(--auth-danger) 75%, black);
-}
 
 /* Social login block (if present) — mild visual harmonization */
 .card .list-unstyled a.btn {
