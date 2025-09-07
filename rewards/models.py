@@ -89,10 +89,18 @@ class Reward(models.Model):
 class RewardHistory(models.Model):
     """A model to track the history of rewards bought by users."""
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             related_name='reward_history')
-    reward = models.ForeignKey(Reward, on_delete=models.CASCADE,
-                               related_name='reward_history')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='reward_history'
+    )
+    reward = models.ForeignKey(
+        Reward,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='reward_history'
+    )
     bought_at = models.DateTimeField(auto_now_add=True)
     reward_sent = models.BooleanField(default=False)
 
