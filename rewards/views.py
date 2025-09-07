@@ -115,6 +115,7 @@ def add_reward(request):
 
 @login_required
 def delete_reward(request, reward_id):
+    """Delete a reward."""
     reward = get_object_or_404(Reward, id=reward_id)
     if request.method == "POST":
         if not request.user.has_perm('tasks.mark_done'):
@@ -126,6 +127,27 @@ def delete_reward(request, reward_id):
         return redirect("rewards_list")
     # We won't render a separate page; POST only from the inline modal.
     return redirect("view_reward_details", reward_id=reward_id)
+
+
+@login_required
+def edit_reward(request, reward_id):
+    """Edit a reward."""
+    reward = get_object_or_404(Reward, id=reward_id)
+    form = RewardForm(instance=reward)
+
+    if request.method == "POST":
+        form = RewardForm(request.POST, request.FILES, instance=reward)
+        if not request.user.has_perm('tasks.mark_done'):
+            messages.error(
+                request, "You do not have permission to edit rewards.")
+            return redirect("rewards_list")
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Reward updated successfully.")
+            return redirect("view_reward_details", reward_id=reward.id)
+    return render(request, "rewards/edit_reward_form.html", {
+        "form": form, "reward": reward
+        })
 
 
 @login_required

@@ -9,4 +9,5 @@ urlpatterns = [
     path("rewards/history/", views.order_history, name="rewards_history"),
     path("add_rewards/", views.add_reward, name="add_reward"),
     path("<int:reward_id>/delete/", views.delete_reward, name="delete_reward"),
+    path("<int:reward_id>/edit/", views.edit_reward, name="edit_reward"),
 ]

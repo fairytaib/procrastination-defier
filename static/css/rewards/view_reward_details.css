@@ -76,3 +76,14 @@ h1.h3 {
 .btn.btn-primary.btn-lg:active {
     transform: translateY(1px);
 }
+
+.edit-icon {
+    font-size: 1.25rem;
+    border-radius: 50%;
+    background-color: #e7edfd;
+    color: var(--bs-secondary);
+}
+
+.edit-icon:hover {
+    background-color: #bfbebe91;
+}

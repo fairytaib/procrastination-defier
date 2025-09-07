@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block css %}
-
+  <link rel="stylesheet" href="{% static 'css/rewards/view_reward_details.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -31,7 +31,13 @@
       <div class="col-lg-6">
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body d-flex flex-column">
-            <h1 class="h3 fw-bold mb-2">{{ reward.name }}</h1>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h1 class="h3 fw-bold mb-2">{{ reward.name }}</h1>
+              {% if user.is_authenticated and perms.tasks.mark_done %}
+                <a href="{% url 'edit_reward' reward.id %}" class="btn btn-link p-0 text-decoration-none edit-icon"><i class="bi bi-pen-fill p-2"></i></a>
+              {% endif %}
+            </div>
+            
             <p class="text-body-secondary mb-3">{{ reward.description }}</p>
             <div class="d-flex align-items-center gap-2 mb-4">
               <p class="card-text text-body-secondary mb-3">Available in: {{ reward.available_countries|country_labels }}</p>
