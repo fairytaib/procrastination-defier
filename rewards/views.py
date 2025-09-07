@@ -114,6 +114,21 @@ def add_reward(request):
 
 
 @login_required
+def delete_reward(request, reward_id):
+    reward = get_object_or_404(Reward, id=reward_id)
+    if request.method == "POST":
+        if not request.user.has_perm('tasks.mark_done'):
+            messages.error(
+                request, "You do not have permission to delete rewards.")
+            return redirect("rewards_list")
+        reward.delete()
+        messages.success(request, "Reward deleted successfully.")
+        return redirect("rewards_list")
+    # We won't render a separate page; POST only from the inline modal.
+    return redirect("view_reward_details", reward_id=reward_id)
+
+
+@login_required
 def order_history(request):
     """"""
     rewards = (RewardHistory.objects.filter(
