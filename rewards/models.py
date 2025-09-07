@@ -30,7 +30,7 @@ COUNTRY_CHOICES = [
     # ('CN', 'China'),
     # ('BR', 'Brazil'),
     # Only European countries for the time being
-    ('NOLIMIT', 'Everywhere'),
+    ('Everywhere', 'Everywhere'),
     ('FR', 'France'),
     ('DE', 'Germany'),
     ('ES', 'Spain'),
