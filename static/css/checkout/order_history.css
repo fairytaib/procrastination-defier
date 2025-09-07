@@ -1,0 +1,144 @@
+/* Order History – Visual theme only (no spacing/positioning) */
+:root {
+    --order-primary: #2563eb;
+    /* Brand Blue */
+    --order-accent: #DAA520;
+    /* Gold accent */
+    --order-surface: #ffffff;
+    --order-surface-alt: #f8fafc;
+    --order-border: rgba(2, 6, 23, .06);
+    --order-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --order-title: #0f172a;
+    /* slate-900 */
+    --order-muted: #6b7280;
+    /* slate-500 */
+    --order-success: #10b981;
+    --order-warn: #f59e0b;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --order-surface: #0f172a;
+        /* slate-900 */
+        --order-surface-alt: #0b1220;
+        --order-border: #243144;
+        --order-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --order-title: #e5e7eb;
+        /* slate-200 */
+        --order-muted: #94a3b8;
+        /* slate-400 */
+        --order-success: #34d399;
+        --order-warn: #fbbf24;
+    }
+}
+
+/* Headings & body tone */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--order-title);
+    letter-spacing: -.01em;
+}
+
+.text-muted,
+.text-body-secondary {
+    color: var(--order-muted) !important;
+}
+
+/* Cards */
+.card {
+    background-color: var(--order-surface);
+    border-color: var(--order-border);
+    border-radius: 1rem;
+    box-shadow: var(--order-shadow);
+    transition: box-shadow .2s ease, transform .12s ease, filter .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* Card headers (top summary + each order row header) */
+.card-header.bg-primary {
+    background-image: linear-gradient(180deg,
+            color-mix(in srgb, var(--order-primary) 88%, white 12%), var(--order-primary));
+    color: #fff;
+    border-bottom-color: color-mix(in srgb, #000 12%, transparent);
+}
+
+.card-header.bg-light {
+    background-color: color-mix(in srgb, var(--order-surface-alt) 100%, transparent);
+    color: var(--order-title);
+    border-bottom-color: var(--order-border);
+}
+
+/* Tiny title in header */
+.card-header .card-title {
+    color: currentColor;
+}
+
+/* Status badge (Shipped / Pending) */
+.badge.bg-success {
+    background-color: color-mix(in srgb, var(--order-success) 18%, transparent) !important;
+    color: color-mix(in srgb, var(--order-success) 70%, black) !important;
+    border: 1px solid color-mix(in srgb, var(--order-success) 35%, transparent);
+    letter-spacing: .04em;
+}
+
+.badge.bg-warning {
+    background-color: color-mix(in srgb, var(--order-warn) 18%, transparent) !important;
+    color: color-mix(in srgb, var(--order-warn) 75%, black) !important;
+    border: 1px solid color-mix(in srgb, var(--order-warn) 35%, transparent);
+    letter-spacing: .04em;
+}
+
+/* Reward image (right column) – subtle visual boost */
+.img-fluid.rounded {
+    box-shadow: 0 10px 24px rgba(2, 6, 23, .12);
+    filter: saturate(1.04) contrast(1.02);
+}
+
+/* “You haven't placed any orders yet.” info tone */
+.alert-info {
+    background-color: color-mix(in srgb, var(--order-primary) 12%, transparent);
+    color: color-mix(in srgb, var(--order-primary) 70%, black);
+    border: none;
+    border-radius: .75rem;
+}
+
+/* Footer button (View Full Details) */
+.btn.btn-outline-primary {
+    border-color: color-mix(in srgb, var(--order-primary) 55%, transparent);
+    color: color-mix(in srgb, var(--order-primary) 80%, black);
+}
+
+.btn.btn-outline-primary:hover {
+    background-color: color-mix(in srgb, var(--order-primary) 12%, transparent);
+}
+
+/* Pagination look */
+.pagination .page-link {
+    color: var(--order-title);
+    border-color: var(--order-border);
+    background-color: color-mix(in srgb, var(--order-surface) 98%, #fff 2%);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--order-primary);
+    border-color: var(--order-primary);
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background-color: color-mix(in srgb, var(--order-primary) 10%, var(--order-surface));
+}
+
+/* Focus accessibility */
+:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--order-primary) 55%, transparent);
+    outline-offset: 3px;
+    border-radius: 10px;
+}

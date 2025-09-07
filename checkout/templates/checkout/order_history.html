@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}
+  Order History
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/checkout/order_history.css' %}" />
+{% endblock %}
 {% block content %}
   <div class="container py-5">
     <h1 class="mb-4">Order History</h1>
@@ -16,7 +21,7 @@
 
       {% for order_item in page_obj %}
         <div class="card mb-3 shadow-sm">
-          <div class="card-header bg-light">
+          <div class="card-header">
             <div class="row align-items-center">
               <div class="col">
                 <h5 class="mb-0">Order from {{ order_item.history.bought_at|date:'F j, Y' }}</h5>
@@ -24,11 +29,19 @@
               <div class="col-auto">
                 <span class="badge {% if order_item.history.reward_sent %}
                     
+                    
+                    
                     bg-success
+
+
 
                   {% else %}
                     
+                    
+                    
                     bg-warning
+
+
 
                   {% endif %}">
                   {{ order_item.history.reward_sent|yesno:'Shipped,Pending' }}
@@ -38,35 +51,44 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-md-8">
-                <h6 class="card-subtitle mb-2 text-muted">Reward Details</h6>
-                <p class="card-text">
-                  <strong>Item:</strong> {{ order_item.history.reward.name }}<br />
-                  <strong>Points Used:</strong> {{ order_item.total_points }} points<br />
-                </p>
-
-                {% if order_item.shipping %}
-                  <h6 class="card-subtitle mb-2 text-muted mt-3">Shipping Details</h6>
+              <div class="d-flex flex-column justify-content-between align-items-start gap-4 col-md-8">
+                <div>
+                  <h6 class="card-subtitle mb-2 text-muted">Reward Details</h6>
                   <p class="card-text">
-                    {{ order_item.shipping.first_name }} {{ order_item.shipping.last_name }}<br />
-                    {{ order_item.shipping.street_address }}
-                    {% if order_item.shipping.apartment %}
-                      , {{ order_item.shipping.apartment }}
-                    {% endif %}<br />
-                    {{ order_item.shipping.city }}, {{ order_item.shipping.postal_code }}<br />
-                    {{ order_item.shipping.country }}
+                    <strong>Item:</strong> {{ order_item.history.reward.name }}<br />
+                    <strong>Points Used:</strong> {{ order_item.total_points }} points<br />
                   </p>
-                {% endif %}
+
+                  {% if order_item.shipping %}
+                    <h6 class="card-subtitle mb-2 text-muted mt-3">Shipping Details</h6>
+                    <p class="card-text">
+                      {{ order_item.shipping.first_name }} {{ order_item.shipping.last_name }}<br />
+                      {{ order_item.shipping.street_address }}
+                      {% if order_item.shipping.apartment %}
+                        , {{ order_item.shipping.apartment }}
+                      {% endif %}<br />
+                      {{ order_item.shipping.city }}, {{ order_item.shipping.postal_code }}<br />
+                      {{ order_item.shipping.country }}
+                    </p>
+                  {% endif %}
+                </div>
+                <div>
+                  <a href="{% url 'view_order_details' order_item.history.id %}" class="btn btn-primary btn-sm">View Full Details</a>
+                </div>
               </div>
+
               {% if order_item.history.reward.image %}
                 <div class="col-md-4">
-                  <img src="{{ order_item.history.reward.image.url }}" alt="{{ order_item.history.reward.name }}" class="img-fluid rounded" />
+                  <img src="{% if 'placeholder' in order_item.history.reward.image.url %}
+                      {% static 'images/placeholder/placeholder_reward.webp' %}
+                    {% else %}
+                      {{ order_item.history.reward.image.url }}
+                    {% endif %}"
+                    alt="{{ order_item.history.reward.name }}"
+                    class="img-fluid rounded" />
                 </div>
               {% endif %}
             </div>
-          </div>
-          <div class="card-footer bg-white">
-            <a href="{% url 'view_order_details' order_item.history.id %}" class="btn btn-outline-primary btn-sm">View Full Details</a>
           </div>
         </div>
       {% endfor %}

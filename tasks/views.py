@@ -48,7 +48,7 @@ def user_task_overview(request):
             ).order_by('-created_at')
         context = {
             'tasks_undone': tasks_undone,
-            'tasks_done': task_done[:5],
+            'tasks_done': task_done[:13],
             'more_tasks_done': task_done[5:],
             'tasks_with_fee': task_with_fee,
             'task_to_check': task_to_check,
