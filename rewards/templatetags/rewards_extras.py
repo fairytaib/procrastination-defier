@@ -13,7 +13,8 @@ FALLBACK_LABELS = {
 
 
 def _choices_map():
-    """Return a dictionary mapping country codes to labels from the model field choices."""
+    """Return a dictionary mapping country
+    codes to labels from the model field choices."""
     try:
         field = Reward._meta.get_field('available_countries')
         choices = dict(field.choices or [])
@@ -43,6 +44,7 @@ def _normalize_codes(value):
 
 
 def _code_to_label(code, choices):
+    """Convert a single country code to its corresponding label."""
     c = str(code).strip().upper()
     return choices.get(c) or FALLBACK_LABELS.get(c) or c
 

@@ -20,8 +20,15 @@ def rewards_list(request):
     """View to display a list of rewards."""
     rewards = Reward.objects.all()
 
-    selected_type = (request.GET.get('type') or request.GET.get('reward_type') or '').strip()
-    selected_country = (request.GET.get('country') or request.GET.get('available_countries') or '').strip()
+    selected_type = (
+        request.GET.get(
+            'type'
+            ) or request.GET.get('reward_type') or '').strip()
+    selected_country = (
+        request.GET.get('country'
+                        ) or request.GET.get(
+                            'available_countries'
+                            ) or '').strip()
     selected_sort = (request.GET.get('sort') or '').strip()
     type_field = 'reward_type'
     countries_field = 'available_countries'
