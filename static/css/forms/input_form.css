@@ -1,3 +1,23 @@
+:root {
+    --task-primary: #2563eb;
+    --task-surface: #ffffff;
+    --task-border: rgba(2, 6, 23, .06);
+    --task-shadow: 0 10px 28px rgba(2, 6, 23, .10);
+    --task-title: #0f172a;
+    --task-muted: #6b7280;
+    --task-accent: #DAA520;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --task-surface: #0f172a;
+        --task-border: #243144;
+        --task-shadow: 0 16px 36px rgba(0, 0, 0, .45);
+        --task-title: #e5e7eb;
+        --task-muted: #94a3b8;
+    }
+}
+
 input[type="file"].form-control {
     font: inherit;
     color: var(--task-title);
