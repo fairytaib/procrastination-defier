@@ -15,6 +15,7 @@ from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from .models import FeePaymentBatch
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
+from tasks.models import UserPoints
 
 # More
 from datetime import timedelta
@@ -32,6 +33,7 @@ def user_task_overview(request):
     subscription = Subscription.objects.filter(user=request.user).first()
     refresh_overdue_flags(request.user)
     if not admin:
+        user_points, _ = UserPoints.objects.get_or_create(user=request.user)
         tasks_undone = Task.objects.filter(
             user=request.user, completed=False,
             fee_to_pay=False, checkup_state=False).order_by('-created_at')
@@ -53,7 +55,8 @@ def user_task_overview(request):
             'task_to_check': task_to_check,
             'subscription': subscription,
             'can_add_task': can_add_task(request.user),
-            'open_tasks_count': open_tasks_count(request.user)
+            'open_tasks_count': open_tasks_count(request.user),
+            'user_points': user_points
         }
     else:
         tasks_undone = Task.objects.filter(completed=False,

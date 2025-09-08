@@ -125,8 +125,8 @@
                     {% endif %}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item disabled" href="#">Points {{ user.points.points }}</a>
-                      <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account settings</a>
+                      <p class="m-1 text-center text-muted">Points {{ user.points.points }}</p>
+                      <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account</a>
                       <a class="dropdown-item" 
                       {% if user.is_authenticated and subscription_check %}
                         href="{% url 'subscriptions_overview' %}"

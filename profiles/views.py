@@ -2,14 +2,17 @@ from django.shortcuts import render, redirect
 from .models import UserProfile
 from django.contrib.auth.decorators import login_required
 from .forms import AccountForm, ProfilePictureForm
+from tasks.models import UserPoints
 
 
 @login_required
 def view_user_profile(request):
     """View to display the user's profile."""
     profile = UserProfile.objects.get(user=request.user)
+    user_points, _ = UserPoints.objects.get_or_create(user=request.user)
     context = {
         'profile': profile,
+        'user_points': user_points,
     }
     return render(request, 'profiles/view_user_profile.html', context)
 

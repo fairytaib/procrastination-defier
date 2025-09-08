@@ -37,9 +37,14 @@
             {% endif %}
           </h1>
           {% if not perms.tasks.has_perm %}
-            <p class="text-muted">
-              Your Task Slots: <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
-            </p>
+            <div>
+              <p class="text-muted mb-0">
+                Your Task Slots: <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
+              </p>
+              <p class="text-muted">
+                Your current points: <span>{{ user_points.points }}</span>
+              </p>
+            </div>
           {% endif %}
         </div>
 
