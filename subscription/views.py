@@ -19,45 +19,47 @@ def subscription_view(request):
         'standard': 'price_1S0mDxALgEprtAEcMgbbm4ua',
         'premium': 'price_1S0mEeALgEprtAEctIhtB5JX',
     }
-    active_sub = get_current_subscription(request.user)
-    if not active_sub:
-        if request.method == 'POST':
-            plan = request.POST.get('plan_id')
-            price_id = subscription.get(plan, plan)
+    user = request.user if request.user.is_authenticated else None
+    active_sub = get_current_subscription(user) if user else None
+    if request.user.is_authenticated:
+        if not active_sub:
+            if request.method == 'POST':
+                plan = request.POST.get('plan_id')
+                price_id = subscription.get(plan, plan)
 
-            email = request.user.email if request.user.is_authenticated else None
+                email = request.user.email if request.user.is_authenticated else None
 
-            kwargs = {
-                "mode": "subscription",
-                "payment_method_types": ['card'],
-                "line_items": [{"price": price_id, "quantity": 1}],
-                "success_url": settings.DOMAIN + reverse('create_subscription') + '?session_id={CHECKOUT_SESSION_ID}',
-                "cancel_url": settings.DOMAIN + settings.STRIPE_CANCEL_URL,
-                "client_reference_id": str(request.user.pk)
-            }
-            if request.user.is_authenticated:
-                kwargs["client_reference_id"] = str(request.user.id)
+                kwargs = {
+                    "mode": "subscription",
+                    "payment_method_types": ['card'],
+                    "line_items": [{"price": price_id, "quantity": 1}],
+                    "success_url": settings.DOMAIN + reverse('create_subscription') + '?session_id={CHECKOUT_SESSION_ID}',
+                    "cancel_url": settings.DOMAIN + settings.STRIPE_CANCEL_URL,
+                    "client_reference_id": str(request.user.pk)
+                }
+                if request.user.is_authenticated:
+                    kwargs["client_reference_id"] = str(request.user.id)
 
-            sub = get_current_subscription(request.user)
+                sub = get_current_subscription(request.user)
 
-            if sub and getattr(sub, "customer_id", None):
-                kwargs["customer"] = sub.customer_id
-            elif request.user.email:
-                kwargs["customer_email"] = request.user.email
-            else:
-                email = request.POST.get("email")
-                if email:
-                    kwargs["customer_email"] = email
+                if sub and getattr(sub, "customer_id", None):
+                    kwargs["customer"] = sub.customer_id
+                elif request.user.email:
+                    kwargs["customer_email"] = request.user.email
+                else:
+                    email = request.POST.get("email")
+                    if email:
+                        kwargs["customer_email"] = email
 
-            checkout_session = stripe.checkout.Session.create(**kwargs)
-            return redirect(checkout_session.url, code=303)
-    else:
-        # If User already has an active subscription
-        session = stripe.billing_portal.Session.create(
-            customer=active_sub.customer_id,
-            return_url=settings.DOMAIN + reverse('subscriptions_overview')
-            )
-        return redirect(session.url, code=303)
+                checkout_session = stripe.checkout.Session.create(**kwargs)
+                return redirect(checkout_session.url, code=303)
+        else:
+            # If User already has an active subscription
+            session = stripe.billing_portal.Session.create(
+                customer=active_sub.customer_id,
+                return_url=settings.DOMAIN + reverse('subscriptions_overview')
+                )
+            return redirect(session.url, code=303)
 
     return render(request, 'subscription/subscription.html')
 
