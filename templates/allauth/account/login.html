@@ -16,8 +16,11 @@
       <div class="col-md-8 col-lg-6">
         <header class="text-center mb-4">
           <h1 class="h3 mb-1">{% trans 'Sign In' %}</h1>
+          <p class="text-body-secondary mb-0">
+            By continuing, you agree to our <a href="">Terms of Use</a> and confirm that you understand the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.
+          </p>
         </header>
-
+{% comment %} 
         {% get_providers as socialaccount_providers %}
         {% if socialaccount_providers %}
           <div class="card border-0 shadow-sm mb-4">
@@ -37,7 +40,7 @@
           <p class="mb-4">
             {% blocktrans %}If you have not created an account yet, then please <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
           </p>
-        {% endif %}
+        {% endif %} {% endcomment %}
         <form class="card border-0 shadow-sm" method="POST" action="{% url 'account_login' %}">
           <div class="card-body">
             {% csrf_token %}
@@ -45,9 +48,11 @@
             {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
+            <a class="btn btn-link p-0" href="{% url 'account_signup' %}">{% trans 'No Account yet?' %}</a>
           </div>
-          <div class="d-grid d-sm-flex gap-2">
-            <a class="btn btn-link p-0 text-decoration-none" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
+          <div class="d-grid d-sm-flex gap-2 m-2">
+            <a class="btn btn-link p-0" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
+            
             <button class="btn btn-primary ms-sm-auto" type="submit">{% trans 'Sign In' %}</button>
           </div>
         </form>
