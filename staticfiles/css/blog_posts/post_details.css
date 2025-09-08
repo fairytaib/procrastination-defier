@@ -32,7 +32,7 @@ article .h2 {
 }
 
 article .text-body {
-    color: var(--blog-title);
+    color: var(--blog-title) !important;
 }
 
 /* Comments */

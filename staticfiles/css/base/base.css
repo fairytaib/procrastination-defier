@@ -1,4 +1,7 @@
 /* === Bootstrap Theme Overrides =============================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     /* Brand */
     --bs-primary: #2563eb;
@@ -22,11 +25,17 @@
     --bs-border-radius-lg: 1rem;
     /* 16px */
     --bs-box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+    
 
     /* Surfaces */
     --surface: #ffffff;
     --surface-alt: #f8fafc;
     /* slate-50 */
+
+    /* Fonts */
+    --header-font: 'Noto Sans', sans-serif;
+    --text-font: 'Roboto', serif;
+
 }
 
 /* Dark mode (auto) */
@@ -42,6 +51,7 @@
         --bs-secondary-color: #94a3b8;
         --bs-link-color: #eff1f3;
         --bs-border-color: #243144;
+        
         --bs-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     }
 }
@@ -62,9 +72,17 @@ main {
 }
 
 /* Navbar */
+.navbar-header {
+    background: linear-gradient(180deg, rgb(30 47 84), rgb(0 0 0));
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
 .navbar {
     box-shadow: var(--bs-box-shadow);
     border-bottom: 1px solid rgba(2, 6, 23, 0.04);
+
 }
 
 .navbar-nav .nav-link.active,
@@ -79,13 +97,29 @@ main {
     object-fit: cover;
 }
 
-.dropdown-menu[data-bs-popper] {
-    left: -75%;
+.nav-item > a{
+    color: white;
+}
+
+.message-container {
+    position: absolute;
+    z-index: 1000; 
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+}
+
+p, li, a, span, div {
+    font-family: var(--text-font);
 }
 
 /* Footer */
 .footer {
-    border-top: 1px solid rgba(2, 6, 23, 0.06);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.537), rgb(30 47 84));
     padding: 2rem 0;
 }
 
