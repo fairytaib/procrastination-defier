@@ -6,6 +6,7 @@ import re
 
 
 class RewardForm(forms.ModelForm):
+    """Form for creating and updating rewards."""
     class Meta:
         model = Reward
         fields = [

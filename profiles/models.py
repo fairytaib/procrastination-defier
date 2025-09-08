@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 
 
 class UserProfile(models.Model):
+    """Model to store user profile information including profile picture."""
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='profile')
     profile_picture = CloudinaryField(

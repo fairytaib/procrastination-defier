@@ -4,6 +4,7 @@ from rewards.models import Reward
 
 
 class Order(models.Model):
+    """Model to store order details including user information and address."""
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
         related_name='addresses'

@@ -70,6 +70,8 @@ def create_post(request):
 
 @login_required
 def delete_post(request, post_id):
+    """ Delete a post if the logged-in user is the author.
+    """
     post = get_object_or_404(Post, id=post_id, author=request.user)
     if request.method == "POST":
         post.delete()
@@ -81,6 +83,7 @@ def delete_post(request, post_id):
 
 @login_required
 def delete_comment(request, comment_id):
+    """ Delete a comment if the logged-in user is the author."""
     comment = get_object_or_404(Comment, id=comment_id, author=request.user)
     if request.method == "POST":
         comment.delete()

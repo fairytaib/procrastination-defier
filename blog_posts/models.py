@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Post(models.Model):
+    """Model representing a blog post."""
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, null=False, blank=False)
     content = models.TextField(max_length=2000, null=False, blank=False)
@@ -13,6 +14,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """Model representing a comment on a blog post."""
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments'
         )

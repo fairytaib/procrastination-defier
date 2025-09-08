@@ -109,7 +109,9 @@ def add_reward(request):
             else:
                 form = RewardForm()
                 messages.error(
-                    request, "Failed to add reward. Please correct the errors below.")
+                    request,
+                    "Failed to add reward. Please correct the errors below."
+                    )
         else:
             messages.error(
                 request, "You do not have permission to add rewards.")
@@ -159,7 +161,7 @@ def edit_reward(request, reward_id):
 
 @login_required
 def order_history(request):
-    """"""
+    """View to display the order history of rewards."""
     rewards = (RewardHistory.objects.filter(
             reward_sent=False).order_by('-bought_at'))
 

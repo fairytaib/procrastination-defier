@@ -24,7 +24,7 @@ COUNTRY_CHOICES = [
     # ('JP', 'Japan'),
     # ('CN', 'China'),
     # ('BR', 'Brazil'),
-    # Only European countries for the time being
+    # Only European countries for the time being. Will be implemented later
     ('Everywhere', 'Everywhere'),
     ('France', 'France'),
     ('Germany', 'Germany'),
@@ -54,7 +54,6 @@ COUNTRY_CHOICES = [
 
 class Reward(models.Model):
     """A reward model to represent the rewards in the system."""
-
     name = models.CharField(max_length=100, unique=True,
                             null=False, blank=False)
     image = CloudinaryField(
@@ -88,7 +87,6 @@ class Reward(models.Model):
 
 class RewardHistory(models.Model):
     """A model to track the history of rewards bought by users."""
-
     user = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,

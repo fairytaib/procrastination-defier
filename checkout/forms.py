@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 
 class OrderForm(forms.ModelForm):
+    """Form for creating and updating orders."""
     class Meta:
         model = Order
         exclude = ['user', 'order_item']
@@ -22,17 +23,22 @@ class OrderForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
-            'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+            'phone_number': forms.TextInput(
+                attrs={'placeholder': 'Phone Number'}
+                ),
             'street_address': forms.TextInput(
                 attrs={'placeholder': 'Street Address'}),
             'apartment': forms.TextInput(attrs={'placeholder': 'Apartment'}),
             'city': forms.TextInput(attrs={'placeholder': 'City'}),
-            'postal_code': forms.TextInput(attrs={'placeholder': 'Postal Code'}),
+            'postal_code': forms.TextInput(
+                attrs={'placeholder': 'Postal Code'}
+                ),
             'country': forms.TextInput(attrs={'placeholder': 'Country'}),
             'is_default': forms.CheckboxInput()
         }
 
         def clean_postal_code(self):
+            """Example of custom validation for postal code."""
             postal_code = self.cleaned_data.get('postal_code')
             if not postal_code.isdigit():
                 raise ValidationError("Postal code must be numeric.")
@@ -40,6 +46,7 @@ class OrderForm(forms.ModelForm):
 
 
 class RewardHistoryForm(forms.ModelForm):
+    """Form for updating reward history."""
     class Meta:
         model = RewardHistory
         exclude = ['user', 'reward', 'bought_at']

@@ -10,6 +10,7 @@ from tasks.models import UserPoints
 
 @login_required
 def place_order(request, reward_id):
+    """Render the checkout page and handle order placement."""
     reward = get_object_or_404(Reward, id=reward_id)
     user_points = get_object_or_404(UserPoints, user=request.user)
     form = OrderForm()

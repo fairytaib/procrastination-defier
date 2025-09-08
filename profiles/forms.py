@@ -7,6 +7,7 @@ from .models import UserProfile
 
 
 class AccountForm(forms.ModelForm):
+    """Form for updating user account information."""
     class Meta:
         model = User
         fields = ["username", "email", "first_name", "last_name"]
@@ -21,6 +22,7 @@ class AccountForm(forms.ModelForm):
 
 
 class ProfilePictureForm(forms.ModelForm):
+    """Form for uploading and validating profile pictures."""
     class Meta:
         model = UserProfile
         fields = ["profile_picture"]
@@ -42,6 +44,7 @@ class ProfilePictureForm(forms.ModelForm):
         ].widget.attrs['class'] = 'form-control-file'
 
     def clean_image(self):
+        """Validate the uploaded image file."""
         f = self.cleaned_data.get('profile_picture')
         if not f or getattr(f, 'size', 0) == 0:
             return None

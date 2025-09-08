@@ -6,6 +6,7 @@ from rewards.models import RewardHistory
 
 @receiver(post_save, sender=Order)
 def create_reward_history(sender, instance, created, **kwargs):
+    """Signal to create a RewardHistory entry when an Order is created."""
     if created:
         # Create a RewardHistory entry for the new order
         RewardHistory.objects.create(
