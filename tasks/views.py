@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.conf import settings
 from django.urls import reverse
+from django.db import transaction
 
 # App imports
 from subscription.utils import can_add_task, refresh_overdue_flags
@@ -15,7 +16,6 @@ from .models import INTERVAL_TO_CHECKUP, Task, Task_Checkup, UserPoints
 from .models import FeePaymentBatch
 from subscription.models import Subscription
 from .forms import TaskForm, CheckTaskForm
-from tasks.models import UserPoints
 
 # More
 from datetime import timedelta
@@ -325,26 +325,39 @@ def pay_all_fees_success(request):
 
     # Unlock/complete all tasks in the batch
     now = timezone.now()
-    for task in batch.tasks.select_for_update():
-        task.fee_to_pay = False
-        task.penalty_paid_at = now
-        if task.repetition:
-            from datetime import timedelta
-            task.completed = False
-            task.checkup_date = timezone.now().date() + timedelta(
-                days=INTERVAL_TO_CHECKUP[task.interval]
-                )
-            task.save(
-                update_fields=["fee_to_pay",
-                               "penalty_paid_at",
-                               "completed",
-                               "checkup_date"]
-                               )
-        else:
-            task.completed = True
-            task.save(
-                update_fields=["fee_to_pay", "penalty_paid_at", "completed"]
-                )
+    with transaction.atomic():
+        batch = (FeePaymentBatch.objects
+                 .select_for_update()
+                 .get(user=request.user, session_id=session_id))
+
+        if batch.status == "paid":
+            messages.info(request, "The batch has already been processed.")
+            return redirect("user_task_overview")
+
+        for task in batch.tasks.select_for_update():
+            task.fee_to_pay = False
+            task.penalty_paid_at = now
+            if task.repetition:
+                from datetime import timedelta
+                task.completed = False
+                task.checkup_date = timezone.now().date() + timedelta(
+                    days=INTERVAL_TO_CHECKUP[task.interval]
+                    )
+                task.save(
+                    update_fields=[
+                        "fee_to_pay",
+                        "penalty_paid_at",
+                        "completed",
+                        "checkup_date"
+                        ]
+                    )
+            else:
+                task.completed = True
+                task.save(
+                    update_fields=[
+                        "fee_to_pay", "penalty_paid_at", "completed"
+                        ]
+                    )
 
     batch.status = "paid"
     batch.paid_at = now
