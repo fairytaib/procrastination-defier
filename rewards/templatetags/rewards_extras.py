@@ -1,4 +1,3 @@
-# rewards/templatetags/rewards_extras.py
 from django import template
 from ..models import Reward
 

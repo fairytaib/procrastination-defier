@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load blog_extras %}
 {% block title %}
   Community Posts
 {% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/blog_posts/all_posts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blog_posts/all_posts.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -23,16 +24,42 @@
     {% if posts %}
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {% for post in posts %}
-          <div class="col">
-            <a href="{% url 'post_details' post.id %}" class="text-decoration-none d-block h-100">
-              <div class="card h-100 border-0 shadow-sm">
+          <div class="col-12">
+            <a href="{% url 'post_details' post.id %}" class="text-decoration-none text-reset d-block h-100">
+              <article class="card border-0 shadow-sm hover-card h-100">
                 <div class="card-body">
-                  <h2 class="h5 card-title mb-2 text-truncate">{{ post.title }}</h2>
-                  {% if post.excerpt %}
-                    <p class="card-text text-body-secondary mb-0">{{ post.excerpt }}</p>
+                  <h2 class="h4 card-title mb-2 line-clamp-2">{{ post.title }}</h2>
+                  <div class="d-flex align-items-center gap-2 mb-2 small text-muted">
+                    {% if post.created_at %}
+                      <time datetime="{{ post.created_at|date:'c' }}">{{ post.created_at|date:'d M, Y' }}</time>
+                      <span>•</span>
+                    {% endif %}
+                    {% if post.author %}
+                      <span>By {{ post.author }}</span><span>•</span>
+                    {% endif %}
+                  </div>
+                  <p class="card-text text-body-secondary mb-3 line-clamp-3">
+                    {% if post.excerpt %}
+                      {{ post.excerpt|content_preview:60 }}
+                    {% else %}
+                      {{ post.content|content_preview:60 }}
+                    {% endif %}
+                  </p>
+
+                  {# Optional: Tags, falls vorhanden #}
+                  {% if post.tags.all %}
+                    <div class="d-flex flex-wrap gap-2">
+                      {% for tag in post.tags.all|slice:':4' %}
+                        <span class="badge bg-secondary-subtle text-secondary-emphasis">{{ tag.name }}</span>
+                      {% endfor %}
+                    </div>
                   {% endif %}
                 </div>
-              </div>
+
+                <div class="card-footer bg-transparent border-0 pt-0">
+                  <span class="fw-medium">Read more →</span>
+                </div>
+              </article>
             </a>
           </div>
         {% endfor %}
