@@ -41,6 +41,9 @@ urlpatterns = [
         template_name="legal_notice.html"), name='legal_notice'),
     path('privacy_policy/', TemplateView.as_view(
         template_name="privacy_policy.html"), name='privacy_policy'),
+    path('terms_and_conditions/', TemplateView.as_view(
+        template_name="terms_and_conditions.html"
+        ), name='terms_and_conditions'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('blog/', include('blog_posts.urls')),

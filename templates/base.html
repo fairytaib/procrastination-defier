@@ -14,6 +14,7 @@
 {% url 'home' as home_url %}
 {% url 'privacy_policy' as privacy_policy_url %}
 {% url 'legal_notice' as legal_notice_url %}
+{% url 'terms_and_conditions' as terms_and_conditions_url %}
 
 {% comment %}Blog Posts{% endcomment %}
 {% url 'blog_posts' as blog_posts_url %}
@@ -172,7 +173,8 @@
         </p>
         <nav class="footer-nav">
           <a href="{% url 'legal_notice' %}" target="_blank" rel="noopener noreferrer" aria-label="Legal notice">Legal Notice</a> |
-          <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy">Privacy Policy</a>
+          <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy">Privacy Policy</a> |
+          <a href="{% url 'terms_and_conditions' %}" target="_blank" rel="noopener noreferrer" aria-label="Terms and Conditions">Terms and Conditions</a>
         </nav>
       </div>
     </footer>
