@@ -36,7 +36,7 @@
               Overview
             {% endif %}
           </h1>
-          {% if not perms.tasks.has_perm %}
+          {% if not perms.tasks.mark_done %}
             <div>
               <p class="text-muted mb-0">
                 Your Task Slots: <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
