@@ -51,7 +51,7 @@
                 <dd class="col-sm-7">Yes</dd>
               {% endif %}
             </dl>
-            <button type="button" class="btn btn-danger {% if task.checkup_state %}disabled{% endif %}" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">Delete Task</button>
+            <button type="button" class="btn btn-danger {% if task.checkup_state %}disabled{% endif %}" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><i class="bi bi-trash3-fill"></i></button>
             <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">

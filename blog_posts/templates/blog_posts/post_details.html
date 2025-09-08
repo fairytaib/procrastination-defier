@@ -5,7 +5,7 @@
   {{ post.title }}
 {% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/blog_posts/post_details.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blog_posts/post_details.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -16,8 +16,44 @@
 
     <article class="card border-0 shadow-sm mb-4">
       <div class="card-body">
-        <h1 class="h2 mb-3">{{ post.title }}</h1>
-        <div class="text-body">{{ post.content }}</div>
+        <div>
+          <h1 class="h2 mb-3">{{ post.title }}</h1>
+          <p class="text-body-secondary mb-4">By {{ post.author.username }} on {{ post.created_at|date:"F j, Y" }}</p>
+          <div class="text-body">{{ post.content }}</div>
+        </div>
+
+        {% comment %}Delete Button{% endcomment %}
+        {% if user == post.author %}
+          <div class="d-flex justify-content-end align-items-center gap-3 mt-1">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal"><i class="bi bi-trash3-fill"></i></button>
+            <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deletePostLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deletePostLabel">Delete post?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <div class="modal-body">
+                    <p class="mb-0">
+                      Are you sure you want to delete
+                      <strong>{{ post.title }}</strong>? This action cannot be undone and there will be no points awarded.
+                    </p>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                    <form method="post" action="{% url 'delete_post' post.id %}">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger">Yes, delete</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
       </div>
     </article>
 
@@ -35,6 +71,36 @@
                 </div>
               </div>
               <p class="mb-0 mt-2">{{ comment.content }}</p>
+              <div>
+                {% if user == post.author %}
+                  <div class="d-flex justify-content-end align-items-center gap-3 mt-1">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCommentModal"><i class="bi bi-trash3-fill"></i></button>
+                    <div class="modal fade" id="deleteCommentModal" tabindex="-1" aria-labelledby="deleteCommentLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 shadow-lg">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="deleteCommentLabel">Delete comment?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+
+                          <div class="modal-body">
+                            <p class="mb-0">Are you sure you want to delete your comment? This action cannot be undone and there will be no points awarded.</p>
+                          </div>
+
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                            <form method="post" action="{% url 'delete_comment' comment.id %}">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-danger">Yes, delete</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
             </div>
           {% endfor %}
         </div>

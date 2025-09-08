@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.shortcuts import redirect
@@ -45,6 +46,7 @@ def view_details(request, post_id):
     )
 
 
+@login_required
 def create_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -64,3 +66,25 @@ def create_post(request):
     }
 
     return render(request, "blog_posts/create_post.html", context)
+
+
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+    if request.method == "POST":
+        post.delete()
+        messages.success(request, "Post deleted successfully.")
+        return redirect("blog_posts")
+    # We won't render a separate page; POST only from the inline modal.
+    return redirect("blog_posts")
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, author=request.user)
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, "Comment deleted successfully.")
+        return redirect("post_details", post_id=comment.post.id)
+    # We won't render a separate page; POST only from the inline modal.
+    return redirect("blog_posts")
