@@ -1,0 +1,124 @@
+.subscription-page .card,
+.subscription-overview-page .card {
+    border-radius: var(--bs-border-radius-lg);
+    box-shadow: var(--bs-box-shadow);
+    border: 1px solid rgba(2, 6, 23, 0.04);
+}
+
+.subscription-page .card:hover,
+.subscription-overview-page .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(2, 6, 23, 0.1);
+}
+
+/* Header/Intro */
+.subscription-page header h1,
+.subscription-overview-page header h1 {
+    font-weight: 800;
+    letter-spacing: -0.015em;
+}
+
+/* --- Badges (Tasks / Plan) --- */
+.subscription-page .badge.bg-primary-subtle,
+.subscription-overview-page .badge.bg-primary-subtle {
+    background-color: rgba(var(--bs-primary-rgb), .10) !important;
+    color: var(--bs-primary) !important;
+    border: 1px solid rgba(var(--bs-primary-rgb), .15);
+}
+
+.subscription-overview-page .badge.bg-secondary-subtle {
+    background-color: rgba(148, 163, 184, .12) !important;
+    /* slate tone */
+    color: var(--bs-secondary-color) !important;
+    border: 1px solid rgba(148, 163, 184, .25);
+}
+
+.subscription-page .card-body ul.list-unstyled li,
+.subscription-page .card-body ul:not(.list-group):not(.dropdown-menu) li {
+    line-height: 1.4;
+    padding-left: .125rem;
+}
+
+.subscription-page .bi-check-circle-fill,
+.subscription-overview-page .bi-shield-check {
+    font-size: 1.1rem;
+}
+
+.subscription-page .bi-check-circle-fill {
+    color: var(--bs-success);
+}
+
+.subscription-overview-page .bi-shield-check {
+    color: var(--bs-primary);
+}
+
+/* --- Buttons --- */
+.subscription-page .btn,
+.subscription-overview-page .btn {
+    border-radius: var(--bs-border-radius);
+}
+
+.subscription-page .btn-outline-secondary {
+    border-width: 2px;
+    backdrop-filter: saturate(110%);
+}
+
+.subscription-page .table {
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: var(--bs-border-radius);
+    box-shadow: var(--bs-box-shadow);
+}
+
+.subscription-page .table thead th {
+    background: var(--surface-alt);
+    border-bottom: 0;
+    font-weight: 700;
+}
+
+.subscription-page .table tbody tr+tr td,
+.subscription-page .table tbody tr+tr th {
+    border-top-color: var(--bs-border-color, rgba(2, 6, 23, .08));
+}
+
+
+.subscription-overview-page .small.text-body-secondary {
+    opacity: .9;
+}
+
+.subscription-overview-page .card .btn-primary {
+    box-shadow: 0 6px 16px rgba(var(--bs-primary-rgb), .25);
+    border-radius: var(--bs-border-radius-lg);
+}
+
+/* Spacing-Tuning */
+.subscription-page .card-body>.d-flex:first-child,
+.subscription-overview-page .card-body>.d-flex:first-child {
+    margin-bottom: .5rem;
+}
+@media (max-width: 576px) {
+
+    .subscription-page header p,
+    .subscription-overview-page header p {
+        font-size: .95rem;
+    }
+
+    .subscription-page .card-body,
+    .subscription-overview-page .card-body {
+        padding: 1rem 1rem 1.25rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .subscription-page .table thead th {
+        background: #0b1220;
+        /* angeglichene Surface aus base.css */
+    }
+
+    .subscription-page .table tbody tr+tr td,
+    .subscription-page .table tbody tr+tr th {
+        border-top-color: var(--bs-border-color, #243144);
+    }
+}
+
