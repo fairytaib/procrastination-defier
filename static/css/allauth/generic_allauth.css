@@ -144,6 +144,21 @@ input[type="text"], input[type="email"], input[type="password"] {
     box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset;
     transition: box-shadow .2s ease, filter .2s ease, border-color .2s ease;
 }
+
+@media (prefers-color-scheme: light) {
+    input[type="text"], input[type="email"], input[type="password"] {
+        color: #000000;
+        background-color: color-mix(in srgb, var(--surface) 85%, #e4e4e4 15%);
+        border: 1px solid var(--bs-border-color, rgba(255, 255, 255, .1));
+        box-shadow: 0 1px 0 rgba(0, 0, 0, .2) inset;
+    }
+    input[type="text"]:focus-visible, input[type="email"]:focus-visible, input[type="password"]:focus-visible {
+        background-color: color-mix(in srgb, var(--surface) 15%, #e4e4e4 85%);
+        color: #000000;
+        border: 1px solid var(--bs-border-color, rgba(255, 255, 255, .1));
+        box-shadow: 0 1px 0 rgba(0, 0, 0, .2) inset;
+    }
+}
 input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder {
     color: color-mix(in srgb, var(--bs-secondary-color) 90%, transparent);
     padding: 0 .25rem;
