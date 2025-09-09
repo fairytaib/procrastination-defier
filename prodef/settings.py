@@ -29,6 +29,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = [
     ".herokuapp.com",
     "procrastination-defier-4f6bef0e1e54.herokuapp.com",
+    "procdef-live-28abebbb180a.herokuapp.com",
     "127.0.0.1",
     ]
 
@@ -101,7 +102,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     ]
 
-SITE_ID = 1
+SITE_ID = 4
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 24
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
