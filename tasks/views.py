@@ -180,6 +180,10 @@ def add_task(request):
             else:
                 return redirect("user_task_overview")
         else:
+            messages.error(
+                request,
+                "There was an error with your submission. Please try again."
+            )
             form = TaskForm()
     context = {
         "form": form,
