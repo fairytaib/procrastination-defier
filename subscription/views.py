@@ -75,7 +75,9 @@ def create_subscription(request):
     except stripe.error.StripeError:
         return redirect('subscription_view')
 
-    if session.get('mode') != 'subscription' or not session.get('subscription'):
+    if session.get('mode') != 'subscription' or not session.get(
+                                'subscription'
+                                ):
         return redirect('subscription_view')
 
     user = request.user if request.user.is_authenticated else None
@@ -110,9 +112,12 @@ def create_subscription(request):
     ts_end = s.get('current_period_end')
     ts_cancel = s.get('cancel_at')
 
-    start_dt = datetime.fromtimestamp(ts_start, tz=timezone.utc) if ts_start else dj_timezone.now()
-    end_dt = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
-    cancel_dt = datetime.fromtimestamp(ts_cancel, tz=timezone.utc) if ts_cancel else None
+    start_dt = datetime.fromtimestamp(
+        ts_start, tz=timezone.utc) if ts_start else dj_timezone.now()
+    end_dt = datetime.fromtimestamp(
+        ts_end, tz=timezone.utc) if ts_end else None
+    cancel_dt = datetime.fromtimestamp(
+        ts_cancel, tz=timezone.utc) if ts_cancel else None
 
     Subscription.objects.update_or_create(
         stripe_subscription_id=s['id'],
@@ -121,7 +126,9 @@ def create_subscription(request):
             'customer_id': session['customer'],
             'product_name': product['name'],
             'price': (price.get('unit_amount') or 0) // 100,
-            'interval': (price.get('recurring') or {}).get('interval', 'month'),
+            'interval': (
+                price.get('recurring') or {}).get('interval', 'month'
+                                                  ),
             'tasks_quota': quota,
             'start_date': start_dt,
             'end_date': end_dt,
@@ -225,7 +232,9 @@ def _sync_local_from_stripe(sub):
     if s.get("cancel_at_period_end"):
         # Plan endet am Periodenende
         ts_end = s.get("current_period_end")
-        sub.end_date = datetime.fromtimestamp(ts_end, tz=timezone.utc) if ts_end else None
+        sub.end_date = datetime.fromtimestamp(
+            ts_end, tz=timezone.utc
+            ) if ts_end else None
         sub.cancel_at = sub.end_date
     else:
         sub.end_date = None

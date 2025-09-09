@@ -35,9 +35,11 @@ class RewardForm(forms.ModelForm):
             'description': forms.Textarea(
                 attrs={
                     'class': 'form-control',
-                       'placeholder': 'Describe the reward as detailed as possible',
-                       'rows': 3
-                       }
+                    'placeholder':
+                    'Describe the reward as detailed as possible',
+                    'rows':
+                    3
+                    }
                 ),
             'cost': forms.NumberInput(
                 attrs={
