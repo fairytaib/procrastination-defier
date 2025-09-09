@@ -11,8 +11,15 @@
 
 {% block content %}
   <section class="container py-5">
-    <div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
       <a href="{% url 'rewards_list' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2"></i> Back to Rewards</a>
+      {% if user.is_authenticated %}
+        <div class="d-flex justify-content-end align-items-center gap-2">
+          <span class="fw-semibold text-muted">Your Points</span>
+          <span class="badge bg-secondary-subtle text-secondary px-3 py-2">{{ user_points }} points</span>
+        </div>
+      {% endif %}
+
     </div>
 
     <div class="row g-4 align-items-start">
@@ -37,15 +44,16 @@
                 <a href="{% url 'edit_reward' reward.id %}" class="btn btn-link p-0 text-decoration-none edit-icon"><i class="bi bi-pen-fill p-2"></i></a>
               {% endif %}
             </div>
-            
+
             <p class="text-body-secondary mb-3">{{ reward.description }}</p>
             <div class="d-flex align-items-center gap-2 mb-4">
               <p class="card-text text-body-secondary mb-3">Available in: {{ reward.available_countries|country_labels }}</p>
             </div>
-            <div class="d-flex align-items-center gap-2 mb-4">
+            <div class="d-flex align-items-center gap-2 mb-2">
               <span class="fw-semibold">Available for</span>
               <span class="badge bg-primary-subtle text-primary px-3 py-2">{{ reward.cost }} points</span>
             </div>
+
             <div class="d-flex align-items-center gap-2 mb-4">
               {% if user.is_authenticated %}
                 {% if reward.stock > 0 %}

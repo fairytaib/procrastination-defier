@@ -3,6 +3,8 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Reward, RewardHistory
+from tasks.models import UserPoints
+from django.contrib.auth.models import User
 from .forms import RewardForm
 from django.contrib import messages
 
@@ -82,6 +84,13 @@ def rewards_list(request):
 def view_details(request, reward_id):
     """Display the details of a reward."""
     reward = get_object_or_404(Reward, id=reward_id)
+    user = request.user
+    if request.user.is_authenticated:
+        user_points = UserPoints.objects.filter(user=user).first()
+        context = {
+            "reward": reward,
+            "reward_id": reward_id,
+            "user_points": user_points.points if user_points else 0}
 
     context = {
         "reward": reward,
