@@ -4,7 +4,7 @@
 {% load cloudinary %}
 {% load rewards_extras %}
 {% block title %}
-  {{ reward.name }} Details
+  {{ reward.name }} {% trans 'Details' %}
 {% endblock %}
 
 {% block css %}
@@ -14,14 +14,13 @@
 {% block content %}
   <section class="container py-5">
     <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
-      <a href="{% url 'rewards_list' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2"></i> Back to Rewards</a>
+      <a href="{% url 'rewards_list' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2"></i> {% trans 'Back to Rewards' %}</a>
       {% if user.is_authenticated %}
         <div class="d-flex justify-content-end align-items-center gap-2">
-          <span class="fw-semibold text-muted">Your Points</span>
-          <span class="badge bg-secondary-subtle text-secondary px-3 py-2">{{ user_points }} points</span>
+          <span class="fw-semibold text-muted">{% trans 'Your Points' %}</span>
+          <span class="badge bg-secondary-subtle text-secondary px-3 py-2">{{ user_points }} {% trans 'points' %}</span>
         </div>
       {% endif %}
-
     </div>
 
     <div class="row g-4 align-items-start">
@@ -29,9 +28,9 @@
         <div class="card border-0 shadow-sm">
           <div class="ratio ratio-16x9 rounded-top overflow-hidden">
             {% if 'placeholder' in reward.image.url %}
-              <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
+              <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="w-100 h-100 object-fit-cover" alt="{% trans 'Reward image' %}" />
             {% else %}
-              {% cloudinary reward.image.public_id width=480 crop="fit" quality="auto" fetch_format="auto" alt=reward.name loading="lazy" decoding="async" class="w-100 h-100 object-fit-cover" %}
+              {% cloudinary reward.image.public_id width=480 crop='fit' quality='auto' fetch_format='auto' alt=reward.name loading='lazy' decoding='async' class='w-100 h-100 object-fit-cover' %}
             {% endif %}
           </div>
         </div>
@@ -49,47 +48,51 @@
 
             <p class="text-body-secondary mb-3">{{ reward.description }}</p>
             <div class="d-flex align-items-center gap-2 mb-4">
-              <p class="card-text text-body-secondary mb-3">Available in: {{ reward.available_countries|country_labels }}</p>
+              <p class="card-text text-body-secondary mb-3">
+                {% trans 'Available in:' %} {{ reward.available_countries|country_labels }}
+              </p>
             </div>
             <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="fw-semibold">Available for</span>
-              <span class="badge bg-primary-subtle text-primary px-3 py-2">{{ reward.cost }} points</span>
+              <span class="fw-semibold">{% trans 'Available for' %}</span>
+              <span class="badge bg-primary-subtle text-primary px-3 py-2">{{ reward.cost }} {% trans 'points' %}</span>
             </div>
 
             <div class="d-flex align-items-center gap-2 mb-4">
               {% if user.is_authenticated %}
                 {% if reward.stock > 0 %}
-                  <a href="{% url 'place_order' reward.id %}" class="btn btn-primary btn-lg w-100 mt-auto">Redeem Reward</a>
+                  <a href="{% url 'place_order' reward.id %}" class="btn btn-primary btn-lg w-100 mt-auto">{% trans 'Redeem Reward' %}</a>
                 {% else %}
-                  <div class="alert alert-secondary mb-0" role="alert">This reward is out of stock.</div>
+                  <div class="alert alert-secondary mb-0" role="alert">
+                    {% trans 'This reward is out of stock.' %}
+                  </div>
                 {% endif %}
               {% endif %}
               {% if not user.is_authenticated %}
-                <a href="{{ login_url }}" class="btn btn-primary mt-auto" aria-label="Login">Login to order your reward</a>
+                <a href="{{ login_url }}" class="btn btn-primary mt-auto" aria-label="Login">{% trans 'Login to order your reward' %}</a>
               {% endif %}
               {% if user.is_authenticated and perms.tasks.mark_done %}
-                <button type="button" class="btn btn-danger btn-lg w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">Delete Task</button>
+                <button type="button" class="btn btn-danger btn-lg w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">{% trans 'Delete Task' %}</button>
                 <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow-lg">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="deleteTaskLabel">Delete task?</h5>
+                        <h5 class="modal-title" id="deleteTaskLabel">{% trans 'Delete task?' %}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
 
                       <div class="modal-body">
                         <p class="mb-0">
-                          Are you sure you want to delete
-                          <strong>{{ reward.name }}</strong>? This action cannot be undone and there will be no points awarded.
+                          {% trans 'Are you sure you want to delete' %}
+                          <strong>{{ reward.name }}</strong>?{% trans 'This action cannot be undone and there will be no points awarded.' %}
                         </p>
                       </div>
 
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% trans 'Cancel' %}</button>
 
                         <form method="post" action="{% url 'delete_reward' reward.id %}">
                           {% csrf_token %}
-                          <button type="submit" class="btn btn-danger">Yes, delete</button>
+                          <button type="submit" class="btn btn-danger">{% trans 'Yes, delete' %}</button>
                         </form>
                       </div>
                     </div>
