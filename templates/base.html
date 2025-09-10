@@ -109,9 +109,6 @@
                     <a class="nav-link {% if request.path == subscription_view_url %}active{% endif %}" href="{{ subscription_view_url }}" aria-label="View Subscription Plans">Subscription Plans</a>
                   </li>
                 {% endif %}
-                <li class="nav-item">
-                  <a class="nav-link {% if request.path == faq_url %}active{% endif %}" href="{% url 'faq' %}" aria-label="Frequently asked questions">FAQ</a>
-                </li>
               </ul>
 
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -172,6 +169,7 @@
           © {{ year }} Procrastination Defier. All rights reserved. Created by <a href="https://github.com/fairytaib" target="_blank" rel="noopener noreferrer" aria-label="Link to Github">Sophjan Moubarrid</a>
         </p>
         <nav class="footer-nav">
+          <a href="{% url 'faq' %}" aria-label="Frequently asked questions">FAQ</a> |
           <a href="{% url 'legal_notice' %}" target="_blank" rel="noopener noreferrer" aria-label="Legal notice">Legal Notice</a> |
           <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener noreferrer" aria-label="Privacy Policy">Privacy Policy</a> |
           <a href="{% url 'terms_and_conditions' %}" target="_blank" rel="noopener noreferrer" aria-label="Terms and Conditions">Terms and Conditions</a>
