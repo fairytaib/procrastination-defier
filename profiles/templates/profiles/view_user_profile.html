@@ -67,6 +67,14 @@
               <dt class="col-sm-4">Your Points</dt>
               <dd class="col-sm-8">{{ user_points.points }}</dd>
             </dl>
+            <a class="btn btn-primary mt-4"
+               aria-label="View subscription details"
+               {% if user.is_authenticated and subscription_check %}
+                 href="{% url 'subscriptions_overview' %}"
+               {% else %}
+                 href="{{ subscription_view_url }}"
+               {% endif %}>My Subscription
+            </a>
           </div>
         </article>
       </div>

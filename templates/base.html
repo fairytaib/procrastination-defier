@@ -76,9 +76,8 @@
           <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}" aria-label="Procrastination defier logo"><img src="{% static 'images/logos/procdef_logo.png' %}" alt="Procrastination defier Logo" class="logo-image" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
             <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-0 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}" aria-label="Home">Home</a>
                 </li>
@@ -110,10 +109,8 @@
                   </li>
                 {% endif %}
               </ul>
-
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
-                  <div class="dropdown">
+                  <div class="dropdown d-none d-lg-block" id="userDropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% if user.is_authenticated and user_profile and user_profile.profile_picture %}
                       <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" class="logo-image" />
@@ -121,17 +118,22 @@
                       <img src="{% static 'images/placeholder/default_profile_image.webp' %}" alt="Logo" class="logo-image" />
                     {% endif %}
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu" id="userDropdownMenu" aria-labelledby="dropdownMenuButton">
                       <p class="m-1 text-center text-muted">Points {{ user.points.points }}</p>
                       <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account</a>
-                      <a class="dropdown-item" 
-                      {% if user.is_authenticated and subscription_check %}
-                        href="{% url 'subscriptions_overview' %}"
-                      {% else %}
-                        href="{{ subscription_view_url }}"
-                        {% endif %}>My Subscription</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                     </div>
+                  </div>
+
+                  {% comment %} For mobile view {% endcomment %}
+                  <div id="mobileUserMenu" class="d-lg-none navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'view_user_profile' %}">Account</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    <p class="m-1 text-end text-muted">Points {{ user.points.points }}</p>
                   </div>
                 {% else %}
                   <li class="nav-item">
@@ -141,7 +143,7 @@
                     <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                   </li>
                 {% endif %}
-              </ul>
+              
             </div>
           </div>
         </nav>
