@@ -8,6 +8,8 @@ from django.utils import timezone
 from django.conf import settings
 from django.urls import reverse
 from django.db import transaction
+from django.utils.translation import gettext_lazy as _
+
 
 # App imports
 from subscription.utils import can_add_task, refresh_overdue_flags

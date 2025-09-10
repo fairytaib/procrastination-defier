@@ -7,6 +7,8 @@ from tasks.models import UserPoints
 from django.contrib.auth.models import User
 from .forms import RewardForm
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
+
 
 
 # Fallback-Mapping for Old stocks (ISO2 -> Name) + Special values

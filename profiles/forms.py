@@ -4,6 +4,8 @@ from PIL import UnidentifiedImageError
 from django import forms
 from django.contrib.auth.models import User
 from .models import UserProfile
+from django.utils.translation import gettext_lazy as _
+
 
 
 class AccountForm(forms.ModelForm):

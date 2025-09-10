@@ -4,6 +4,7 @@ from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 def view_all_posts(request):

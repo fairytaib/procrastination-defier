@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta, date
 from cloudinary.models import CloudinaryField
+from django.utils.translation import gettext_lazy as _
+
 
 INTERVAL = (
     ('weekly', 'Weekly / In a week'),

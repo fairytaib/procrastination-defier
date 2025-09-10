@@ -2,6 +2,7 @@ from django import forms
 from .models import Order
 from rewards.models import RewardHistory
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class OrderForm(forms.ModelForm):

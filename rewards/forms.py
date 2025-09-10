@@ -3,6 +3,8 @@ from .models import Reward
 from PIL import Image, UnidentifiedImageError
 from django.core.exceptions import ValidationError
 import re
+from django.utils.translation import gettext_lazy as _
+
 
 
 class RewardForm(forms.ModelForm):

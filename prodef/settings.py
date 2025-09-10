@@ -26,6 +26,14 @@ DEBUG = ENVIRONMENT == "dev"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
+USE_I18N = True
+
+LANGUAGES = [
+    ("en", "English"),
+    ("de", "Deutsch"),
+]
+
+
 ALLOWED_HOSTS = [
     ".herokuapp.com",
     "procrastination-defier-4f6bef0e1e54.herokuapp.com",
@@ -62,11 +70,14 @@ INSTALLED_APPS = [
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+LOCALE_PATHS = [BASE_DIR / "locale"]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

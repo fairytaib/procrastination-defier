@@ -8,7 +8,9 @@ from django.shortcuts import redirect, render
 from .utils import get_current_subscription
 import stripe
 from django.conf import settings
-from django.utils import timezone as dj_timezone  # <-- NEU
+from django.utils import timezone as dj_timezone 
+from django.utils.translation import gettext_lazy as _
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 

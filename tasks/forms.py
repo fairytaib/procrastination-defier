@@ -3,6 +3,7 @@ from .models import Task, Task_Checkup
 from django.core.exceptions import ValidationError
 from PIL import Image, UnidentifiedImageError
 import re
+from django.utils.translation import gettext_lazy as _
 
 
 TASKS_MAX_UPLOAD_SIZES = {
