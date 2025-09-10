@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 {% load rewards_extras %}
 {% block title %}
   {{ reward.name }} Details
@@ -29,7 +30,7 @@
             {% if 'placeholder' in reward.image.url %}
               <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="w-100 h-100 object-fit-cover" alt="Reward image" />
             {% else %}
-              <img src="{{ reward.image.url }}" class="w-100 h-100 object-fit-cover" alt="{{ reward.name }} image" />
+              {% cloudinary reward.image.public_id width=480 crop="fit" quality="auto" fetch_format="auto" alt=reward.name loading="lazy" decoding="async" class="w-100 h-100 object-fit-cover" %}
             {% endif %}
           </div>
         </div>

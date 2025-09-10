@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 {% load rewards_extras %}
 {% block title %}
   Rewards List
@@ -67,9 +68,9 @@
           <div class="col">
             <div class="card h-100 border-0 shadow-sm">
               {% if 'placeholder' in reward.image.url %}
-                <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="card-img-top" alt="Reward Cup" />
+                <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="card-img-top" alt="Reward" loading="lazy" decoding="async" fetchpriority="low"/>
               {% else %}
-                <img src="{{ reward.image.url }}" class="card-img-top" alt="{{ reward.name }} image" />
+                {% cloudinary reward.image.public_id width=480 crop="fit" quality="auto" fetch_format="auto" alt=reward.name loading="lazy" decoding="async" class="card-img-top" %}
               {% endif %}
 
               <div class="card-body d-flex flex-column">

@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .forms import RewardForm
 from django.contrib import messages
 
+
 # Fallback-Mapping for Old stocks (ISO2 -> Name) + Special values
 COUNTRY_CODE_TO_NAME = {
     'DE': 'Germany', 'FR': 'France', 'BE': 'Belgium', 'CH': 'Switzerland',
