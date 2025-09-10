@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/tasks/_task_card.css' %}" />
 {% endblock %}
@@ -12,7 +13,7 @@
       {% if perms.tasks.mark_done %}
         <div class="col-6 col-lg-3">
           <p class="card-text mb-0">
-            <span class="d-block small text-body-secondary">Created by</span>
+            <span class="d-block small text-body-secondary">{% trans "Created by" %}</span>
             {{ task.user }}
           </p>
         </div>
@@ -20,31 +21,31 @@
 
       <div class="col-6 col-lg-3">
         <p class="card-text mb-0">
-          <span class="d-block small{% if task.is_due_soon %}text-danger {% else %}text-body-secondary {% endif %}">Deadline{% if task.fee_to_pay %} was due at {% endif %}:</span>
+          <span class="d-block small{% if task.is_due_soon %}text-danger {% else %}text-body-secondary {% endif %}">{% trans "Deadline" %}{% if task.fee_to_pay %} {% trans "was due at" %} {% endif %}:</span>
           {{ task.checkup_date }}
         </p>
       </div>
 
       <div class="col-6 col-lg-2">
         <p class="card-text mb-0">
-          <span class="d-block small text-body-secondary">Fee</span>
+          <span class="d-block small text-body-secondary">{% trans "Fee" %}:</span>
           {{ task.fee }}€
         </p>
       </div>
       {% if not task.fee_to_pay %}
         <div class="col-6 col-lg-2">
           <p class="card-text mb-0">
-            <span class="d-block small text-body-secondary">Points</span>
+            <span class="d-block small text-body-secondary">{% trans "Points" %}:</span>
             {{ task.points }}
           </p>
         </div>
       {% endif %}
       {% if not task.fee_to_pay or perms.tasks.mark_done %}
         <div class="col-12 col-lg-auto ms-lg-auto">
-          <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="View Task Details">View Details</a>
+          <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="View Task Details">{% trans "View Details" %}</a>
         </div>
       {% else %}
-        <a class="btn btn-warning" href="{% url 'pay_task_fee' task.id %}">Pay Fee</a>
+        <a class="btn btn-warning" href="{% url 'pay_task_fee' task.id %}">{% trans "Pay Fee" %}</a>
       {% endif %}
     </div>
   </div>
