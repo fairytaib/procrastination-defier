@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load static %}
 {% block title %}
-  Task Overview
+  {% trans "Task Overview" %}
 {% endblock %}
 
 {% block css %}
@@ -15,12 +15,12 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="border rounded-3 p-4 p-md-5 mb-4">
-            <h1 class="h3 mb-2">No active subscription</h1>
-            <p class="text-muted mb-4">To use this feature and add tasks, you need an active subscription.</p>
+            <h1 class="h3 mb-2">{% trans "No active subscription" %}</h1>
+            <p class="text-muted mb-4">{% trans "To use this feature and add tasks, you need an active subscription." %}</p>
 
             <div class="d-flex flex-wrap gap-2 align-items-center">
-              <a href="{% url 'subscription_view' %}" class="btn btn-outline-secondary btn-lg" aria-label="Plans">Plans</a>
-              <a href="{% url 'faq' %}" class="btn btn-link" aria-label="FAQ">Questions? Look at our FAQ</a>
+              <a href="{% url 'subscription_view' %}" class="btn btn-outline-secondary btn-lg" aria-label="{% trans 'Plans' %}">{% trans 'Plans' %}</a>
+              <a href="{% url 'faq' %}" class="btn btn-link" aria-label="{% trans 'FAQ' %}">{% trans 'Questions? Look at our FAQ' %}</a>
             </div>
           </div>
         </div>
@@ -31,19 +31,19 @@
       <header class="d-flex align-items-center justify-content-between mb-4">
         <div>
           <h1 class="h2 mb-0">
-            Task{% if perms.tasks.has_perm %}
-              Checkup
+            {% trans "Task" %}{% if perms.tasks.has_perm %}
+              {% trans "Checkup" %}
             {% else %}
-              Overview
+              {% trans "Overview" %}
             {% endif %}
           </h1>
           {% if not perms.tasks.mark_done %}
             <div>
               <p class="text-muted mb-0">
-                Your Task Slots: <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
+                {% trans "Your Task Slots:" %} <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
               </p>
               <p class="text-muted">
-                Your current points: <span>{{ user_points.points }}</span>
+                {% trans "Your current points:" %} <span>{{ user_points.points }}</span>
               </p>
             </div>
           {% endif %}
@@ -51,22 +51,22 @@
 
         {% if not perms.tasks.mark_done %}
           <div class="d-flex align-items-center flex-column">
-            <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="Add Task">Add Task</a>
+            <a href="{% url 'add_task' %}" class="btn btn-primary {% if not can_add_task %}disabled{% endif %}" aria-label="{% trans 'Add Task' %}">{% trans 'Add Task' %}</a>
             {% if tasks_with_fee.count >= 1 %}
-              <p class="text-muted mt-2">You can not add tasks until you paid your fees</p>
+              <p class="text-muted mt-2">{% trans 'You can not add tasks until you paid your fees' %}</p>
             {% elif not can_add_task %}
-              <p class="text-muted mt-2">You have reached your task limit.</p>
+              <p class="text-muted mt-2">{% trans 'You have reached your task limit.' %}</p>
             {% endif %}
           </div>
         {% endif %}
       </header>
       <section class="mb-5" aria-labelledby="Page description">
-        <p class="text-muted">Here you can see an overview of your tasks. You can add new tasks, see tasks that are in checkup, and tasks that are done. If a task is not done in time, a fee will be charged to your account.</p>
+        <p class="text-muted">{% trans "Here you can see an overview of your tasks. You can add new tasks, see tasks that are in checkup, and tasks that are done. If a task is not done in time, a fee will be charged to your account." %}</p>
       </section>
       <!-- Open / Undone -->
       {% if not perms.tasks.mark_done %}
         <section class="mb-5" aria-labelledby="open-tasks">
-          <h2 id="open-tasks" class="h4 mb-3">Open Tasks</h2>
+          <h2 id="open-tasks" class="h4 mb-3">{% trans "Open Tasks" %}</h2>
           {% if tasks_undone %}
             <div class="row row-cols-1 row-cols-md-2 g-4">
               {% for task in tasks_undone %}
@@ -76,19 +76,19 @@
               {% endfor %}
             </div>
           {% else %}
-            <div class="alert alert-info mb-0" role="alert">You have no current tasks.</div>
+            <div class="alert alert-info mb-0" role="alert">{% trans "You have no current tasks." %}</div>
           {% endif %}
         </section>
       {% endif %}
 
       {% if task_to_check.count == 0 and perms.tasks.mark_done %}
-        <div class="alert alert-info mb-0" role="alert">No tasks in checkup.</div>
+        <div class="alert alert-info mb-0" role="alert">{% trans "No tasks in checkup." %}</div>
       {% endif %}
 
       {% comment %}Task to Check{% endcomment %}
       {% if task_to_check %}
         <section class="mb-5" aria-labelledby="open-tasks">
-          <h2 id="open-tasks" class="h4 mb-3">Tasks in Checkup</h2>
+          <h2 id="open-tasks" class="h4 mb-3">{% trans "Tasks in Checkup" %}</h2>
           <div class="row row-cols-1 row-cols-md-2 g-4">
             {% for task in task_to_check %}
               <div class="col">
@@ -102,10 +102,10 @@
       {% comment %}Fees to pay{% endcomment %}
       {% if tasks_with_fee and tasks_with_fee.count > 0 %}
         <section class="mb-5" aria-labelledby="fees-to-pay">
-          <h2 id="fees-to-pay" class="h4 mb-3">Fees to Pay</h2>
+          <h2 id="fees-to-pay" class="h4 mb-3">{% trans "Fees to Pay" %}</h2>
           {% if tasks_with_fee and tasks_with_fee.count > 0 %}
             <div class="d-flex justify-content-end mb-2">
-              <a class="btn btn-warning" href="{% url 'pay_all_fees' %}">Pay all fees at once</a>
+              <a class="btn btn-warning" href="{% url 'pay_all_fees' %}">{% trans "Pay all fees at once" %}</a>
             </div>
             <div class="row row-cols-1 row-cols-md-2 g-4">
               {% for task in tasks_with_fee %}
@@ -115,14 +115,14 @@
               {% endfor %}
             </div>
           {% else %}
-            <div class="alert alert-info mb-0" role="alert">No fee to pay.</div>
+            <div class="alert alert-info mb-0" role="alert">{% trans "No fee to pay." %}</div>
           {% endif %}
         </section>
       {% endif %}
       <!-- Done -->
       {% if not perms.tasks.mark_done %}
         <section aria-labelledby="done-tasks">
-          <h2 id="done-tasks" class="h4 mb-3">Done Tasks</h2>
+          <h2 id="done-tasks" class="h4 mb-3">{% trans "Done Tasks" %}</h2>
           {% if tasks_done and tasks_done.count > 0 %}
             <div class="row row-cols-1 row-cols-md-2 g-4">
               {% for task in tasks_done %}
@@ -132,7 +132,7 @@
               {% endfor %}
             </div>
           {% else %}
-            <div class="alert alert-secondary mb-0" role="alert">No tasks completed yet.</div>
+            <div class="alert alert-secondary mb-0" role="alert">{% trans "No tasks completed yet." %}</div>
           {% endif %}
         </section>
       {% endif %}

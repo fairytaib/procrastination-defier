@@ -4,7 +4,7 @@
 {% load render_proof %}
 
 {% block title %}
-  Details
+  {% trans "Details" %}
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/tasks/view_task_details.css' %}" />
@@ -13,7 +13,7 @@
 {% block content %}
   <section class="container py-5">
     <div class="mb-3">
-      <a href="{% url 'user_task_overview' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> Back to Overview</a>
+      <a href="{% url 'user_task_overview' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> {% trans "Back to Overview" %}</a>
     </div>
 
     <div class="row g-4">
@@ -21,14 +21,14 @@
       <div class="col-lg-7">
         <article class="card">
           <div class="card-body">
-            <h1 class="h3 mb-3">Task Details</h1>
+            <h1 class="h3 mb-3">{% trans "Task Details" %}</h1>
             <h2 class="h4 mb-2">{{ task.title }}</h2>
 
             <dl class="row">
-              <dt class="col-sm-5">Description</dt>
+              <dt class="col-sm-5">{% trans "Description" %}</dt>
               <dd class="col-sm-7">{{ task.description }}</dd>
 
-              <dt class="col-sm-5">Task will be repeated</dt>
+              <dt class="col-sm-5">{% trans "Task will be repeated" %}</dt>
 
               <dd class="col-sm-7">
                 {% if task.repetition %}
@@ -38,18 +38,18 @@
                 {% endif %}
               </dd>
 
-              <dt class="col-sm-5">Checkup Interval</dt>
+              <dt class="col-sm-5">{% trans "Checkup Interval" %}</dt>
               <dd class="col-sm-7">{{ task.interval }}</dd>
 
-              <dt class="col-sm-5">Fee for Failure</dt>
+              <dt class="col-sm-5">{% trans "Fee for Failure" %}</dt>
               <dd class="col-sm-7">{{ task.fee }}€</dd>
 
-              <dt class="col-sm-5">Points for Completion</dt>
+              <dt class="col-sm-5">{% trans "Points for Completion" %}</dt>
               <dd class="col-sm-7">{{ task.points }} Points</dd>
 
               {% if task.completed == True %}
-                <dt class="col-sm-5">Task done successfully</dt>
-                <dd class="col-sm-7">Yes</dd>
+                <dt class="col-sm-5">{% trans "Task done successfully" %}</dt>
+                <dd class="col-sm-7">{% trans "Yes" %}</dd>
               {% endif %}
             </dl>
             <button type="button" class="btn btn-danger {% if task.checkup_state %}disabled{% endif %}" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><i class="bi bi-trash3-fill"></i></button>
@@ -57,23 +57,23 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="deleteTaskLabel">Delete task?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="deleteTaskLabel">{% trans "Delete task?" %}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans "Close" %}"></button>
                   </div>
 
                   <div class="modal-body">
                     <p class="mb-0">
-                      Are you sure you want to delete
-                      <strong>{{ task.title }}</strong>? This action cannot be undone and there will be no points awarded.
+                      {% trans "Are you sure you want to delete" %}
+                      <strong>{{ task.title }}</strong>? {% trans "This action cannot be undone and there will be no points awarded." %}
                     </p>
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
 
                     <form method="post" action="{% url 'delete_task' task.id %}">
                       {% csrf_token %}
-                      <button type="submit" class="btn btn-danger">Yes, delete</button>
+                      <button type="submit" class="btn btn-danger">{% trans "Yes, delete" %}</button>
                     </form>
                   </div>
                 </div>

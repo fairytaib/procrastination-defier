@@ -42,7 +42,7 @@
       {% endif %}
       {% if not task.fee_to_pay or perms.tasks.mark_done %}
         <div class="col-12 col-lg-auto ms-lg-auto">
-          <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="View Task Details">{% trans "View Details" %}</a>
+          <a href="{% url 'view_task_details' task.id %}" class="btn btn-primary" aria-label="{% trans 'View Task Details' %}">{% trans "View Details" %}</a>
         </div>
       {% else %}
         <a class="btn btn-warning" href="{% url 'pay_task_fee' task.id %}">{% trans "Pay Fee" %}</a>
