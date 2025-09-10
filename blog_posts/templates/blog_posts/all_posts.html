@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load blog_extras %}
 {% block title %}
-  Community Posts
+  {% trans "Community Posts" %}
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/blog_posts/all_posts.css' %}" />
@@ -12,15 +12,15 @@
 {% block content %}
   <section class="container py-5">
     <header class="d-flex align-items-center justify-content-between mb-4">
-      <h1 class="h2 mb-0">Community Posts</h1>
+      <h1 class="h2 mb-0">{% trans "Community Posts" %}</h1>
       {% if user.is_authenticated %}
-        <a href="{{ create_post_url }}" class="btn btn-primary" aria-label="Create Post">Create Post</a>
+        <a href="{{ create_post_url }}" class="btn btn-primary" aria-label="Create Post">{% trans "Create Post" %}</a>
       {% else %}
-        <a href="{{ login_url }}" class="btn btn-primary" aria-label="Create Post">Login to write post</a>
+        <a href="{{ login_url }}" class="btn btn-primary" aria-label="Create Post">{% trans "Login to write post" %}</a>
       {% endif %}
     </header>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      <p>Connect with like-minded individuals and share your thoughts!</p>
+      <p>{% trans "Connect with like-minded individuals and share your thoughts!" %}</p>
     </div>
     {% if posts %}
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="card-footer bg-transparent border-0 pt-0">
-                  <span class="fw-medium">Read more →</span>
+                  <span class="fw-medium">{% trans "Read more →" %}</span>
                 </div>
               </article>
             </a>
@@ -53,7 +53,7 @@
         {% endfor %}
       </div>
     {% else %}
-      <div class="alert alert-info mb-0" role="alert">No posts yet.</div>
+      <div class="alert alert-info mb-0" role="alert">{% trans "No posts yet." %}</div>
     {% endif %}
   </section>
 {% endblock %}
