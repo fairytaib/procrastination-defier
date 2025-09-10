@@ -118,7 +118,7 @@
                       <img src="{% static 'images/placeholder/default_profile_image.webp' %}" alt="Logo" class="logo-image" />
                     {% endif %}
                     </button>
-                    <div class="dropdown-menu" id="userDropdownMenu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu text-end" id="userDropdownMenu" aria-labelledby="dropdownMenuButton">
                       <p class="m-1 text-center text-muted">Points {{ user.points.points }}</p>
                       <a class="dropdown-item" href="{% url 'view_user_profile' %}">Account</a>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
