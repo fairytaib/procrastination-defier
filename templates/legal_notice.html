@@ -2,38 +2,38 @@
 {% load static %}
 
 {% block title %}
-  Legal Notice
+  {% trans "Legal Notice" %}
 {% endblock %}
 {% block css %}
-  <link rel="stylesheet" href="{% static 'css/base/leagal_notice.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base/legal_notice.css' %}">
 {% endblock %}
 {% block content %}
   <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-md-10 page-section">
-        <h1 class="text-center">Legal Notice</h1>
+        <h1 class="text-center">{% trans "Legal Notice" %}</h1>
 
         <p>
-          <strong>Information according to § 5 TMG:</strong>
+          <strong>{% trans "Information according to § 5 TMG:" %}</strong>
         </p>
         <p>
           Procrastination Defier<br />
-          Owner: Max Mustermann<br />
+          {% trans "Owner: Max Mustermann<br />
           Am Traubengarten 1<br />
           60435 Frankfurt am Main<br />
-          Germany
+          Germany" %}
         </p>
 
         <p>
-          <strong>Contact:</strong>
+          <strong>{% trans "Contact:" %}</strong>
         </p>
         <p>
-          Phone: +49 (0)123 4567890<br />
-          Email: info@proc-def.com
+          {% trans "Phone: +49 (0)123 4567890<br />
+          Email: info@proc-def.com" %}
         </p>
 
         <p>
-          <strong>Responsible for content according to § 55 Abs. 2 RStV:</strong>
+          <strong>{% trans "Responsible for content according to § 55 Abs. 2 RStV:" %}</strong>
         </p>
         <p>
           Max Mustermann<br />
@@ -41,16 +41,16 @@
           60435 Frankfurt am Main
         </p>
 
-        <h5>Liability for Content</h5>
-        <p>We strive for accurate and timely content but cannot guarantee it fully.</p>
+        <h5>{% trans "Liability for Content" %}</h5>
+        <p>{% trans "We strive for accurate and timely content but cannot guarantee it fully." %}</p>
 
-        <h5>Liability for Links</h5>
-        <p>We are not responsible for external content linked on this site.</p>
+        <h5>{% trans "Liability for Links" %}</h5>
+        <p>{% trans "We are not responsible for external content linked on this site." %}</p>
 
-        <h5>Copyright</h5>
-        <p>All original content is protected under German copyright law.</p>
+        <h5>{% trans "Copyright" %}</h5>
+        <p>{% trans "All original content is protected under German copyright law." %}</p>
 
-        <p class="mt-4 text-muted text-end">Last updated: August 2025</p>
+        <p class="mt-4 text-muted text-end">{% trans "Last updated: September 2025" %}</p>
       </div>
     </div>
   </div>
