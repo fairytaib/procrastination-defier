@@ -28,26 +28,30 @@ class TaskForm(forms.ModelForm):
                   'interval']
 
         labels = {
-            'title': 'Task Title',
-            'description': 'Task Description',
-            'goal_description': 'Goal Description',
-            'repetition': 'Is this a repeating task?',
-            'interval': 'When do you want this task checked?',
+            'title': _('Task Title'),
+            'description': _('Task Description'),
+            'goal_description': _('Goal Description'),
+            'repetition': _('Is this a repeating task?'),
+            'interval': _('When do you want this task checked?'),
         }
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Task Title'}
+                attrs={'class': 'form-control', 'placeholder': _('Task Title')}
                 ),
             'description': forms.Textarea(
-                attrs={'class': 'form-control',
-                       'placeholder': 'Describe the task as detailed as possible',
-                       'rows': 3}
+                attrs={
+                    'class': 'form-control',
+                    'placeholder':
+                    _('Describe the task as detailed as possible'),
+                    'rows': 3}
                 ),
             'goal_description': forms.Textarea(
-                attrs={'class': 'form-control',
-                       'placeholder': 'Describe what you want to achieve so we can check if you made it',
-                       'rows': 3}
+                attrs={
+                    'class': 'form-control',
+                    'placeholder':
+                    _('Describe what you want to achieve so we can check if you made it'),
+                    'rows': 3}
                 ),
             'repetition': forms.CheckboxInput(
                 attrs={'class': 'form-check-input'}
@@ -61,21 +65,24 @@ class TaskForm(forms.ModelForm):
         title = self.cleaned_data.get('title')
         if not re.match(r'^[A-Za-z0-9\s]+$', title):
             raise ValidationError(
-                "Title can only contain letters, numbers, and spaces.")
+                _("Title can only contain letters, numbers, and spaces.")
+            )
         return title
 
     def clean_description(self):
         description = self.cleaned_data.get('description')
         if len(description) < 10:
             raise ValidationError(
-                "Description must be at least 10 characters long.")
+                _("Description must be at least 10 characters long.")
+            )
         return description
 
     def clean_goal_description(self):
         goal_description = self.cleaned_data.get('goal_description')
         if len(goal_description) < 10:
             raise ValidationError(
-                "Goal description must be at least 10 characters long.")
+                _("Goal description must be at least 10 characters long.")
+            )
         return goal_description
 
 
@@ -89,10 +96,10 @@ class CheckTaskForm(forms.ModelForm):
                   'audio_file']
 
         labels = {
-                'image': 'Image Proof (JPEG, PNG, JPG or WEBP)',
-                'video': 'Video Proof (MP4, WEBM, MOV, AVI, MKV or MPEG)',
-                'text_file': 'Text File Proof (TXT, DOCX, PDF)',
-                'audio_file': 'Audio File Proof (MP3, WAV)',
+                'image': _('Image Proof (JPEG, PNG, JPG or WEBP)'),
+                'video': _('Video Proof (MP4, WEBM, MOV, AVI, MKV or MPEG)'),
+                'text_file': _('Text File Proof (TXT, DOCX, PDF)'),
+                'audio_file': _('Audio File Proof (MP3, WAV)'),
             }
 
         widgets = {
@@ -134,9 +141,9 @@ class CheckTaskForm(forms.ModelForm):
         max_bytes = TASKS_MAX_UPLOAD_SIZES.get(kind)
         if max_bytes and getattr(f, 'size', 0) > max_bytes:
             mb = int(max_bytes / (1024 * 1024))
-            raise ValidationError(
+            raise ValidationError(_(
                 f"File too large. Max allowed for {kind} is {mb} MB."
-                )
+            ))
 
     def clean_image(self):
         """Validate uploaded image file type."""
@@ -149,12 +156,12 @@ class CheckTaskForm(forms.ModelForm):
             with Image.open(f) as im:
                 im.verify()
         except (UnidentifiedImageError, Exception):
-            raise ValidationError("Uploaded file is not a valid image.")
+            raise ValidationError(_("Uploaded file is not a valid image."))
 
         if fmt not in {'jpeg', 'jpg', 'png', 'webp'}:
             raise ValidationError(
-                "Only JPEG, JPG, PNG or WEBP images are allowed."
-                )
+                _("Only JPEG, JPG, PNG or WEBP images are allowed.")
+            )
         self._validate_size(f, 'image')
         return f
 
@@ -176,12 +183,11 @@ class CheckTaskForm(forms.ModelForm):
 
         if ext not in allowed_ext and ct not in allowed_ct:
             raise ValidationError(
-                "Only MP4, WEBM, MOV, AVI, MKV or MPEG are allowed."
-                )
+                _("Only MP4, WEBM, MOV, AVI, MKV or MPEG are allowed.")
+            )
 
         self._validate_size(f, 'video')
         return f
-
 
     def clean_text_file(self):
         """Validate uploaded text file type."""
@@ -197,7 +203,9 @@ class CheckTaskForm(forms.ModelForm):
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         }
         if ext not in allowed_ext and ct not in allowed_ct:
-            raise ValidationError("Only PDF, TXT or DOCX files are allowed.")
+            raise ValidationError(
+                _("Only PDF, TXT or DOCX files are allowed.")
+            )
         self._validate_size(f, 'text_file')
         return f
 
@@ -208,6 +216,6 @@ class CheckTaskForm(forms.ModelForm):
 
         allowed_ct = {'audio/mpeg', 'audio/wav'}
         if getattr(audio_file, 'content_type', None) not in allowed_ct:
-            raise ValidationError("Only MP3 or WAV files are allowed.")
+            raise ValidationError(_("Only MP3 or WAV files are allowed."))
         self._validate_size(audio_file, 'audio_file')
         return audio_file

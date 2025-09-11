@@ -7,16 +7,23 @@ from tasks.models import UserPoints
 from django.contrib.auth.models import User
 from .forms import RewardForm
 from django.contrib import messages
-from django.utils.translation import gettext_lazy as _
-
+from django.utils.translation import gettext as _
 
 
 # Fallback-Mapping for Old stocks (ISO2 -> Name) + Special values
 COUNTRY_CODE_TO_NAME = {
-    'DE': 'Germany', 'FR': 'France', 'BE': 'Belgium', 'CH': 'Switzerland',
-    'DK': 'Denmark', 'FI': 'Finland', 'SE': 'Sweden', 'NO': 'Norway',
-    'NL': 'Netherlands', 'IT': 'Italy', 'ES': 'Spain',
-    'NOLIMIT': 'Everywhere',
+    'DE': _('Germany'),
+    'FR': _('France'),
+    'BE': _('Belgium'),
+    'CH': _('Switzerland'),
+    'DK': _('Denmark'),
+    'FI': _('Finland'),
+    'SE': _('Sweden'),
+    'NO': _('Norway'),
+    'NL': _('Netherlands'),
+    'IT': _('Italy'),
+    'ES': _('Spain'),
+    'NOLIMIT': _('Everywhere'),
 }
 NAME_TO_CODE = {v: k for k, v in COUNTRY_CODE_TO_NAME.items()}
 
@@ -113,7 +120,7 @@ def add_reward(request):
             if form.is_valid():
                 reward = form.save(commit=False)
                 reward.save()
-                messages.success(request, "Reward added successfully.")
+                messages.success(request, _("Reward added successfully."))
                 if 'save_and_add' in request.POST:
                     return redirect("add_reward")
                 else:
@@ -122,11 +129,12 @@ def add_reward(request):
                 form = RewardForm()
                 messages.error(
                     request,
-                    "Failed to add reward. Please correct the errors below."
-                    )
+                    _("Failed to add reward. Please correct the errors below.")
+                )
         else:
             messages.error(
-                request, "You do not have permission to add rewards.")
+                request, _("You do not have permission to add rewards.")
+            )
             return redirect("rewards_list")
     context = {
         "form": form,
@@ -141,10 +149,11 @@ def delete_reward(request, reward_id):
     if request.method == "POST":
         if not request.user.has_perm('tasks.mark_done'):
             messages.error(
-                request, "You do not have permission to delete rewards.")
+                request, _("You do not have permission to delete rewards.")
+            )
             return redirect("rewards_list")
         reward.delete()
-        messages.success(request, "Reward deleted successfully.")
+        messages.success(request, _("Reward deleted successfully."))
         return redirect("rewards_list")
     # We won't render a separate page; POST only from the inline modal.
     return redirect("view_reward_details", reward_id=reward_id)
@@ -160,11 +169,12 @@ def edit_reward(request, reward_id):
         form = RewardForm(request.POST, request.FILES, instance=reward)
         if not request.user.has_perm('tasks.mark_done'):
             messages.error(
-                request, "You do not have permission to edit rewards.")
+                request, _("You do not have permission to edit rewards.")
+            )
             return redirect("rewards_list")
         if form.is_valid():
             form.save()
-            messages.success(request, "Reward updated successfully.")
+            messages.success(request, _("Reward updated successfully."))
             return redirect("view_reward_details", reward_id=reward.id)
     return render(request, "rewards/edit_reward_form.html", {
         "form": form, "reward": reward

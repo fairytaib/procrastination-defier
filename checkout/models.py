@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from rewards.models import Reward
-from django.utils.translation import gettext_lazy as _
 
 
 class Order(models.Model):

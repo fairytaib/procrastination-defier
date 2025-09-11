@@ -4,14 +4,13 @@ from cloudinary.models import CloudinaryField
 from django.utils.translation import gettext_lazy as _
 
 
-
 class UserProfile(models.Model):
     """Model to store user profile information including profile picture."""
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='profile')
     profile_picture = CloudinaryField(
         'image', blank=True, null=True,
-        help_text="Upload a profile picture.")
+        help_text=_("Upload a profile picture."))
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

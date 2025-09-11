@@ -3,7 +3,6 @@ from .models import UserProfile
 from django.contrib.auth.decorators import login_required
 from .forms import AccountForm, ProfilePictureForm
 from tasks.models import UserPoints
-from django.utils.translation import gettext_lazy as _
 
 
 @login_required

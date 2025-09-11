@@ -61,10 +61,10 @@ class Reward(models.Model):
         blank=True, null=True)
     description = models.TextField(max_length=1000, null=False, blank=False)
     cost = models.PositiveIntegerField(
-        help_text="Cost in points to redeem this reward.",
+        help_text=_("Cost in points to redeem this reward."),
         default=1000, blank=False, null=False)
     stock = models.PositiveIntegerField(
-        help_text="Number of items available for this reward.",
+        help_text=_("Number of items available for this reward."),
         default=10, blank=False, null=False)
     reward_type = models.CharField(
         choices=REWARD_TYPES,

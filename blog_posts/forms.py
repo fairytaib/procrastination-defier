@@ -1,6 +1,7 @@
 from django import forms
 from .models import Comment, Post
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext, ngettext
 
 
 class CommentForm(forms.ModelForm):
@@ -11,7 +12,7 @@ class CommentForm(forms.ModelForm):
 
         widgets = {
             'content': forms.Textarea
-            (attrs={'rows': 4, 'placeholder': 'Add a comment...'}),
+            (attrs={'rows': 4, 'placeholder': _('Add a comment...')}),
         }
 
 
@@ -22,7 +23,8 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'content']
 
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Post Title'}),
+            'title': forms.TextInput(attrs={'placeholder': _('Post Title')}),
             'content': forms.Textarea(
-                attrs={'rows': 12, 'placeholder': 'Post Content'}),
-        }
+                attrs={'rows': 12, 'placeholder': _('Post Content')}
+                ),
+            }

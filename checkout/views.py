@@ -6,7 +6,7 @@ from .forms import OrderForm, RewardHistoryForm
 from .models import Order
 from rewards.models import Reward, RewardHistory
 from tasks.models import UserPoints
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 
 @login_required
@@ -43,11 +43,11 @@ def place_order(request, reward_id):
         if form.is_valid():
             if reward.stock <= 0:
                 messages.warning(
-                    request, "This reward is currently out of stock.")
+                    request, _("This reward is currently out of stock."))
             elif reward.cost > user_points.points:
                 messages.warning(
                     request,
-                    "You do not have enough points to redeem this reward"
+                    _("You do not have enough points to redeem this reward")
                 )
             else:
                 order = form.save(commit=False)
@@ -68,8 +68,9 @@ def place_order(request, reward_id):
                     reward=reward
                 )
                 messages.success(
-                    request, "Order placed successfully."
-                    "We will send it to you shortly."
+                    request, _(
+                        "Order placed successfully. We will send it to you shortly."
+                        )
                 )
                 return redirect("rewards_list")
     return render(
@@ -123,7 +124,7 @@ def view_order_details(request, order_id):
             order.reward_sent = True
             order.save(update_fields=["reward_sent"])
             form.save()
-            messages.success(request, "Order marked as done.")
+            messages.success(request, _("Order marked as done."))
             return redirect("user_order_overview")
         else:
             form = RewardHistoryForm(instance=order)
