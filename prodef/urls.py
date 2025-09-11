@@ -33,27 +33,7 @@ def custom_500(request):
 handler404 = "prodef.urls.custom_404"
 handler500 = "prodef.urls.custom_500"
 
-
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="home.html"), name='home'),
-    path('faq/', TemplateView.as_view(template_name="faq.html"), name='faq'),
-    path('404/', TemplateView.as_view(template_name="404.html"), name='404'),
-    path('500/', TemplateView.as_view(template_name="500.html"), name='500'),
-    path('legal_notice/', TemplateView.as_view(
-        template_name="legal_notice.html"), name='legal_notice'),
-    path('privacy_policy/', TemplateView.as_view(
-        template_name="privacy_policy.html"), name='privacy_policy'),
-    path('terms_and_conditions/', TemplateView.as_view(
-        template_name="terms_and_conditions.html"
-        ), name='terms_and_conditions'),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('blog/', include('blog_posts.urls')),
-    path('checkout/', include('checkout.urls')),
-    path('rewards/', include('rewards.urls')),
-    path('tasks/', include('tasks.urls')),
-    path('profiles/', include('profiles.urls')),
-    path('subscription/', include('subscription.urls')),
     path("i18n/setlang/", set_language, name="set_language"),
 ]
 
