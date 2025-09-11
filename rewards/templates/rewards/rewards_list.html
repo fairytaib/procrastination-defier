@@ -49,8 +49,8 @@
           <label for="sort" class="form-label mb-1">{% trans "Order by" %}</label>
           <select id="sort" name="sort" class="form-select">
             <option value="">{% trans "New" %}</option>
-            <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>{{ "Price ↑ (ascending)"|trans }}</option>
-            <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>{{ "Price ↓ (descending)"|trans }}</option>
+            <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>{{ "Price ↑ (ascending)" }}</option>
+            <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>{{ "Price ↓ (descending)" }}</option>
           </select>
         </div>
 

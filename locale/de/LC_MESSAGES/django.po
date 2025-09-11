@@ -2087,7 +2087,7 @@ msgstr ""
 
 #: .\templates\home.html:16
 msgid "Welcome to the End of Your Procrastination"
-msgstr "Willkommen am Ende Ihrer Prokrastination"
+msgstr "Willkommen am Ende deiner Prokrastination"
 
 #: .\templates\home.html:18
 msgid "Procrastination isn't a habit – it's a trap."
@@ -2114,7 +2114,7 @@ msgid ""
 "commit to real tasks – we make sure you follow through."
 msgstr ""
 "Procrastination Defier ist dein digitaler Partner, der dich zur Rechenschaft "
-"zieht. Sie verpflichten dich zu konkreten Aufgaben – wir sorgen dafür, dass "
+"zieht. Du verpflichtest dich zu konkreten Aufgaben – wir sorgen dafür, dass "
 "du diese auch umsetzen."
 
 #: .\templates\home.html:33

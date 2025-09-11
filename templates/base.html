@@ -110,7 +110,7 @@
                   </li>
                 {% endif %}
               </ul>
-              <form action="{% url 'set_language' %}" method="post" class="language-switcher">
+              <form action="{% url 'set_language' %}" method="post" class="language-switcher" class="me-2">
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ request.get_full_path }}">
                 <select name="language" onchange="this.form.submit()">
