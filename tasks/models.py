@@ -2,11 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta, date
 from cloudinary.models import CloudinaryField
+from django.utils.translation import gettext_lazy as _
+
 
 INTERVAL = (
-    ('weekly', 'Weekly / In a week'),
-    ('biweekly', 'Biweekly / In two weeks'),
-    ('monthly', 'Monthly / In a month'),
+    ('weekly', _('Weekly / In a week')),
+    ('biweekly', _('Biweekly / In two weeks')),
+    ('monthly', _('Monthly / In a month')),
 )
 
 INTERVAL_TO_CHECKUP = {
@@ -32,8 +34,8 @@ class UserPoints(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='points')
     points = models.PositiveIntegerField(
-        help_text="Total points earned by the user."
-        )
+        help_text=_("Total points earned by the user.")
+    )
 
     def __str__(self):
         return f"{self.user.username} - {self.points} points"
@@ -57,7 +59,7 @@ class Task(models.Model):
                                 default='weekly')
     fee = models.DecimalField(max_digits=10, decimal_places=2, blank=True,
                               null=True,
-                              help_text="Fee for failing this task.")
+                              help_text=_("Fee for failing this task."))
     fee_to_pay = models.BooleanField(default=False)
     fee_payment_session_id = models.CharField(
         max_length=255, blank=True, null=True
@@ -66,11 +68,11 @@ class Task(models.Model):
     points = models.PositiveIntegerField(
         blank=True,
         null=True,
-        help_text="Points awarded for completing this task."
+        help_text=_("Points awarded for completing this task.")
     )
     checkup_state = models.BooleanField(default=False)
     checkup_date = models.DateField(
-        help_text="Next checkup date for this task.",
+        help_text=_("Next checkup date for this task."),
         null=True, blank=True
     )
 
@@ -110,23 +112,23 @@ class Task_Checkup(models.Model):
                              related_name='checkups')
     image = CloudinaryField(
         resource_type='image', blank=True, null=True,
-        help_text="Upload an image for this checkup"
+        help_text=_("Upload an image for this checkup")
     )
     video = CloudinaryField(
         resource_type='video', blank=True, null=True,
-        help_text="Upload a video for this checkup"
+        help_text=_("Upload a video for this checkup")
     )
     text_file = CloudinaryField(
         resource_type='raw', blank=True, null=True,
-        help_text="Upload a text file for this checkup"
+        help_text=_("Upload a text file for this checkup")
     )
     audio_file = CloudinaryField(
         resource_type='video', blank=True, null=True,
-        help_text="Upload an audio file for this checkup"
+        help_text=_("Upload an audio file for this checkup")
     )
     comments = models.TextField(
         blank=True, null=True,
-        help_text="Add a comment for this checkup"
+        help_text=_("Add a comment for this checkup")
     )
     uploaded_at = models.DateTimeField(auto_now_add=True)
     delete_after_days = models.PositiveIntegerField(default=30)

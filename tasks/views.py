@@ -8,6 +8,8 @@ from django.utils import timezone
 from django.conf import settings
 from django.urls import reverse
 from django.db import transaction
+from django.utils.translation import gettext as g_
+
 
 # App imports
 from subscription.utils import can_add_task, refresh_overdue_flags
@@ -107,13 +109,13 @@ def view_task_details(request, task_id):
                 task.save(update_fields=["checkup_state"])
                 checkup.save()
                 messages.success(
-                    request, "Proof uploaded successfully."
-                    )
+                    request, g_("Proof uploaded successfully.")
+                )
                 return redirect("user_task_overview")
             else:
                 messages.error(
-                    request, "There was an error with your submission."
-                    )
+                    request, g_("There was an error with your submission.")
+                )
         elif "done_checkbox" in request.POST:
             if user.has_perm('tasks.mark_done'):
                 task.completed = True
@@ -143,12 +145,12 @@ def view_task_details(request, task_id):
                 else:
                     task.completed = False
                 task.save(update_fields=["fee_to_pay"])
-                messages.success(request, "Task marked as failed.")
+                messages.success(request, g_("Task marked as failed."))
                 return redirect("user_task_overview")
             else:
                 messages.error(
                     request,
-                    "You do not have permission to mark this task as done."
+                    g_("You do not have permission to mark this task as done.")
                     )
 
     context = {
@@ -167,14 +169,14 @@ def add_task(request):
     form = TaskForm(request.POST or None)
     if request.method == "POST":
         if not can_add_task(request.user):
-            messages.error(request, "You cannot add more tasks.")
+            messages.error(request, g_("You cannot add more tasks."))
             return redirect("user_task_overview")
 
         if form.is_valid():
             task = form.save(commit=False)
             task.user = request.user
             task.save()
-            messages.success(request, "Task added successfully.")
+            messages.success(request, g_("Task added successfully."))
             if 'save_and_add' in request.POST:
                 return redirect("add_task")
             else:
@@ -182,7 +184,7 @@ def add_task(request):
         else:
             messages.error(
                 request,
-                "There was an error with your submission. Please try again."
+                g_("There was an error with your submission. Please try again.")
             )
             form = TaskForm()
     context = {
@@ -197,15 +199,15 @@ def pay_task_fee(request, task_id):
     """Initiate the payment process for a task fee."""
     task = get_object_or_404(Task, id=task_id, user=request.user)
     if task.completed:
-        messages.info(request, "This Task has already been completed.")
+        messages.info(request, g_("This Task has already been completed."))
         return redirect("user_task_overview")
     if not task.fee_to_pay:
-        messages.info(request, "Currently, there is no fee due for this task.")
+        messages.info(request, g_("Currently, there is no fee due for this task."))
         return redirect("user_task_overview")
 
     price_id = settings.STRIPE_FEE_PRICES.get(task.interval)
     if not price_id:
-        messages.error(request, "Price ID for this fee is missing.")
+        messages.error(request, g_("Price ID for this fee is missing."))
         return redirect("user_task_overview")
 
     session = stripe.checkout.Session.create(
@@ -236,12 +238,12 @@ def pay_task_fee_success(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
 
     if not session_id or session_id != task.fee_payment_session_id:
-        messages.error(request, "Session could not be verified.")
+        messages.error(request, g_("Session could not be verified."))
         return redirect('user_task_overview')
 
     session = stripe.checkout.Session.retrieve(session_id)
     if session.payment_status != 'paid':
-        messages.warning(request, "Payment not yet confirmed.")
+        messages.warning(request, g_("Payment not yet confirmed."))
         return redirect('user_task_overview')
 
     # Remove lock flag and close task (no points awarded!)
@@ -261,7 +263,7 @@ def pay_task_fee_success(request, task_id):
         task.penalty_paid_at = timezone.now()
         task.save(update_fields=['fee_to_pay', 'completed', 'penalty_paid_at'])
 
-    messages.success(request, "Fee paid. Task closed.")
+    messages.success(request, g_("Fee paid. Task closed."))
     return redirect('user_task_overview')
 
 
@@ -316,7 +318,7 @@ def pay_all_fees_success(request):
 
     session = stripe.checkout.Session.retrieve(session_id)
     if session.payment_status != "paid":
-        messages.warning(request, "Payment not yet confirmed.")
+        messages.warning(request, g_("Payment not yet confirmed."))
         return redirect("user_task_overview")
 
     # find Batch
@@ -324,7 +326,7 @@ def pay_all_fees_success(request):
         FeePaymentBatch, user=request.user, session_id=session_id
     )
     if batch.status == "paid":
-        messages.info(request, "The batch has already been processed.")
+        messages.info(request, g_("The batch has already been processed."))
         return redirect("user_task_overview")
 
     # Unlock/complete all tasks in the batch
@@ -335,7 +337,7 @@ def pay_all_fees_success(request):
                  .get(user=request.user, session_id=session_id))
 
         if batch.status == "paid":
-            messages.info(request, "The batch has already been processed.")
+            messages.info(request, g_("The batch has already been processed."))
             return redirect("user_task_overview")
 
         for task in batch.tasks.select_for_update():
@@ -376,7 +378,7 @@ def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
     if request.method == "POST":
         task.delete()
-        messages.success(request, "Task deleted successfully.")
+        messages.success(request, g_("Task deleted successfully."))
         return redirect("user_task_overview")
     # We won't render a separate page; POST only from the inline modal.
     return redirect("view_task_details", task_id=task_id)

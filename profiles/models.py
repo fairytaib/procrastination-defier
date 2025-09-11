@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.translation import gettext_lazy as _
 
 
 class UserProfile(models.Model):
@@ -9,7 +10,7 @@ class UserProfile(models.Model):
                                 related_name='profile')
     profile_picture = CloudinaryField(
         'image', blank=True, null=True,
-        help_text="Upload a profile picture.")
+        help_text=_("Upload a profile picture."))
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

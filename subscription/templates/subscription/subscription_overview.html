@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-  Your Subscription
+  {% trans "Your Subscription" %}
 {% endblock %}
 {% block css %}
 
@@ -12,8 +12,8 @@
 {% block content %}
   <section class="container py-5">
     <header class="mb-4">
-      <h1 class="h3 mb-1">Your subscription</h1>
-      <p class="text-body-secondary mb-0">View your current plan, task limits, billing period and status. You can change your plan, cancel at the end of the period or resume anytime.</p>
+      <h1 class="h3 mb-1">{% trans "Your subscription" %}</h1>
+      <p class="text-body-secondary mb-0">{% trans "View your current plan, task limits, billing period and status. You can change your plan, cancel at the end of the period or resume anytime." %}</p>
     </header>
 
     <!-- Summary -->
@@ -22,27 +22,27 @@
         <div class="row g-3 align-items-center">
           <div class="col-12 col-md-7">
             <div class="d-flex flex-wrap align-items-center gap-2">
-              <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">Plan</span>
+              <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">{% trans "Plan" %}</span>
               <h2 class="h5 mb-0 text-capitalize">{{ subscription.product_name }}</h2>
-              <span class="badge bg-secondary-subtle text-secondary">{{ subscription.tasks_quota }} tasks / month</span>
+              <span class="badge bg-secondary-subtle text-secondary">{{ subscription.tasks_quota }} {% trans "tasks / month" %}</span>
             </div>
 
             <div class="mt-2 d-flex flex-wrap gap-3">
               <div class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-shield-check" aria-hidden="true"></i>
-                <span class="fw-semibold">Status:</span>
+                <span class="fw-semibold">{% trans "Status:" %}</span>
                 <span class="text-capitalize">
                   {% if subscription.end_date %}
-                    canceling (ends {{ subscription.end_date }})
+                    {% trans "canceling (ends" %} {{ subscription.end_date }}{% trans ")" %}
                   {% else %}
-                    active
+                    {% trans "active" %}
                   {% endif %}
                 </span>
               </div>
             </div>
 
             <div class="mt-2 small text-body-secondary">
-              Started on: <time datetime="{{ subscription.start_date|date:'c' }}">{{ subscription.start_date }}</time>
+              {% trans "Started on:" %} <time datetime="{{ subscription.start_date|date:'c' }}">{{ subscription.start_date }}</time>
             </div>
           </div>
         </div>
@@ -54,11 +54,11 @@
       <div class="col-lg-7">
         <section class="card border-0 shadow-sm h-100">
           <div class="card-body">
-            <h3 class="h5 mb-3">Manage subscription</h3>
+            <h3 class="h5 mb-3">{% trans "Manage subscription" %}</h3>
 
             <a href="{% url 'subscription_manage_stripe' %}" class="btn btn-primary d-inline-flex align-items-center gap-2 px-4 py-2 text-nowrap" target="_blank" rel="noopener">
               <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
-              <span>Change your Subscription</span>
+              <span>{% trans "Change your Subscription" %}</span>
             </a>
           </div>
         </section>

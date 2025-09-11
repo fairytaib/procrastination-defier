@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-  Terms and Conditions
+  {% trans "Terms and Conditions" %}
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/term_and_conditions.css' %}" />
@@ -12,20 +13,20 @@
       <div class="col-lg-10 col-xl-8">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h1 class="h3 mb-4">General Terms and Conditions (GTC)</h1>
+            <h1 class="h3 mb-4">{% trans "General Terms and Conditions (GTC)" %}</h1>
 
-            <h2 id="scope" class="h5 mt-4">1. Scope</h2>
+            <h2 id="scope" class="h5 mt-4">{% trans "1. Scope" %}</h2>
             <p>
-              These General Terms and Conditions (GTC) apply to all deliveries by
-              <strong>Procrastination Defier</strong> to consumers.
+              {% trans "These General Terms and Conditions (GTC) apply to all deliveries by
+              <strong>Procrastination Defier</strong> to consumers." %}
             </p>
-            <p class="mb-0">A consumer is any natural person who enters into a legal transaction for purposes that predominantly are neither commercial nor attributable to their self-employed professional activity.</p>
+            <p class="mb-0">{% trans "A consumer is any natural person who enters into a legal transaction for purposes that predominantly are neither commercial nor attributable to their self-employed professional activity." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="contracting-party" class="h5">2. Contracting Party</h2>
+            <h2 id="contracting-party" class="h5">{% trans "2. Contracting Party" %}</h2>
             <p>
-              The purchase agreement is concluded with <strong>Procrastination Defier</strong>.
+              {% trans "The purchase agreement is concluded with" %} <strong>Procrastination Defier</strong>.
             </p>
             <address class="mb-0">
               <strong>Sophjan Moubarrid</strong><br />
@@ -36,92 +37,88 @@
 
             <hr class="my-4" />
 
-            <h2 id="conclusion" class="h5">3. Conclusion of Contract</h2>
-            <p>The presentation of products in the online shop does not constitute a legally binding offer, but an invitation to place an order.</p>
-            <p>By clicking the purchase confirmation you place a binding order for the goods listed on the checkout page. Your purchase contract is concluded when we accept your order by sending an order confirmation via email immediately after receipt of your order. Please note that, during the ordering process, you are required to provide an email address to which you have access.</p>
-            
+            <h2 id="conclusion" class="h5">{% trans "3. Conclusion of Contract" %}</h2>
+            <p>{% trans "The presentation of products in the online shop does not constitute a legally binding offer, but an invitation to place an order." %}</p>
+            <p>{% trans "By clicking the purchase confirmation you place a binding order for the goods listed on the checkout page. Your purchase contract is concluded when we accept your order by sending an order confirmation via email immediately after receipt of your order. Please note that, during the ordering process, you are required to provide an email address to which you have access." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="prices" class="h5">4. Prices &amp; Packaging</h2>
-            <p>The prices stated at the time of ordering apply. They are final prices and include the statutory value-added tax applicable in Germany. If items are on special offer at the time of purchase or a voucher is redeemed, the reduced price is included in the final order.</p>
-            <p class="mb-0">The packaging becomes the property of the customer upon handover.</p>
+            <h2 id="prices" class="h5">{% trans "4. Prices &amp; Packaging" %}</h2>
+            <p>{% trans "The prices stated at the time of ordering apply. They are final prices and include the statutory value-added tax applicable in Germany. If items are on special offer at the time of purchase or a voucher is redeemed, the reduced price is included in the final order." %}</p>
+            <p class="mb-0">{% trans "The packaging becomes the property of the customer upon handover." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="payment" class="h5">5. Payment</h2>
-            <p>As a rule, we offer the following payment methods and reserve the right to restrict available options for individual orders:</p>
+            <h2 id="payment" class="h5">{% trans "5. Payment" %}</h2>
+            <p>{% trans "As a rule, we offer the following payment methods and reserve the right to restrict available options for individual orders:" %}</p>
             <ul class="mb-3">
               <li>
-                <strong>Credit card:</strong> You pay directly during the checkout process by entering your credit card details. When the goods are dispatched, your card is charged with the actual invoice amount after deduction of any discounts or vouchers. For goods manufactured to customer specifications or clearly tailored to personal needs, your card is charged immediately with the actual invoice amount after deduction of any discounts or gift vouchers.
+                <strong>{% trans "Credit card:" %}</strong> {% trans "You pay directly during the checkout process by entering your credit card details. When the goods are dispatched, your card is charged with the actual invoice amount after deduction of any discounts or vouchers. For goods manufactured to customer specifications or clearly tailored to personal needs, your card is charged immediately with the actual invoice amount after deduction of any discounts or gift vouchers." %}
               </li>
             </ul>
-            <p class="mb-0">Please note that we only accept payments from accounts within the European Union (EU).</p>
+            <p class="mb-0">{% trans "Please note that we only accept payments from accounts within the European Union (EU)." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="vouchers" class="h5">6. Vouchers and Codes</h2>
-            <p class="mb-0">No vouchers or codes were selected.</p>
+            <h2 id="vouchers" class="h5">{% trans "6. Vouchers and Codes" %}</h2>
+            <p class="mb-0">{% trans "No vouchers or codes were selected." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="withdrawal" class="h5">7. Right of Withdrawal</h2>
-            <h3 class="h6">Right of Withdrawal</h3>
-            <p>You have the right to withdraw from this contract within fourteen days without giving any reason.</p>
-            <p>The withdrawal period is fourteen days from the day on which you or a third party named by you, who is not the carrier, has taken possession of the goods.</p>
-            <p>To exercise your right of withdrawal, you must inform us of your decision to withdraw from this contract by means of a clear statement (e.g. a letter sent by post, fax or email). Please state your name (and company name, if applicable), address and—if available—telephone number, fax number and email address. You may use the model withdrawal form provided below the withdrawal policy, but this is not mandatory. If you exercise your right of withdrawal, we will send you confirmation of receipt of the withdrawal by email without delay.</p>
-            <p class="mb-3">To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired.</p>
+            <h2 id="withdrawal" class="h5">{% trans "7. Right of Withdrawal" %}</h2>
+            <h3 class="h6">{% trans "Right of Withdrawal" %}</h3>
+            <p>{% trans "You have the right to withdraw from this contract within fourteen days without giving any reason." %}</p>
+            <p>{% trans "The withdrawal period is fourteen days from the day on which you or a third party named by you, who is not the carrier, has taken possession of the goods." %}</p>
+            <p>{% trans "To exercise your right of withdrawal, you must inform us of your decision to withdraw from this contract by means of a clear statement (e.g. a letter sent by post, fax or email). Please state your name (and company name, if applicable), address and—if available—telephone number, fax number and email address. You may use the model withdrawal form provided below the withdrawal policy, but this is not mandatory. If you exercise your right of withdrawal, we will send you confirmation of receipt of the withdrawal by email without delay." %}</p>
+            <p class="mb-3">{% trans "To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired." %}</p>
 
-            <h3 class="h6">Effects of Withdrawal</h3>
-            <p>If you withdraw from this contract, we shall reimburse you for all payments we have received from you, including delivery costs (with the exception of any additional costs resulting from your choice of a type of delivery other than the least expensive standard delivery offered by us), without undue delay and at the latest within fourteen days from the day on which we receive notification of your withdrawal from this contract. For this reimbursement, we will use the same means of payment that you used for the original transaction, unless expressly agreed otherwise with you; in no event will you be charged fees for this reimbursement. We may withhold reimbursement until we have received the goods back or you have supplied evidence of having sent back the goods, whichever is the earliest.</p>
-            <p>You shall send back the goods or hand them over to us (or to a person authorized by us to receive the goods) without undue delay and in any event not later than fourteen days from the day on which you communicate your withdrawal from this contract to us. The deadline is met if you send back the goods before the period of fourteen days has expired.</p>
-            <p>You bear the direct cost of returning the goods.</p>
-            <p class="mb-0">You are only liable for any diminished value of the goods resulting from the handling other than what is necessary to establish the nature, characteristics and functioning of the goods. This withdrawal policy does not apply to the separate delivery of goods.</p>
-
-            <hr class="my-4" />
-
-            <h2 id="exclusion" class="h5">8. Exclusion / Expiry of the Right of Withdrawal</h2>
-            <p class="mb-0">In accordance with § 312g (2) of the German Civil Code (BGB), the right of withdrawal does not apply, among other things, to contracts for the supply of goods which are not prefabricated and for the production of which an individual selection or decision by the consumer is decisive, or which are clearly tailored to the personal needs of the consumer; it also expires prematurely for contracts for the supply of sealed goods which are not suitable for return for reasons of health protection or hygiene if their seal was removed after delivery.</p>
+            <h3 class="h6">{% trans "Effects of Withdrawal" %}</h3>
+            <p>{% trans "If you withdraw from this contract, we shall reimburse you for all payments we have received from you, including delivery costs (with the exception of any additional costs resulting from your choice of a type of delivery other than the least expensive standard delivery offered by us), without undue delay and at the latest within fourteen days from the day on which we receive notification of your withdrawal from this contract. For this reimbursement, we will use the same means of payment that you used for the original transaction, unless expressly agreed otherwise with you; in no event will you be charged fees for this reimbursement. We may withhold reimbursement until we have received the goods back or you have supplied evidence of having sent back the goods, whichever is the earliest." %}</p>
+            <p>{% trans "You shall send back the goods or hand them over to us (or to a person authorized by us to receive the goods) without undue delay and in any event not later than fourteen days from the day on which you communicate your withdrawal from this contract to us. The deadline is met if you send back the goods before the period of fourteen days has expired." %}</p>
+            <p>{% trans "You bear the direct cost of returning the goods." %}</p>
+            <p class="mb-0">{% trans "You are only liable for any diminished value of the goods resulting from the handling other than what is necessary to establish the nature, characteristics and functioning of the goods. This withdrawal policy does not apply to the separate delivery of goods." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="voluntary-returns" class="h5">9. Voluntary Return Policy</h2>
-            <p class="mb-0">We do not offer a voluntary return policy.</p>
+            <h2 id="exclusion" class="h5">{% trans "8. Exclusion / Expiry of the Right of Withdrawal" %}</h2>
+            <p class="mb-0">{% trans "In accordance with § 312g (2) of the German Civil Code (BGB), the right of withdrawal does not apply, among other things, to contracts for the supply of goods which are not prefabricated and for the production of which an individual selection or decision by the consumer is decisive, or which are clearly tailored to the personal needs of the consumer; it also expires prematurely for contracts for the supply of sealed goods which are not suitable for return for reasons of health protection or hygiene if their seal was removed after delivery." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="delivery" class="h5">10. Delivery and Delivery Time</h2>
-            <p class="mb-0">Deliveries abroad are also possible. Items are supplied only in household quantities and only to end consumers.</p>
+            <h2 id="voluntary-returns" class="h5">{% trans "9. Voluntary Return Policy" %}</h2>
+            <p class="mb-0">{% trans "We do not offer a voluntary return policy." %}</p>
 
             <hr class="my-4" />
 
-            <h2 id="shipping" class="h5">11. Shipping Costs</h2>
+            <h2 id="delivery" class="h5">{% trans "10. Delivery and Delivery Time" %}</h2>
+            <p class="mb-0">{% trans "Deliveries abroad are also possible. Items are supplied only in household quantities and only to end consumers." %}</p>
+
+            <hr class="my-4" />
+
+            <h2 id="shipping" class="h5">{% trans "11. Shipping Costs" %}</h2>
             <p class="mb-0">
-              Orders from <strong>Procrastination Defier</strong> are shipped free of charge.
+              {% trans "Orders from" %} <strong>Procrastination Defier</strong> {% trans "are shipped free of charge." %}.
             </p>
 
             <hr class="my-4" />
 
-            <h2 id="retention" class="h5">12. Retention of Title</h2>
+            <h2 id="retention" class="h5">{% trans "12. Retention of Title" %}</h2>
             <p class="mb-0">
-              Until full payment has been received, the goods remain the property of
-              <strong>Procrastination Defier</strong>.
+              {% trans "Until full payment has been received, the goods remain the property of" %} <strong>Procrastination Defier</strong>.
             </p>
 
             <hr class="my-4" />
 
-            <h2 id="liability" class="h5">13. Liability</h2>
-            <p class="mb-0">We are liable without limitation for intent and gross negligence and in accordance with the provisions of the German Product Liability Act. In the case of slight negligence, we are generally only liable for injury to life, body or health. If this does not apply in a case of slight negligence, we are only liable for the breach of material contractual obligations—i.e., obligations whose fulfilment is essential for the proper performance of the contract and on whose compliance the contractual partner may regularly rely. In the event of a breach of a material contractual obligation, liability is limited to the typical, foreseeable damage that we had to expect at the time the contract was concluded based on the circumstances known at that time. The above limitation of liability also applies in favor of our vicarious agents.</p>
+            <h2 id="liability" class="h5">{% trans "13. Liability" %}</h2>
+            <p class="mb-0">{% trans "We are liable without limitation for intent and gross negligence and in accordance with the provisions of the German Product Liability Act. In the case of slight negligence, we are generally only liable for injury to life, body or health. If this does not apply in a case of slight negligence, we are only liable for the breach of material contractual obligations—i.e., obligations whose fulfilment is essential for the proper performance of the contract and on whose compliance the contractual partner may regularly rely. In the event of a breach of a material contractual obligation, liability is limited to the typical, foreseeable damage that we had to expect at the time the contract was concluded based on the circumstances known at that time. The above limitation of liability also applies in favor of our vicarious agents." %}</p>
 
             <hr class="my-4" />
 
-            <p class="text-muted mb-0">This policy is effective from Monday, 08 September 2025, 12:08.</p>
+            <p class="text-muted mb-0">{% trans "This policy is effective from Monday, 08 September 2025, 12:08." %}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 {% endblock %}
-{% block javascript %}
 
-{% endblock %}

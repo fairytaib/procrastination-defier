@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
   {{ post.title }}
@@ -11,14 +12,14 @@
 {% block content %}
   <section class="container py-5">
     <div class="mb-3">
-      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> Back to Posts</a>
+      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> {% trans "Back to Posts" %}</a>
     </div>
 
     <article class="card border-0 shadow-sm mb-4">
       <div class="card-body">
         <div>
           <h1 class="h2 mb-3">{{ post.title }}</h1>
-          <p class="text-body-secondary mb-4">By {{ post.author.username }} on {{ post.created_at|date:"F j, Y" }}</p>
+          <p class="text-body-secondary mb-4">{% trans "By" %} {{ post.author.username }} {% trans "on" %} {{ post.created_at|date:"F j, Y" }}</p>
           <div class="text-body">{{ post.content }}</div>
         </div>
 
@@ -30,23 +31,23 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="deletePostLabel">Delete post?</h5>
+                    <h5 class="modal-title" id="deletePostLabel">{% trans "Delete post?" %}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
                   <div class="modal-body">
                     <p class="mb-0">
-                      Are you sure you want to delete
-                      <strong>{{ post.title }}</strong>? This action cannot be undone and there will be no points awarded.
+                      {% trans "Are you sure you want to delete" %}
+                      <strong>{{ post.title }}</strong>? {% trans "This action cannot be undone and there will be no points awarded." %}
                     </p>
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
 
                     <form method="post" action="{% url 'delete_post' post.id %}">
                       {% csrf_token %}
-                      <button type="submit" class="btn btn-danger">Yes, delete</button>
+                      <button type="submit" class="btn btn-danger">{% trans "Yes, delete" %}</button>
                     </form>
                   </div>
                 </div>
@@ -58,7 +59,7 @@
     </article>
 
     <section aria-labelledby="comments-title" class="mb-4">
-      <h2 id="comments-title" class="h4 mb-3">Comments</h2>
+      <h2 id="comments-title" class="h4 mb-3">{% trans "Comments" %}</h2>
 
       {% if comments %}
         <div class="list-group mb-4">
@@ -79,20 +80,20 @@
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content border-0 shadow-lg">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="deleteCommentLabel">Delete comment?</h5>
+                            <h5 class="modal-title" id="deleteCommentLabel">{% trans "Delete comment?" %}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
 
                           <div class="modal-body">
-                            <p class="mb-0">Are you sure you want to delete your comment? This action cannot be undone and there will be no points awarded.</p>
+                            <p class="mb-0">{% trans "Are you sure you want to delete your comment? This action cannot be undone and there will be no points awarded." %}</p>
                           </div>
 
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
 
                             <form method="post" action="{% url 'delete_comment' comment.id %}">
                               {% csrf_token %}
-                              <button type="submit" class="btn btn-danger">Yes, delete</button>
+                              <button type="submit" class="btn btn-danger">{% trans "Yes, delete" %}</button>
                             </form>
                           </div>
                         </div>
@@ -105,25 +106,25 @@
           {% endfor %}
         </div>
       {% else %}
-        <div class="alert alert-secondary" role="alert">No comments yet.</div>
+        <div class="alert alert-secondary" role="alert">{% trans "No comments yet." %}</div>
       {% endif %}
     </section>
 
     {% if user.is_authenticated %}
       <section aria-labelledby="add-comment-title">
-        <h3 id="add-comment-title" class="h5 mb-3">Add a comment</h3>
+        <h3 id="add-comment-title" class="h5 mb-3">{% trans "Add a comment" %}</h3>
         <form method="POST" class="card border-0 shadow-sm">
           <div class="card-body">
             {% csrf_token %}
             {{ form|crispy }}
             <div class="d-grid d-sm-flex gap-2">
-              <button type="submit" class="btn btn-primary">Post comment</button>
+              <button type="submit" class="btn btn-primary">{% trans "Post comment" %}</button>
             </div>
           </div>
         </form>
       </section>
     {% else %}
-      <a href="{{ login_url }}" class="btn btn-primary" aria-label="Create Post">Login to leave a comment</a>
+      <a href="{{ login_url }}" class="btn btn-primary" aria-label="Create Post">{% trans "Login to leave a comment" %}</a>
     {% endif %}
   </section>
 {% endblock %}

@@ -1,0 +1,3016 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-11 10:08+0200\n"
+"PO-Revision-Date: 2025-09-11 13:05+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.7\n"
+
+#: .\blog_posts\forms.py:15
+msgid "Add a comment..."
+msgstr "Kommentar hinzufügen"
+
+#: .\blog_posts\forms.py:26
+msgid "Post Title"
+msgstr "Title"
+
+#: .\blog_posts\forms.py:28
+msgid "Post Content"
+msgstr "Kommentar schreiben"
+
+#: .\blog_posts\templates\blog_posts\all_posts.html:6
+#: .\blog_posts\templates\blog_posts\all_posts.html:15
+msgid "Community Posts"
+msgstr "Beiträge der Community"
+
+#: .\blog_posts\templates\blog_posts\all_posts.html:17
+msgid "Create Post"
+msgstr "Beitrag erstellen"
+
+#: .\blog_posts\templates\blog_posts\all_posts.html:19
+msgid "Login to write post"
+msgstr "Anmelden, um einen Beitrag zu schreiben"
+
+#: .\blog_posts\templates\blog_posts\all_posts.html:23
+msgid "Connect with like-minded individuals and share your thoughts!"
+msgstr "Verbinden Sie sich mit Gleichgesinnten und teilen Sie Ihre Gedanken!"
+
+#: .\blog_posts\templates\blog_posts\all_posts.html:48
+msgid "Read more →"
+msgstr "Weiterlesen →"
+
+#: .\blog_posts\templates\blog_posts\all_posts.html:56
+msgid "No posts yet."
+msgstr "Noch keine Beiträge."
+
+#: .\blog_posts\templates\blog_posts\create_post.html:6
+msgid "Create New Post"
+msgstr "Neuen Beitrag erstellen"
+
+#: .\blog_posts\templates\blog_posts\create_post.html:15
+#: .\blog_posts\templates\blog_posts\post_details.html:15
+msgid "Back to Posts"
+msgstr "Zurück zu den Beiträgen"
+
+#: .\blog_posts\templates\blog_posts\create_post.html:25
+msgid "Publish"
+msgstr "Veröffentlichen"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:22
+msgid "By"
+msgstr "Von"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:22
+msgid "on"
+msgstr "Datum"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:35
+msgid "Delete post?"
+msgstr "Beitrag löschen?"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:41
+#: .\rewards\templates\rewards\view_reward_details.html:85
+#: .\tasks\templates\tasks\view_task_details.html:66
+msgid "Are you sure you want to delete"
+msgstr "Sind Sie sicher, dass Sie löschen möchten"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:42
+#: .\rewards\templates\rewards\view_reward_details.html:86
+#: .\tasks\templates\tasks\view_task_details.html:67
+msgid "This action cannot be undone and there will be no points awarded."
+msgstr ""
+"Diese Aktion kann nicht rückgängig gemacht werden und es werden keine Punkte "
+"vergeben."
+
+#: .\blog_posts\templates\blog_posts\post_details.html:47
+#: .\blog_posts\templates\blog_posts\post_details.html:93
+#: .\profiles\templates\profiles\update.html:31
+#: .\rewards\templates\rewards\add_reward_form.html:18
+#: .\rewards\templates\rewards\edit_reward_form.html:19
+#: .\rewards\templates\rewards\view_reward_details.html:91
+#: .\tasks\templates\tasks\add_task_form.html:17
+#: .\tasks\templates\tasks\view_task_details.html:72
+#: .\templates\allauth\account\logout.html:28
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:51
+#: .\blog_posts\templates\blog_posts\post_details.html:97
+#: .\rewards\templates\rewards\view_reward_details.html:95
+#: .\tasks\templates\tasks\view_task_details.html:76
+msgid "Yes, delete"
+msgstr "Ja, löschen"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:63
+msgid "Comments"
+msgstr "Kommentare"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:84
+msgid "Delete comment?"
+msgstr "Kommentar löschen?"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:89
+msgid ""
+"Are you sure you want to delete your comment? This action cannot be undone "
+"and there will be no points awarded."
+msgstr ""
+"Möchten Sie Ihren Kommentar wirklich löschen? Diese Aktion kann nicht "
+"rückgängig gemacht werden und es werden keine Punkte vergeben."
+
+#: .\blog_posts\templates\blog_posts\post_details.html:110
+msgid "No comments yet."
+msgstr "Noch keine Kommentare."
+
+#: .\blog_posts\templates\blog_posts\post_details.html:116
+msgid "Add a comment"
+msgstr "Kommentar hinzufügen"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:122
+msgid "Post comment"
+msgstr "Kommentar schreiben"
+
+#: .\blog_posts\templates\blog_posts\post_details.html:128
+msgid "Login to leave a comment"
+msgstr "Anmelden, um einen Kommentar zu hinterlassen"
+
+#: .\blog_posts\views.py:28
+msgid "Comment posted successfully."
+msgstr "Kommentar erfolgreich gepostet."
+
+#: .\blog_posts\views.py:33
+msgid "Failed to post comment."
+msgstr "Kommentar konnte nicht gepostet werden."
+
+#: .\blog_posts\views.py:58
+msgid "Post created successfully."
+msgstr "Beitrag erfolgreich erstellt."
+
+#: .\blog_posts\views.py:61
+msgid "Failed to create post."
+msgstr "Beitrag konnte nicht erstellt werden."
+
+#: .\blog_posts\views.py:79
+msgid "Post deleted successfully."
+msgstr "Beitrag erfolgreich gelöscht."
+
+#: .\blog_posts\views.py:91
+msgid "Comment deleted successfully."
+msgstr "Kommentar erfolgreich gelöscht."
+
+#: .\checkout\forms.py:20
+msgid "Save for the future"
+msgstr "Für die Zukunft speichern"
+
+#: .\checkout\forms.py:25 .\profiles\forms.py:19
+msgid "First Name"
+msgstr "Vorname"
+
+#: .\checkout\forms.py:27 .\profiles\forms.py:20
+msgid "Last Name"
+msgstr "Nachname"
+
+#: .\checkout\forms.py:29 .\checkout\templates\checkout\order_details.html:101
+#: .\profiles\forms.py:18
+#: .\profiles\templates\profiles\view_user_profile.html:56
+msgid "Email"
+msgstr ""
+
+#: .\checkout\forms.py:31
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: .\checkout\forms.py:34
+msgid "Street Address"
+msgstr "Straße und Hausnummer"
+
+#: .\checkout\forms.py:37 .\checkout\templates\checkout\order_details.html:119
+msgid "Apartment"
+msgstr "Wohnung"
+
+#: .\checkout\forms.py:38 .\checkout\templates\checkout\order_details.html:124
+msgid "City"
+msgstr "Stadt"
+
+#: .\checkout\forms.py:40
+msgid "Postal Code"
+msgstr "Postleitzahl"
+
+#: .\checkout\forms.py:42 .\checkout\templates\checkout\order_details.html:134
+#: .\templates\privacy_policy.html:44
+msgid "Country"
+msgstr "Land"
+
+#: .\checkout\forms.py:50
+msgid "Postal code must be numeric."
+msgstr "Die Postleitzahl muss numerisch sein."
+
+#: .\checkout\forms.py:63
+msgid "form-check-input"
+msgstr "Formular-Überprüfung-Eingabe"
+
+#: .\checkout\forms.py:67
+msgid "Reward Sent"
+msgstr "Belohnung gesendet"
+
+#: .\checkout\templates\checkout\_order_card.html:15
+msgid "Ordered by:"
+msgstr "Bestellt von:"
+
+#: .\checkout\templates\checkout\_order_card.html:22
+msgid "Ordered at:"
+msgstr "Bestellt am:"
+
+#: .\checkout\templates\checkout\_order_card.html:28
+msgid "Reward sent:"
+msgstr "Belohnung gesendet:"
+
+#: .\checkout\templates\checkout\_order_card.html:29
+msgid "Yes,No"
+msgstr "Ja,Nein"
+
+#: .\checkout\templates\checkout\_order_card.html:34
+#: .\tasks\templates\tasks\_task_card.html:45
+msgid "View Details"
+msgstr "Details anzeigen"
+
+#: .\checkout\templates\checkout\all_orders.html:5
+msgid "All Orders"
+msgstr "Alle Bestellungen"
+
+#: .\checkout\templates\checkout\all_orders.html:15
+msgid "Reward Orders"
+msgstr "Bestellte Preise"
+
+#: .\checkout\templates\checkout\all_orders.html:20
+msgid "Open Orders"
+msgstr "Offene Bestellungen"
+
+#: .\checkout\templates\checkout\all_orders.html:23
+msgid "No open orders found."
+msgstr "Keine offenen Bestellungen gefunden."
+
+#: .\checkout\templates\checkout\all_orders.html:38
+msgid "Past Orders"
+msgstr "Frühere Bestellungen"
+
+#: .\checkout\templates\checkout\all_orders.html:41
+msgid "No past orders found."
+msgstr "Keine früheren Bestellungen gefunden."
+
+#: .\checkout\templates\checkout\all_orders.html:52
+msgid "View all orders"
+msgstr "Alle Bestellungen anzeigen"
+
+#: .\checkout\templates\checkout\checkout.html:7
+#: .\checkout\templates\checkout\checkout.html:16
+msgid "Checkout"
+msgstr "Kasse"
+
+#: .\checkout\templates\checkout\checkout.html:25
+#: .\rewards\templates\rewards\rewards_list.html:73
+msgid "Reward"
+msgstr "Belohnung"
+
+#: .\checkout\templates\checkout\checkout.html:33
+msgid "Point cost"
+msgstr "Preis"
+
+#: .\checkout\templates\checkout\checkout.html:34
+msgid "available"
+msgstr "verfügbar"
+
+#: .\checkout\templates\checkout\checkout.html:48
+msgid "No reward selected. Please go back and choose a reward."
+msgstr ""
+"Keine Belohnung ausgewählt. Bitte gehen Sie zurück und wählen Sie eine "
+"Belohnung aus."
+
+#: .\checkout\templates\checkout\checkout.html:59
+#: .\profiles\templates\profiles\update.html:19
+msgid "Back"
+msgstr "Zurück"
+
+#: .\checkout\templates\checkout\checkout.html:60
+msgid "Place Order"
+msgstr "Bestellung aufgeben"
+
+#: .\checkout\templates\checkout\order_details.html:7
+msgid "Order Details"
+msgstr "Bestelldetails"
+
+#: .\checkout\templates\checkout\order_details.html:19
+msgid "Back to all orders"
+msgstr "Zurück zu allen Bestellungen"
+
+#: .\checkout\templates\checkout\order_details.html:45
+msgid "Order ID"
+msgstr "Bestellnummer"
+
+#: .\checkout\templates\checkout\order_details.html:52
+#: .\rewards\templates\rewards\rewards_list.html:81
+#: .\subscription\templates\subscription\subscription.html:97
+#: .\tasks\templates\tasks\_task_card.html:38
+msgid "Points"
+msgstr "Punkte"
+
+#: .\checkout\templates\checkout\order_details.html:57
+msgid "Purchased on"
+msgstr "Gekauft am"
+
+#: .\checkout\templates\checkout\order_details.html:62
+msgid "Status"
+msgstr ""
+
+#: .\checkout\templates\checkout\order_details.html:65
+msgid "Sent"
+msgstr "Gesendet"
+
+#: .\checkout\templates\checkout\order_details.html:67
+msgid "Not sent yet"
+msgstr "Noch nicht gesendet"
+
+#: .\checkout\templates\checkout\order_details.html:74
+msgid "User"
+msgstr "Nutzer"
+
+#: .\checkout\templates\checkout\order_details.html:86
+msgid "Shipping & Contact"
+msgstr "Versand & Kontakt"
+
+#: .\checkout\templates\checkout\order_details.html:91
+#: .\profiles\templates\profiles\view_user_profile.html:59
+msgid "First name"
+msgstr "Vorname"
+
+#: .\checkout\templates\checkout\order_details.html:96
+#: .\profiles\templates\profiles\view_user_profile.html:62
+msgid "Last name"
+msgstr "Nachname"
+
+#: .\checkout\templates\checkout\order_details.html:106
+msgid "Phone"
+msgstr "Telefonnummer"
+
+#: .\checkout\templates\checkout\order_details.html:114
+msgid "Street"
+msgstr "Straße"
+
+#: .\checkout\templates\checkout\order_details.html:129
+msgid "Postal code"
+msgstr "Postleitzahl"
+
+#: .\checkout\templates\checkout\order_details.html:149
+msgid "Order status"
+msgstr "Bestellstatus"
+
+#: .\checkout\templates\checkout\order_history.html:5
+#: .\checkout\templates\checkout\order_history.html:12
+msgid "Order History"
+msgstr "Bestellverlauf"
+
+#: .\checkout\templates\checkout\order_history.html:15
+msgid "You haven't placed any orders yet."
+msgstr "Sie haben noch keine Bestellungen aufgegeben."
+
+#: .\checkout\templates\checkout\order_history.html:19
+msgid "Your Orders"
+msgstr "Ihre Bestellungen"
+
+#: .\checkout\templates\checkout\order_history.html:19
+msgid "total"
+msgstr "Gesamt"
+
+#: .\checkout\templates\checkout\order_history.html:28
+msgid "Order from"
+msgstr "Bestellung von"
+
+#: .\checkout\templates\checkout\order_history.html:41
+#: .\checkout\templates\checkout\order_history.html:98
+msgid "Reward Details"
+msgstr "Prämien-Details"
+
+#: .\checkout\templates\checkout\order_history.html:43
+#: .\checkout\templates\checkout\order_history.html:100
+msgid "Item:"
+msgstr "Artikel"
+
+#: .\checkout\templates\checkout\order_history.html:44
+#: .\checkout\templates\checkout\order_history.html:101
+msgid "Points Used:"
+msgstr "Benutzte Punkte:"
+
+#: .\checkout\templates\checkout\order_history.html:44
+#: .\checkout\templates\checkout\order_history.html:101
+#: .\rewards\templates\rewards\view_reward_details.html:21
+#: .\rewards\templates\rewards\view_reward_details.html:57
+msgid "points"
+msgstr "Punkte"
+
+#: .\checkout\templates\checkout\order_history.html:48
+#: .\checkout\templates\checkout\order_history.html:105
+msgid "Shipping Details"
+msgstr "Versanddetails"
+
+#: .\checkout\templates\checkout\order_history.html:61
+#: .\checkout\templates\checkout\order_history.html:118
+msgid "View Full Details"
+msgstr "Alle Details anzeigen"
+
+#: .\checkout\templates\checkout\order_history.html:146
+msgid "Previous"
+msgstr "Zurück"
+
+#: .\checkout\templates\checkout\order_history.html:164
+msgid "Next"
+msgstr "Weiter"
+
+#: .\checkout\templates\checkout\order_history.html:167
+msgid "Last"
+msgstr "Letze"
+
+#: .\checkout\views.py:46
+msgid "This reward is currently out of stock."
+msgstr "Diese Prämie ist derzeit nicht vorrätig."
+
+#: .\checkout\views.py:50
+msgid "You do not have enough points to redeem this reward"
+msgstr "Du hast nicht genügend Punkte, um diese Prämie einzulösen."
+
+#: .\checkout\views.py:72
+msgid "Order placed successfully. We will send it to you shortly."
+msgstr "Bestellung erfolgreich aufgegeben. Wir senden sie dir in Kürze zu."
+
+#: .\checkout\views.py:127
+msgid "Order marked as done."
+msgstr "Auftrag als erledigt markiert."
+
+#: .\profiles\forms.py:17
+#: .\profiles\templates\profiles\view_user_profile.html:53
+msgid "Username"
+msgstr "Nutzername"
+
+#: .\profiles\forms.py:28
+msgid "This Email already exists"
+msgstr "Diese E-Mail-Adresse existiert bereits."
+
+#: .\profiles\forms.py:39
+msgid "Profile Picture (JPEG, PNG, JPG or WEBP)"
+msgstr "Profilbild (JPEG, PNG, JPG oder WEBP)"
+
+#: .\profiles\forms.py:66 .\rewards\forms.py:108 .\tasks\forms.py:159
+msgid "Uploaded file is not a valid image."
+msgstr "Die hochgeladene Datei ist kein gültiges Bild."
+
+#: .\profiles\forms.py:71 .\rewards\forms.py:112 .\tasks\forms.py:163
+msgid "Only JPEG, JPG, PNG or WEBP images are allowed."
+msgstr "Es sind nur Bilder im Format JPEG, JPG, PNG oder WEBP zulässig."
+
+#: .\profiles\models.py:13
+msgid "Upload a profile picture."
+msgstr "Lade ein Profilbild hoch."
+
+#: .\profiles\templates\profiles\update.html:7
+msgid "Edit Profile"
+msgstr "Profil bearbeiten"
+
+#: .\profiles\templates\profiles\update.html:18
+msgid "Edit account"
+msgstr "Profil bearbeiten"
+
+#: .\profiles\templates\profiles\update.html:32
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+#: .\profiles\templates\profiles\view_user_profile.html:6
+msgid "Your Profile"
+msgstr "Dein Profil"
+
+#: .\profiles\templates\profiles\view_user_profile.html:15
+msgid "Your profile"
+msgstr "Dein Profil"
+
+#: .\profiles\templates\profiles\view_user_profile.html:39
+msgid "Edit profile"
+msgstr "Profil bearbeiten"
+
+#: .\profiles\templates\profiles\view_user_profile.html:40
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: .\profiles\templates\profiles\view_user_profile.html:50
+msgid "Account details"
+msgstr "Kontodaten"
+
+#: .\profiles\templates\profiles\view_user_profile.html:65
+msgid "Member since"
+msgstr "Mitglied seit"
+
+#: .\profiles\templates\profiles\view_user_profile.html:68
+#: .\rewards\templates\rewards\view_reward_details.html:20
+msgid "Your Points"
+msgstr "Deine Punkte"
+
+#: .\profiles\templates\profiles\view_user_profile.html:77
+msgid "My Subscription"
+msgstr "Mein Abonnement"
+
+#: .\rewards\forms.py:20 .\rewards\forms.py:32
+msgid "Reward Name"
+msgstr "Name der Belohnung"
+
+#: .\rewards\forms.py:21
+msgid "Reward Image"
+msgstr "Bild der Belohnung"
+
+#: .\rewards\forms.py:22
+msgid "Reward Description"
+msgstr "Beschreibung der Belohnung"
+
+#: .\rewards\forms.py:23
+msgid "Cost (in points)"
+msgstr "Kosten (in Punkten)"
+
+#: .\rewards\forms.py:24 .\rewards\forms.py:54
+msgid "Stock Quantity"
+msgstr "Lagerbestand"
+
+#: .\rewards\forms.py:25
+msgid "Reward Type"
+msgstr "Belohnungstyp"
+
+#: .\rewards\forms.py:26
+msgid "Available Countries"
+msgstr "Verfügbare Länder"
+
+#: .\rewards\forms.py:42
+msgid "Describe the reward as detailed as possible"
+msgstr "Beschreiben Sie die Belohnung so detailliert wie möglich"
+
+#: .\rewards\forms.py:49
+msgid "Cost in points"
+msgstr "Kosten in Punkten"
+
+#: .\rewards\forms.py:70
+msgid "Name can only contain letters, numbers, and spaces."
+msgstr "Der Name darf nur Buchstaben, Zahlen und Leerzeichen enthalten."
+
+#: .\rewards\forms.py:79 .\tasks\forms.py:76
+msgid "Description must be at least 10 characters long."
+msgstr "Die Beschreibung muss mindestens 10 Zeichen lang sein."
+
+#: .\rewards\forms.py:87
+msgid "Cost must be positive."
+msgstr "Der Preis muss positiv sein."
+
+#: .\rewards\forms.py:94
+msgid "Stock cannot be negative."
+msgstr "Der Lagerbestand kann nicht negativ sein."
+
+#: .\rewards\models.py:64
+msgid "Cost in points to redeem this reward."
+msgstr "Kosten in Punkten, um diese Prämie einzulösen."
+
+#: .\rewards\models.py:67
+msgid "Number of items available for this reward."
+msgstr "Anzahl der für diese Belohnung verfügbaren Artikel."
+
+#: .\rewards\templates\rewards\add_reward_form.html:7
+#: .\rewards\templates\rewards\add_reward_form.html:22
+#: .\rewards\templates\rewards\add_reward_form.html:28
+msgid "Add Reward"
+msgstr "Belohnung hinzufügen"
+
+#: .\rewards\templates\rewards\add_reward_form.html:30
+#: .\rewards\templates\rewards\edit_reward_form.html:31
+#: .\tasks\templates\tasks\add_task_form.html:30
+msgid "Save and add Another"
+msgstr "Speichern und weiteren hinzufügen"
+
+#: .\rewards\templates\rewards\edit_reward_form.html:7
+#: .\rewards\templates\rewards\edit_reward_form.html:23
+#: .\rewards\templates\rewards\edit_reward_form.html:29
+msgid "Edit Reward"
+msgstr "Belohnung bearbeiten"
+
+#: .\rewards\templates\rewards\edit_reward_form.html:40
+msgid "You do not have permission to edit the reward."
+msgstr "Sie haben keine Berechtigung, die Belohnung zu bearbeiten."
+
+#: .\rewards\templates\rewards\rewards_list.html:7
+msgid "Rewards List"
+msgstr "Belohnungen"
+
+#: .\rewards\templates\rewards\rewards_list.html:16 .\templates\base.html:103
+msgid "Rewards"
+msgstr "Belohnungen"
+
+#: .\rewards\templates\rewards\rewards_list.html:19
+msgid ""
+"You have enough points to treat yourself to a reward? Pick and choose your "
+"favorite!"
+msgstr ""
+"Hast du genug Punkte, um dir eine Belohnung zu gönnen? Wähle deine "
+"Lieblingsbelohnung aus!"
+
+#: .\rewards\templates\rewards\rewards_list.html:26
+msgid "Filter type"
+msgstr "Typ"
+
+#: .\rewards\templates\rewards\rewards_list.html:28
+msgid "All types"
+msgstr "Alle Typen"
+
+#: .\rewards\templates\rewards\rewards_list.html:38
+msgid "Filter available countries"
+msgstr "Verfügbare Länder filtern"
+
+#: .\rewards\templates\rewards\rewards_list.html:40
+msgid "All countries"
+msgstr "Alle Länder"
+
+#: .\rewards\templates\rewards\rewards_list.html:50
+msgid "Order by"
+msgstr "Sortiere bei"
+
+#: .\rewards\templates\rewards\rewards_list.html:52
+msgid "New"
+msgstr "Neu"
+
+#: .\rewards\templates\rewards\rewards_list.html:59
+msgid "Apply"
+msgstr "Anwenden"
+
+#: .\rewards\templates\rewards\rewards_list.html:60
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: .\rewards\templates\rewards\rewards_list.html:62
+msgid "results"
+msgstr "Ergebnisse"
+
+#: .\rewards\templates\rewards\rewards_list.html:84
+msgid "Out of stock"
+msgstr "Nicht auf Lager"
+
+#: .\rewards\templates\rewards\rewards_list.html:87
+#: .\rewards\templates\rewards\view_reward_details.html:52
+msgid "Available in:"
+msgstr "Erhältlich in:"
+
+#: .\rewards\templates\rewards\rewards_list.html:93
+msgid "See Details"
+msgstr "Details anzeigen"
+
+#: .\rewards\templates\rewards\rewards_list.html:102
+msgid "No rewards match your filters."
+msgstr "Es gibt keine Belohnungen, die Ihren Filtern entsprechen."
+
+#: .\rewards\templates\rewards\rewards_list.html:103
+msgid "Clear filters"
+msgstr "Filter löschen"
+
+#: .\rewards\templates\rewards\view_reward_details.html:7
+#: .\tasks\templates\tasks\view_task_details.html:7
+msgid "Details"
+msgstr ""
+
+#: .\rewards\templates\rewards\view_reward_details.html:17
+msgid "Back to Rewards"
+msgstr "Zurück zu den Prämien"
+
+#: .\rewards\templates\rewards\view_reward_details.html:31
+msgid "Reward image"
+msgstr "Belohnungsbild"
+
+#: .\rewards\templates\rewards\view_reward_details.html:56
+msgid "Available for"
+msgstr "Verfügbar für"
+
+#: .\rewards\templates\rewards\view_reward_details.html:63
+msgid "Redeem Reward"
+msgstr "Prämie einlösen"
+
+#: .\rewards\templates\rewards\view_reward_details.html:66
+msgid "This reward is out of stock."
+msgstr "Diese Prämie ist derzeit nicht verfügbar."
+
+#: .\rewards\templates\rewards\view_reward_details.html:71
+msgid "Login to order your reward"
+msgstr "Anmelden, um Ihre Prämie zu bestellen"
+
+#: .\rewards\templates\rewards\view_reward_details.html:74
+msgid "Delete Task"
+msgstr "Aufgabe löschen"
+
+#: .\rewards\templates\rewards\view_reward_details.html:79
+#: .\tasks\templates\tasks\view_task_details.html:60
+msgid "Delete task?"
+msgstr "Aufgabe löschen?"
+
+#: .\rewards\views.py:15
+msgid "Germany"
+msgstr "Deutschland"
+
+#: .\rewards\views.py:16
+msgid "France"
+msgstr "Frankreich"
+
+#: .\rewards\views.py:17
+msgid "Belgium"
+msgstr "Belgien"
+
+#: .\rewards\views.py:18
+msgid "Switzerland"
+msgstr "Schweiz"
+
+#: .\rewards\views.py:19
+msgid "Denmark"
+msgstr "Dänemark"
+
+#: .\rewards\views.py:20
+msgid "Finland"
+msgstr "Finnland"
+
+#: .\rewards\views.py:21
+msgid "Sweden"
+msgstr "Schweden"
+
+#: .\rewards\views.py:22
+msgid "Norway"
+msgstr "Norwegen"
+
+#: .\rewards\views.py:23
+msgid "Netherlands"
+msgstr "Niederlande"
+
+#: .\rewards\views.py:24
+msgid "Italy"
+msgstr "Italien"
+
+#: .\rewards\views.py:25
+msgid "Spain"
+msgstr "Spanien"
+
+#: .\rewards\views.py:26
+msgid "Everywhere"
+msgstr "Überall"
+
+#: .\rewards\views.py:123
+msgid "Reward added successfully."
+msgstr "Belohnung erfolgreich hinzugefügt."
+
+#: .\rewards\views.py:132
+msgid "Failed to add reward. Please correct the errors below."
+msgstr ""
+"Das Hinzufügen der Belohnung ist fehlgeschlagen. Bitte korrigieren Sie die "
+"folgenden Fehler."
+
+#: .\rewards\views.py:136
+msgid "You do not have permission to add rewards."
+msgstr "Sie haben keine Berechtigung, Belohnungen hinzuzufügen."
+
+#: .\rewards\views.py:152
+msgid "You do not have permission to delete rewards."
+msgstr "Sie haben keine Berechtigung, Prämien zu löschen."
+
+#: .\rewards\views.py:156
+msgid "Reward deleted successfully."
+msgstr "Belohnung erfolgreich gelöscht."
+
+#: .\rewards\views.py:172
+msgid "You do not have permission to edit rewards."
+msgstr "Sie haben keine Berechtigung, Belohnungen zu bearbeiten."
+
+#: .\rewards\views.py:177
+msgid "Reward updated successfully."
+msgstr "Belohnung erfolgreich aktualisiert."
+
+#: .\subscription\templates\subscription\subscription.html:6
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+#: .\subscription\templates\subscription\subscription.html:16
+msgid "Choose your subscription"
+msgstr "Wählen Sie Ihr Abonnement"
+
+#: .\subscription\templates\subscription\subscription.html:18
+msgid "Standard includes up to"
+msgstr "Standard umfasst bis zu"
+
+#: .\subscription\templates\subscription\subscription.html:18
+#: .\subscription\templates\subscription\subscription.html:30
+msgid "7 tasks / month"
+msgstr "7 Aufgaben / Monat"
+
+#: .\subscription\templates\subscription\subscription.html:18
+msgid "Premium includes up to"
+msgstr "Premium umfasst bis zu"
+
+#: .\subscription\templates\subscription\subscription.html:18
+#: .\subscription\templates\subscription\subscription.html:60
+msgid "13 tasks / month"
+msgstr "13 Aufgaben/Monat"
+
+#: .\subscription\templates\subscription\subscription.html:18
+msgid "You can upgrade or cancel anytime."
+msgstr "Sie können jederzeit upgraden oder kündigen."
+
+#: .\subscription\templates\subscription\subscription.html:29
+msgid "Standard"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription.html:36
+msgid "7 Tasks"
+msgstr "7 Aufgaben"
+
+#: .\subscription\templates\subscription\subscription.html:40
+#: .\subscription\templates\subscription\subscription.html:70
+msgid "Core features"
+msgstr "Kernfunktionen"
+
+#: .\subscription\templates\subscription\subscription.html:47
+#: .\subscription\templates\subscription\subscription.html:81
+#: .\templates\home.html:134
+msgid "Subscribe"
+msgstr "Abonnieren"
+
+#: .\subscription\templates\subscription\subscription.html:59
+msgid "Premium"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription.html:66
+msgid "13 Tasks"
+msgstr "13 Aufgaben"
+
+#: .\subscription\templates\subscription\subscription.html:74
+msgid "More possible Points per month"
+msgstr "Mehr mögliche Punkte pro Monat"
+
+#: .\subscription\templates\subscription\subscription.html:91
+msgid "Points and Fees for Tasks"
+msgstr "Punkte und Gebühren für Aufgaben"
+
+#: .\subscription\templates\subscription\subscription.html:96
+msgid "Checkup Dates"
+msgstr "Überprüfungen"
+
+#: .\subscription\templates\subscription\subscription.html:98
+msgid "Fees"
+msgstr "Gebühren"
+
+#: .\subscription\templates\subscription\subscription.html:103
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+#: .\subscription\templates\subscription\subscription.html:104
+msgid "10 Points"
+msgstr "10 Punkte"
+
+#: .\subscription\templates\subscription\subscription.html:105
+msgid "0.70€"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription.html:110
+msgid "Biweekly"
+msgstr "Zweiwöchentlich"
+
+#: .\subscription\templates\subscription\subscription.html:111
+msgid "20 Points"
+msgstr "20 Punkte"
+
+#: .\subscription\templates\subscription\subscription.html:112
+msgid "1.40€"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription.html:117
+msgid "Monthly"
+msgstr "Monatlich"
+
+#: .\subscription\templates\subscription\subscription.html:118
+msgid "40 Points"
+msgstr "40 Punkte"
+
+#: .\subscription\templates\subscription\subscription.html:119
+msgid "2.80€"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription.html:128
+msgid "Already have a subscription? You can manage it in your"
+msgstr "Haben Sie bereits ein Abonnement? Sie können es in Ihrem"
+
+#: .\subscription\templates\subscription\subscription.html:128
+msgid "profile"
+msgstr "Profil"
+
+#: .\subscription\templates\subscription\subscription.html:133
+msgid "To subscribe, please"
+msgstr "Um sich anzumelden, bitte"
+
+#: .\subscription\templates\subscription\subscription.html:133
+msgid "log in"
+msgstr "Anmelden"
+
+#: .\subscription\templates\subscription\subscription.html:133
+msgid "or"
+msgstr "oder"
+
+#: .\subscription\templates\subscription\subscription.html:133
+msgid "create an account"
+msgstr "Konto erstellen"
+
+#: .\subscription\templates\subscription\subscription_overview.html:6
+msgid "Your Subscription"
+msgstr "Ihr Abonnement"
+
+#: .\subscription\templates\subscription\subscription_overview.html:15
+msgid "Your subscription"
+msgstr "Ihr Abonnement"
+
+#: .\subscription\templates\subscription\subscription_overview.html:16
+msgid ""
+"View your current plan, task limits, billing period and status. You can "
+"change your plan, cancel at the end of the period or resume anytime."
+msgstr ""
+"Sieh dir deinen aktuellen Tarif, Aufgabenlimits, Abrechnungszeitraum und "
+"Status an. Du kannst deinen Tarif ändern, am Ende des Zeitraums kündigen "
+"oder jederzeit wieder aufnehmen."
+
+#: .\subscription\templates\subscription\subscription_overview.html:25
+msgid "Plan"
+msgstr "Abonnement"
+
+#: .\subscription\templates\subscription\subscription_overview.html:27
+msgid "tasks / month"
+msgstr "Aufgaben/Monat"
+
+#: .\subscription\templates\subscription\subscription_overview.html:33
+msgid "Status:"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription_overview.html:36
+msgid "canceling (ends"
+msgstr "Stornierung (endet"
+
+#: .\subscription\templates\subscription\subscription_overview.html:36
+msgid ")"
+msgstr ""
+
+#: .\subscription\templates\subscription\subscription_overview.html:38
+msgid "active"
+msgstr "Aktiv"
+
+#: .\subscription\templates\subscription\subscription_overview.html:45
+msgid "Started on:"
+msgstr "Begonnen am:"
+
+#: .\subscription\templates\subscription\subscription_overview.html:57
+msgid "Manage subscription"
+msgstr "Abonnement verwalten"
+
+#: .\subscription\templates\subscription\subscription_overview.html:61
+msgid "Change your Subscription"
+msgstr "Ändern dein Abonnement"
+
+#: .\tasks\forms.py:31 .\tasks\forms.py:40
+msgid "Task Title"
+msgstr "Aufgabentitel"
+
+#: .\tasks\forms.py:32
+msgid "Task Description"
+msgstr "Aufgabenbeschreibung"
+
+#: .\tasks\forms.py:33
+msgid "Goal Description"
+msgstr "Zielbeschreibung"
+
+#: .\tasks\forms.py:34
+msgid "Is this a repeating task?"
+msgstr "Ist das eine wiederkehrende Aufgabe?"
+
+#: .\tasks\forms.py:35
+msgid "When do you want this task checked?"
+msgstr "Wann soll diese Aufgabe überprüft werden?"
+
+#: .\tasks\forms.py:46
+msgid "Describe the task as detailed as possible"
+msgstr "Beschreibe die Aufgabe so detailliert wie möglich."
+
+#: .\tasks\forms.py:53
+msgid "Describe what you want to achieve so we can check if you made it"
+msgstr ""
+"Beschreibe, was du erreichen möchtest, damit wir überprüfen können, ob du es "
+"geschafft hast."
+
+#: .\tasks\forms.py:68
+msgid "Title can only contain letters, numbers, and spaces."
+msgstr "Der Titel darf nur Buchstaben, Zahlen und Leerzeichen enthalten."
+
+#: .\tasks\forms.py:84
+msgid "Goal description must be at least 10 characters long."
+msgstr "Die Zielbeschreibung muss mindestens 10 Zeichen lang sein."
+
+#: .\tasks\forms.py:99
+msgid "Image Proof (JPEG, PNG, JPG or WEBP)"
+msgstr "Bildnachweis (JPEG, PNG, JPG oder WEBP)"
+
+#: .\tasks\forms.py:100
+msgid "Video Proof (MP4, WEBM, MOV, AVI, MKV or MPEG)"
+msgstr "Videobeweis (MP4, WEBM, MOV, AVI, MKV oder MPEG)"
+
+#: .\tasks\forms.py:101
+msgid "Text File Proof (TXT, DOCX, PDF)"
+msgstr "Textdatei-Beweis (TXT, DOCX, PDF)"
+
+#: .\tasks\forms.py:102
+msgid "Audio File Proof (MP3, WAV)"
+msgstr "Audiodatei-Beweis (MP3, WAV)"
+
+#: .\tasks\forms.py:186
+msgid "Only MP4, WEBM, MOV, AVI, MKV or MPEG are allowed."
+msgstr "Nur MP4, WEBM, MOV, AVI, MKV oder MPEG sind zulässig."
+
+#: .\tasks\forms.py:207
+msgid "Only PDF, TXT or DOCX files are allowed."
+msgstr "Es sind nur PDF-, TXT- oder DOCX-Dateien zulässig."
+
+#: .\tasks\forms.py:219
+msgid "Only MP3 or WAV files are allowed."
+msgstr "Es sind nur MP3- oder WAV-Dateien zulässig."
+
+#: .\tasks\models.py:9
+msgid "Weekly / In a week"
+msgstr "Wöchentlich / In einer Woche"
+
+#: .\tasks\models.py:10
+msgid "Biweekly / In two weeks"
+msgstr "Alle zwei Wochen / In zwei Wochen"
+
+#: .\tasks\models.py:11
+msgid "Monthly / In a month"
+msgstr "Monatlich / In einem Monat"
+
+#: .\tasks\models.py:37
+msgid "Total points earned by the user."
+msgstr "Vom Benutzer insgesamt erzielte Punkte."
+
+#: .\tasks\models.py:62
+msgid "Fee for failing this task."
+msgstr "Gebühr für das Nichtbestehen dieser Aufgabe."
+
+#: .\tasks\models.py:71
+msgid "Points awarded for completing this task."
+msgstr "Mögliche Punkte"
+
+#: .\tasks\models.py:75
+msgid "Next checkup date for this task."
+msgstr "Überprüfung der Aufgabe."
+
+#: .\tasks\models.py:115
+msgid "Upload an image for this checkup"
+msgstr "Lade ein Bild für die Überprüfung hoch."
+
+#: .\tasks\models.py:119
+msgid "Upload a video for this checkup"
+msgstr "Lade ein Video für die Überprüfung hoch."
+
+#: .\tasks\models.py:123
+msgid "Upload a text file for this checkup"
+msgstr "Lade eine Textdatei für die Überprüfung hoch."
+
+#: .\tasks\models.py:127
+msgid "Upload an audio file for this checkup"
+msgstr "Lade eine Audio-Datei für die Überprüfung hoch."
+
+#: .\tasks\models.py:131
+msgid "Add a comment for this checkup"
+msgstr "Schreibe einen Kommentar"
+
+#: .\tasks\templates\tasks\_task_card.html:16
+msgid "Created by"
+msgstr "Erstellt von"
+
+#: .\tasks\templates\tasks\_task_card.html:24
+msgid "Deadline"
+msgstr "Frist"
+
+#: .\tasks\templates\tasks\_task_card.html:24
+msgid "was due at"
+msgstr "war fällig am"
+
+#: .\tasks\templates\tasks\_task_card.html:31
+msgid "Fee"
+msgstr "Gebühr"
+
+#: .\tasks\templates\tasks\_task_card.html:45
+msgid "View Task Details"
+msgstr "Aufgabendetails anzeigen"
+
+#: .\tasks\templates\tasks\_task_card.html:48
+msgid "Pay Fee"
+msgstr "Gebühr zahlen"
+
+#: .\tasks\templates\tasks\add_task_form.html:7
+#: .\tasks\templates\tasks\add_task_form.html:21
+#: .\tasks\templates\tasks\add_task_form.html:28
+#: .\tasks\templates\tasks\user_task_overview.html:54
+msgid "Add Task"
+msgstr "Aufgabe hinzufügen"
+
+#: .\tasks\templates\tasks\add_task_form.html:22
+msgid ""
+"Please be aware that you can not edit the task after it has been created. "
+"Deletion is still possible but permanent"
+msgstr ""
+"Bitte beachten Sie, dass Sie die Aufgabe nach ihrer Erstellung nicht mehr "
+"bearbeiten können. Das Löschen ist weiterhin möglich, jedoch endgültig."
+
+#: .\tasks\templates\tasks\user_task_overview.html:5
+msgid "Task Overview"
+msgstr "Aufgabenübersicht"
+
+#: .\tasks\templates\tasks\user_task_overview.html:18
+msgid "No active subscription"
+msgstr "Kein aktives Abonnement"
+
+#: .\tasks\templates\tasks\user_task_overview.html:19
+msgid "To use this feature and add tasks, you need an active subscription."
+msgstr ""
+"Um diese Funktion zu nutzen und Aufgaben hinzuzufügen, benötigst du ein "
+"aktives Abonnement."
+
+#: .\tasks\templates\tasks\user_task_overview.html:22
+msgid "Plans"
+msgstr "Abonnements"
+
+#: .\tasks\templates\tasks\user_task_overview.html:23 .\templates\base.html:200
+#: .\templates\faq.html:5
+msgid "FAQ"
+msgstr "FAQ"
+
+#: .\tasks\templates\tasks\user_task_overview.html:23
+msgid "Questions? Look at our FAQ"
+msgstr "Fragen? Schauen Sie sich unsere FAQ an."
+
+#: .\tasks\templates\tasks\user_task_overview.html:34
+msgid "Task"
+msgstr "Aufgabe"
+
+#: .\tasks\templates\tasks\user_task_overview.html:35
+msgid "Checkup"
+msgstr "Prüfung"
+
+#: .\tasks\templates\tasks\user_task_overview.html:37
+msgid "Overview"
+msgstr "Übersicht"
+
+#: .\tasks\templates\tasks\user_task_overview.html:43
+msgid "Your Task Slots:"
+msgstr "Deine Aufgaben-Slots:"
+
+#: .\tasks\templates\tasks\user_task_overview.html:46
+msgid "Your current points:"
+msgstr ""
+
+#: .\tasks\templates\tasks\user_task_overview.html:56
+msgid "You can not add tasks until you paid your fees"
+msgstr ""
+"Du Kannst keine Aufgaben hinzufügen, bevor du deine Gebühren bezahlt hast."
+
+#: .\tasks\templates\tasks\user_task_overview.html:58
+msgid "You have reached your task limit."
+msgstr "Du hast dein Aufgabenlimit erreicht"
+
+#: .\tasks\templates\tasks\user_task_overview.html:64
+msgid ""
+"Here you can see an overview of your tasks. You can add new tasks, see tasks "
+"that are in checkup, and tasks that are done. If a task is not done in time, "
+"a fee will be charged to your account."
+msgstr ""
+"Hier siehst du eine Übersicht deiner Aufgaben. Du kannst neue Aufgaben "
+"hinzufügen, Aufgaben anzeigen, die überprüft werden und Aufgaben, die "
+"erledigt sind. Wenn eine Aufgabe nicht rechtzeitig erledigt wird, wird dir "
+"eine Gebühr berechnet."
+
+#: .\tasks\templates\tasks\user_task_overview.html:69
+msgid "Open Tasks"
+msgstr "Offene Aufgaben"
+
+#: .\tasks\templates\tasks\user_task_overview.html:79
+msgid "You have no current tasks."
+msgstr "Du hast aktuell keine Aufgaben"
+
+#: .\tasks\templates\tasks\user_task_overview.html:85
+msgid "No tasks in checkup."
+msgstr "Keine Aufgabe in Überprüfung"
+
+#: .\tasks\templates\tasks\user_task_overview.html:92
+msgid "Tasks in Checkup"
+msgstr "Aufgaben in Überprüfung"
+
+#: .\tasks\templates\tasks\user_task_overview.html:107
+msgid "Fees to Pay"
+msgstr "Gebühren zu bezahlen"
+
+#: .\tasks\templates\tasks\user_task_overview.html:110
+msgid "Pay all fees at once"
+msgstr "Alle Gebühren bezahlen"
+
+#: .\tasks\templates\tasks\user_task_overview.html:120
+msgid "No fee to pay."
+msgstr "Keine Gebühr zu bezahlen"
+
+#: .\tasks\templates\tasks\user_task_overview.html:127
+msgid "Done Tasks"
+msgstr "Erledigte Aufgaben"
+
+#: .\tasks\templates\tasks\user_task_overview.html:137
+msgid "No tasks completed yet."
+msgstr "Keine erledigten Aufgaben bisher"
+
+#: .\tasks\templates\tasks\view_task_details.html:16
+msgid "Back to Overview"
+msgstr "Zurück zur Übersicht"
+
+#: .\tasks\templates\tasks\view_task_details.html:24
+msgid "Task Details"
+msgstr "Aufgabendetails"
+
+#: .\tasks\templates\tasks\view_task_details.html:28
+msgid "Description"
+msgstr "Beschreibung"
+
+#: .\tasks\templates\tasks\view_task_details.html:31
+msgid "Task will be repeated"
+msgstr "Aufgabe wird wiederholt"
+
+#: .\tasks\templates\tasks\view_task_details.html:41
+msgid "Checkup Interval"
+msgstr "Überprüfungs-Interval"
+
+#: .\tasks\templates\tasks\view_task_details.html:44
+msgid "Fee for Failure"
+msgstr "Gebühr für Nichtbestehen"
+
+#: .\tasks\templates\tasks\view_task_details.html:47
+msgid "Points for Completion"
+msgstr "Punkte für die Fertigstellung"
+
+#: .\tasks\templates\tasks\view_task_details.html:51
+msgid "Task done successfully"
+msgstr "Aufgabe erfolgreich erledigt"
+
+#: .\tasks\templates\tasks\view_task_details.html:52
+msgid "Yes"
+msgstr "Ja"
+
+#: .\tasks\templates\tasks\view_task_details.html:61 .\templates\base.html:184
+msgid "Close"
+msgstr "Schließen"
+
+#: .\templates\404.html:6
+msgid "Page not found – 404"
+msgstr "Seite nicht gefunden – 404"
+
+#: .\templates\404.html:11
+msgid "Oops - Page not found (404)"
+msgstr "Hoppla – Seite nicht gefunden (404)"
+
+#: .\templates\404.html:12
+msgid ""
+"Oops - page not found. Maybe the page no longer exists or the link was wrong."
+msgstr ""
+"Hoppla – Seite nicht gefunden. Möglicherweise existiert die Seite nicht mehr "
+"oder der Link ist falsch."
+
+#: .\templates\404.html:15
+msgid "error"
+msgstr "Error"
+
+#: .\templates\404.html:16 .\templates\500.html:14
+msgid "Back to homepage"
+msgstr "Zurück zur Startseite"
+
+#: .\templates\500.html:5
+msgid "Error 500"
+msgstr "Error 500"
+
+#: .\templates\500.html:10
+msgid "Internal server error (500)"
+msgstr "Interner Serverfehler (500)"
+
+#: .\templates\500.html:11
+msgid "Something has gone wrong. We are working on it!"
+msgstr "Es ist ein Fehler aufgetreten. Wir arbeiten daran!"
+
+#: .\templates\500.html:13
+msgid "Error image"
+msgstr "Bildfehler"
+
+#: .\templates\allauth\account\account_inactive.html:5
+#: .\templates\allauth\account\account_inactive.html:8
+msgid "Account Inactive"
+msgstr "Konto inaktiv"
+
+#: .\templates\allauth\account\account_inactive.html:10
+msgid "This account is inactive."
+msgstr "Dieses Konto ist inaktiv."
+
+#: .\templates\allauth\account\email.html:5
+#: .\templates\allauth\account\email.html:8
+msgid "E-mail Addresses"
+msgstr "E-mail Addressen"
+
+#: .\templates\allauth\account\email.html:10
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Die folgenden E-Mail-Adressen sind mit Ihrem Konto verknüpft:"
+
+#: .\templates\allauth\account\email.html:24
+msgid "Verified"
+msgstr "Verifiziert"
+
+#: .\templates\allauth\account\email.html:26
+msgid "Unverified"
+msgstr "Nicht bestätigt"
+
+#: .\templates\allauth\account\email.html:28
+msgid "Primary"
+msgstr "Primär"
+
+#: .\templates\allauth\account\email.html:34
+msgid "Make Primary"
+msgstr "Als primär festlegen"
+
+#: .\templates\allauth\account\email.html:35
+msgid "Re-send Verification"
+msgstr "Bestätigung erneut senden"
+
+#: .\templates\allauth\account\email.html:36
+#: .\templates\allauth\socialaccount\connections.html:35
+msgid "Remove"
+msgstr "Entfernen"
+
+#: .\templates\allauth\account\email.html:43
+msgid "Warning:"
+msgstr "Warnung:"
+
+#: .\templates\allauth\account\email.html:43
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"Sie haben derzeit keine E-Mail-Adresse eingerichtet. Sie sollten unbedingt "
+"eine E-Mail-Adresse hinzufügen, damit Sie Benachrichtigungen erhalten, Ihr "
+"Passwort zurücksetzen können usw."
+
+#: .\templates\allauth\account\email.html:48
+msgid "Add E-mail Address"
+msgstr "E-Mail-Adresse hinzufügen"
+
+#: .\templates\allauth\account\email.html:53
+msgid "Add E-mail"
+msgstr "E-Mail hinzufügen"
+
+#: .\templates\allauth\account\email.html:63
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Möchtest du die ausgewählte E-Mail-Adresse wirklich löschen?"
+
+#: .\templates\allauth\account\email\base_message.txt:1
+#, python-format
+msgid "Hello from %(site_name)s!"
+msgstr ""
+
+#: .\templates\allauth\account\email\base_message.txt:5
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: .\templates\allauth\account\email\email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"You're receiving this e-mail because user %(user_display)s has given your e-"
+"mail address to register an account on %(site_domain)s.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s"
+msgstr ""
+
+#: .\templates\allauth\account\email\email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr "Bitte bestätigen Sie Ihre E-Mail-Adresse"
+
+#: .\templates\allauth\account\email\password_reset_key_message.txt:4
+msgid ""
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+"Sie erhalten diese E-Mail, weil Sie oder eine andere Person ein Passwort für "
+"Ihr Benutzerkonto angefordert haben.\n"
+"Sie können diese E-Mail ignorieren, wenn Sie keine Passwortzurücksetzung "
+"angefordert haben. Klicken Sie auf den folgenden Link, um Ihr Passwort "
+"zurückzusetzen."
+
+#: .\templates\allauth\account\email\password_reset_key_message.txt:9
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: .\templates\allauth\account\email\password_reset_key_subject.txt:3
+#: .\templates\allauth\account\email\unknown_account_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr "E-Mail zum Zurücksetzen des Passworts"
+
+#: .\templates\allauth\account\email\unknown_account_message.txt:4
+#, python-format
+msgid ""
+"You are receiving this e-mail because you or someone else has requested a\n"
+"password for your user account. However, we do not have any record of a "
+"user\n"
+"with email %(email)s in our database.\n"
+"\n"
+"This mail can be safely ignored if you did not request a password reset.\n"
+"\n"
+"If it was you, you can sign up for an account using the link below."
+msgstr ""
+"Sie erhalten diese E-Mail, weil Sie oder eine andere Person ein\n"
+"Passwort für Ihr Benutzerkonto angefordert haben. Allerdings haben wir "
+"keinen Eintrag für einen Benutzer\n"
+"mit der E-Mail-Adresse %(email)s in unserer Datenbank.\n"
+"\n"
+"Sie können diese E-Mail ignorieren, wenn Sie keine Passwortzurücksetzung "
+"angefordert haben.\n"
+"\n"
+"Wenn Sie die Anfrage gestellt haben, können Sie sich über den unten "
+"stehenden Link für ein Konto anmelden."
+
+#: .\templates\allauth\account\email_confirm.html:7
+#: .\templates\allauth\account\email_confirm.html:16
+msgid "Confirm E-mail Address"
+msgstr "E-Mail-Adresse bestätigen"
+
+#: .\templates\allauth\account\email_confirm.html:22
+#, python-format
+msgid ""
+"Please confirm that <a class=\"alert-link\" href=\"mailto:"
+"%(email)s\">%(email)s</a>\n"
+"                is an e-mail address for user %(user_display)s."
+msgstr ""
+
+#: .\templates\allauth\account\email_confirm.html:29
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: .\templates\allauth\account\email_confirm.html:30
+msgid "Use a different e-mail"
+msgstr "Verwende eine andere E-Mail-Adresse"
+
+#: .\templates\allauth\account\email_confirm.html:36
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a class=\"alert-"
+"link\" href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: .\templates\allauth\account\email_confirm.html:39
+msgid "Request new confirmation"
+msgstr ""
+
+#: .\templates\allauth\account\email_confirm.html:46
+msgid "Having trouble? Check your spam folder or contact support."
+msgstr ""
+"Hast du Probleme? Überprüfe deinen Spam-Ordner oder wende dich an den "
+"Support."
+
+#: .\templates\allauth\account\login.html:7
+#: .\templates\allauth\account\login.html:18
+#: .\templates\allauth\account\login.html:61
+msgid "Sign In"
+msgstr "Anmelden"
+
+#: .\templates\allauth\account\login.html:55
+msgid "No Account yet?"
+msgstr "Noch kein Konto?"
+
+#: .\templates\allauth\account\login.html:56
+#: .\templates\allauth\account\password_change.html:21
+msgid "Forgot Password?"
+msgstr "Passwort vergessen?"
+
+#: .\templates\allauth\account\logout.html:6
+#: .\templates\allauth\account\logout.html:17
+#: .\templates\allauth\account\logout.html:29
+msgid "Sign Out"
+msgstr "Abmelden"
+
+#: .\templates\allauth\account\logout.html:19
+msgid "Are you sure you want to sign out?"
+msgstr "Möchten Sie sich wirklich abmelden?"
+
+#: .\templates\allauth\account\messages\cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: .\templates\allauth\account\messages\email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: .\templates\allauth\account\messages\email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: .\templates\allauth\account\messages\email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: .\templates\allauth\account\messages\logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: .\templates\allauth\account\messages\logged_out.txt:2
+msgid "You have signed out."
+msgstr "Sie haben sich abgemeldet."
+
+#: .\templates\allauth\account\messages\password_changed.txt:2
+msgid "Password successfully changed."
+msgstr "Passwort erfolgreich geändert."
+
+#: .\templates\allauth\account\messages\password_set.txt:2
+msgid "Password successfully set."
+msgstr "Passwort erfolgreich festgelegt."
+
+#: .\templates\allauth\account\messages\primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr "Primäre E-Mail-Adresse festgelegt."
+
+#: .\templates\allauth\account\messages\unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr "Deine primäre E-Mail-Adresse muss verifiziert werden."
+
+#: .\templates\allauth\account\password_change.html:6
+#: .\templates\allauth\account\password_change.html:17
+#: .\templates\allauth\account\password_change.html:22
+#: .\templates\allauth\account\password_reset_from_key.html:6
+#: .\templates\allauth\account\password_reset_from_key.html:21
+#: .\templates\allauth\account\password_reset_from_key_done.html:6
+#: .\templates\allauth\account\password_reset_from_key_done.html:17
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: .\templates\allauth\account\password_reset.html:7
+#: .\templates\allauth\account\password_reset.html:16
+#: .\templates\allauth\account\password_reset_done.html:7
+#: .\templates\allauth\account\password_reset_done.html:18
+msgid "Password Reset"
+msgstr "Passwort zurücksetzen"
+
+#: .\templates\allauth\account\password_reset.html:24
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+"Passwort vergessen? Gebe unten deine E-Mail-Adresse ein, und wir senden dir "
+"eine E-Mail, mit der du dein Passwort zurücksetzen kannst."
+
+#: .\templates\allauth\account\password_reset.html:32
+msgid "Reset My Password"
+msgstr "Mein Passwort zurücksetzen"
+
+#: .\templates\allauth\account\password_reset.html:38
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+"Bitte kontaktiere uns, wenn du Probleme beim Zurücksetzen deines Passworts "
+"habst."
+
+#: .\templates\allauth\account\password_reset_done.html:25
+msgid ""
+"We have sent you an e-mail. If you have not received it please check your "
+"spam folder. Otherwise contact us if you do not receive it in a few minutes."
+msgstr ""
+"Wir haben dir eine E-Mail geschickt. Wenn du diese nicht erhalten hast, "
+"überprüfe bitte deinen Spam-Ordner. Andernfalls kontaktiere uns bitte, wenn "
+"du die E-Mail nicht innerhalb weniger Minuten erhalten hast."
+
+#: .\templates\allauth\account\password_reset_from_key.html:19
+msgid "Bad Token"
+msgstr "Ungültiger Token"
+
+#: .\templates\allauth\account\password_reset_from_key.html:28
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: .\templates\allauth\account\password_reset_from_key.html:35
+msgid "change password"
+msgstr "Passwort ändern"
+
+#: .\templates\allauth\account\password_reset_from_key_done.html:19
+msgid "Your password is now changed."
+msgstr "Dein Passwort wurde geändert."
+
+#: .\templates\allauth\account\password_set.html:6
+#: .\templates\allauth\account\password_set.html:17
+#: .\templates\allauth\account\password_set.html:21
+msgid "Set Password"
+msgstr "Passwort festlegen"
+
+#: .\templates\allauth\account\signup.html:6
+#: .\templates\allauth\account\signup.html:18
+#: .\templates\allauth\socialaccount\signup.html:8
+#: .\templates\allauth\socialaccount\signup.html:19
+msgid "Sign Up"
+msgstr "Anmelden"
+
+#: .\templates\allauth\account\signup.html:36
+msgid "Create account"
+msgstr "Konto erstellen"
+
+#: .\templates\allauth\account\signup.html:41
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: .\templates\allauth\account\signup_closed.html:5
+#: .\templates\allauth\account\signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr "Anmeldung geschlossen"
+
+#: .\templates\allauth\account\signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "Es tut uns leid, aber die Anmeldung ist derzeit geschlossen."
+
+#: .\templates\allauth\account\snippets\already_logged_in.html:5
+msgid "Note"
+msgstr "Hinweis"
+
+#: .\templates\allauth\account\snippets\already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: .\templates\allauth\account\verification_sent.html:5
+#: .\templates\allauth\account\verification_sent.html:14
+#: .\templates\allauth\account\verified_email_required.html:5
+#: .\templates\allauth\account\verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr "Bestätige deine E-Mail-Adresse"
+
+#: .\templates\allauth\account\verification_sent.html:17
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. If you do not see the verification e-mail in "
+"your main inbox, check your spam folder. Please contact us if you do not "
+"receive the verification e-mail within a few minutes."
+msgstr ""
+"Wir haben dir eine E-Mail zur Bestätigung geschickt. Folge dem darin "
+"enthaltenen Link, um die Anmeldung abzuschließen. Wenn du die Bestätigungs-E-"
+"Mail nicht in deinem Posteingang findest, überprüfe bitte deinen Spam-"
+"Ordner. Bitte kontaktiere uns, wenn du die Bestätigungs-E-Mail nicht "
+"innerhalb weniger Minuten erhältst."
+
+#: .\templates\allauth\account\verification_sent.html:21
+msgid "Back to home"
+msgstr "Zurück zur Startseite"
+
+#: .\templates\allauth\account\verification_sent.html:27
+msgid "Tip: Add our address to your contacts to avoid spam filtering."
+msgstr ""
+"Tipp: Füge unsere Adresse zu deinen Kontakten hinzu, um Spam-Filterung zu "
+"vermeiden."
+
+#: .\templates\allauth\account\verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+"In diesem Bereich der Website müssen wir überprüfen, ob\n"
+"du wirklich die Person bist, für die du dich ausgibst. Zu diesem Zweck müsst "
+"du\n"
+"die Inhaberschaft Ihrer E-Mail-Adresse bestätigen."
+
+#: .\templates\allauth\account\verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside that e-mail. If you do not see "
+"the verification e-mail in your main inbox, check your spam folder. "
+"Otherwise\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+"Wir haben dir eine E-Mail zur\n"
+"Verifizierung geschickt. Bitte klicke auf den Link in dieser E-Mail. Wenn du "
+"die Verifizierungs-E-Mail nicht in deinem Hauptpostfach findest, überprüfe "
+"deinen Spam-Ordner. Andernfalls\n"
+"kontaktiere uns, wenn du sie nicht innerhalb weniger Minuten erhalten hast."
+
+#: .\templates\allauth\account\verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: .\templates\allauth\openid\login.html:9
+msgid "OpenID Sign In"
+msgstr "OpenID-Anmeldung"
+
+#: .\templates\allauth\socialaccount\authentication_error.html:5
+#: .\templates\allauth\socialaccount\authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr "Fehler beim Anmelden über soziale Netzwerke"
+
+#: .\templates\allauth\socialaccount\authentication_error.html:10
+msgid ""
+"An error occurred while attempting to login via your social network account."
+msgstr ""
+"Beim Versuch, sich über dein Konto in einem sozialen Netzwerk anzumelden, "
+"ist ein Fehler aufgetreten."
+
+#: .\templates\allauth\socialaccount\connections.html:5
+#: .\templates\allauth\socialaccount\connections.html:8
+msgid "Account Connections"
+msgstr "Kontoverbindungen"
+
+#: .\templates\allauth\socialaccount\connections.html:11
+msgid ""
+"You can sign in to your account using any of the following third party "
+"accounts:"
+msgstr ""
+"Du kannst dich mit einem der folgenden Konten von Drittanbietern bei Ihrem "
+"Konto anmelden:"
+
+#: .\templates\allauth\socialaccount\connections.html:43
+msgid ""
+"You currently have no social network accounts connected to this account."
+msgstr "Du hast derzeit keine Social-Media-Konten mit diesem Konto verbunden."
+
+#: .\templates\allauth\socialaccount\connections.html:46
+msgid "Add a 3rd Party Account"
+msgstr ""
+
+#: .\templates\allauth\socialaccount\login.html:6
+#, python-format
+msgid "Connect %(provider)s"
+msgstr ""
+
+#: .\templates\allauth\socialaccount\login.html:8
+#, python-format
+msgid "You are about to connect a new third party account from %(provider)s."
+msgstr ""
+
+#: .\templates\allauth\socialaccount\login.html:10
+#, python-format
+msgid "Sign In Via %(provider)s"
+msgstr ""
+
+#: .\templates\allauth\socialaccount\login.html:12
+#, python-format
+msgid "You are about to sign in using a third party account from %(provider)s."
+msgstr ""
+
+#: .\templates\allauth\socialaccount\login.html:17
+msgid "Continue"
+msgstr "Weiter"
+
+#: .\templates\allauth\socialaccount\login_cancelled.html:5
+#: .\templates\allauth\socialaccount\login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr "Anmeldung abgebrochen"
+
+#: .\templates\allauth\socialaccount\login_cancelled.html:13
+#, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a mistake, please proceed to <a "
+"href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: .\templates\allauth\socialaccount\messages\account_connected.txt:2
+msgid "The social account has been connected."
+msgstr ""
+
+#: .\templates\allauth\socialaccount\messages\account_connected_other.txt:2
+msgid "The social account is already connected to a different account."
+msgstr ""
+
+#: .\templates\allauth\socialaccount\messages\account_disconnected.txt:2
+msgid "The social account has been disconnected."
+msgstr ""
+
+#: .\templates\allauth\socialaccount\signup.html:5
+msgid "Signup"
+msgstr ""
+
+#: .\templates\allauth\socialaccount\signup.html:10
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: .\templates\base.html:92 .\templates\home.html:8
+msgid "Home"
+msgstr "Startseite"
+
+#: .\templates\base.html:95
+msgid "Blog"
+msgstr "Blog"
+
+#: .\templates\base.html:99
+msgid "Tasks"
+msgstr "Aufgaben"
+
+#: .\templates\base.html:107 .\templates\base.html:112
+msgid "View placed Orders"
+msgstr "Aufgegebene Bestellungen anzeigen"
+
+#: .\templates\base.html:107
+msgid "Orders"
+msgstr "Bestellungen"
+
+#: .\templates\base.html:112
+msgid "Add Rewards"
+msgstr "Belohnungen hinzufügen"
+
+#: .\templates\base.html:118
+msgid "View Subscription Plans"
+msgstr "Abonnementpläne anzeigen"
+
+#: .\templates\base.html:118
+msgid "Subscription Plans"
+msgstr "Abos"
+
+#: .\templates\base.html:137
+msgid "Profile Picture"
+msgstr "Profilbild"
+
+#: .\templates\base.html:139
+msgid "Logo"
+msgstr "Logo"
+
+#: .\templates\base.html:143 .\templates\base.html:158
+#, python-format
+msgid "Points %(points)s"
+msgstr ""
+
+#: .\templates\base.html:144 .\templates\base.html:153
+msgid "View Account"
+msgstr "Konto anzeigen"
+
+#: .\templates\base.html:144 .\templates\base.html:153
+#: .\templates\privacy_policy.html:27
+msgid "Account"
+msgstr "Konto"
+
+#: .\templates\base.html:145 .\templates\base.html:156
+msgid "Logout"
+msgstr "Abmelden"
+
+#: .\templates\base.html:163 .\templates\home.html:25 .\templates\home.html:101
+msgid "Register"
+msgstr "Registrieren"
+
+#: .\templates\base.html:166
+msgid "Login"
+msgstr "Anmelden"
+
+#: .\templates\base.html:181
+#, python-format
+msgid ""
+"\n"
+"                  %(message)s\n"
+"                "
+msgstr ""
+
+#: .\templates\base.html:197
+#, python-format
+msgid "© %(year)s "
+msgstr ""
+
+#: .\templates\base.html:197
+msgid "Procrastination Defier. All rights reserved. Created by"
+msgstr "Procrastination Defier. Alle Rechte vorbehalten. Erstellt von"
+
+#: .\templates\base.html:197
+msgid "Link to Github"
+msgstr "Link zu Github"
+
+#: .\templates\base.html:200
+msgid "Frequently asked questions"
+msgstr "Häufig gestellte Fragen"
+
+#: .\templates\base.html:201
+msgid "Legal notice"
+msgstr "Rechtlicher Hinweis"
+
+#: .\templates\base.html:201 .\templates\legal_notice.html:6
+#: .\templates\legal_notice.html:15
+msgid "Legal Notice"
+msgstr "Rechtlicher Hinweis"
+
+#: .\templates\base.html:202 .\templates\privacy_policy.html:5
+#: .\templates\privacy_policy.html:12
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: .\templates\base.html:203 .\templates\terms_and_conditions.html:5
+msgid "Terms and Conditions"
+msgstr "Allgemeine Geschäftsbedingungen"
+
+#: .\templates\faq.html:15
+msgid "Frequently Asked Questions"
+msgstr "Häufig gestellte Fragen"
+
+#: .\templates\faq.html:16
+msgid "Here you'll find answers to the most common questions about Us."
+msgstr "Hier finden Sie Antworten auf die häufigsten Fragen zu uns."
+
+#: .\templates\faq.html:21 .\templates\home.html:31
+msgid "What is Procrastination Defier?"
+msgstr "Was ist Procrastination Defier?"
+
+#: .\templates\faq.html:23
+msgid ""
+"Procrastination Defier is an accountability-based productivity system. You "
+"upload your real tasks, commit to deadlines, and get rewarded when you "
+"follow through. If you procrastinate, there are real consequences – just "
+"like in real life."
+msgstr ""
+"Procrastination Defier ist ein auf Verantwortlichkeit basierendes "
+"Produktivitätssystem. Du lädst deine tatsächlichen Aufgaben hoch, "
+"verpflichten dich zu Fristen und wirst belohnt, wenn du diese einhältst. "
+"Wenn du zögerst, hat das reale Konsequenzen – genau wie im richtigen Leben."
+
+#: .\templates\faq.html:29
+msgid "How does the task system work?"
+msgstr "Wie funktioniert das System?"
+
+#: .\templates\faq.html:31
+msgid ""
+"Once registered, you can upload your tasks and choose a check-in frequency: "
+"weekly, biweekly, or monthly. An admin will review your submissions based on "
+"the chosen rhythm and verify whether you’ve completed your tasks."
+msgstr ""
+"Nach der Registrierung kannst du Aufgaben hochladen und eine Check-in-"
+"Häufigkeit auswählen: wöchentlich, zweiwöchentlich oder monatlich. Ein "
+"Administrator überprüft deine Aufgaben anhand des gewählten Rhythmus und "
+"verifiziert, ob du deine Aufgaben erledigt hast."
+
+#: .\templates\faq.html:37
+msgid "Who checks if I did my tasks?"
+msgstr "Wer überprüft, ob ich meine Aufgaben erledigt habe?"
+
+#: .\templates\faq.html:39
+msgid ""
+"A human admin – not an algorithm. We believe real people make better "
+"judgments when it comes to real progress. You’ll be asked to provide proof "
+"or context when needed."
+msgstr ""
+"Ein menschlicher Administrator – kein Algorithmus. Wir glauben, dass echte "
+"Menschen bessere Entscheidungen treffen, wenn es um echte Fortschritte geht. "
+"Du wirst gebeten, entsprechende Nachweise oder Hintergrundinformationen "
+"vorzulegen."
+
+#: .\templates\faq.html:45
+msgid "What kind of tasks can I upload?"
+msgstr "Welche Art von Aufgaben kann ich hochladen?"
+
+#: .\templates\faq.html:47
+msgid ""
+"Anything that matters to you: writing a thesis, exercising, building a "
+"business, learning a skill. The only requirement is that the task must be "
+"specific, measurable, and meaningful to you."
+msgstr ""
+"Alles, was dir wichtig ist: eine Abschlussarbeit schreiben, Sport treiben, "
+"ein Unternehmen aufbauen, eine neue Fähigkeit erlernen. Die einzige "
+"Voraussetzung ist, dass die Aufgabe konkret, messbar und für dich persönlich "
+"bedeutsam sein muss."
+
+#: .\templates\faq.html:52
+msgid "What happens if I complete my tasks?"
+msgstr "Was passiert, wenn ich meine Aufgaben erledigt habe?"
+
+#: .\templates\faq.html:60
+msgid "What if I don’t complete my tasks?"
+msgstr "Was passiert, wenn ich meine Aufgaben nicht erledige?"
+
+#: .\templates\faq.html:62
+msgid ""
+"You’ll have to pay a small fee at the end of the month before being allowed "
+"to submit new tasks. This fee is your way of taking responsibility for "
+"inaction – and a motivator to keep moving forward."
+msgstr ""
+"Am Ende des Monats musst du eine geringe Gebühr entrichten, bevor du neue "
+"Aufgaben einreichen darfst. Diese Gebühr ist deine Art, Verantwortung für "
+"Untätigkeit zu übernehmen – und ein Ansporn, weiterzumachen."
+
+#: .\templates\faq.html:68
+msgid "Is this like a productivity app or to-do list?"
+msgstr "Ist das so etwas wie eine Produktivitäts-App oder eine To-do-Liste?"
+
+#: .\templates\faq.html:70
+msgid ""
+"Not at all. Procrastination Defier is built around accountability, "
+"consequences, and rewards – not reminders or lists. We’re not here to "
+"organize your tasks. We’re here to make sure you do them."
+msgstr ""
+"Ganz und gar nicht. Procrastination Defier basiert auf Verantwortlichkeit, "
+"Konsequenzen und Belohnungen – nicht auf Erinnerungen oder Listen. Wir sind "
+"nicht dazu da, deine Aufgaben zu organisieren. Wir sind dazu da, dafür zu "
+"sorgen, dass du sie erledigen."
+
+#: .\templates\faq.html:76
+msgid "Is it free?"
+msgstr "Ist es kostenlos?"
+
+#: .\templates\faq.html:78
+msgid ""
+"No. There is a monthly subscription fee. This keeps you committed and "
+"supports the human-powered verification process. We believe skin in the game "
+"makes success more likely."
+msgstr ""
+"Nein. Es fällt eine monatliche Abonnementgebühr an. Diese sorgt dafür, dass "
+"du engagiert bleibst, und unterstützt den manuellen Verifizierungsprozess. "
+"Wir glauben, dass ein persönliches Engagement den Erfolg wahrscheinlicher "
+"macht."
+
+#: .\templates\faq.html:84
+msgid "Can I cancel anytime?"
+msgstr "Kann ich jederzeit kündigen?"
+
+#: .\templates\faq.html:86
+msgid ""
+"Yes, you can cancel your subscription at any time. Your data will be stored "
+"securely in case you return, but task submissions and rewards will pause "
+"until reactivation."
+msgstr ""
+"Ja, Du kannst dein Abonnement jederzeit kündigen. Deine Daten werden für den "
+"Fall Ihrer Rückkehr sicher gespeichert, aber die Einreichung von Aufgaben "
+"und die Vergabe von Prämien werden bis zur Reaktivierung ausgesetzt."
+
+#: .\templates\faq.html:92
+msgid "What are the prices for undone tasks?"
+msgstr "Wie hoch sind die Preise für nicht erledigte Aufgaben?"
+
+#: .\templates\faq.html:94
+msgid ""
+"The prices for undone tasks vary based on the task's complexity and the time "
+"taken to complete it. Please refer to our pricing page for detailed "
+"information."
+msgstr ""
+"Die Preise für nicht erledigte Aufgaben variieren je nach Komplexität der "
+"Aufgabe und der für ihre Erledigung benötigten Zeit. Ausführliche "
+"Informationen finden Sie auf unserer Preisseite."
+
+#: .\templates\home.html:16
+msgid "Welcome to the End of Your Procrastination"
+msgstr "Willkommen am Ende Ihrer Prokrastination"
+
+#: .\templates\home.html:18
+msgid "Procrastination isn't a habit – it's a trap."
+msgstr "Aufschieben ist keine Gewohnheit – es ist eine Falle."
+
+#: .\templates\home.html:20
+msgid ""
+"We help you break free with structure, motivation, and real consequences."
+msgstr ""
+"Wir helfen dir dabei, sich zu befreien – mit Struktur, Motivation und realen "
+"Konsequenzen."
+
+#: .\templates\home.html:23
+msgid "View your tasks"
+msgstr "Deine Aufgaben anzeigen"
+
+#: .\templates\home.html:25
+msgid "Start Your Journey"
+msgstr "Beginnen deine Reise"
+
+#: .\templates\home.html:32
+msgid ""
+"Procrastination Defier is your accountability partner in digital form. You "
+"commit to real tasks – we make sure you follow through."
+msgstr ""
+"Procrastination Defier ist dein digitaler Partner, der dich zur Rechenschaft "
+"zieht. Sie verpflichten dich zu konkreten Aufgaben – wir sorgen dafür, dass "
+"du diese auch umsetzen."
+
+#: .\templates\home.html:33
+msgid ""
+"Upload your tasks, choose your check-in rhythm (weekly, biweekly, or "
+"monthly), and let the system challenge your consistency. If you succeed, you "
+"earn points. If you fail, it costs you. Literally."
+msgstr ""
+"Laden deine Aufgaben hoch, wähle deinen Check-in-Rhythmus (wöchentlich, "
+"zweiwöchentlich oder monatlich) und lasse das System deine Beständigkeit auf "
+"die Probe stellen. Wenn du erfolgreich bist, erhältst du Punkte. Wenn du "
+"scheiterst, kostet es dich etwas. Im wahrsten Sinne des Wortes."
+
+#: .\templates\home.html:43
+msgid "How It Works"
+msgstr "So funktioniert es"
+
+#: .\templates\home.html:44
+msgid ""
+"A simple yet powerful structure designed to make procrastination expensive – "
+"and action rewarding."
+msgstr ""
+"Eine einfache, aber wirkungsvolle Struktur, die darauf ausgelegt ist, "
+"Prokrastination teuer zu machen – und Handeln lohnenswert."
+
+#: .\templates\home.html:52
+msgid "Task Upload & Commitment"
+msgstr "Aufgabe hochladen und Verpflichtung"
+
+#: .\templates\home.html:53
+msgid ""
+"Upload your personal or professional goals. Choose how often you want them "
+"checked (weekly, biweekly, or monthly)."
+msgstr ""
+"Lade deine persönlichen oder beruflichen Ziele hoch. Wähle aus, wie oft "
+"diese überprüft werden sollen (wöchentlich, zweiwöchentlich oder monatlich)."
+
+#: .\templates\home.html:59
+msgid "Admin Verification"
+msgstr "Administratorüberprüfung"
+
+#: .\templates\home.html:60
+msgid ""
+"A human admin reviews your progress based on your uploads. No cheating. No "
+"excuses. Just real accountability."
+msgstr ""
+"Ein menschlicher Administrator überprüft deine Fortschritt anhand deiner "
+"Uploads. Kein Schummeln. Keine Ausreden. Nur echte Verantwortlichkeit."
+
+#: .\templates\home.html:66
+msgid "Progress = Points"
+msgstr "Fortschritt = Punkte"
+
+#: .\templates\home.html:67
+msgid ""
+"Each completed task earns you points. Use them to unlock real rewards, "
+"personalized for your journey."
+msgstr ""
+"Für jede abgeschlossene Aufgabe erhältst du Punkte. Mit diesen Punkten "
+"kannst du echte Belohnungen freischalten, die individuell auf deine Reise "
+"zugeschnitten sind."
+
+#: .\templates\home.html:73
+msgid "Missed Tasks = Fee"
+msgstr "Versäumte Aufgaben = Gebühr"
+
+#: .\templates\home.html:74
+msgid ""
+"Didn’t deliver? At the end of the month, you’ll pay a small fee before you "
+"can commit to new tasks. Procrastination has a price."
+msgstr ""
+"Nicht geliefert? Am Ende des Monats zahlst du eine geringe Gebühr, bevor du "
+"neue Aufgaben eintragen kannst. Aufschieben hat seinen Preis."
+
+#: .\templates\home.html:81
+msgid ""
+"This isn’t a productivity app. This is a system to make you show up for "
+"yourself."
+msgstr ""
+"Dies ist keine Produktivitäts-App. Es handelt sich um ein System, das dir "
+"dabei hilft, für sich selbst einzustehen."
+
+#: .\templates\home.html:88
+msgid "Why It Works"
+msgstr "Warum es funktioniert"
+
+#: .\templates\home.html:89
+msgid "Real Consequences Create Real Change"
+msgstr "Echte Konsequenzen bewirken echte Veränderungen"
+
+#: .\templates\home.html:90
+msgid ""
+"We don’t rely on willpower. We build a system where motivation is optional – "
+"because the structure does the work."
+msgstr ""
+"Wir verlassen uns nicht auf Willenskraft. Wir bauen ein System auf, in dem "
+"Motivation optional ist – weil die Struktur die Arbeit erledigt."
+
+#: .\templates\home.html:92
+msgid ""
+"When you tie your goals to effort, feedback, and consequences, you naturally "
+"stop waiting for the “perfect moment.” You act – consistently."
+msgstr ""
+"Wenn Sie Ihre Ziele mit Anstrengung, Feedback und Konsequenzen verknüpfen, "
+"hören Sie ganz natürlich auf, auf den „perfekten Moment“ zu warten. Sie "
+"handeln – konsequent."
+
+#: .\templates\home.html:94
+msgid ""
+"\"Discipline is choosing between what you want now and what you want most\""
+msgstr ""
+"„Disziplin bedeutet, zwischen dem, was man jetzt will, und dem, was man am "
+"meisten will, zu wählen.“"
+
+#: .\templates\home.html:99
+msgid "Join the Defiers"
+msgstr "Schließen dich den Defiers an"
+
+#: .\templates\home.html:100
+msgid ""
+"Start your personal battle against procrastination – and win it, one task at "
+"a time."
+msgstr ""
+"Beginnen deinen persönlichen Kampf gegen die Prokrastination – und gewinnen "
+"ihn, eine Aufgabe nach der anderen."
+
+#: .\templates\home.html:103
+msgid "Register your next task"
+msgstr "Registrieren deine nächste Aufgabe"
+
+#: .\templates\home.html:105
+msgid "Create an Account"
+msgstr "Konto erstellen"
+
+#: .\templates\home.html:108
+msgid "You’ve waited long enough. Let’s make action your new default."
+msgstr ""
+"Du hast lange genug gewartet. Lass uns das Handeln zu deiner neuen "
+"Standardhaltung machen."
+
+#: .\templates\home.html:114
+msgid "Subscribe to the Newsletter"
+msgstr "Newsletter abonnieren"
+
+#: .\templates\home.html:115
+msgid "New rewards? Discounts? Subscribe and we will keep you up to date"
+msgstr ""
+"Neue Prämien? Rabatte? Abonniere unseren Newsletter und wir halten dich auf "
+"dem Laufenden."
+
+#: .\templates\home.html:118
+msgid "Your E-Mail"
+msgstr "Deine E-Mail"
+
+#: .\templates\home.html:134
+msgid "Subscribe to Newsletter"
+msgstr "Newsletter abonnieren"
+
+#: .\templates\legal_notice.html:18
+msgid "Information according to § 5 TMG:"
+msgstr "Informationen gemäß § 5 TMG:"
+
+#: .\templates\legal_notice.html:29
+msgid "Contact:"
+msgstr "Kontakt:"
+
+#: .\templates\legal_notice.html:37
+msgid "Responsible for content according to § 55 Abs. 2 RStV:"
+msgstr "Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV:"
+
+#: .\templates\legal_notice.html:45
+msgid "Liability for Content"
+msgstr "Haftung für Inhalte"
+
+#: .\templates\legal_notice.html:46
+msgid ""
+"We strive for accurate and timely content but cannot guarantee it fully."
+msgstr ""
+"Wir bemühen uns um genaue und aktuelle Inhalte, können dies jedoch nicht "
+"vollständig garantieren."
+
+#: .\templates\legal_notice.html:48
+msgid "Liability for Links"
+msgstr "Haftung für Links"
+
+#: .\templates\legal_notice.html:49
+msgid "We are not responsible for external content linked on this site."
+msgstr ""
+"Wir sind nicht verantwortlich für externe Inhalte, die auf dieser Website "
+"verlinkt sind."
+
+#: .\templates\legal_notice.html:51
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+#: .\templates\legal_notice.html:52
+msgid "All original content is protected under German copyright law."
+msgstr "Alle Originalinhalte sind durch das deutsche Urheberrecht geschützt."
+
+#: .\templates\legal_notice.html:54
+msgid "Last updated: September 2025"
+msgstr "Letzte Aktualisierung: September 2025"
+
+#: .\templates\privacy_policy.html:13
+msgid "Last updated: August 08, 2025"
+msgstr "Zuletzt aktualisiert: 08. August 2025"
+
+#: .\templates\privacy_policy.html:18
+msgid "Privacy Policy Generator"
+msgstr "Datenschutzerklärung Generator"
+
+#: .\templates\privacy_policy.html:19
+msgid "Interpretation and Definitions"
+msgstr "Auslegung und Definitionen"
+
+#: .\templates\privacy_policy.html:20
+msgid "Interpretation"
+msgstr "Auslegung"
+
+#: .\templates\privacy_policy.html:23
+msgid "Definitions"
+msgstr "Definitionen"
+
+#: .\templates\privacy_policy.html:24
+msgid "For the purposes of this Privacy Policy:"
+msgstr "Für die Zwecke dieser Datenschutzerklärung:"
+
+#: .\templates\privacy_policy.html:31
+msgid "Affiliate"
+msgstr "Partner"
+
+#: .\templates\privacy_policy.html:36
+msgid "Company"
+msgstr "Unternehmen"
+
+#: .\templates\privacy_policy.html:40
+msgid "Cookies"
+msgstr "Cookies"
+
+#: .\templates\privacy_policy.html:44
+msgid "refers to: Nordrhein-Westfalen, Germany"
+msgstr "bezieht sich auf: Nordrhein-Westfalen, Deutschland"
+
+#: .\templates\privacy_policy.html:47
+msgid "Device"
+msgstr "Gerät"
+
+#: .\templates\privacy_policy.html:51 .\templates\privacy_policy.html:81
+msgid "Personal Data"
+msgstr "Personenbezogene Daten"
+
+#: .\templates\privacy_policy.html:51
+msgid ""
+"is any information that relates to an identified or identifiable individual."
+msgstr ""
+"sind alle Informationen, die sich auf eine identifizierte oder "
+"identifizierbare Person beziehen."
+
+#: .\templates\privacy_policy.html:54
+msgid "Service"
+msgstr "Dienstleistung"
+
+#: .\templates\privacy_policy.html:54
+msgid "refers to the Website."
+msgstr "bezieht sich auf die Website."
+
+#: .\templates\privacy_policy.html:57
+msgid "Service Provider"
+msgstr "Dienstleister"
+
+#: .\templates\privacy_policy.html:63
+msgid "Third-party Social Media Service"
+msgstr "Drittanbieter von Social-Media-Diensten"
+
+#: .\templates\privacy_policy.html:67 .\templates\privacy_policy.html:95
+#: .\templates\privacy_policy.html:98
+msgid "Usage Data"
+msgstr "Datennutzung"
+
+#: .\templates\privacy_policy.html:71
+msgid "Website"
+msgstr "Website"
+
+#: .\templates\privacy_policy.html:71
+msgid "refers to Procrastination Defier, accessible from"
+msgstr "bezieht sich auf Procrastination Defier, zugänglich unter"
+
+#: .\templates\privacy_policy.html:75
+msgid "You"
+msgstr "Sie"
+
+#: .\templates\privacy_policy.html:79
+msgid "Collecting and Using Your Personal Data"
+msgstr "Erhebung und Verwendung Ihrer personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:80
+msgid "Types of Data Collected"
+msgstr "Arten der erhobenen Daten"
+
+#: .\templates\privacy_policy.html:86
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: .\templates\privacy_policy.html:89
+msgid "First name and last name"
+msgstr "Vorname und Nachname"
+
+#: .\templates\privacy_policy.html:92
+msgid "Address, State, Province, ZIP/Postal code, City"
+msgstr "Adresse, Bundesland, Provinz, Postleitzahl, Ort"
+
+#: .\templates\privacy_policy.html:99
+msgid "Usage Data is collected automatically when using the Service."
+msgstr "Nutzungsdaten werden bei der Nutzung des Dienstes automatisch erfasst."
+
+#: .\templates\privacy_policy.html:109
+msgid "Information from Third-Party Social Media Services"
+msgstr "Informationen von sozialen Medien von Drittanbietern"
+
+#: .\templates\privacy_policy.html:125
+msgid "Tracking Technologies and Cookies"
+msgstr "Tracking-Technologien und Cookies"
+
+#: .\templates\privacy_policy.html:130
+msgid "Cookies or Browser Cookies."
+msgstr "Cookies oder Browser-Cookies."
+
+#: .\templates\privacy_policy.html:134
+msgid "Web Beacons."
+msgstr "Web-Beacons."
+
+#: .\templates\privacy_policy.html:143
+msgid "article."
+msgstr "Artikel."
+
+#: .\templates\privacy_policy.html:144
+msgid ""
+"We use both Session and Persistent Cookies for the purposes set out below:"
+msgstr ""
+"Wir verwenden sowohl Sitzungscookies als auch dauerhafte Cookies für die "
+"unten aufgeführten Zwecke:"
+
+#: .\templates\privacy_policy.html:147
+msgid "Necessary / Essential Cookies"
+msgstr "Notwendige/wesentliche Cookies"
+
+#: .\templates\privacy_policy.html:148
+msgid "Type: Session Cookies"
+msgstr "Typ: Sitzungscookies"
+
+#: .\templates\privacy_policy.html:149 .\templates\privacy_policy.html:158
+#: .\templates\privacy_policy.html:164
+msgid "Administered by: Us"
+msgstr "Verwaltet von: Uns"
+
+#: .\templates\privacy_policy.html:156
+msgid "Cookies Policy / Notice Acceptance Cookies"
+msgstr ""
+
+#: .\templates\privacy_policy.html:157 .\templates\privacy_policy.html:163
+msgid "Type: Persistent Cookies"
+msgstr "Typ: Permanente Cookies"
+
+#: .\templates\privacy_policy.html:159
+msgid ""
+"Purpose: These Cookies identify if users have accepted the use of cookies on "
+"the Website."
+msgstr ""
+"Zweck: Diese Cookies erkennen, ob Nutzer die Verwendung von Cookies auf der "
+"Website akzeptiert haben."
+
+#: .\templates\privacy_policy.html:162
+msgid "Functionality Cookies"
+msgstr "Funktionscookies"
+
+#: .\templates\privacy_policy.html:170
+msgid ""
+"For more information about the cookies we use and your choices regarding "
+"cookies, please visit our Cookies Policy or the Cookies section of our "
+"Privacy Policy."
+msgstr ""
+"Weitere Informationen zu den von uns verwendeten Cookies und Ihren "
+"Wahlmöglichkeiten in Bezug auf Cookies finden Sie in unserer Cookie-"
+"Richtlinie oder im Abschnitt „Cookies“ unserer Datenschutzrichtlinie."
+
+#: .\templates\privacy_policy.html:171
+msgid "Use of Your Personal Data"
+msgstr "Verwendung Ihrer personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:172
+msgid "The Company may use Personal Data for the following purposes:"
+msgstr ""
+
+#: .\templates\privacy_policy.html:175
+msgid "To provide and maintain our Service"
+msgstr "Zur Bereitstellung und Aufrechterhaltung unseres Dienstes"
+
+#: .\templates\privacy_policy.html:175
+msgid ", including to monitor the usage of our Service."
+msgstr ", einschließlich zur Überwachung der Nutzung unseres Dienstes."
+
+#: .\templates\privacy_policy.html:178
+msgid "To manage Your Account"
+msgstr "Ihr Konto verwalten"
+
+#: .\templates\privacy_policy.html:183
+msgid "For the performance of a contract"
+msgstr "Für die Erfüllung eines Vertrags"
+
+#: .\templates\privacy_policy.html:188
+msgid "To contact You"
+msgstr "Um Sie zu kontaktieren"
+
+#: .\templates\privacy_policy.html:194
+msgid "To provide You"
+msgstr "Um Ihnen zur Verfügung zu stellen"
+
+#: .\templates\privacy_policy.html:199
+msgid "To manage Your requests"
+msgstr "Um Ihre Anfragen zu verwalten"
+
+#: .\templates\privacy_policy.html:199
+msgid "To attend and manage Your requests to Us."
+msgstr "Um Ihre Anfragen an uns zu bearbeiten und zu verwalten."
+
+#: .\templates\privacy_policy.html:202 .\templates\privacy_policy.html:217
+msgid "For business transfers"
+msgstr "Für Unternehmensübertragungen"
+
+#: .\templates\privacy_policy.html:208
+msgid "For other purposes"
+msgstr "Für andere Zwecke"
+
+#: .\templates\privacy_policy.html:213
+msgid "We may share Your personal information in the following situations:"
+msgstr ""
+"Wir können Ihre personenbezogenen Daten in den folgenden Situationen "
+"weitergeben:"
+
+#: .\templates\privacy_policy.html:215
+msgid "With Service Providers"
+msgstr "Mit Dienstleistern"
+
+#: .\templates\privacy_policy.html:220
+msgid "With Affiliates"
+msgstr "Mit Partnern"
+
+#: .\templates\privacy_policy.html:224
+msgid "With business partners"
+msgstr "Mit Geschäftspartnern"
+
+#: .\templates\privacy_policy.html:226
+msgid "With other users"
+msgstr "Mit anderen Benutzern"
+
+#: .\templates\privacy_policy.html:232
+msgid "With Your consent"
+msgstr "Mit Ihrer Zustimmung"
+
+#: .\templates\privacy_policy.html:235
+msgid "Retention of Your Personal Data"
+msgstr "Aufbewahrung Ihrer personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:243
+msgid "Transfer of Your Personal Data"
+msgstr "Weitergabe Ihrer personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:253
+msgid "Delete Your Personal Data"
+msgstr "Löschen Sie Ihre personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:256
+msgid ""
+"Our Service may give You the ability to delete certain information about You "
+"from within the Service."
+msgstr ""
+"Unser Dienst kann Ihnen die Möglichkeit bieten, bestimmte Informationen über "
+"Sie innerhalb des Dienstes zu löschen."
+
+#: .\templates\privacy_policy.html:262
+msgid "Disclosure of Your Personal Data"
+msgstr "Weitergabe Ihrer personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:263
+msgid "Business Transactions"
+msgstr "Geschäftstransaktionen"
+
+#: .\templates\privacy_policy.html:266
+msgid "Law enforcement"
+msgstr "Strafverfolgung"
+
+#: .\templates\privacy_policy.html:269
+msgid "Other legal requirements"
+msgstr "Sonstige gesetzliche Anforderungen"
+
+#: .\templates\privacy_policy.html:270
+msgid ""
+"The Company may disclose Your Personal Data in the good faith belief that "
+"such action is necessary to:"
+msgstr ""
+"Anderer Teil: Das Unternehmen kann Ihre personenbezogenen Daten in gutem "
+"Glauben offenlegen, wenn es der Ansicht ist, dass dies erforderlich ist, um: "
+"alle gesetzlichen Anforderungen zu erfüllen."
+
+#: .\templates\privacy_policy.html:272
+msgid "Comply with a legal obligation"
+msgstr "Einer gesetzlichen Verpflichtung nachkommen"
+
+#: .\templates\privacy_policy.html:273
+msgid "Protect and defend the rights or property of the Company"
+msgstr "Die Rechte oder das Eigentum des Unternehmens schützen und verteidigen"
+
+#: .\templates\privacy_policy.html:274
+msgid ""
+"Prevent or investigate possible wrongdoing in connection with the Service"
+msgstr ""
+"Verhindern oder untersuchen Sie mögliche Fehlverhalten im Zusammenhang mit "
+"dem Dienst."
+
+#: .\templates\privacy_policy.html:275
+msgid "Protect the personal safety of Users of the Service or the public"
+msgstr ""
+"Schutz der persönlichen Sicherheit der Nutzer des Dienstes oder der "
+"Öffentlichkeit"
+
+#: .\templates\privacy_policy.html:276
+msgid "Protect against legal liability"
+msgstr "Schutz vor rechtlicher Haftung"
+
+#: .\templates\privacy_policy.html:278
+msgid "Security of Your Personal Data"
+msgstr "Sicherheit Ihrer personenbezogenen Daten"
+
+#: .\templates\privacy_policy.html:282
+msgid "Children's Privacy"
+msgstr "Datenschutz für Kinder"
+
+#: .\templates\privacy_policy.html:290
+msgid "Links to Other Websites"
+msgstr "Links zu anderen Websites"
+
+#: .\templates\privacy_policy.html:296
+msgid "Changes to this Privacy Policy"
+msgstr "Änderungen dieser Datenschutzerklärung"
+
+#: .\templates\privacy_policy.html:303
+msgid "Contact Us"
+msgstr "Kontaktieren Sie uns"
+
+#: .\templates\privacy_policy.html:304
+msgid ""
+"If you have any questions about this Privacy Policy, You can contact us:"
+msgstr ""
+"Wenn Sie Fragen zu dieser Datenschutzerklärung haben, können Sie sich an uns "
+"wenden:"
+
+#: .\templates\terms_and_conditions.html:16
+msgid "General Terms and Conditions (GTC)"
+msgstr "Allgemeine Geschäftsbedingungen (AGB)"
+
+#: .\templates\terms_and_conditions.html:18
+msgid "1. Scope"
+msgstr "1. Geltungsbereich"
+
+#: .\templates\terms_and_conditions.html:23
+msgid ""
+"A consumer is any natural person who enters into a legal transaction for "
+"purposes that predominantly are neither commercial nor attributable to their "
+"self-employed professional activity."
+msgstr ""
+"Ein Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu "
+"Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer "
+"selbständigen beruflichen Tätigkeit zugerechnet werden können."
+
+#: .\templates\terms_and_conditions.html:27
+msgid "2. Contracting Party"
+msgstr "2. Vertragspartei"
+
+#: .\templates\terms_and_conditions.html:29
+msgid "The purchase agreement is concluded with"
+msgstr "Der Kaufvertrag wird abgeschlossen mit"
+
+#: .\templates\terms_and_conditions.html:40
+msgid "3. Conclusion of Contract"
+msgstr "3. Vertragsabschluss"
+
+#: .\templates\terms_and_conditions.html:41
+msgid ""
+"The presentation of products in the online shop does not constitute a "
+"legally binding offer, but an invitation to place an order."
+msgstr ""
+"Die Darstellung der Produkte im Online-Shop stellt kein rechtlich bindendes "
+"Angebot dar, sondern eine Aufforderung zur Abgabe einer Bestellung."
+
+#: .\templates\terms_and_conditions.html:42
+msgid ""
+"By clicking the purchase confirmation you place a binding order for the "
+"goods listed on the checkout page. Your purchase contract is concluded when "
+"we accept your order by sending an order confirmation via email immediately "
+"after receipt of your order. Please note that, during the ordering process, "
+"you are required to provide an email address to which you have access."
+msgstr ""
+"Durch Anklicken der Kaufbestätigung geben Sie eine verbindliche Bestellung "
+"der auf der Checkout-Seite aufgeführten Waren ab. Ihr Kaufvertrag kommt "
+"zustande, wenn wir Ihre Bestellung durch eine sofort nach Eingang Ihrer "
+"Bestellung per E-Mail versandte Auftragsbestätigung annehmen. Bitte beachten "
+"Sie, dass Sie während des Bestellvorgangs eine E-Mail-Adresse angeben "
+"müssen, auf die Sie Zugriff haben."
+
+#: .\templates\terms_and_conditions.html:46
+msgid "4. Prices &amp; Packaging"
+msgstr "4. Preise & Verpackung"
+
+#: .\templates\terms_and_conditions.html:47
+msgid ""
+"The prices stated at the time of ordering apply. They are final prices and "
+"include the statutory value-added tax applicable in Germany. If items are on "
+"special offer at the time of purchase or a voucher is redeemed, the reduced "
+"price is included in the final order."
+msgstr ""
+"Es gelten die zum Zeitpunkt der Bestellung angegebenen Preise. Diese sind "
+"Endpreise und enthalten die in Deutschland geltende gesetzliche "
+"Mehrwertsteuer. Befinden sich Artikel zum Zeitpunkt des Kaufs im "
+"Sonderangebot oder wird ein Gutschein eingelöst, wird der reduzierte Preis "
+"in die endgültige Bestellung übernommen."
+
+#: .\templates\terms_and_conditions.html:48
+msgid "The packaging becomes the property of the customer upon handover."
+msgstr "Die Verpackung geht mit der Übergabe in das Eigentum des Kunden über."
+
+#: .\templates\terms_and_conditions.html:52
+msgid "5. Payment"
+msgstr "5. Zahlung"
+
+#: .\templates\terms_and_conditions.html:53
+msgid ""
+"As a rule, we offer the following payment methods and reserve the right to "
+"restrict available options for individual orders:"
+msgstr ""
+"In der Regel bieten wir die folgenden Zahlungsmethoden an und behalten uns "
+"das Recht vor, die verfügbaren Optionen für einzelne Bestellungen "
+"einzuschränken:"
+
+#: .\templates\terms_and_conditions.html:56
+msgid "Credit card:"
+msgstr "Kreditkarte:"
+
+#: .\templates\terms_and_conditions.html:56
+msgid ""
+"You pay directly during the checkout process by entering your credit card "
+"details. When the goods are dispatched, your card is charged with the actual "
+"invoice amount after deduction of any discounts or vouchers. For goods "
+"manufactured to customer specifications or clearly tailored to personal "
+"needs, your card is charged immediately with the actual invoice amount after "
+"deduction of any discounts or gift vouchers."
+msgstr ""
+"Sie bezahlen direkt während des Bestellvorgangs, indem Sie Ihre "
+"Kreditkartendaten eingeben. Bei Versand der Ware wird Ihre Karte mit dem "
+"tatsächlichen Rechnungsbetrag nach Abzug etwaiger Rabatte oder Gutscheine "
+"belastet. Bei Waren, die nach Kundenspezifikationen angefertigt werden oder "
+"eindeutig auf persönliche Bedürfnisse zugeschnitten sind, wird Ihre Karte "
+"sofort mit dem tatsächlichen Rechnungsbetrag nach Abzug etwaiger Rabatte "
+"oder Geschenkgutscheine belastet."
+
+#: .\templates\terms_and_conditions.html:59
+msgid ""
+"Please note that we only accept payments from accounts within the European "
+"Union (EU)."
+msgstr ""
+"Bitte beachten Sie, dass wir nur Zahlungen von Konten innerhalb der "
+"Europäischen Union (EU) akzeptieren."
+
+#: .\templates\terms_and_conditions.html:63
+msgid "6. Vouchers and Codes"
+msgstr "6. Gutscheine und Codes"
+
+#: .\templates\terms_and_conditions.html:64
+msgid "No vouchers or codes were selected."
+msgstr "Es wurden keine Gutscheine oder Codes ausgewählt."
+
+#: .\templates\terms_and_conditions.html:68
+msgid "7. Right of Withdrawal"
+msgstr "7. Widerrufsrecht"
+
+#: .\templates\terms_and_conditions.html:69
+msgid "Right of Withdrawal"
+msgstr "Widerrufsrecht"
+
+#: .\templates\terms_and_conditions.html:70
+msgid ""
+"You have the right to withdraw from this contract within fourteen days "
+"without giving any reason."
+msgstr ""
+"Sie haben das Recht, diesen Vertrag innerhalb von vierzehn Tagen ohne Angabe "
+"von Gründen zu widerrufen."
+
+#: .\templates\terms_and_conditions.html:71
+msgid ""
+"The withdrawal period is fourteen days from the day on which you or a third "
+"party named by you, who is not the carrier, has taken possession of the "
+"goods."
+msgstr ""
+"Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem Sie oder ein von "
+"Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz "
+"genommen haben bzw. hat."
+
+#: .\templates\terms_and_conditions.html:72
+msgid ""
+"To exercise your right of withdrawal, you must inform us of your decision to "
+"withdraw from this contract by means of a clear statement (e.g. a letter "
+"sent by post, fax or email). Please state your name (and company name, if "
+"applicable), address and—if available—telephone number, fax number and email "
+"address. You may use the model withdrawal form provided below the withdrawal "
+"policy, but this is not mandatory. If you exercise your right of withdrawal, "
+"we will send you confirmation of receipt of the withdrawal by email without "
+"delay."
+msgstr ""
+"Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen "
+"Erklärung (z. B. ein mit der Post versandter Brief, Telefax oder E-Mail) "
+"über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Bitte "
+"geben Sie Ihren Namen (und gegebenenfalls Firmennamen), Ihre Anschrift und – "
+"falls vorhanden – Ihre Telefonnummer, Faxnummer und E-Mail-Adresse an. Sie "
+"können das unter den Widerrufsbelehrungen bereitgestellte Muster-"
+"Widerrufsformular verwenden, dies ist jedoch nicht zwingend erforderlich. "
+"Wenn Sie von Ihrem Widerrufsrecht Gebrauch machen, senden wir Ihnen "
+"unverzüglich eine Bestätigung über den Eingang des Widerrufs per E-Mail zu."
+
+#: .\templates\terms_and_conditions.html:73
+msgid ""
+"To meet the withdrawal deadline, it is sufficient for you to send your "
+"communication concerning your exercise of the right of withdrawal before the "
+"withdrawal period has expired."
+msgstr ""
+"Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie Ihre Mitteilung über "
+"die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden."
+
+#: .\templates\terms_and_conditions.html:75
+msgid "Effects of Withdrawal"
+msgstr "Auswirkungen des Rückzugs"
+
+#: .\templates\terms_and_conditions.html:76
+msgid ""
+"If you withdraw from this contract, we shall reimburse you for all payments "
+"we have received from you, including delivery costs (with the exception of "
+"any additional costs resulting from your choice of a type of delivery other "
+"than the least expensive standard delivery offered by us), without undue "
+"delay and at the latest within fourteen days from the day on which we "
+"receive notification of your withdrawal from this contract. For this "
+"reimbursement, we will use the same means of payment that you used for the "
+"original transaction, unless expressly agreed otherwise with you; in no "
+"event will you be charged fees for this reimbursement. We may withhold "
+"reimbursement until we have received the goods back or you have supplied "
+"evidence of having sent back the goods, whichever is the earliest."
+msgstr ""
+"Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir "
+"von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der "
+"zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der "
+"Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt "
+"haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag "
+"zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags "
+"bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe "
+"Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, "
+"es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in "
+"keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet. Wir "
+"können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten "
+"haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren "
+"zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist."
+
+#: .\templates\terms_and_conditions.html:77
+msgid ""
+"You shall send back the goods or hand them over to us (or to a person "
+"authorized by us to receive the goods) without undue delay and in any event "
+"not later than fourteen days from the day on which you communicate your "
+"withdrawal from this contract to us. The deadline is met if you send back "
+"the goods before the period of fourteen days has expired."
+msgstr ""
+"Sie haben die Waren unverzüglich und in jedem Fall spätestens innerhalb von "
+"vierzehn Tagen ab dem Tag, an dem Sie uns Ihren Rücktritt von diesem Vertrag "
+"mitgeteilt haben, an uns (oder an eine von uns zur Entgegennahme der Waren "
+"bevollmächtigte Person) zurückzusenden oder zu übergeben. Die Frist ist "
+"gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen "
+"zurücksenden."
+
+#: .\templates\terms_and_conditions.html:78
+msgid "You bear the direct cost of returning the goods."
+msgstr "Sie tragen die direkten Kosten für die Rücksendung der Waren."
+
+#: .\templates\terms_and_conditions.html:79
+msgid ""
+"You are only liable for any diminished value of the goods resulting from the "
+"handling other than what is necessary to establish the nature, "
+"characteristics and functioning of the goods. This withdrawal policy does "
+"not apply to the separate delivery of goods."
+msgstr ""
+"Sie haften nur für einen etwaigen Wertverlust der Waren, der auf einen zur "
+"Prüfung der Beschaffenheit, Eigenschaften und Funktionsweise der Waren nicht "
+"notwendigen Umgang mit ihnen zurückzuführen ist. Diese Widerrufsbelehrung "
+"gilt nicht für die getrennte Lieferung von Waren."
+
+#: .\templates\terms_and_conditions.html:83
+msgid "8. Exclusion / Expiry of the Right of Withdrawal"
+msgstr "8. Ausschluss / Erlöschen des Widerrufsrechts"
+
+#: .\templates\terms_and_conditions.html:84
+msgid ""
+"In accordance with § 312g (2) of the German Civil Code (BGB), the right of "
+"withdrawal does not apply, among other things, to contracts for the supply "
+"of goods which are not prefabricated and for the production of which an "
+"individual selection or decision by the consumer is decisive, or which are "
+"clearly tailored to the personal needs of the consumer; it also expires "
+"prematurely for contracts for the supply of sealed goods which are not "
+"suitable for return for reasons of health protection or hygiene if their "
+"seal was removed after delivery."
+msgstr ""
+"Gemäß § 312g Abs. 2 BGB besteht das Widerrufsrecht unter anderem nicht bei "
+"Verträgen zur Lieferung von Waren, die nicht vorgefertigt sind und für deren "
+"Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher "
+"maßgeblich ist oder die eindeutig auf die persönlichen Bedürfnisse des "
+"Verbrauchers zugeschnitten sind; es erlischt vorzeitig bei Verträgen zur "
+"Lieferung versiegelter Waren, die aus Gründen des Gesundheitsschutzes oder "
+"der Hygiene nicht zur Rückgabe geeignet sind, wenn ihre Versiegelung nach "
+"der Lieferung entfernt wurde."
+
+#: .\templates\terms_and_conditions.html:88
+msgid "9. Voluntary Return Policy"
+msgstr "9. Freiwillige Rückgaberegelung"
+
+#: .\templates\terms_and_conditions.html:89
+msgid "We do not offer a voluntary return policy."
+msgstr "Wir bieten keine freiwillige Rückgabemöglichkeit an."
+
+#: .\templates\terms_and_conditions.html:93
+msgid "10. Delivery and Delivery Time"
+msgstr "10. Lieferung und Lieferzeit"
+
+#: .\templates\terms_and_conditions.html:94
+msgid ""
+"Deliveries abroad are also possible. Items are supplied only in household "
+"quantities and only to end consumers."
+msgstr ""
+"Lieferungen ins Ausland sind ebenfalls möglich. Die Artikel werden nur in "
+"haushaltsüblichen Mengen und nur an Endverbraucher geliefert."
+
+#: .\templates\terms_and_conditions.html:98
+msgid "11. Shipping Costs"
+msgstr "11. Versandkosten"
+
+#: .\templates\terms_and_conditions.html:100
+msgid "Orders from"
+msgstr "Bestellungen von"
+
+#: .\templates\terms_and_conditions.html:100
+msgid "are shipped free of charge."
+msgstr "werden kostenlos versandt."
+
+#: .\templates\terms_and_conditions.html:105
+msgid "12. Retention of Title"
+msgstr "12. Eigentumsvorbehalt"
+
+#: .\templates\terms_and_conditions.html:107
+msgid "Until full payment has been received, the goods remain the property of"
+msgstr "Bis zur vollständigen Bezahlung bleiben die Waren Eigentum von"
+
+#: .\templates\terms_and_conditions.html:112
+msgid "13. Liability"
+msgstr "13. Haftung"
+
+#: .\templates\terms_and_conditions.html:113
+msgid ""
+"We are liable without limitation for intent and gross negligence and in "
+"accordance with the provisions of the German Product Liability Act. In the "
+"case of slight negligence, we are generally only liable for injury to life, "
+"body or health. If this does not apply in a case of slight negligence, we "
+"are only liable for the breach of material contractual obligations—i.e., "
+"obligations whose fulfilment is essential for the proper performance of the "
+"contract and on whose compliance the contractual partner may regularly rely. "
+"In the event of a breach of a material contractual obligation, liability is "
+"limited to the typical, foreseeable damage that we had to expect at the time "
+"the contract was concluded based on the circumstances known at that time. "
+"The above limitation of liability also applies in favor of our vicarious "
+"agents."
+msgstr ""
+"Wir haften uneingeschränkt für Vorsatz und grobe Fahrlässigkeit sowie nach "
+"den Bestimmungen des Produkthaftungsgesetzes. Bei leichter Fahrlässigkeit "
+"haften wir grundsätzlich nur für Schäden an Leben, Körper oder Gesundheit. "
+"Soweit dies bei leichter Fahrlässigkeit nicht gegeben ist, haften wir nur "
+"für die Verletzung wesentlicher Vertragspflichten, d. h. solcher Pflichten, "
+"deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst "
+"ermöglicht und auf deren Einhaltung der Vertragspartner regelmäßig vertrauen "
+"darf. Bei Verletzung einer wesentlichen Vertragspflicht ist die Haftung auf "
+"den typischen, vorhersehbaren Schaden begrenzt, den wir bei Vertragsschluss "
+"aufgrund der damals bekannten Umstände zu erwarten hatten. Die vorstehende "
+"Haftungsbeschränkung gilt auch zugunsten unserer Erfüllungsgehilfen."
+
+#: .\templates\terms_and_conditions.html:117
+msgid "This policy is effective from Monday, 08 September 2025, 12:08."
+msgstr ""
+"Diese Richtlinie tritt am Montag, dem 8. September 2025, um 12:08 Uhr in "
+"Kraft."

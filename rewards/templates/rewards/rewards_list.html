@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% load cloudinary %}
 {% load rewards_extras %}
 {% block title %}
-  Rewards List
+  {% trans "Rewards List" %}
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/rewards/reward_list.css' %}" />
@@ -12,52 +13,52 @@
 {% block content %}
   <section class="container py-5">
     <header class="mb-2 text-center">
-      <h1 class="display-6 fw-bold mb-0">Rewards List</h1>
+      <h1 class="display-6 fw-bold mb-0">{% trans "Rewards" %}</h1>
     </header>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center align-center mb-2">
-      <p class="text-center">You have enough points to treat yourself to a reward? Pick and choose your favorite!</p>
+      <p class="text-center">{% trans "You have enough points to treat yourself to a reward? Pick and choose your favorite!" %}</p>
     </div>
     {% comment %} Filtersection {% endcomment %}
     <form method="get" class="border border-3 rounded p-3 mb-4">
       <div class="row g-3 align-items-end">
         <div class="col-12 col-md-4">
-          <label for="type" class="form-label mb-1">Filter type</label>
+          <label for="type" class="form-label mb-1">{% trans "Filter type" %}</label>
           <select id="type" name="type" class="form-select">
-            <option value="">All types</option>
+            <option value="">{% trans "All types" %}</option>
             {% for t in reward_types %}
               <option value="{{ t.value }}"{% if selected_type == t.value %} selected{% endif %}>
-                {{ t.label }}
+                {% trans t.label %}
               </option>
             {% endfor %}
           </select>
         </div>
 
         <div class="col-12 col-md-4">
-          <label for="country" class="form-label mb-1">Filter available countries</label>
+          <label for="country" class="form-label mb-1">{% trans "Filter available countries" %}</label>
           <select id="country" name="country" class="form-select">
-            <option value="">All countries</option>
+            <option value="">{% trans "All countries" %}</option>
             {% for c in countries %}
               <option value="{{ c.value }}"{% if selected_country == c.value %} selected{% endif %}>
-                {{ c.label }}
+                {% trans c.label %}
               </option>
             {% endfor %}
           </select>
         </div>
 
         <div class="col-12 col-md-4">
-          <label for="sort" class="form-label mb-1">Order by</label>
+          <label for="sort" class="form-label mb-1">{% trans "Order by" %}</label>
           <select id="sort" name="sort" class="form-select">
-            <option value="">New</option>
-            <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>Price ↑ (ascending)</option>
-            <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>Price ↓ (descending)</option>
+            <option value="">{% trans "New" %}</option>
+            <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>{{ "Price ↑ (ascending)"|trans }}</option>
+            <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>{{ "Price ↓ (descending)"|trans }}</option>
           </select>
         </div>
 
         <div class="col-12 d-flex gap-2">
-          <button type="submit" class="btn btn-primary">Apply</button>
-          <a href="." class="btn btn-secondary">Reset</a>
+          <button type="submit" class="btn btn-primary">{% trans "Apply" %}</button>
+          <a href="." class="btn btn-secondary">{% trans "Reset" %}</a>
           <div class="ms-auto small text-muted align-self-center">
-            {{ rewards|length }} results
+            {{ rewards|length }} {% trans "results" %}
           </div>
         </div>
       </div>
@@ -68,27 +69,27 @@
           <div class="col">
             <div class="card h-100 border-0 shadow-sm">
               {% if 'placeholder' in reward.image.url %}
-                <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="card-img-top" alt="Reward" loading="lazy" decoding="async" fetchpriority="low"/>
+                <img src="{% static 'images/placeholder/placeholder_reward.webp' %}" class="card-img-top" alt="{% trans "Reward" %}" loading="lazy" decoding="async" fetchpriority="low"/>
               {% else %}
-                {% cloudinary reward.image.public_id width=480 crop="fit" quality="auto" fetch_format="auto" alt=reward.name loading="lazy" decoding="async" class="card-img-top" %}
+                {% cloudinary reward.image.public_id width=480 crop="fit" quality="auto" fetch_format="auto" alt={% trans reward.name %} loading="lazy" decoding="async" class="card-img-top" %}
               {% endif %}
 
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title mb-2 text-truncate">{{ reward.name }}</h5>
                 {% if reward.stock > 0 %}
-                  <p class="card-text text-body-secondary mb-3">{{ reward.cost }} Points</p>
-                  
+                  <p class="card-text text-body-secondary mb-3">{{ reward.cost }} {% trans "Points" %}</p>
+
                 {% else %}
-                  <span class="badge bg-primary-subtle text-primary px-3 py-2 m-3">Out of stock</span>
+                  <span class="badge bg-primary-subtle text-primary px-3 py-2 m-3">{% trans "Out of stock" %}</span>
                 {% endif %}
                 <p class="card-text text-body-secondary mb-3">
-                  Available in:
+                  {% trans "Available in:" %}
                   <span title="{{ reward.available_countries|country_labels }}">
                     {{ reward.available_countries|country_labels_preview:3 }}
                   </span>
                 </p>
                 <p class="card-text text-body-secondary mb-3">{{ reward.description }}</p>
-                <a href="{% url 'reward_details' reward.id %}" class="btn btn-primary mt-auto w-100">See Details</a>
+                <a href="{% url 'reward_details' reward.id %}" class="btn btn-primary mt-auto w-100">{% trans "See Details" %}</a>
               </div>
             </div>
           </div>
@@ -97,10 +98,8 @@
     {% else %}
       <div class="alert alert-info mb-0" role="alert">
         {% if is_filtered %}
-          No rewards match your filters.
-          <a href="." class="alert-link ms-1">Clear filters</a>
-        {% else %}
-          You have no current tasks.
+          {% trans "No rewards match your filters." %}
+          <a href="." class="alert-link ms-1">{% trans "Clear filters" %}</a>
         {% endif %}
       </div>
   {% endif %}

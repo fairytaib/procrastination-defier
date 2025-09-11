@@ -8,7 +8,8 @@ from django.shortcuts import redirect, render
 from .utils import get_current_subscription
 import stripe
 from django.conf import settings
-from django.utils import timezone as dj_timezone  # <-- NEU
+from django.utils import timezone as dj_timezone
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -127,8 +128,7 @@ def create_subscription(request):
             'product_name': product['name'],
             'price': (price.get('unit_amount') or 0) // 100,
             'interval': (
-                price.get('recurring') or {}).get('interval', 'month'
-                                                  ),
+                price.get('recurring') or {}).get('interval', 'month'),
             'tasks_quota': quota,
             'start_date': start_dt,
             'end_date': end_dt,

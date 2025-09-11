@@ -25,7 +25,7 @@
     --bs-border-radius-lg: 1rem;
     /* 16px */
     --bs-box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
-    
+
 
     /* Surfaces */
     --surface: #ffffff;
@@ -51,7 +51,7 @@
         --bs-secondary-color: #94a3b8;
         --bs-link-color: #eff1f3;
         --bs-border-color: #243144;
-        
+
         --bs-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     }
 }
@@ -97,13 +97,13 @@ main {
     object-fit: cover;
 }
 
-.nav-item > a{
+.nav-item>a {
     color: white;
 }
 
 .message-container {
     position: absolute;
-    z-index: 1000; 
+    z-index: 1000;
     left: 50%;
     top: 15%;
     transform: translate(-50%, -50%);
@@ -113,11 +113,120 @@ main {
     left: -75%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Language Switcher – Navbar */
+.navbar .language-switcher {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .language-switcher select,
+.navbar .language-switcher .lang-select {
+    /* Größe & Layout */
+    min-width: 7.5rem;
+    padding: .35rem 2rem .35rem .75rem;
+    font-size: .875rem;
+    line-height: 1.2;
+    border-radius: 9999px;
+
+    /* Farben & Hintergrund – harmoniert mit deiner dunklen Navbar */
+    color: #fff;
+    background-color: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .25);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+
+    /* Native Pfeil ausblenden + eigener Chevron */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7l5 5 5-5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .6rem center;
+    background-size: 12px 12px;
+
+    cursor: pointer;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .08s ease;
+    text-transform: none;
+}
+
+/* Hover/Active/Fokus */
+.navbar .language-switcher select:hover,
+.navbar .language-switcher .lang-select:hover {
+    background-color: rgba(255, 255, 255, .12);
+    border-color: rgba(255, 255, 255, .4);
+}
+
+.navbar .language-switcher select:active,
+.navbar .language-switcher .lang-select:active {
+    transform: translateY(1px);
+}
+
+.navbar .language-switcher select:focus-visible,
+.navbar .language-switcher .lang-select:focus-visible {
+    outline: none;
+    /* du hast global schon einen Focus-Ring definiert */
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), .45);
+    border-color: rgba(var(--bs-primary-rgb), .75);
+}
+
+/* Disabled */
+.navbar .language-switcher select:disabled,
+.navbar .language-switcher .lang-select:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* Optionen (begrenzte Browser-Kontrolle, aber Farbe setzen) */
+.navbar .language-switcher select option {
+    color: #111;
+}
+
+/* Mobile: Platzsparend untereinander, volle Breite im geöffneten Menü */
+@media (max-width: 991.98px) {
+
+    /* Bootstrap lg breakpoint */
+    .navbar .language-switcher {
+        margin: .5rem 0 0;
+        width: 100%;
+    }
+
+    .navbar .language-switcher select,
+    .navbar .language-switcher .lang-select {
+        width: 100%;
+    }
+}
+
+/* Dark-Mode Feinschliff – fügt sich in deine Dark Tokens ein */
+@media (prefers-color-scheme: dark) {
+
+    .navbar .language-switcher select,
+    .navbar .language-switcher .lang-select {
+        background-color: rgba(255, 255, 255, .08);
+        border-color: rgba(255, 255, 255, .18);
+        color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+    }
+
+    .navbar .language-switcher select:hover,
+    .navbar .language-switcher .lang-select:hover {
+        background-color: rgba(255, 255, 255, .12);
+        border-color: rgba(255, 255, 255, .35);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--header-font);
 }
 
-p, li, a, span, div {
+p,
+li,
+a,
+span,
+div {
     font-family: var(--text-font);
 }
 

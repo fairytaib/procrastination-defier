@@ -19,6 +19,8 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.conf.urls import handler404, handler500
+from django.conf.urls.i18n import set_language
+from django.conf.urls.i18n import i18n_patterns
 
 
 def custom_404(request, exception):
@@ -31,8 +33,11 @@ def custom_500(request):
 handler404 = "prodef.urls.custom_404"
 handler500 = "prodef.urls.custom_500"
 
-
 urlpatterns = [
+    path("i18n/setlang/", set_language, name="set_language"),
+]
+
+urlpatterns += i18n_patterns(
     path('', TemplateView.as_view(template_name="home.html"), name='home'),
     path('faq/', TemplateView.as_view(template_name="faq.html"), name='faq'),
     path('404/', TemplateView.as_view(template_name="404.html"), name='404'),
@@ -52,4 +57,5 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('profiles/', include('profiles.urls')),
     path('subscription/', include('subscription.urls')),
-]
+    path("i18n/setlang/", set_language, name="set_language"),
+)

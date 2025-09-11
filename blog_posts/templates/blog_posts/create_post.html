@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-  Create New Post
+  {% trans "Create New Post" %}
 {% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/blog_posts/create_post.css' %}">
@@ -11,7 +12,7 @@
 {% block content %}
   <section class="container py-5">
     <div class="mb-3">
-      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> Back to Posts</a>
+      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> {% trans "Back to Posts" %}</a>
     </div>
 
     <div class="row justify-content-center">
@@ -21,7 +22,7 @@
             {% csrf_token %}
             {{ form|crispy }}
             <div class="d-grid d-sm-flex gap-2">
-              <button type="submit" class="btn btn-primary">Publish</button>
+              <button type="submit" class="btn btn-primary">{% trans "Publish" %}</button>
             </div>
           </div>
         </form>

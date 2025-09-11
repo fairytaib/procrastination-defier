@@ -4,6 +4,7 @@ from PIL import UnidentifiedImageError
 from django import forms
 from django.contrib.auth.models import User
 from .models import UserProfile
+from django.utils.translation import gettext_lazy as _
 
 
 class AccountForm(forms.ModelForm):
@@ -12,12 +13,19 @@ class AccountForm(forms.ModelForm):
         model = User
         fields = ["username", "email", "first_name", "last_name"]
 
+        labels = {
+            'username': _('Username'),
+            'email': _('Email'),
+            'first_name': _('First Name'),
+            'last_name': _('Last Name'),
+        }
+
     def clean_email(self):
         email = self.cleaned_data["email"].strip()
         if User.objects.exclude(
                 pk=self.instance.pk
                 ).filter(email__iexact=email).exists():
-            raise forms.ValidationError("This Email already exists")
+            raise forms.ValidationError(_("This Email already exists"))
         return email
 
 
@@ -28,7 +36,7 @@ class ProfilePictureForm(forms.ModelForm):
         fields = ["profile_picture"]
 
     labels = {
-                'profile_picture': 'Profile Picture (JPEG, PNG, JPG or WEBP)',
+                'profile_picture': _('Profile Picture (JPEG, PNG, JPG or WEBP)'),
     }
 
     widgets = {
@@ -54,10 +62,12 @@ class ProfilePictureForm(forms.ModelForm):
             with Image.open(f) as im:
                 im.verify()
         except (UnidentifiedImageError, Exception):
-            raise forms.ValidationError("Uploaded file is not a valid image.")
+            raise forms.ValidationError(
+                _("Uploaded file is not a valid image.")
+            )
 
         if fmt not in {'jpeg', 'jpg', 'png', 'webp'}:
             raise forms.ValidationError(
-                "Only JPEG, JPG, PNG or WEBP images are allowed."
-                )
+                _("Only JPEG, JPG, PNG or WEBP images are allowed.")
+            )
         return f

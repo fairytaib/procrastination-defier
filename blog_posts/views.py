@@ -4,6 +4,7 @@ from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 def view_all_posts(request):
@@ -24,12 +25,12 @@ def view_details(request, post_id):
             comment.author = request.user
             comment.save()
             messages.success(
-                    request, "Comment posted successfully."
+                    request, _("Comment posted successfully.")
                     )
             return redirect("post_details", post_id=post.id)
         else:
             messages.error(
-                    request, "Failed to post comment."
+                    request, _("Failed to post comment.")
                     )
             return redirect("post_details", post_id=post.id)
 
@@ -54,10 +55,10 @@ def create_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            messages.success(request, "Post created successfully.")
+            messages.success(request, _("Post created successfully."))
             return redirect("post_details", post_id=post.id)
         else:
-            messages.error(request, "Failed to create post.")
+            messages.error(request, _("Failed to create post."))
     else:
         form = PostForm()
 
@@ -75,7 +76,7 @@ def delete_post(request, post_id):
     post = get_object_or_404(Post, id=post_id, author=request.user)
     if request.method == "POST":
         post.delete()
-        messages.success(request, "Post deleted successfully.")
+        messages.success(request, _("Post deleted successfully."))
         return redirect("blog_posts")
     # We won't render a separate page; POST only from the inline modal.
     return redirect("blog_posts")
@@ -87,7 +88,7 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id, author=request.user)
     if request.method == "POST":
         comment.delete()
-        messages.success(request, "Comment deleted successfully.")
+        messages.success(request, _("Comment deleted successfully."))
         return redirect("post_details", post_id=comment.post.id)
     # We won't render a separate page; POST only from the inline modal.
     return redirect("blog_posts")

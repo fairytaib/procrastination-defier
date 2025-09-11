@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block title %}
-  Order History
+  {% trans "Order History" %}
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/checkout/order_history.css' %}" />
 {% endblock %}
 {% block content %}
   <div class="container py-5">
-    <h1 class="mb-4">Order History</h1>
+    <h1 class="mb-4">{% trans "Order History" %}</h1>
 
     {% if total_orders == 0 %}
-      <div class="alert alert-info">You haven't placed any orders yet.</div>
+      <div class="alert alert-info">{% trans "You haven't placed any orders yet." %}</div>
     {% else %}
       <div class="card mb-4">
         <div class="card-header bg-primary text-white">
-          <h5 class="card-title mb-0">Your Orders ({{ total_orders }} total)</h5>
+          <h5 class="card-title mb-0">{% trans "Your Orders" %} ({{ total_orders }}  {% trans "total" %})</h5>
         </div>
       </div>
 
@@ -24,26 +25,10 @@
           <div class="card-header">
             <div class="row align-items-center">
               <div class="col">
-                <h5 class="mb-0">Order from {{ order_item.history.bought_at|date:'F j, Y' }}</h5>
+                <h5 class="mb-0">{% trans "Order from" %} {{ order_item.history.bought_at|date:'F j, Y' }}</h5>
               </div>
               <div class="col-auto">
-                <span class="badge {% if order_item.history.reward_sent %}
-                    
-                    
-                    
-                    bg-success
-
-
-
-                  {% else %}
-                    
-                    
-                    
-                    bg-warning
-
-
-
-                  {% endif %}">
+                <span class="badge {% if order_item.history.reward_sent %}bg-success{% else %}bg-warning{% endif %}">
                   {{ order_item.history.reward_sent|yesno:'Shipped,Pending' }}
                 </span>
               </div>
@@ -53,14 +38,14 @@
             <div class="row">
               <div class="d-flex flex-column justify-content-between align-items-start gap-4 col-md-8">
                 <div>
-                  <h6 class="card-subtitle mb-2 text-muted">Reward Details</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">{% trans "Reward Details" %}</h6>
                   <p class="card-text">
-                    <strong>Item:</strong> {{ order_item.history.reward.name }}<br />
-                    <strong>Points Used:</strong> {{ order_item.total_points }} points<br />
+                    <strong>{% trans "Item:" %}</strong> {{ order_item.history.reward.name }}<br />
+                    <strong>{% trans "Points Used:" %}</strong> {{ order_item.total_points }}  {% trans "points" %}<br />
                   </p>
 
                   {% if order_item.shipping %}
-                    <h6 class="card-subtitle mb-2 text-muted mt-3">Shipping Details</h6>
+                    <h6 class="card-subtitle mb-2 text-muted mt-3">{% trans "Shipping Details" %}</h6>
                     <p class="card-text">
                       {{ order_item.shipping.first_name }} {{ order_item.shipping.last_name }}<br />
                       {{ order_item.shipping.street_address }}
@@ -73,7 +58,64 @@
                   {% endif %}
                 </div>
                 <div>
-                  <a href="{% url 'view_order_details' order_item.history.id %}" class="btn btn-primary btn-sm">View Full Details</a>
+                  <a href="{% url 'view_order_details' order_item.history.id %}" class="btn btn-primary btn-sm">{% trans "View Full Details" %}</a>
+                </div>
+              </div>
+
+              {% if order_item.history.reward.image %}
+                <div class="col-md-4">
+                  <img src="{% if 'placeholder' in order_item.history.reward.image.url %}
+                      {% static 'images/placeholder/placeholder_reward.webp' %}
+                    {% else %}
+                      {{ order_item.history.reward.image.url }}
+                    {% endif %}"
+                    alt="{{ order_item.history.reward.name }}"
+                    class="img-fluid rounded" />
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% if page_obj.paginator.num_pages > 1 %}
+        <nav aria-label="Order history pagination">
+          <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}                 
+                    bg-success
+                  {% else %}
+                    bg-warning
+                  {% endif %}">
+                  {{ order_item.history.reward_sent|yesno:'Shipped,Pending' }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="d-flex flex-column justify-content-between align-items-start gap-4 col-md-8">
+                <div>
+                  <h6 class="card-subtitle mb-2 text-muted"> {% trans "Reward Details" %}</h6>
+                  <p class="card-text">
+                    <strong>{% trans "Item:" %}</strong> {{ order_item.history.reward.name }}<br />
+                    <strong>{% trans "Points Used:" %}</strong> {{ order_item.total_points }}  {% trans "points" %}<br />
+                  </p>
+
+                  {% if order_item.shipping %}
+                    <h6 class="card-subtitle mb-2 text-muted mt-3">{% trans "Shipping Details" %}</h6>
+                    <p class="card-text">
+                      {{ order_item.shipping.first_name }} {{ order_item.shipping.last_name }}<br />
+                      {{ order_item.shipping.street_address }}
+                      {% if order_item.shipping.apartment %}
+                        , {{ order_item.shipping.apartment }}
+                      {% endif %}<br />
+                      {{ order_item.shipping.city }}, {{ order_item.shipping.postal_code }}<br />
+                      {{ order_item.shipping.country }}
+                    </p>
+                  {% endif %}
+                </div>
+                <div>
+                  <a href="{% url 'view_order_details' order_item.history.id %}" class="btn btn-primary btn-sm"> {% trans "View Full Details" %}</a>
                 </div>
               </div>
 
@@ -101,7 +143,7 @@
                 <a class="page-link" href="?page=1">&laquo; First</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}"> {% trans "Previous" %}</a>
               </li>
             {% endif %}
 
@@ -119,10 +161,10 @@
 
             {% if page_obj.has_next %}
               <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}"> {% trans "Next" %}</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"> {% trans "Last" %} &raquo;</a>
               </li>
             {% endif %}
           </ul>
