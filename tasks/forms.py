@@ -117,19 +117,19 @@ class CheckTaskForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['image'].help_text = (
+        self.fields['image'].help_text = _(
             f"Upload an image for this checkup – max {
                 _mb(TASKS_MAX_UPLOAD_SIZES['image'])} MB"
         )
-        self.fields['video'].help_text = (
+        self.fields['video'].help_text = _(
             f"Upload a video for this checkup – max {
                 _mb(TASKS_MAX_UPLOAD_SIZES['video'])} MB"
         )
-        self.fields['text_file'].help_text = (
+        self.fields['text_file'].help_text = _(
             f"Upload a text file for this checkup – max {
                 _mb(TASKS_MAX_UPLOAD_SIZES['text_file'])} MB"
         )
-        self.fields['audio_file'].help_text = (
+        self.fields['audio_file'].help_text = _(
             f"Upload an audio file for this checkup – max {
                 _mb(TASKS_MAX_UPLOAD_SIZES['audio_file'])} MB"
         )

@@ -7,13 +7,14 @@ register = template.Library()
 
 
 def _extract(value):
-    """Return (public_id, resource_type, format, direct_url) from a CloudinaryField or string."""
+    """Return (public_id, resource_type, format, direct_url) from a
+      CloudinaryField or string."""
     if not value:
         return None, None, None, None
     public_id = getattr(value, "public_id", None)
-    rtype     = getattr(value, "resource_type", None)
-    fmt       = getattr(value, "format", None)
-    direct    = getattr(value, "url", None)
+    rtype = getattr(value, "resource_type", None)
+    fmt = getattr(value, "format", None)
+    direct = getattr(value, "url", None)
 
     # Strings: could be a public_id or a full URL
     if isinstance(value, str) and not public_id:
@@ -27,9 +28,9 @@ def _extract(value):
 def _get_public_id_and_rtype(value, fallback_rtype):
     """
     Accepts:
-      - CloudinaryResource from CloudinaryField (has .public_id, .resource_type)
-      - A plain public_id string
-      - A full Cloudinary URL string
+    - CloudinaryResource from CloudinaryField (has .public_id, .resource_type)
+    - A plain public_id string
+    - A full Cloudinary URL string
     Returns (public_id, resource_type) or (None, None).
     """
     if not value:
@@ -39,7 +40,8 @@ def _get_public_id_and_rtype(value, fallback_rtype):
     public_id = getattr(value, "public_id", None)
     rtype = getattr(value, "resource_type", None)
 
-    # Some CloudinaryField proxies expose .public_id/.resource_type via .metadata/.data — be lenient
+    # Some CloudinaryField proxies expose
+    # #.public_id/.resource_type via .metadata/.data — be lenient
     if not public_id:
         data = getattr(value, "data", None)
         if isinstance(data, dict):
@@ -49,8 +51,9 @@ def _get_public_id_and_rtype(value, fallback_rtype):
     # If it's a plain string (could be public_id or a full URL)
     if not public_id and isinstance(value, str):
         if "res.cloudinary.com" in value:
-            # Last path segment without extension is a reasonable approximation of public_id.
-            # Example: .../upload/v123/abc/def/ghi.jpg -> public_id='abc/def/ghi'
+            # Last path segment without extension
+            # is a reasonable approximation of public_id.
+
             path = value.split("?")[0].rstrip("/")
             last = path.split("/")[-1]
             # strip extension if present
@@ -96,12 +99,14 @@ def render_textfile(value):
     public_id, rtype, fmt, direct = _extract(value)
     rtype = rtype or "raw"
 
-    # If Cloudinary gave us a ready URL, use it (safest, includes extension/version).
+    # If Cloudinary gave us a ready URL,
+    # use it (safest, includes extension/version).
     if direct:
         url = direct
     else:
         # Ensure we include the format (e.g., pdf, txt, docx)
-        url, _ = cloudinary_url(public_id, resource_type=rtype, format=(fmt or "pdf"), secure=True)
+        url, _ = cloudinary_url(
+            public_id, resource_type=rtype, format=(fmt or "pdf"), secure=True)
 
     html = f'<a href="{url}" target="_blank" rel="noopener">Open uploaded file</a>'
     return mark_safe(html)

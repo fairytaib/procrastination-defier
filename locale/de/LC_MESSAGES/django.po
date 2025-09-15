@@ -46,7 +46,7 @@ msgstr "Anmelden, um einen Beitrag zu schreiben"
 
 #: .\blog_posts\templates\blog_posts\all_posts.html:23
 msgid "Connect with like-minded individuals and share your thoughts!"
-msgstr "Verbinden Sie sich mit Gleichgesinnten und teilen Sie Ihre Gedanken!"
+msgstr "Verbinden dich mit Gleichgesinnten und teilen Sie Ihre Gedanken!"
 
 #: .\blog_posts\templates\blog_posts\all_posts.html:48
 msgid "Read more →"
@@ -1182,7 +1182,7 @@ msgstr "Deine Aufgaben-Slots:"
 
 #: .\tasks\templates\tasks\user_task_overview.html:46
 msgid "Your current points:"
-msgstr ""
+msgstr "Deine aktuellen Punkte"
 
 #: .\tasks\templates\tasks\user_task_overview.html:56
 msgid "You can not add tasks until you paid your fees"
