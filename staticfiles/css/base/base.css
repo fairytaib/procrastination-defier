@@ -195,21 +195,13 @@ main {
     }
 }
 
-/* Dark-Mode Feinschliff – fügt sich in deine Dark Tokens ein */
 @media (prefers-color-scheme: dark) {
-
-    .navbar .language-switcher select,
-    .navbar .language-switcher .lang-select {
-        background-color: rgba(255, 255, 255, .08);
+    .language-switcher select,
+    .language-switcher{
         border-color: rgba(255, 255, 255, .18);
-        color: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
     }
-
-    .navbar .language-switcher select:hover,
-    .navbar .language-switcher .lang-select:hover {
-        background-color: rgba(255, 255, 255, .12);
-        border-color: rgba(255, 255, 255, .35);
+    .language-switcher button {
+        color: #cacacaa9;
     }
 }
 

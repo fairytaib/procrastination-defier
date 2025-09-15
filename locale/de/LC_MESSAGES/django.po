@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-11 10:08+0200\n"
-"PO-Revision-Date: 2025-09-11 13:05+0200\n"
+"PO-Revision-Date: 2025-09-15 12:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -643,7 +643,7 @@ msgstr "Alle Länder"
 
 #: .\rewards\templates\rewards\rewards_list.html:50
 msgid "Order by"
-msgstr "Sortiere bei"
+msgstr "Sortiere nach"
 
 #: .\rewards\templates\rewards\rewards_list.html:52
 msgid "New"
