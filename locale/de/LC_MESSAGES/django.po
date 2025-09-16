@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-11 10:08+0200\n"
-"PO-Revision-Date: 2025-09-15 12:27+0200\n"
+"PO-Revision-Date: 2025-09-15 20:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -186,7 +186,7 @@ msgstr "Nachname"
 #: .\profiles\forms.py:18
 #: .\profiles\templates\profiles\view_user_profile.html:56
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: .\checkout\forms.py:31
 msgid "Phone Number"
@@ -332,7 +332,7 @@ msgstr "Gekauft am"
 
 #: .\checkout\templates\checkout\order_details.html:62
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: .\checkout\templates\checkout\order_details.html:65
 msgid "Sent"
@@ -685,7 +685,7 @@ msgstr "Filter löschen"
 #: .\rewards\templates\rewards\view_reward_details.html:7
 #: .\tasks\templates\tasks\view_task_details.html:7
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: .\rewards\templates\rewards\view_reward_details.html:17
 msgid "Back to Rewards"
@@ -830,7 +830,7 @@ msgstr "Sie können jederzeit upgraden oder kündigen."
 
 #: .\subscription\templates\subscription\subscription.html:29
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: .\subscription\templates\subscription\subscription.html:36
 msgid "7 Tasks"
@@ -849,7 +849,7 @@ msgstr "Abonnieren"
 
 #: .\subscription\templates\subscription\subscription.html:59
 msgid "Premium"
-msgstr ""
+msgstr "Premium"
 
 #: .\subscription\templates\subscription\subscription.html:66
 msgid "13 Tasks"
@@ -1390,7 +1390,7 @@ msgstr "Möchtest du die ausgewählte E-Mail-Adresse wirklich löschen?"
 #: .\templates\allauth\account\email\base_message.txt:1
 #, python-format
 msgid "Hello from %(site_name)s!"
-msgstr ""
+msgstr "Hallo von %(site_name)s!"
 
 #: .\templates\allauth\account\email\base_message.txt:5
 #, python-format
@@ -1398,6 +1398,8 @@ msgid ""
 "Thank you for using %(site_name)s!\n"
 "%(site_domain)s"
 msgstr ""
+"Vielen Dank, dass du %(site_name)s nutzen!\n"
+"%(site_domain)s"
 
 #: .\templates\allauth\account\email\email_confirmation_message.txt:5
 #, python-format
@@ -1407,6 +1409,10 @@ msgid ""
 "\n"
 "To confirm this is correct, go to %(activate_url)s"
 msgstr ""
+"Du erhältst diese E-Mail, weil der Benutzer %(user_display)s deine E-Mail-"
+"Adresse angegeben hat, um ein Konto auf %(site_domain)s zu registrieren.\n"
+"\n"
+"Um zu bestätigen, dass dies korrekt ist, gehe zu %(activate_url)s."
 
 #: .\templates\allauth\account\email\email_confirmation_subject.txt:3
 msgid "Please Confirm Your E-mail Address"
@@ -1429,6 +1435,7 @@ msgstr ""
 #, python-format
 msgid "In case you forgot, your username is %(username)s."
 msgstr ""
+"Falls du es vergessen haben sollten, Ihr Benutzername lautet %(username)s."
 
 #: .\templates\allauth\account\email\password_reset_key_subject.txt:3
 #: .\templates\allauth\account\email\unknown_account_subject.txt:3
@@ -1470,6 +1477,9 @@ msgid ""
 "%(email)s\">%(email)s</a>\n"
 "                is an e-mail address for user %(user_display)s."
 msgstr ""
+"Bitte bestätige, dass <a class=\"alert-link\" href=\"mailto:"
+"%(email)s\">%(email)s</a>\n"
+"                die E-Mail-Adresse des Benutzers %(user_display)s ist."
 
 #: .\templates\allauth\account\email_confirm.html:29
 msgid "Confirm"
@@ -2106,7 +2116,7 @@ msgstr "Deine Aufgaben anzeigen"
 
 #: .\templates\home.html:25
 msgid "Start Your Journey"
-msgstr "Beginnen deine Reise"
+msgstr "Beginne deine Reise"
 
 #: .\templates\home.html:32
 msgid ""
@@ -2238,7 +2248,7 @@ msgid ""
 "Start your personal battle against procrastination – and win it, one task at "
 "a time."
 msgstr ""
-"Beginnen deinen persönlichen Kampf gegen die Prokrastination – und gewinnen "
+"Beginne deinen persönlichen Kampf gegen die Prokrastination – und gewinnen "
 "ihn, eine Aufgabe nach der anderen."
 
 #: .\templates\home.html:103
