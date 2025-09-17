@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-  {% trans "Add Task" %}
+  {% trans 'Add Task' %}
 {% endblock %}
 
 {% block css %}
@@ -14,24 +14,29 @@
 {% block content %}
   <section class="container py-5">
     <div class="mb-3">
-      <a href="{% url 'user_task_overview' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i>{% trans "Cancel" %}</a>
+      <a href="{% url 'user_task_overview' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i>{% trans 'Cancel' %}</a>
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h2 class="h3 mb-3">{% trans "Add Task" %}</h2>
-        <p class="text-muted">{% trans "Please be aware that you can not edit the task after it has been created. Deletion is still possible but permanent" %}</p>
+        <h2 class="h3 mb-1">{% trans 'Add Task' %}</h2>
+        <p class="text-muted mb-0">
+          {% trans 'Your Task Slots:' %} <span>{{ open_tasks_count }}/{{ subscription.tasks_quota }}</span>
+        </p>
+        <p class="text-muted">
+          {% trans 'Please be aware that you can not edit the task after it has been created. Deletion is still possible but permanent' %}
+        </p>
         <form method="POST" enctype="multipart/form-data" class="card">
           <div class="card-body">
             {% csrf_token %}
             {{ form|crispy }}
             <div class="d-flex justify-content-between align-center">
               <div class="d-grid d-sm-flex gap-2">
-                <button type="submit" class="btn btn-primary">{% trans "Add Task" %}</button>
+                <button type="submit" class="btn btn-primary">{% trans 'Add Task' %}</button>
                 {% if can_add_task %}
-                  <button type="submit" name="save_and_add" class="btn btn-primary">{% trans "Save and add Another" %}</button>
-              {% endif %}
+                  <button type="submit" name="save_and_add" class="btn btn-primary">{% trans 'Save and add Another' %}</button>
+                {% endif %}
               </div>
-              <a href="javascript:history.back()" class="btn btn-secondary">{% trans "Cancel" %}</a>
+              <a href="javascript:history.back()" class="btn btn-secondary">{% trans 'Cancel' %}</a>
             </div>
           </div>
         </form>

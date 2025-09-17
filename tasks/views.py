@@ -189,7 +189,8 @@ def add_task(request):
             form = TaskForm()
     context = {
         "form": form,
-        'can_add_task': can_add_task(request.user)
+        'can_add_task': can_add_task(request.user),
+        'open_tasks_count': open_tasks_count(request.user)
     }
     return render(request, "tasks/add_task_form.html", context)
 
