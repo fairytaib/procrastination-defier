@@ -60,6 +60,7 @@
 
       {% endblock %}
     </title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/logos/procdef_icon.ico' %}" />
     {% comment %}Bootstrap CDN{% endcomment %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
@@ -209,7 +210,7 @@
           {% blocktrans with year=year %}© {{ year }} {% endblocktrans %} {% trans 'Procrastination Defier. All rights reserved. Created by' %} <a href="https://github.com/fairytaib" target="_blank" rel="noopener noreferrer" aria-label="{% trans 'Link to Github' %}">Sophjan Moubarrid</a>
         </p>
         <nav class="footer-nav">
-          <a href="{% url 'faq' %}" aria-label="{% trans 'Frequently asked questions' %}">{% trans 'FAQ' %}</a> |
+          <a href="{% url 'faq' %}" aria-label="{% trans 'Frequently asked questions' %}" target="_blank">{% trans 'FAQ' %}</a> |
           <a href="{% url 'legal_notice' %}" target="_blank" rel="noopener noreferrer" aria-label="{% trans 'Legal notice' %}">{% trans 'Legal Notice' %}</a> |
           <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener noreferrer" aria-label="{% trans 'Privacy Policy' %}">{% trans 'Privacy Policy' %}</a> |
           <a href="{% url 'terms_and_conditions' %}" target="_blank" rel="noopener noreferrer" aria-label="{% trans 'Terms and Conditions' %}">{% trans 'Terms and Conditions' %}</a>
