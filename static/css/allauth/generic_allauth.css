@@ -10,6 +10,13 @@ h4 {
     letter-spacing: -0.01em;
 }
 
+.errorlist li {
+    color: #ef4444;
+    font-size: 0.875em;
+    list-style: none;
+    margin-top: 0.25rem;
+}
+
 .text-body-secondary,
 .small,
 .form-text {
