@@ -62,11 +62,21 @@
               <dt class="col-sm-4">{% trans "Last name" %}</dt>
               <dd class="col-sm-8">{{ profile.user.last_name|default:'—' }}</dd>
 
+              <dt class="col-sm-4">{% trans "Your Points" %}</dt>
+              <dd class="col-sm-8">{{ user_points.points }}</dd>
+
               <dt class="col-sm-4">{% trans "Member since" %}</dt>
               <dd class="col-sm-8"><time datetime="{{ profile.created_at|date:'c' }}">{{ profile.created_at }}</time></dd>
 
-              <dt class="col-sm-4">{% trans "Your Points" %}</dt>
-              <dd class="col-sm-8">{{ user_points.points }}</dd>
+              <dt class="col-sm-4">{% trans "Subscription" %}</dt>
+              <dd class="col-sm-8">
+                {% if subscription_check %}
+                    <span class="badge bg-success">{% trans "Active" %}</span>
+                {% else %}
+                    <span class="badge bg-secondary">{% trans "Inactive" %}</span>
+                {% endif %}
+              </dd>
+              
             </dl>
             <a class="btn btn-primary mt-4"
                aria-label="View subscription details"
@@ -74,7 +84,7 @@
                  href="{% url 'subscriptions_overview' %}"
                {% else %}
                  href="{{ subscription_view_url }}"
-               {% endif %}>{% trans "My Subscription" %}
+               {% endif %}>{% trans "Manage Subscription" %}
             </a>
           </div>
         </article>
