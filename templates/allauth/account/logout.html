@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-  {% trans 'Sign Out' %}
+  {% trans 'Log Out' %}
 {% endblock %}
 {% block css %}
 {% endblock %}
@@ -14,7 +14,7 @@
       <div class="col-md-8 col-lg-6">
         <article class="card border-0 shadow-sm">
           <div class="card-body">
-            <h1 class="h4 mb-3">{% trans 'Sign Out' %}</h1>
+            <h1 class="h4 mb-3">{% trans 'Log Out' %}</h1>
             <p class="mb-4">
               {% trans 'Are you sure you want to sign out?' %}
             </p>
@@ -26,7 +26,7 @@
               {% endif %}
               <div class="d-grid d-sm-flex gap-2">
                 <a href="javascript:history.back()" class="btn btn-outline-secondary">{% trans 'Cancel' %}</a>
-                <button type="submit" class="btn btn-primary ms-sm-auto">{% trans 'Sign Out' %}</button>
+                <button type="submit" class="btn btn-primary ms-sm-auto">{% trans 'Log Out' %}</button>
               </div>
             </form>
           </div>
