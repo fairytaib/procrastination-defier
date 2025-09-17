@@ -18,7 +18,7 @@
       {% if user.is_authenticated %}
         <div class="d-flex justify-content-end align-items-center gap-2">
           <span class="fw-semibold text-muted">{% trans 'Your Points' %}</span>
-          <span class="badge bg-secondary-subtle text-secondary px-3 py-2">{{ user_points }} {% trans 'points' %}</span>
+          <span class="badge bg-secondary-subtle text-secondary px-3 py-2">{{ user_points.points }} {% trans 'points' %}</span>
         </div>
       {% endif %}
     </div>

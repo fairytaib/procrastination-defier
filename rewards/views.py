@@ -100,12 +100,12 @@ def view_details(request, reward_id):
         context = {
             "reward": reward,
             "reward_id": reward_id,
-            "user_points": user_points.points if user_points else 0}
-
-    context = {
-        "reward": reward,
-        "reward_id": reward_id,
-    }
+            "user_points": user_points if user_points else 0}
+    else:
+        context = {
+            "reward": reward,
+            "reward_id": reward_id,
+        }
 
     return render(request, "rewards/view_reward_details.html", context)
 

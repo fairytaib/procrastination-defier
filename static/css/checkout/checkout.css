@@ -100,6 +100,10 @@ h4 {
     color: var(--checkout-title);
 }
 
+.available_points {
+    color: rgba(34, 191, 23, 0.67) !important;
+}
+
 /* Alerts (fallback when no reward selected) */
 .alert-warning {
     background-color: color-mix(in srgb, var(--checkout-warn) 14%, transparent);
