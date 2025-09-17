@@ -41,9 +41,6 @@
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h1 class="h3 fw-bold mb-2">{{ reward.name }}</h1>
-              {% if user.is_authenticated and perms.tasks.mark_done %}
-                <a href="{% url 'edit_reward' reward.id %}" class="btn btn-link p-0 text-decoration-none edit-icon"><i class="bi bi-pen-fill p-2"></i></a>
-              {% endif %}
             </div>
 
             <p class="text-body-secondary mb-3">{{ reward.description }}</p>
@@ -56,11 +53,15 @@
               <span class="fw-semibold">{% trans 'Available for' %}</span>
               <span class="badge bg-primary-subtle text-primary px-3 py-2">{{ reward.cost }} {% trans 'points' %}</span>
             </div>
-
+            {% if user.is_authenticated and perms.tasks.mark_done %}
+                
+              {% endif %}
             <div class="d-flex align-items-center gap-2 mb-4">
               {% if user.is_authenticated %}
-                {% if reward.stock > 0 %}
-                  <a href="{% url 'place_order' reward.id %}" class="btn btn-primary btn-lg w-100 mt-auto">{% trans 'Redeem Reward' %}</a>
+                {% if user.is_authenticated and perms.tasks.mark_done %}
+                  <a href="{% url 'edit_reward' reward.id %}" class="btn btn-primary mt-auto">{% trans 'Edit Reward' %}</a>
+                {% elif reward.stock > 0 %}
+                  <a href="{% url 'place_order' reward.id %}" class="btn btn-primary mt-4">{% trans 'Redeem Reward' %}</a>
                 {% else %}
                   <div class="alert alert-secondary mb-0" role="alert">
                     {% trans 'This reward is out of stock.' %}
@@ -71,12 +72,12 @@
                 <a href="{{ login_url }}" class="btn btn-primary mt-auto" aria-label="Login">{% trans 'Login to order your reward' %}</a>
               {% endif %}
               {% if user.is_authenticated and perms.tasks.mark_done %}
-                <button type="button" class="btn btn-danger btn-lg w-100 mt-3" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">{% trans 'Delete Task' %}</button>
+                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">{% trans 'Delete Reward' %}</button>
                 <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow-lg">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="deleteTaskLabel">{% trans 'Delete task?' %}</h5>
+                        <h5 class="modal-title" id="deleteTaskLabel">{% trans 'Delete Reward?' %}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
 
