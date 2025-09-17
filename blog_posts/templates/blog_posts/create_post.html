@@ -3,17 +3,24 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-  {% trans "Create New Post" %}
+  {% trans 'Create New Post' %}
 {% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/blog_posts/create_post.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blog_posts/create_post.css' %}" />
 {% endblock %}
 
 {% block content %}
   <section class="container py-5">
     <div class="mb-3">
-      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> {% trans "Back to Posts" %}</a>
+      <a href="{% url 'blog_posts' %}" class="btn btn-link p-0 text-decoration-none"><i class="bi bi-arrow-left-circle-fill me-2 align-middle"></i> {% trans 'Back to Posts' %}</a>
     </div>
+
+    
+      <h1 class="text-center">{% trans 'Create New Post' %}</h1>
+      <p class="text-body-secondary mb-4 text-center">
+        {% trans 'Fill out the form below to create a new blog post. Please note that your post can not be edited after publishing it.' %}
+      </p>
+    
 
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -22,8 +29,8 @@
             {% csrf_token %}
             {{ form|crispy }}
             <div class="d-flex justify-content-between align-center">
-              <button type="submit" class="btn btn-primary">{% trans "Publish" %}</button>
-              <a href="javascript:history.back()" class="btn btn-secondary">{% trans "Cancel" %}</a>
+              <button type="submit" class="btn btn-primary">{% trans 'Publish' %}</button>
+              <a href="javascript:history.back()" class="btn btn-secondary">{% trans 'Cancel' %}</a>
             </div>
           </div>
         </form>
