@@ -65,7 +65,7 @@ class RewardForm(forms.ModelForm):
     def clean_name(self):
         """Ensure name contains only letters, numbers, and spaces."""
         name = self.cleaned_data.get('name')
-        if not re.match(r'^[A-Za-z0-9\s]+$', name):
+        if not re.match(r'^[A-Za-z0-9\s()]+$', name):
             raise ValidationError(
                 _("Name can only contain letters, numbers, and spaces.")
             )

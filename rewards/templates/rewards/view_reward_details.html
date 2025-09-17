@@ -53,9 +53,7 @@
               <span class="fw-semibold">{% trans 'Available for' %}</span>
               <span class="badge bg-primary-subtle text-primary px-3 py-2">{{ reward.cost }} {% trans 'points' %}</span>
             </div>
-            {% if user.is_authenticated and perms.tasks.mark_done %}
-                
-              {% endif %}
+
             <div class="d-flex align-items-center gap-2 mb-4">
               {% if user.is_authenticated %}
                 {% if user.is_authenticated and perms.tasks.mark_done %}
@@ -72,15 +70,14 @@
                 <a href="{{ login_url }}" class="btn btn-primary mt-auto" aria-label="Login">{% trans 'Login to order your reward' %}</a>
               {% endif %}
               {% if user.is_authenticated and perms.tasks.mark_done %}
-                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">{% trans 'Delete Reward' %}</button>
-                <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
+                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteRewardModal">{% trans 'Delete Reward' %}</button>
+                <div class="modal fade" id="deleteRewardModal" tabindex="-1" aria-labelledby="deleteRewardLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow-lg">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="deleteTaskLabel">{% trans 'Delete Reward?' %}</h5>
+                        <h5 class="modal-title" id="deleteRewardLabel">{% trans 'Delete Reward?' %}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-
                       <div class="modal-body">
                         <p class="mb-0">
                           {% trans 'Are you sure you want to delete' %}

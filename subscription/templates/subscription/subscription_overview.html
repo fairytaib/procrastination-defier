@@ -17,7 +17,7 @@
     <header class="mb-4">
       <a href="javascript:history.back()" class="btn btn-link p-0 text-decoration-none" class="bi bi-arrow-left-circle-fill me-2 align-middle">{% trans "Back" %}</a>
       <h1 class="d-flex align-items-center justify-content-between mb-3">{% trans "Your subscription" %}</h1>
-      <p class="text-body-secondary mb-0">{% trans "View your current plan, task limits, billing period and status. You can change your plan, cancel at the end of the period or resume anytime." %}</p>
+      <p class="text-body-secondary mb-0">{% trans "View your current subscription, task limits, billing period and status. You can change your subscription, cancel at the end of the period or resume anytime." %}</p>
     </header>
 
     <!-- Summary -->
@@ -26,7 +26,7 @@
         <div class="row g-3 align-items-center">
           <div class="col-12 col-md-7">
             <div class="d-flex flex-wrap align-items-center gap-2">
-              <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">{% trans "Plan" %}</span>
+              <span class="badge bg-primary-subtle text-primary text-uppercase fw-semibold">{% trans "subscription" %}</span>
               <h2 class="h5 mb-0 text-capitalize">{{ subscription.product_name }}</h2>
               <span class="badge bg-secondary-subtle text-secondary">{{ subscription.tasks_quota }} {% trans "tasks / month" %}</span>
             </div>
