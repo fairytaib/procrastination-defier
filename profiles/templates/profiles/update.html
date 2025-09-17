@@ -27,9 +27,9 @@
             {% endif %}
             {{ profile_image|crispy }}
             {{ form|crispy }}
-            <div class="d-grid d-sm-flex gap-2">
-              <a href="javascript:history.back()" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
-              <button type="submit" class="btn btn-primary ms-sm-auto">{% trans "Save changes" %}</button>
+            <div class="d-flex justify-content-between align-center">
+              <button type="submit" class="btn btn-primary">{% trans "Save changes" %}</button>
+              <a href="javascript:history.back()" class="btn btn-secondary">{% trans "Cancel" %}</a>
             </div>
           </div>
         </form>

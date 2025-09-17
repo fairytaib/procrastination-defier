@@ -55,9 +55,9 @@
         {% csrf_token %}
         {{ form|crispy }}
 
-        <div class="d-grid d-sm-flex gap-2 mt-2">
-          <a href="javascript:history.back()" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-short" aria-hidden="true"></i> {% trans 'Back' %}</a>
-          <button type="submit" class="btn btn-primary ms-sm-auto"><i class="bi bi-check2-circle" aria-hidden="true"></i> {% trans 'Place Order' %}</button>
+        <div class="d-flex justify-content-between align-center">
+          <button type="submit" class="btn btn-primary"><i class="bi bi-check2-circle" aria-hidden="true"></i> {% trans 'Place Order' %}</button>
+          <a href="javascript:history.back()" class="btn btn-secondary">{% trans "Cancel" %}</a>
         </div>
       </div>
     </form>
