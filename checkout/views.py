@@ -7,6 +7,7 @@ from .models import Order
 from rewards.models import Reward, RewardHistory
 from tasks.models import UserPoints
 from django.utils.translation import gettext as _
+from emails.email import send_reward_purchase_email
 
 
 @login_required
@@ -72,6 +73,14 @@ def place_order(request, reward_id):
                         "Order placed successfully. We will send it to you shortly."
                         )
                 )
+                lang = getattr(request, "LANGUAGE_CODE", None)
+                send_reward_purchase_email(
+                    order=order,
+                    reward=reward,
+                    history=RewardHistory,
+                    language=lang
+                )
+
                 return redirect("rewards_list")
     return render(
         request, "checkout/checkout.html", {

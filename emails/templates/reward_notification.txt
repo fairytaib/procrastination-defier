@@ -1,0 +1,9 @@
+Thank you for your order, {{ order.first_name }}!
+
+You have purchased "{{ reward.name }}" for {{ reward.cost }} points.
+Order date: {{ history.bought_at|date:"d.m.Y H:i" }}
+
+Delivery address:
+{{ order.first_name }} {{ order.last_name }}
+{{ order.street_address }}{% if order.apartment %}, {{ order.apartment }}{% endif %}
+{{ order.postal_code }} {{ order.city }}, {{ order.country }}
