@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load blog_extras %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/tasks/_task_card.css' %}" />
 {% endblock %}
@@ -7,7 +8,7 @@
   <div class="card-body">
     <div class="row align-items-top g-3">
       <div class="col-12 col-lg-3">
-        <h5 class="card-title mb-0">{{ task.title }}</h5>
+        <h5 class="card-title mb-0">{{ task.title|content_preview:4 }}</h5>
       </div>
 
       {% if perms.tasks.mark_done %}
