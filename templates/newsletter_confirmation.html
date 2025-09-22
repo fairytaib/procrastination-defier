@@ -4,12 +4,13 @@
 
 {% block content %}
   <div class="container">
-    div.
-    <h1>{% trans 'Subscription Confirmation' %}</h1>
-    <p>
-      {% trans 'Thank you for subscribing to our newsletter!' %}
-    </p>
-    <a href="{% url 'home' %}">{% trans 'Return to Home' %}</a>
+    <div class="d-flex flex-column justify-content-center align-items-center my-5">
+      
+      <h1>{% trans 'Subscription Confirmation' %}</h1>
+      <p>
+        {% trans 'Thank you for subscribing to our newsletter!' %}
+      </p>
+      <a href="{% url 'home' %}" class="btn btn-primary">{% trans 'Return to Home' %}</a>
+    </div>
   </div>
-
 {% endblock %}
