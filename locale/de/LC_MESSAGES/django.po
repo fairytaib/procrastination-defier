@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-11 10:08+0200\n"
-"PO-Revision-Date: 2025-09-15 20:08+0200\n"
+"POT-Creation-Date: 2025-09-22 11:35+0200\n"
+"PO-Revision-Date: 2025-09-22 11:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -57,6 +57,7 @@ msgid "No posts yet."
 msgstr "Noch keine Beiträge."
 
 #: .\blog_posts\templates\blog_posts\create_post.html:6
+#: .\blog_posts\templates\blog_posts\create_post.html:19
 msgid "Create New Post"
 msgstr "Neuen Beitrag erstellen"
 
@@ -65,9 +66,35 @@ msgstr "Neuen Beitrag erstellen"
 msgid "Back to Posts"
 msgstr "Zurück zu den Beiträgen"
 
-#: .\blog_posts\templates\blog_posts\create_post.html:25
+#: .\blog_posts\templates\blog_posts\create_post.html:21
+msgid ""
+"Fill out the form below to create a new blog post. Please note that your "
+"post can not be edited after publishing it."
+msgstr ""
+"Fülle das untenstehende Formular aus, um einen neuen Blogbeitrag zu "
+"erstellen. Bitte beachte, dass dein Beitrag nach der Veröffentlichung nicht "
+"mehr bearbeitet werden kann."
+
+#: .\blog_posts\templates\blog_posts\create_post.html:32
 msgid "Publish"
 msgstr "Veröffentlichen"
+
+#: .\blog_posts\templates\blog_posts\create_post.html:33
+#: .\blog_posts\templates\blog_posts\post_details.html:47
+#: .\blog_posts\templates\blog_posts\post_details.html:93
+#: .\checkout\templates\checkout\checkout.html:60
+#: .\profiles\templates\profiles\update.html:32
+#: .\rewards\templates\rewards\add_reward_form.html:18
+#: .\rewards\templates\rewards\add_reward_form.html:29
+#: .\rewards\templates\rewards\edit_reward_form.html:19
+#: .\rewards\templates\rewards\edit_reward_form.html:30
+#: .\rewards\templates\rewards\view_reward_details.html:89
+#: .\tasks\templates\tasks\add_task_form.html:17
+#: .\tasks\templates\tasks\add_task_form.html:39
+#: .\tasks\templates\tasks\view_task_details.html:72
+#: .\templates\allauth\account\logout.html:28
+msgid "Cancel"
+msgstr "Abbrechen"
 
 #: .\blog_posts\templates\blog_posts\post_details.html:22
 msgid "By"
@@ -82,34 +109,22 @@ msgid "Delete post?"
 msgstr "Beitrag löschen?"
 
 #: .\blog_posts\templates\blog_posts\post_details.html:41
-#: .\rewards\templates\rewards\view_reward_details.html:85
+#: .\rewards\templates\rewards\view_reward_details.html:83
 #: .\tasks\templates\tasks\view_task_details.html:66
 msgid "Are you sure you want to delete"
 msgstr "Sind Sie sicher, dass Sie löschen möchten"
 
 #: .\blog_posts\templates\blog_posts\post_details.html:42
-#: .\rewards\templates\rewards\view_reward_details.html:86
+#: .\rewards\templates\rewards\view_reward_details.html:84
 #: .\tasks\templates\tasks\view_task_details.html:67
 msgid "This action cannot be undone and there will be no points awarded."
 msgstr ""
 "Diese Aktion kann nicht rückgängig gemacht werden und es werden keine Punkte "
 "vergeben."
 
-#: .\blog_posts\templates\blog_posts\post_details.html:47
-#: .\blog_posts\templates\blog_posts\post_details.html:93
-#: .\profiles\templates\profiles\update.html:31
-#: .\rewards\templates\rewards\add_reward_form.html:18
-#: .\rewards\templates\rewards\edit_reward_form.html:19
-#: .\rewards\templates\rewards\view_reward_details.html:91
-#: .\tasks\templates\tasks\add_task_form.html:17
-#: .\tasks\templates\tasks\view_task_details.html:72
-#: .\templates\allauth\account\logout.html:28
-msgid "Cancel"
-msgstr "Abbrechen"
-
 #: .\blog_posts\templates\blog_posts\post_details.html:51
 #: .\blog_posts\templates\blog_posts\post_details.html:97
-#: .\rewards\templates\rewards\view_reward_details.html:95
+#: .\rewards\templates\rewards\view_reward_details.html:93
 #: .\tasks\templates\tasks\view_task_details.html:76
 msgid "Yes, delete"
 msgstr "Ja, löschen"
@@ -242,7 +257,7 @@ msgid "Yes,No"
 msgstr "Ja,Nein"
 
 #: .\checkout\templates\checkout\_order_card.html:34
-#: .\tasks\templates\tasks\_task_card.html:45
+#: .\tasks\templates\tasks\_task_card.html:46
 msgid "View Details"
 msgstr "Details anzeigen"
 
@@ -299,11 +314,6 @@ msgstr ""
 "Belohnung aus."
 
 #: .\checkout\templates\checkout\checkout.html:59
-#: .\profiles\templates\profiles\update.html:19
-msgid "Back"
-msgstr "Zurück"
-
-#: .\checkout\templates\checkout\checkout.html:60
 msgid "Place Order"
 msgstr "Bestellung aufgeben"
 
@@ -322,7 +332,7 @@ msgstr "Bestellnummer"
 #: .\checkout\templates\checkout\order_details.html:52
 #: .\rewards\templates\rewards\rewards_list.html:81
 #: .\subscription\templates\subscription\subscription.html:97
-#: .\tasks\templates\tasks\_task_card.html:38
+#: .\tasks\templates\tasks\_task_card.html:39
 msgid "Points"
 msgstr "Punkte"
 
@@ -415,7 +425,7 @@ msgstr "Benutzte Punkte:"
 #: .\checkout\templates\checkout\order_history.html:44
 #: .\checkout\templates\checkout\order_history.html:101
 #: .\rewards\templates\rewards\view_reward_details.html:21
-#: .\rewards\templates\rewards\view_reward_details.html:57
+#: .\rewards\templates\rewards\view_reward_details.html:54
 msgid "points"
 msgstr "Punkte"
 
@@ -441,21 +451,72 @@ msgstr "Weiter"
 msgid "Last"
 msgstr "Letze"
 
-#: .\checkout\views.py:46
+#: .\checkout\views.py:47
 msgid "This reward is currently out of stock."
 msgstr "Diese Prämie ist derzeit nicht vorrätig."
 
-#: .\checkout\views.py:50
+#: .\checkout\views.py:51
 msgid "You do not have enough points to redeem this reward"
 msgstr "Du hast nicht genügend Punkte, um diese Prämie einzulösen."
 
-#: .\checkout\views.py:72
+#: .\checkout\views.py:73
 msgid "Order placed successfully. We will send it to you shortly."
 msgstr "Bestellung erfolgreich aufgegeben. Wir senden sie dir in Kürze zu."
 
-#: .\checkout\views.py:127
+#: .\checkout\views.py:139
 msgid "Order marked as done."
 msgstr "Auftrag als erledigt markiert."
+
+#: .\emails\emails.py:13
+msgid "Your Order Confirmation"
+msgstr "Deine Bestellbestätigung"
+
+#: .\emails\templates\emails\reward_notification.html:3
+#: .\emails\templates\emails\reward_notification.txt:3
+#, fuzzy
+#| msgid "Login to order your reward"
+msgid "Thank you for your order"
+msgstr "Anmelden, um Ihre Prämie zu bestellen"
+
+#: .\emails\templates\emails\reward_notification.html:4
+#: .\emails\templates\emails\reward_notification.txt:5
+#, fuzzy
+#| msgid "You have signed out."
+msgid "You have purchased"
+msgstr "Sie haben sich abgemeldet."
+
+#: .\emails\templates\emails\reward_notification.html:4
+#: .\emails\templates\emails\reward_notification.txt:5
+#, fuzzy
+#| msgid "or"
+msgid "for"
+msgstr "oder"
+
+#: .\emails\templates\emails\reward_notification.html:4
+#: .\emails\templates\emails\reward_notification.txt:5
+#, fuzzy
+#| msgid "points"
+msgid "points."
+msgstr "Punkte"
+
+#: .\emails\templates\emails\reward_notification.html:5
+#, fuzzy
+#| msgid "Ordered at:"
+msgid "Order date: "
+msgstr "Bestellt am:"
+
+#: .\emails\templates\emails\reward_notification.html:7
+#: .\emails\templates\emails\reward_notification.txt:8
+#, fuzzy
+#| msgid "Email address"
+msgid "Delivery address:"
+msgstr "E-Mail-Adresse"
+
+#: .\emails\templates\emails\reward_notification.txt:6
+#, fuzzy
+#| msgid "Ordered at:"
+msgid "Order date:"
+msgstr "Bestellt am:"
 
 #: .\profiles\forms.py:17
 #: .\profiles\templates\profiles\view_user_profile.html:53
@@ -490,7 +551,12 @@ msgstr "Profil bearbeiten"
 msgid "Edit account"
 msgstr "Profil bearbeiten"
 
-#: .\profiles\templates\profiles\update.html:32
+#: .\profiles\templates\profiles\update.html:19
+#: .\subscription\templates\subscription\subscription_overview.html:18
+msgid "Back"
+msgstr "Zurück"
+
+#: .\profiles\templates\profiles\update.html:31
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
@@ -515,17 +581,37 @@ msgid "Account details"
 msgstr "Kontodaten"
 
 #: .\profiles\templates\profiles\view_user_profile.html:65
-msgid "Member since"
-msgstr "Mitglied seit"
-
-#: .\profiles\templates\profiles\view_user_profile.html:68
 #: .\rewards\templates\rewards\view_reward_details.html:20
 msgid "Your Points"
 msgstr "Deine Punkte"
 
-#: .\profiles\templates\profiles\view_user_profile.html:77
-msgid "My Subscription"
-msgstr "Mein Abonnement"
+#: .\profiles\templates\profiles\view_user_profile.html:68
+msgid "Member since"
+msgstr "Mitglied seit"
+
+#: .\profiles\templates\profiles\view_user_profile.html:71
+#, fuzzy
+#| msgid "Subscriptions"
+msgid "Subscription"
+msgstr "Abonnements"
+
+#: .\profiles\templates\profiles\view_user_profile.html:74
+#, fuzzy
+#| msgid "active"
+msgid "Active"
+msgstr "Aktiv"
+
+#: .\profiles\templates\profiles\view_user_profile.html:76
+#, fuzzy
+#| msgid "active"
+msgid "Inactive"
+msgstr "Aktiv"
+
+#: .\profiles\templates\profiles\view_user_profile.html:87
+#, fuzzy
+#| msgid "Manage subscription"
+msgid "Manage Subscription"
+msgstr "Abonnement verwalten"
 
 #: .\rewards\forms.py:20 .\rewards\forms.py:32
 msgid "Reward Name"
@@ -593,19 +679,14 @@ msgstr "Anzahl der für diese Belohnung verfügbaren Artikel."
 msgid "Add Reward"
 msgstr "Belohnung hinzufügen"
 
-#: .\rewards\templates\rewards\add_reward_form.html:30
-#: .\rewards\templates\rewards\edit_reward_form.html:31
-#: .\tasks\templates\tasks\add_task_form.html:30
-msgid "Save and add Another"
-msgstr "Speichern und weiteren hinzufügen"
-
 #: .\rewards\templates\rewards\edit_reward_form.html:7
 #: .\rewards\templates\rewards\edit_reward_form.html:23
 #: .\rewards\templates\rewards\edit_reward_form.html:29
+#: .\rewards\templates\rewards\view_reward_details.html:60
 msgid "Edit Reward"
 msgstr "Belohnung bearbeiten"
 
-#: .\rewards\templates\rewards\edit_reward_form.html:40
+#: .\rewards\templates\rewards\edit_reward_form.html:38
 msgid "You do not have permission to edit the reward."
 msgstr "Sie haben keine Berechtigung, die Belohnung zu bearbeiten."
 
@@ -613,7 +694,7 @@ msgstr "Sie haben keine Berechtigung, die Belohnung zu bearbeiten."
 msgid "Rewards List"
 msgstr "Belohnungen"
 
-#: .\rewards\templates\rewards\rewards_list.html:16 .\templates\base.html:103
+#: .\rewards\templates\rewards\rewards_list.html:16 .\templates\base.html:104
 msgid "Rewards"
 msgstr "Belohnungen"
 
@@ -666,7 +747,7 @@ msgid "Out of stock"
 msgstr "Nicht auf Lager"
 
 #: .\rewards\templates\rewards\rewards_list.html:87
-#: .\rewards\templates\rewards\view_reward_details.html:52
+#: .\rewards\templates\rewards\view_reward_details.html:49
 msgid "Available in:"
 msgstr "Erhältlich in:"
 
@@ -695,30 +776,33 @@ msgstr "Zurück zu den Prämien"
 msgid "Reward image"
 msgstr "Belohnungsbild"
 
-#: .\rewards\templates\rewards\view_reward_details.html:56
+#: .\rewards\templates\rewards\view_reward_details.html:53
 msgid "Available for"
 msgstr "Verfügbar für"
 
-#: .\rewards\templates\rewards\view_reward_details.html:63
+#: .\rewards\templates\rewards\view_reward_details.html:62
 msgid "Redeem Reward"
 msgstr "Prämie einlösen"
 
-#: .\rewards\templates\rewards\view_reward_details.html:66
+#: .\rewards\templates\rewards\view_reward_details.html:65
 msgid "This reward is out of stock."
 msgstr "Diese Prämie ist derzeit nicht verfügbar."
 
-#: .\rewards\templates\rewards\view_reward_details.html:71
+#: .\rewards\templates\rewards\view_reward_details.html:70
 msgid "Login to order your reward"
 msgstr "Anmelden, um Ihre Prämie zu bestellen"
 
-#: .\rewards\templates\rewards\view_reward_details.html:74
-msgid "Delete Task"
-msgstr "Aufgabe löschen"
+#: .\rewards\templates\rewards\view_reward_details.html:73
+#, fuzzy
+#| msgid "Redeem Reward"
+msgid "Delete Reward"
+msgstr "Prämie einlösen"
 
-#: .\rewards\templates\rewards\view_reward_details.html:79
-#: .\tasks\templates\tasks\view_task_details.html:60
-msgid "Delete task?"
-msgstr "Aufgabe löschen?"
+#: .\rewards\templates\rewards\view_reward_details.html:78
+#, fuzzy
+#| msgid "Redeem Reward"
+msgid "Delete Reward?"
+msgstr "Prämie einlösen"
 
 #: .\rewards\views.py:15
 msgid "Germany"
@@ -799,6 +883,7 @@ msgid "Reward updated successfully."
 msgstr "Belohnung erfolgreich aktualisiert."
 
 #: .\subscription\templates\subscription\subscription.html:6
+#: .\tasks\templates\tasks\user_task_overview.html:22
 msgid "Subscriptions"
 msgstr "Abonnements"
 
@@ -935,52 +1020,59 @@ msgstr "Konto erstellen"
 msgid "Your Subscription"
 msgstr "Ihr Abonnement"
 
-#: .\subscription\templates\subscription\subscription_overview.html:15
+#: .\subscription\templates\subscription\subscription_overview.html:19
 msgid "Your subscription"
 msgstr "Ihr Abonnement"
 
-#: .\subscription\templates\subscription\subscription_overview.html:16
+#: .\subscription\templates\subscription\subscription_overview.html:20
+#, fuzzy
+#| msgid ""
+#| "View your current plan, task limits, billing period and status. You can "
+#| "change your plan, cancel at the end of the period or resume anytime."
 msgid ""
-"View your current plan, task limits, billing period and status. You can "
-"change your plan, cancel at the end of the period or resume anytime."
+"View your current subscription, task limits, billing period and status. You "
+"can change your subscription, cancel at the end of the period or resume "
+"anytime."
 msgstr ""
 "Sieh dir deinen aktuellen Tarif, Aufgabenlimits, Abrechnungszeitraum und "
 "Status an. Du kannst deinen Tarif ändern, am Ende des Zeitraums kündigen "
 "oder jederzeit wieder aufnehmen."
 
-#: .\subscription\templates\subscription\subscription_overview.html:25
-msgid "Plan"
-msgstr "Abonnement"
+#: .\subscription\templates\subscription\subscription_overview.html:29
+#, fuzzy
+#| msgid "Subscriptions"
+msgid "subscription"
+msgstr "Abonnements"
 
-#: .\subscription\templates\subscription\subscription_overview.html:27
+#: .\subscription\templates\subscription\subscription_overview.html:31
 msgid "tasks / month"
 msgstr "Aufgaben/Monat"
 
-#: .\subscription\templates\subscription\subscription_overview.html:33
+#: .\subscription\templates\subscription\subscription_overview.html:37
 msgid "Status:"
-msgstr ""
+msgstr "Status"
 
-#: .\subscription\templates\subscription\subscription_overview.html:36
+#: .\subscription\templates\subscription\subscription_overview.html:40
 msgid "canceling (ends"
 msgstr "Stornierung (endet"
 
-#: .\subscription\templates\subscription\subscription_overview.html:36
+#: .\subscription\templates\subscription\subscription_overview.html:40
 msgid ")"
 msgstr ""
 
-#: .\subscription\templates\subscription\subscription_overview.html:38
+#: .\subscription\templates\subscription\subscription_overview.html:42
 msgid "active"
 msgstr "Aktiv"
 
-#: .\subscription\templates\subscription\subscription_overview.html:45
+#: .\subscription\templates\subscription\subscription_overview.html:49
 msgid "Started on:"
 msgstr "Begonnen am:"
 
-#: .\subscription\templates\subscription\subscription_overview.html:57
+#: .\subscription\templates\subscription\subscription_overview.html:61
 msgid "Manage subscription"
 msgstr "Abonnement verwalten"
 
-#: .\subscription\templates\subscription\subscription_overview.html:61
+#: .\subscription\templates\subscription\subscription_overview.html:65
 msgid "Change your Subscription"
 msgstr "Ändern dein Abonnement"
 
@@ -1098,44 +1190,53 @@ msgstr "Lade eine Audio-Datei für die Überprüfung hoch."
 msgid "Add a comment for this checkup"
 msgstr "Schreibe einen Kommentar"
 
-#: .\tasks\templates\tasks\_task_card.html:16
+#: .\tasks\templates\tasks\_task_card.html:17
 msgid "Created by"
 msgstr "Erstellt von"
 
-#: .\tasks\templates\tasks\_task_card.html:24
+#: .\tasks\templates\tasks\_task_card.html:25
 msgid "Deadline"
 msgstr "Frist"
 
-#: .\tasks\templates\tasks\_task_card.html:24
+#: .\tasks\templates\tasks\_task_card.html:25
 msgid "was due at"
 msgstr "war fällig am"
 
-#: .\tasks\templates\tasks\_task_card.html:31
+#: .\tasks\templates\tasks\_task_card.html:32
 msgid "Fee"
 msgstr "Gebühr"
 
-#: .\tasks\templates\tasks\_task_card.html:45
+#: .\tasks\templates\tasks\_task_card.html:46
 msgid "View Task Details"
 msgstr "Aufgabendetails anzeigen"
 
-#: .\tasks\templates\tasks\_task_card.html:48
+#: .\tasks\templates\tasks\_task_card.html:49
 msgid "Pay Fee"
 msgstr "Gebühr zahlen"
 
 #: .\tasks\templates\tasks\add_task_form.html:7
 #: .\tasks\templates\tasks\add_task_form.html:21
-#: .\tasks\templates\tasks\add_task_form.html:28
+#: .\tasks\templates\tasks\add_task_form.html:34
 #: .\tasks\templates\tasks\user_task_overview.html:54
 msgid "Add Task"
 msgstr "Aufgabe hinzufügen"
 
-#: .\tasks\templates\tasks\add_task_form.html:22
+#: .\tasks\templates\tasks\add_task_form.html:23
+#: .\tasks\templates\tasks\user_task_overview.html:43
+msgid "Your Task Slots:"
+msgstr "Deine Aufgaben-Slots:"
+
+#: .\tasks\templates\tasks\add_task_form.html:26
 msgid ""
 "Please be aware that you can not edit the task after it has been created. "
 "Deletion is still possible but permanent"
 msgstr ""
 "Bitte beachten Sie, dass Sie die Aufgabe nach ihrer Erstellung nicht mehr "
 "bearbeiten können. Das Löschen ist weiterhin möglich, jedoch endgültig."
+
+#: .\tasks\templates\tasks\add_task_form.html:36
+msgid "Save and add Another"
+msgstr "Speichern und weiteren hinzufügen"
 
 #: .\tasks\templates\tasks\user_task_overview.html:5
 msgid "Task Overview"
@@ -1152,10 +1253,12 @@ msgstr ""
 "aktives Abonnement."
 
 #: .\tasks\templates\tasks\user_task_overview.html:22
-msgid "Plans"
+#, fuzzy
+#| msgid "Subscriptions"
+msgid "subscriptions"
 msgstr "Abonnements"
 
-#: .\tasks\templates\tasks\user_task_overview.html:23 .\templates\base.html:200
+#: .\tasks\templates\tasks\user_task_overview.html:23 .\templates\base.html:226
 #: .\templates\faq.html:5
 msgid "FAQ"
 msgstr "FAQ"
@@ -1175,10 +1278,6 @@ msgstr "Prüfung"
 #: .\tasks\templates\tasks\user_task_overview.html:37
 msgid "Overview"
 msgstr "Übersicht"
-
-#: .\tasks\templates\tasks\user_task_overview.html:43
-msgid "Your Task Slots:"
-msgstr "Deine Aufgaben-Slots:"
 
 #: .\tasks\templates\tasks\user_task_overview.html:46
 msgid "Your current points:"
@@ -1276,7 +1375,11 @@ msgstr "Aufgabe erfolgreich erledigt"
 msgid "Yes"
 msgstr "Ja"
 
-#: .\tasks\templates\tasks\view_task_details.html:61 .\templates\base.html:184
+#: .\tasks\templates\tasks\view_task_details.html:60
+msgid "Delete task?"
+msgstr "Aufgabe löschen?"
+
+#: .\tasks\templates\tasks\view_task_details.html:61 .\templates\base.html:210
 msgid "Close"
 msgstr "Schließen"
 
@@ -1524,7 +1627,9 @@ msgstr "Passwort vergessen?"
 #: .\templates\allauth\account\logout.html:6
 #: .\templates\allauth\account\logout.html:17
 #: .\templates\allauth\account\logout.html:29
-msgid "Sign Out"
+#, fuzzy
+#| msgid "Sign Out"
+msgid "Log Out"
 msgstr "Abmelden"
 
 #: .\templates\allauth\account\logout.html:19
@@ -1841,112 +1946,112 @@ msgid ""
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: .\templates\base.html:92 .\templates\home.html:8
+#: .\templates\base.html:93 .\templates\home.html:8
 msgid "Home"
 msgstr "Startseite"
 
-#: .\templates\base.html:95
+#: .\templates\base.html:96
 msgid "Blog"
 msgstr "Blog"
 
-#: .\templates\base.html:99
+#: .\templates\base.html:100
 msgid "Tasks"
 msgstr "Aufgaben"
 
-#: .\templates\base.html:107 .\templates\base.html:112
+#: .\templates\base.html:108 .\templates\base.html:113
 msgid "View placed Orders"
 msgstr "Aufgegebene Bestellungen anzeigen"
 
-#: .\templates\base.html:107
+#: .\templates\base.html:108
 msgid "Orders"
 msgstr "Bestellungen"
 
-#: .\templates\base.html:112
+#: .\templates\base.html:113
 msgid "Add Rewards"
 msgstr "Belohnungen hinzufügen"
 
-#: .\templates\base.html:118
+#: .\templates\base.html:119
 msgid "View Subscription Plans"
 msgstr "Abonnementpläne anzeigen"
 
-#: .\templates\base.html:118
+#: .\templates\base.html:119
 msgid "Subscription Plans"
 msgstr "Abos"
 
-#: .\templates\base.html:137
+#: .\templates\base.html:127
 msgid "Profile Picture"
 msgstr "Profilbild"
 
-#: .\templates\base.html:139
+#: .\templates\base.html:129
 msgid "Logo"
 msgstr "Logo"
 
-#: .\templates\base.html:143 .\templates\base.html:158
+#: .\templates\base.html:134 .\templates\base.html:151
 #, python-format
 msgid "Points %(points)s"
 msgstr ""
 
-#: .\templates\base.html:144 .\templates\base.html:153
+#: .\templates\base.html:136 .\templates\base.html:145
 msgid "View Account"
 msgstr "Konto anzeigen"
 
-#: .\templates\base.html:144 .\templates\base.html:153
+#: .\templates\base.html:136 .\templates\base.html:145
 #: .\templates\privacy_policy.html:27
 msgid "Account"
 msgstr "Konto"
 
-#: .\templates\base.html:145 .\templates\base.html:156
+#: .\templates\base.html:137 .\templates\base.html:148
 msgid "Logout"
 msgstr "Abmelden"
 
-#: .\templates\base.html:163 .\templates\home.html:25 .\templates\home.html:101
+#: .\templates\base.html:157 .\templates\home.html:25 .\templates\home.html:101
 msgid "Register"
 msgstr "Registrieren"
 
-#: .\templates\base.html:166
+#: .\templates\base.html:160
 msgid "Login"
 msgstr "Anmelden"
 
-#: .\templates\base.html:181
+#: .\templates\base.html:207
 #, python-format
 msgid ""
 "\n"
-"                  %(message)s\n"
+"                %(message)s\n"
 "                "
 msgstr ""
 
-#: .\templates\base.html:197
+#: .\templates\base.html:223
 #, python-format
 msgid "© %(year)s "
 msgstr ""
 
-#: .\templates\base.html:197
+#: .\templates\base.html:223
 msgid "Procrastination Defier. All rights reserved. Created by"
 msgstr "Procrastination Defier. Alle Rechte vorbehalten. Erstellt von"
 
-#: .\templates\base.html:197
+#: .\templates\base.html:223
 msgid "Link to Github"
 msgstr "Link zu Github"
 
-#: .\templates\base.html:200
+#: .\templates\base.html:226
 msgid "Frequently asked questions"
 msgstr "Häufig gestellte Fragen"
 
-#: .\templates\base.html:201
+#: .\templates\base.html:227
 msgid "Legal notice"
 msgstr "Rechtlicher Hinweis"
 
-#: .\templates\base.html:201 .\templates\legal_notice.html:6
+#: .\templates\base.html:227 .\templates\legal_notice.html:6
 #: .\templates\legal_notice.html:15
 msgid "Legal Notice"
 msgstr "Rechtlicher Hinweis"
 
-#: .\templates\base.html:202 .\templates\privacy_policy.html:5
+#: .\templates\base.html:228 .\templates\privacy_policy.html:5
 #: .\templates\privacy_policy.html:12
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: .\templates\base.html:203 .\templates\terms_and_conditions.html:5
+#: .\templates\base.html:229 .\templates\terms_and_conditions.html:5
 msgid "Terms and Conditions"
 msgstr "Allgemeine Geschäftsbedingungen"
 
@@ -3024,3 +3129,15 @@ msgid "This policy is effective from Monday, 08 September 2025, 12:08."
 msgstr ""
 "Diese Richtlinie tritt am Montag, dem 8. September 2025, um 12:08 Uhr in "
 "Kraft."
+
+#~ msgid "My Subscription"
+#~ msgstr "Mein Abonnement"
+
+#~ msgid "Delete Task"
+#~ msgstr "Aufgabe löschen"
+
+#~ msgid "Plan"
+#~ msgstr "Abonnement"
+
+#~ msgid "Plans"
+#~ msgstr "Abonnements"

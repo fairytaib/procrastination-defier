@@ -1,8 +1,8 @@
 {% load static %}
 {% load i18n %}
 <h2>{% trans "Thank you for your order"%} {{ order.first_name }}</h2>
-<p>{% trans "You have purchased <strong>{{ reward.name }}</strong> for {{ reward.cost }} points." %}</p>
-<p>{% trans "Order date: {{ history.bought_at|date:‘d.m.Y H:i’ }}" %}</p>
+<p>{% trans "You have purchased" %} <strong>"{{ reward.name }}"</strong> {% trans "for" %} {{ reward.cost }} {% trans "points." %}</p>
+<p>{% trans "Order date: " %} {{ history.bought_at|date:"d.m.Y H:i" }}</p>
 <hr>
 <p>{% trans "Delivery address:" %}<br>
 {{ order.first_name }} {{ order.last_name }}<br>

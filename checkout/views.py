@@ -8,6 +8,7 @@ from rewards.models import Reward, RewardHistory
 from tasks.models import UserPoints
 from django.utils.translation import gettext as _
 from emails.emails import send_reward_purchase_email
+from django.utils.translation import get_language
 
 
 @login_required
@@ -76,7 +77,7 @@ def place_order(request, reward_id):
                 order_history = RewardHistory.objects.filter(
                     user=request.user
                 )
-                lang = getattr(request, "LANGUAGE_CODE", None)
+                lang = get_language()
                 send_reward_purchase_email(
                     order=order,
                     reward=reward,

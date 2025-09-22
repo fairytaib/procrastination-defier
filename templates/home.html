@@ -5,7 +5,7 @@
 
 {% endblock %}
 {% block title %}
-  {% trans "Home" %}
+  {% trans 'Home' %}
 {% endblock %}
 {% block css %}
   <link rel="stylesheet" href="{% static 'css/base/home.css' %}" />
@@ -13,24 +13,28 @@
 {% endblock %}
 {% block content %}
   <div class="container text-center hero-section section mt-3">
-    <h1 class="hero-title">{% trans "Welcome to the End of Your Procrastination" %}</h1>
+    <h1 class="hero-title">{% trans 'Welcome to the End of Your Procrastination' %}</h1>
     <p class="hero-subtitle">
       {% trans "Procrastination isn't a habit – it's a trap." %}
       <br />
-      {% trans "We help you break free with structure, motivation, and real consequences." %}
+      {% trans 'We help you break free with structure, motivation, and real consequences.' %}
     </p>
     {% if user.is_authenticated %}
-      <a href="{% url 'user_task_overview' %}" class="btn btn-primary hero-btn" aria-label="Register">{% trans "View your tasks" %}</a>
+      <a href="{% url 'user_task_overview' %}" class="btn btn-primary hero-btn" aria-label="Register">{% trans 'View your tasks' %}</a>
     {% else %}
-      <a href="{% url 'account_signup' %}" class="btn btn-primary hero-btn" aria-label="{% trans "Register" %}">{% trans "Start Your Journey" %}</a>
+      <a href="{% url 'account_signup' %}" class="btn btn-primary hero-btn" aria-label="{% trans 'Register' %}">{% trans 'Start Your Journey' %}</a>
     {% endif %}
   </div>
   <div class="container my-5 py-5 section">
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
-        <h2 class="mb-4">{% trans "What is Procrastination Defier?" %} </h2>
-        <p class="lead">{% trans "Procrastination Defier is your accountability partner in digital form. You commit to real tasks – we make sure you follow through." %}</p>
-        <p>{% trans "Upload your tasks, choose your check-in rhythm (weekly, biweekly, or monthly), and let the system challenge your consistency. If you succeed, you earn points. If you fail, it costs you. Literally." %}</p>
+        <h2 class="mb-4">{% trans 'What is Procrastination Defier?' %}</h2>
+        <p class="lead">
+          {% trans 'Procrastination Defier is your accountability partner in digital form. You commit to real tasks – we make sure you follow through.' %}
+        </p>
+        <p>
+          {% trans 'Upload your tasks, choose your check-in rhythm (weekly, biweekly, or monthly), and let the system challenge your consistency. If you succeed, you earn points. If you fail, it costs you. Literally.' %}
+        </p>
       </div>
     </div>
   </div>
@@ -39,8 +43,10 @@
   <div class="container my-5 py-5 rounded section" id="feature-section">
     <div class="row text-center mb-4">
       <div class="col">
-        <h2>{% trans "How It Works" %}</h2>
-        <p class="text-muted">{% trans "A simple yet powerful structure designed to make procrastination expensive – and action rewarding." %}</p>
+        <h2>{% trans 'How It Works' %}</h2>
+        <p class="text-muted">
+          {% trans 'A simple yet powerful structure designed to make procrastination expensive – and action rewarding.' %}
+        </p>
       </div>
     </div>
 
@@ -48,79 +54,96 @@
       <div class="col-md-3 mb-4">
         <div>
           <i class="bi bi-diagram-3-fill" style="font-size: 2rem; color:white;"></i>
-          <h5 class="mt-2">{% trans "Task Upload & Commitment" %}</h5>
-          <p class="text-muted">{% trans "Upload your personal or professional goals. Choose how often you want them checked (weekly, biweekly, or monthly)." %}</p>
+          <h5 class="mt-2">{% trans 'Task Upload & Commitment' %}</h5>
+          <p class="text-muted">
+            {% trans 'Upload your personal or professional goals. Choose how often you want them checked (weekly, biweekly, or monthly).' %}
+          </p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
         <div>
           <i class="bi bi-person-lock" style="font-size: 2rem; color:white;"></i>
-          <h5 class="mt-2">{% trans "Admin Verification" %}</h5>
-          <p class="text-muted">{% trans "A human admin reviews your progress based on your uploads. No cheating. No excuses. Just real accountability." %}</p>
+          <h5 class="mt-2">{% trans 'Admin Verification' %}</h5>
+          <p class="text-muted">
+            {% trans 'A human admin reviews your progress based on your uploads. No cheating. No excuses. Just real accountability.' %}
+          </p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
         <div>
           <i class="bi bi-arrow-left-right" style="font-size: 2rem; color:white;"></i>
-          <h5 class="mt-2">{% trans "Progress = Points" %}</h5>
-          <p class="text-muted">{% trans "Each completed task earns you points. Use them to unlock real rewards, personalized for your journey." %}</p>
+          <h5 class="mt-2">{% trans 'Progress = Points' %}</h5>
+          <p class="text-muted">
+            {% trans 'Each completed task earns you points. Use them to unlock real rewards, personalized for your journey.' %}
+          </p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
         <div>
           <i class="bi bi-link-45deg" style="font-size: 2rem; color:white;"></i>
-          <h5 class="mt-2">{% trans "Missed Tasks = Fee" %}</h5>
-          <p class="text-muted">{% trans "Didn’t deliver? At the end of the month, you’ll pay a small fee before you can commit to new tasks. Procrastination has a price." %}</p>
+          <h5 class="mt-2">{% trans 'Missed Tasks = Fee' %}</h5>
+          <p class="text-muted">
+            {% trans 'Didn’t deliver? At the end of the month, you’ll pay a small fee before you can commit to new tasks. Procrastination has a price.' %}
+          </p>
         </div>
       </div>
     </div>
 
     <div class="row text-center mt-4">
       <div class="col">
-        <p class="text-muted mt-2" style="font-size: 0.9rem;">{% trans "This isn’t a productivity app. This is a system to make you show up for yourself." %}</p>
+        <p class="text-muted mt-2" style="font-size: 0.9rem;">
+          {% trans 'This isn’t a productivity app. This is a system to make you show up for yourself.' %}
+        </p>
       </div>
     </div>
   </div>
   <div class="container my-5 py-5 section">
     <div class="row justify-content-center">
       <div class="col-md-10 text-center">
-        <h2 class="mb-4">{% trans "Why It Works" %}</h2>
-        <p class="lead mb-4">{% trans "Real Consequences Create Real Change" %}</p>
-        <p class="mb-3">{% trans "We don’t rely on willpower. We build a system where motivation is optional – because the structure does the work." %}</p>
-        <p class="mb-3">
-          <strong>{% trans "When you tie your goals to effort, feedback, and consequences, you naturally stop waiting for the “perfect moment.” You act – consistently." %}</strong>
+        <h2 class="mb-4">{% trans 'Why It Works' %}</h2>
+        <p class="lead mb-4">
+          {% trans 'Real Consequences Create Real Change' %}
         </p>
-        <p class="text-muted fst-italic mt-4">{% trans '"Discipline is choosing between what you want now and what you want most"' %}</p>
+        <p class="mb-3">
+          {% trans 'We don’t rely on willpower. We build a system where motivation is optional – because the structure does the work.' %}
+        </p>
+        <p class="mb-3">
+          <strong>{% trans 'When you tie your goals to effort, feedback, and consequences, you naturally stop waiting for the “perfect moment.” You act – consistently.' %}</strong>
+        </p>
+        <p class="text-muted fst-italic mt-4">
+          {% trans '"Discipline is choosing between what you want now and what you want most"' %}
+        </p>
       </div>
     </div>
   </div>
   <div class="container my-5 py-5 text-center section" id="end-container">
-    <h2 class="mb-4">{% trans "Join the Defiers" %}</h2>
-    <p class="lead mb-4">{% trans "Start your personal battle against procrastination – and win it, one task at a time." %}</p>
-    <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg px-5 me-3" aria-label="{% trans "Register" %}">
+    <h2 class="mb-4">{% trans 'Join the Defiers' %}</h2>
+    <p class="lead mb-4">
+      {% trans 'Start your personal battle against procrastination – and win it, one task at a time.' %}
+    </p>
+    <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg px-5 me-3" aria-label="{% trans 'Register' %}">
       {% if user.is_authenticated %}
-        {% trans "Register your next task" %}
+        {% trans 'Register your next task' %}
       {% else %}
-        {% trans "Create an Account" %}
+        {% trans 'Create an Account' %}
       {% endif %}
     </a>
-    <p class="text-muted mt-3" style="font-size: 0.9rem;">{% trans "You’ve waited long enough. Let’s make action your new default." %}</p>
+    <p class="text-muted mt-3" style="font-size: 0.9rem;">
+      {% trans 'You’ve waited long enough. Let’s make action your new default.' %}
+    </p>
   </div>
   <!-- Mailchimp Newsletter Form -->
   <div class="container my-5">
     <div class="row justify-content-center">
       <div id="mc_embed_signup" class="section p-4 p-md-5">
-        <h2 class="mb-2 text-center">{% trans "Subscribe to the Newsletter" %}</h2>
-        <p class="text-center">{% trans "New rewards? Discounts? Subscribe and we will keep you up to date" %}</p>
-        <form action="https://gmail.us6.list-manage.com/subscribe/post?u=35aee893da3cd281da4054c8d&amp;id=bf462daf45&amp;f_id=00c419e2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <h2 class="mb-2 text-center">{% trans 'Subscribe to the Newsletter' %}</h2>
+        <p class="text-center">
+          {% trans 'New rewards? Discounts? Subscribe and we will keep you up to date' %}
+        </p>
+        <form action="https://gmail.us6.list-manage.com/subscribe/post?u=35aee893da3cd281da4054c8d&amp;id=920b1151c8&amp;f_id=00cc19e2f0" method="post"  id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
           <div class="m-3">
-            <label for="mce-EMAIL" class="form-label">{% trans "Your E-Mail" %}</label>
-            <input type="email" name="EMAIL" id="mce-EMAIL" class="required email form-control form-control-lg" placeholder="your@mail.com" required />
-          </div>
-
-          <!-- Honeypot -->
-          <div class="visually-hidden" aria-hidden="true">
-            <input type="text" name="b_35aee893da3cd281da4054c8d_bf462daf45" tabindex="-1" value="" />
+            <label for="mce-EMAIL" class="form-label">{% trans 'Your E-Mail' %}</label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required="" value="" class="required email form-control form-control-lg" placeholder="your@mail.com" required />
           </div>
 
           <!-- Mailchimp Responses -->
@@ -130,10 +153,10 @@
           </div>
 
           <div class="d-grid">
-            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary m-auto btn-lg" aria-label="{% trans "Subscribe to Newsletter" %}">{% trans "Subscribe" %}</button>
+            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary m-auto btn-lg" aria-label="{% trans 'Subscribe to Newsletter' %}">{% trans 'Subscribe' %}</button>
           </div>
           <div aria-hidden="true" style="position: absolute; left: -5000px;">
-            /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */<input type="text" name="b_35aee893da3cd281da4054c8d_bf462daf45" tabindex="-1" value="" />
+            /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */<input type="text" name="b_35aee893da3cd281da4054c8d_920b1151c8" tabindex="-1" value="" />
           </div>
         </form>
       </div>
