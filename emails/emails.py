@@ -10,9 +10,9 @@ def send_reward_purchase_email(*, order, reward, history, language=None):
     ctx = {"order": order, "reward": reward, "history": history}
 
     with translation.override(lang):
-        subject = _("Deine Reward-Bestellung")
-        text_body = render_to_string("emails/reward_purchased.txt", ctx)
-        html_body = render_to_string("emails/reward_purchased.html", ctx)
+        subject = _("Your Order Confirmation")
+        text_body = render_to_string("emails/reward_notification.txt", ctx)
+        html_body = render_to_string("emails/reward_notification.html", ctx)
 
     msg = EmailMultiAlternatives(
         subject=subject,
