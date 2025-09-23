@@ -127,12 +127,12 @@ def add_reward(request):
                     return redirect("rewards_list")
             else:
                 form = RewardForm()
-                messages.error(
+                messages.warning(
                     request,
                     _("Failed to add reward. Please correct the errors below.")
                 )
         else:
-            messages.error(
+            messages.warning(
                 request, _("You do not have permission to add rewards.")
             )
             return redirect("rewards_list")
@@ -148,7 +148,7 @@ def delete_reward(request, reward_id):
     reward = get_object_or_404(Reward, id=reward_id)
     if request.method == "POST":
         if not request.user.has_perm('tasks.mark_done'):
-            messages.error(
+            messages.warning(
                 request, _("You do not have permission to delete rewards.")
             )
             return redirect("rewards_list")
@@ -168,7 +168,7 @@ def edit_reward(request, reward_id):
     if request.method == "POST":
         form = RewardForm(request.POST, request.FILES, instance=reward)
         if not request.user.has_perm('tasks.mark_done'):
-            messages.error(
+            messages.warning(
                 request, _("You do not have permission to edit rewards.")
             )
             return redirect("rewards_list")

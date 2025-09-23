@@ -113,7 +113,7 @@ def view_task_details(request, task_id):
                 )
                 return redirect("user_task_overview")
             else:
-                messages.error(
+                messages.warning(
                     request, g_("There was an error with your submission.")
                 )
         elif "done_checkbox" in request.POST:
@@ -148,7 +148,7 @@ def view_task_details(request, task_id):
                 messages.success(request, g_("Task marked as failed."))
                 return redirect("user_task_overview")
             else:
-                messages.error(
+                messages.warning(
                     request,
                     g_("You do not have permission to mark this task as done.")
                     )
@@ -169,7 +169,7 @@ def add_task(request):
     form = TaskForm(request.POST or None)
     if request.method == "POST":
         if not can_add_task(request.user):
-            messages.error(request, g_("You cannot add more tasks."))
+            messages.warning(request, g_("You cannot add more tasks."))
             return redirect("user_task_overview")
 
         if form.is_valid():
@@ -182,11 +182,10 @@ def add_task(request):
             else:
                 return redirect("user_task_overview")
         else:
-            messages.error(
+            messages.warning(
                 request,
                 g_("There was an error with your submission. Please try again.")
             )
-            form = TaskForm()
     context = {
         "form": form,
         'can_add_task': can_add_task(request.user),
@@ -208,7 +207,7 @@ def pay_task_fee(request, task_id):
 
     price_id = settings.STRIPE_FEE_PRICES.get(task.interval)
     if not price_id:
-        messages.error(request, g_("Price ID for this fee is missing."))
+        messages.warning(request, g_("Price ID for this fee is missing."))
         return redirect("user_task_overview")
 
     session = stripe.checkout.Session.create(
@@ -239,7 +238,7 @@ def pay_task_fee_success(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
 
     if not session_id or session_id != task.fee_payment_session_id:
-        messages.error(request, g_("Session could not be verified."))
+        messages.warning(request, g_("Session could not be verified."))
         return redirect('user_task_overview')
 
     session = stripe.checkout.Session.retrieve(session_id)
@@ -282,7 +281,7 @@ def pay_all_fees(request):
     for interval, qty in counts.items():
         price_id = settings.STRIPE_FEE_PRICES.get(interval)
         if not price_id:
-            messages.error(
+            messages.warning(
                 request, f"Price for interval '{interval}' is not configured.")
             return redirect("user_task_overview")
         line_items.append({"price": price_id, "quantity": qty})
@@ -314,7 +313,7 @@ def pay_all_fees_success(request):
     """Handle successful payment for all task fees."""
     session_id = request.GET.get("session_id")
     if not session_id:
-        messages.error(request, "Session is missing.")
+        messages.warning(request, "Session is missing.")
         return redirect("user_task_overview")
 
     session = stripe.checkout.Session.retrieve(session_id)

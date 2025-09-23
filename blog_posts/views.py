@@ -29,7 +29,7 @@ def view_details(request, post_id):
                     )
             return redirect("post_details", post_id=post.id)
         else:
-            messages.error(
+            messages.warning(
                     request, _("Failed to post comment.")
                     )
             return redirect("post_details", post_id=post.id)
@@ -58,7 +58,7 @@ def create_post(request):
             messages.success(request, _("Post created successfully."))
             return redirect("post_details", post_id=post.id)
         else:
-            messages.error(request, _("Failed to create post."))
+            messages.warning(request, _("Failed to create post."))
     else:
         form = PostForm()
 
