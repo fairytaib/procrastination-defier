@@ -1,3 +1,4 @@
+from emails.emails import send_subscription_email
 from .models import Subscription
 from django.db.models import Q
 from django.contrib.auth.models import User
@@ -9,6 +10,8 @@ from .utils import get_current_subscription
 import stripe
 from django.conf import settings
 from django.utils import timezone as dj_timezone
+from django.utils.translation import get_language
+from decimal import Decimal
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -126,7 +129,7 @@ def create_subscription(request):
             'user': user,
             'customer_id': session['customer'],
             'product_name': product['name'],
-            'price': (price.get('unit_amount') or 0) // 100,
+            'price': (price.get('unit_amount') or 0) / Decimal(100),
             'interval': (
                 price.get('recurring') or {}).get('interval', 'month'),
             'tasks_quota': quota,
@@ -134,6 +137,12 @@ def create_subscription(request):
             'end_date': end_dt,
             'cancel_at': cancel_dt,
         }
+    )
+    lang = get_language()
+    send_subscription_email(
+        user=user,
+        subscription=get_current_subscription(user),
+        language=lang
     )
 
     return redirect('/tasks/')
@@ -223,12 +232,15 @@ def _sync_local_from_stripe(sub):
     except (TypeError, ValueError):
         quota = sub.tasks_quota
 
+    old_snapshot = (sub.product_name, sub.price, sub.interval,
+                    sub.tasks_quota, sub.end_date, sub.cancel_at)
+
     sub.product_name = product["name"]
-    sub.price = price["unit_amount"] // 100
+    sub.price = price["unit_amount"] / Decimal(100)
     sub.interval = price["recurring"]["interval"]
     sub.tasks_quota = quota
 
-    # Kündigungsstatus/Periodenende abbilden
+    # Deal with dates
     if s.get("cancel_at_period_end"):
         # Plan endet am Periodenende
         ts_end = s.get("current_period_end")
@@ -241,6 +253,16 @@ def _sync_local_from_stripe(sub):
         sub.cancel_at = None
 
     sub.save()
+
+    new_snapshot = (sub.product_name, sub.price, sub.interval,
+                    sub.tasks_quota, sub.end_date, sub.cancel_at)
+
+    if new_snapshot != old_snapshot:
+        send_subscription_email(
+            user=sub.user,
+            subscription=sub,
+            language=get_language()
+        )
 
 
 def manage_in_stripe(request):
@@ -256,4 +278,5 @@ def manage_in_stripe(request):
         customer=sub.customer_id,
         return_url=settings.DOMAIN + reverse('subscriptions_overview')
     )
+
     return redirect(session.url, code=303)

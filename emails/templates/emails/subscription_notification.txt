@@ -1,0 +1,13 @@
+{% load i18n %}
+{% trans "Thank you for subscribing!" %}
+
+{% trans "You have successfully subscribed to:" %} {{ subscription.product_name }}
+
+{% trans "Subscription details:" %}
+- {% trans "Start date:" %} {{ subscription.start_date|date:"d.m.Y H:i" }}
+
+- {% trans "Price:" %} {{ subscription.price }}€
+
+{% trans "You can manage your subscription anytime in your account settings." %}
+
+{% trans "We are excited to have you with us!" %}

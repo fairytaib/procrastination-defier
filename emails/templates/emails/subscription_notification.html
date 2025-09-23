@@ -1,0 +1,18 @@
+{% load i18n %}
+<h2>{% trans "Welcome and thank you for subscribing!" %}</h2>
+
+<p>{% trans "We confirm your subscription to the plan:" %} 
+   <strong>{{ subscription.product_name }}</strong></p>
+
+<h3>{% trans "Subscription details" %}</h3>
+<ul>
+  <li><strong>{% trans "Start date:" %}</strong> {{ subscription.start_date|date:"d.m.Y H:i" }}</li>
+  {% if subscription.end_date %}
+  <li><strong>{% trans "End date:" %}</strong> {{ subscription.end_date|date:"d.m.Y H:i" }}</li>
+  {% endif %}
+  <li><strong>{% trans "Price:" %}</strong> {{ subscription.price }}€</li>
+</ul>
+
+<hr>
+<p>{% trans "You can manage your subscription anytime in your account settings." %}</p>
+<p>{% trans "We are excited to have you with us!" %}</p>
