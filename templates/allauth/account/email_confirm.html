@@ -33,7 +33,7 @@
             {% else %}
               {% url 'account_email' as email_url %}
               <div class="alert alert-warning" role="alert">
-                {% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a class="alert-link" href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}
+                {% trans "This e-mail confirmation link expired or is invalid. Please" %} <a class="alert-link" href="{{ email_url }}">{% trans 'issue a new e-mail confirmation request' %}</a>.
               </div>
               <div class="text-end">
                 <a href="{{ email_url }}" class="btn btn-primary">{% trans 'Request new confirmation' %}</a>

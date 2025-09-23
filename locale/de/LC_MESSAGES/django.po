@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 11:35+0200\n"
-"PO-Revision-Date: 2025-09-22 11:36+0200\n"
+"POT-Creation-Date: 2025-09-23 18:13+0200\n"
+"PO-Revision-Date: 2025-09-23 18:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -451,25 +451,31 @@ msgstr "Weiter"
 msgid "Last"
 msgstr "Letze"
 
-#: .\checkout\views.py:47
+#: .\checkout\views.py:48
 msgid "This reward is currently out of stock."
 msgstr "Diese Prämie ist derzeit nicht vorrätig."
 
-#: .\checkout\views.py:51
+#: .\checkout\views.py:52
 msgid "You do not have enough points to redeem this reward"
 msgstr "Du hast nicht genügend Punkte, um diese Prämie einzulösen."
 
-#: .\checkout\views.py:73
+#: .\checkout\views.py:74
 msgid "Order placed successfully. We will send it to you shortly."
 msgstr "Bestellung erfolgreich aufgegeben. Wir senden sie dir in Kürze zu."
 
-#: .\checkout\views.py:139
+#: .\checkout\views.py:140
 msgid "Order marked as done."
 msgstr "Auftrag als erledigt markiert."
 
-#: .\emails\emails.py:13
+#: .\emails\emails.py:16
 msgid "Your Order Confirmation"
 msgstr "Deine Bestellbestätigung"
+
+#: .\emails\emails.py:34 .\templates\newsletter_confirmation.html:11
+#, fuzzy
+#| msgid "Subscription Plans"
+msgid "Subscription Confirmation"
+msgstr "Abos"
 
 #: .\emails\templates\emails\reward_notification.html:3
 #: .\emails\templates\emails\reward_notification.txt:3
@@ -478,34 +484,34 @@ msgstr "Deine Bestellbestätigung"
 msgid "Thank you for your order"
 msgstr "Anmelden, um Ihre Prämie zu bestellen"
 
-#: .\emails\templates\emails\reward_notification.html:4
+#: .\emails\templates\emails\reward_notification.html:5
 #: .\emails\templates\emails\reward_notification.txt:5
 #, fuzzy
 #| msgid "You have signed out."
 msgid "You have purchased"
 msgstr "Sie haben sich abgemeldet."
 
-#: .\emails\templates\emails\reward_notification.html:4
+#: .\emails\templates\emails\reward_notification.html:5
 #: .\emails\templates\emails\reward_notification.txt:5
 #, fuzzy
 #| msgid "or"
 msgid "for"
 msgstr "oder"
 
-#: .\emails\templates\emails\reward_notification.html:4
+#: .\emails\templates\emails\reward_notification.html:5
 #: .\emails\templates\emails\reward_notification.txt:5
 #, fuzzy
 #| msgid "points"
 msgid "points."
 msgstr "Punkte"
 
-#: .\emails\templates\emails\reward_notification.html:5
+#: .\emails\templates\emails\reward_notification.html:8
 #, fuzzy
 #| msgid "Ordered at:"
 msgid "Order date: "
 msgstr "Bestellt am:"
 
-#: .\emails\templates\emails\reward_notification.html:7
+#: .\emails\templates\emails\reward_notification.html:12
 #: .\emails\templates\emails\reward_notification.txt:8
 #, fuzzy
 #| msgid "Email address"
@@ -517,6 +523,64 @@ msgstr "E-Mail-Adresse"
 #| msgid "Ordered at:"
 msgid "Order date:"
 msgstr "Bestellt am:"
+
+#: .\emails\templates\emails\subscription_notification.html:2
+msgid "Welcome and thank you for subscribing!"
+msgstr "Willkommen und vielen Dank für deine Anmeldung!"
+
+#: .\emails\templates\emails\subscription_notification.html:4
+msgid "We confirm your subscription to the plan:"
+msgstr "Wir bestätigen deine Anmeldung für das Abo:"
+
+#: .\emails\templates\emails\subscription_notification.html:7
+#, fuzzy
+#| msgid "Subscription Plans"
+msgid "Subscription details"
+msgstr "Abos"
+
+#: .\emails\templates\emails\subscription_notification.html:9
+#: .\emails\templates\emails\subscription_notification.txt:7
+#, fuzzy
+#| msgid "Ordered at:"
+msgid "Start date:"
+msgstr "Bestellt am:"
+
+#: .\emails\templates\emails\subscription_notification.html:11
+#, fuzzy
+#| msgid "Ordered at:"
+msgid "End date:"
+msgstr "Bestellt am:"
+
+#: .\emails\templates\emails\subscription_notification.html:13
+#: .\emails\templates\emails\subscription_notification.txt:9
+msgid "Price:"
+msgstr "Preis:"
+
+#: .\emails\templates\emails\subscription_notification.html:17
+#: .\emails\templates\emails\subscription_notification.txt:11
+msgid "You can manage your subscription anytime in your account settings."
+msgstr "Du kannst dein Abo jederzeit in deinen Accounteinstellungen speichern"
+
+#: .\emails\templates\emails\subscription_notification.html:18
+#: .\emails\templates\emails\subscription_notification.txt:13
+msgid "We are excited to have you with us!"
+msgstr "Wir freuen uns, Dich bei uns zu haben!"
+
+#: .\emails\templates\emails\subscription_notification.txt:2
+#, fuzzy
+#| msgid "Change your Subscription"
+msgid "Thank you for subscribing!"
+msgstr "Ändern dein Abonnement"
+
+#: .\emails\templates\emails\subscription_notification.txt:4
+msgid "You have successfully subscribed to:"
+msgstr "Du hast dich erfolgreich angemeldet für:"
+
+#: .\emails\templates\emails\subscription_notification.txt:6
+#, fuzzy
+#| msgid "Subscription Plans"
+msgid "Subscription details:"
+msgstr "Abos"
 
 #: .\profiles\forms.py:17
 #: .\profiles\templates\profiles\view_user_profile.html:53
@@ -928,7 +992,7 @@ msgstr "Kernfunktionen"
 
 #: .\subscription\templates\subscription\subscription.html:47
 #: .\subscription\templates\subscription\subscription.html:81
-#: .\templates\home.html:134
+#: .\templates\home.html:157
 msgid "Subscribe"
 msgstr "Abonnieren"
 
@@ -1593,10 +1657,12 @@ msgid "Use a different e-mail"
 msgstr "Verwende eine andere E-Mail-Adresse"
 
 #: .\templates\allauth\account\email_confirm.html:36
-#, python-format
-msgid ""
-"This e-mail confirmation link expired or is invalid. Please <a class=\"alert-"
-"link\" href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgid "This e-mail confirmation link expired or is invalid. Please"
+msgstr ""
+"Dieser Bestätigungslink in der E-Mail ist abgelaufen oder ungültig. Bitte"
+
+#: .\templates\allauth\account\email_confirm.html:36
+msgid "issue a new e-mail confirmation request"
 msgstr ""
 
 #: .\templates\allauth\account\email_confirm.html:39
@@ -1637,29 +1703,32 @@ msgid "Are you sure you want to sign out?"
 msgstr "Möchten Sie sich wirklich abmelden?"
 
 #: .\templates\allauth\account\messages\cannot_delete_primary_email.txt:2
-#, python-format
-msgid "You cannot remove your primary e-mail address (%(email)s)."
-msgstr ""
+#, fuzzy
+#| msgid "Your primary e-mail address must be verified."
+msgid "You cannot remove your primary e-mail address"
+msgstr "Deine primäre E-Mail-Adresse muss verifiziert werden."
 
 #: .\templates\allauth\account\messages\email_confirmation_sent.txt:2
-#, python-format
-msgid "Confirmation e-mail sent to %(email)s."
-msgstr ""
+#, fuzzy
+#| msgid "Confirm E-mail Address"
+msgid "Confirmation e-mail sent to"
+msgstr "E-Mail-Adresse bestätigen"
 
 #: .\templates\allauth\account\messages\email_confirmed.txt:2
-#, python-format
-msgid "You have confirmed %(email)s."
-msgstr ""
+#, fuzzy
+#| msgid "You have signed out."
+msgid "You have confirmed"
+msgstr "Sie haben sich abgemeldet."
 
 #: .\templates\allauth\account\messages\email_deleted.txt:2
-#, python-format
-msgid "Removed e-mail address %(email)s."
-msgstr ""
+#, fuzzy
+#| msgid "Add E-mail Address"
+msgid "Removed e-mail address"
+msgstr "E-Mail-Adresse hinzufügen"
 
 #: .\templates\allauth\account\messages\logged_in.txt:4
-#, python-format
-msgid "Successfully signed in as %(name)s."
-msgstr ""
+msgid "Successfully signed in as"
+msgstr "Erfolgreich angemeldet als"
 
 #: .\templates\allauth\account\messages\logged_out.txt:2
 msgid "You have signed out."
@@ -1730,11 +1799,9 @@ msgid "Bad Token"
 msgstr "Ungültiger Token"
 
 #: .\templates\allauth\account\password_reset_from_key.html:28
-#, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
-"used. Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
-"a>."
+"used. Please request a"
 msgstr ""
 
 #: .\templates\allauth\account\password_reset_from_key.html:35
@@ -1763,10 +1830,8 @@ msgid "Create account"
 msgstr "Konto erstellen"
 
 #: .\templates\allauth\account\signup.html:41
-#, python-format
-msgid ""
-"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
-msgstr ""
+msgid "Already have an account? Then please"
+msgstr "Habst du bereits ein Konto? Dann bitte"
 
 #: .\templates\allauth\account\signup_closed.html:5
 #: .\templates\allauth\account\signup_closed.html:8
@@ -1778,12 +1843,12 @@ msgid "We are sorry, but the sign up is currently closed."
 msgstr "Es tut uns leid, aber die Anmeldung ist derzeit geschlossen."
 
 #: .\templates\allauth\account\snippets\already_logged_in.html:5
+#: .\templates\allauth\account\verified_email_required.html:20
 msgid "Note"
 msgstr "Hinweis"
 
 #: .\templates\allauth\account\snippets\already_logged_in.html:5
-#, python-format
-msgid "you are already logged in as %(user_display)s."
+msgid "you are already logged in as"
 msgstr ""
 
 #: .\templates\allauth\account\verification_sent.html:5
@@ -1842,10 +1907,7 @@ msgstr ""
 "kontaktiere uns, wenn du sie nicht innerhalb weniger Minuten erhalten hast."
 
 #: .\templates\allauth\account\verified_email_required.html:20
-#, python-format
-msgid ""
-"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
-"mail address</a>."
+msgid "you can still"
 msgstr ""
 
 #: .\templates\allauth\openid\login.html:9
@@ -1937,7 +1999,7 @@ msgstr ""
 
 #: .\templates\allauth\socialaccount\signup.html:5
 msgid "Signup"
-msgstr ""
+msgstr "Anmelden"
 
 #: .\templates\allauth\socialaccount\signup.html:10
 #, python-format
@@ -1989,7 +2051,7 @@ msgstr "Logo"
 #: .\templates\base.html:134 .\templates\base.html:151
 #, python-format
 msgid "Points %(points)s"
-msgstr ""
+msgstr "Punkte %(points)s"
 
 #: .\templates\base.html:136 .\templates\base.html:145
 msgid "View Account"
@@ -2004,7 +2066,7 @@ msgstr "Konto"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: .\templates\base.html:157 .\templates\home.html:25 .\templates\home.html:101
+#: .\templates\base.html:157 .\templates\home.html:25 .\templates\home.html:125
 msgid "Register"
 msgstr "Registrieren"
 
@@ -2223,7 +2285,7 @@ msgstr "Deine Aufgaben anzeigen"
 msgid "Start Your Journey"
 msgstr "Beginne deine Reise"
 
-#: .\templates\home.html:32
+#: .\templates\home.html:33
 msgid ""
 "Procrastination Defier is your accountability partner in digital form. You "
 "commit to real tasks – we make sure you follow through."
@@ -2232,7 +2294,7 @@ msgstr ""
 "zieht. Du verpflichtest dich zu konkreten Aufgaben – wir sorgen dafür, dass "
 "du diese auch umsetzen."
 
-#: .\templates\home.html:33
+#: .\templates\home.html:36
 msgid ""
 "Upload your tasks, choose your check-in rhythm (weekly, biweekly, or "
 "monthly), and let the system challenge your consistency. If you succeed, you "
@@ -2243,11 +2305,11 @@ msgstr ""
 "die Probe stellen. Wenn du erfolgreich bist, erhältst du Punkte. Wenn du "
 "scheiterst, kostet es dich etwas. Im wahrsten Sinne des Wortes."
 
-#: .\templates\home.html:43
+#: .\templates\home.html:47
 msgid "How It Works"
 msgstr "So funktioniert es"
 
-#: .\templates\home.html:44
+#: .\templates\home.html:49
 msgid ""
 "A simple yet powerful structure designed to make procrastination expensive – "
 "and action rewarding."
@@ -2255,11 +2317,11 @@ msgstr ""
 "Eine einfache, aber wirkungsvolle Struktur, die darauf ausgelegt ist, "
 "Prokrastination teuer zu machen – und Handeln lohnenswert."
 
-#: .\templates\home.html:52
+#: .\templates\home.html:58
 msgid "Task Upload & Commitment"
 msgstr "Aufgabe hochladen und Verpflichtung"
 
-#: .\templates\home.html:53
+#: .\templates\home.html:60
 msgid ""
 "Upload your personal or professional goals. Choose how often you want them "
 "checked (weekly, biweekly, or monthly)."
@@ -2267,11 +2329,11 @@ msgstr ""
 "Lade deine persönlichen oder beruflichen Ziele hoch. Wähle aus, wie oft "
 "diese überprüft werden sollen (wöchentlich, zweiwöchentlich oder monatlich)."
 
-#: .\templates\home.html:59
+#: .\templates\home.html:67
 msgid "Admin Verification"
 msgstr "Administratorüberprüfung"
 
-#: .\templates\home.html:60
+#: .\templates\home.html:69
 msgid ""
 "A human admin reviews your progress based on your uploads. No cheating. No "
 "excuses. Just real accountability."
@@ -2279,11 +2341,11 @@ msgstr ""
 "Ein menschlicher Administrator überprüft deine Fortschritt anhand deiner "
 "Uploads. Kein Schummeln. Keine Ausreden. Nur echte Verantwortlichkeit."
 
-#: .\templates\home.html:66
+#: .\templates\home.html:76
 msgid "Progress = Points"
 msgstr "Fortschritt = Punkte"
 
-#: .\templates\home.html:67
+#: .\templates\home.html:78
 msgid ""
 "Each completed task earns you points. Use them to unlock real rewards, "
 "personalized for your journey."
@@ -2292,11 +2354,11 @@ msgstr ""
 "kannst du echte Belohnungen freischalten, die individuell auf deine Reise "
 "zugeschnitten sind."
 
-#: .\templates\home.html:73
+#: .\templates\home.html:85
 msgid "Missed Tasks = Fee"
 msgstr "Versäumte Aufgaben = Gebühr"
 
-#: .\templates\home.html:74
+#: .\templates\home.html:87
 msgid ""
 "Didn’t deliver? At the end of the month, you’ll pay a small fee before you "
 "can commit to new tasks. Procrastination has a price."
@@ -2304,7 +2366,7 @@ msgstr ""
 "Nicht geliefert? Am Ende des Monats zahlst du eine geringe Gebühr, bevor du "
 "neue Aufgaben eintragen kannst. Aufschieben hat seinen Preis."
 
-#: .\templates\home.html:81
+#: .\templates\home.html:96
 msgid ""
 "This isn’t a productivity app. This is a system to make you show up for "
 "yourself."
@@ -2312,15 +2374,15 @@ msgstr ""
 "Dies ist keine Produktivitäts-App. Es handelt sich um ein System, das dir "
 "dabei hilft, für sich selbst einzustehen."
 
-#: .\templates\home.html:88
+#: .\templates\home.html:104
 msgid "Why It Works"
 msgstr "Warum es funktioniert"
 
-#: .\templates\home.html:89
+#: .\templates\home.html:106
 msgid "Real Consequences Create Real Change"
 msgstr "Echte Konsequenzen bewirken echte Veränderungen"
 
-#: .\templates\home.html:90
+#: .\templates\home.html:109
 msgid ""
 "We don’t rely on willpower. We build a system where motivation is optional – "
 "because the structure does the work."
@@ -2328,7 +2390,7 @@ msgstr ""
 "Wir verlassen uns nicht auf Willenskraft. Wir bauen ein System auf, in dem "
 "Motivation optional ist – weil die Struktur die Arbeit erledigt."
 
-#: .\templates\home.html:92
+#: .\templates\home.html:112
 msgid ""
 "When you tie your goals to effort, feedback, and consequences, you naturally "
 "stop waiting for the “perfect moment.” You act – consistently."
@@ -2337,18 +2399,18 @@ msgstr ""
 "hören Sie ganz natürlich auf, auf den „perfekten Moment“ zu warten. Sie "
 "handeln – konsequent."
 
-#: .\templates\home.html:94
+#: .\templates\home.html:115
 msgid ""
 "\"Discipline is choosing between what you want now and what you want most\""
 msgstr ""
 "„Disziplin bedeutet, zwischen dem, was man jetzt will, und dem, was man am "
 "meisten will, zu wählen.“"
 
-#: .\templates\home.html:99
+#: .\templates\home.html:121
 msgid "Join the Defiers"
 msgstr "Schließen dich den Defiers an"
 
-#: .\templates\home.html:100
+#: .\templates\home.html:123
 msgid ""
 "Start your personal battle against procrastination – and win it, one task at "
 "a time."
@@ -2356,35 +2418,35 @@ msgstr ""
 "Beginne deinen persönlichen Kampf gegen die Prokrastination – und gewinnen "
 "ihn, eine Aufgabe nach der anderen."
 
-#: .\templates\home.html:103
+#: .\templates\home.html:127
 msgid "Register your next task"
 msgstr "Registrieren deine nächste Aufgabe"
 
-#: .\templates\home.html:105
+#: .\templates\home.html:129
 msgid "Create an Account"
 msgstr "Konto erstellen"
 
-#: .\templates\home.html:108
+#: .\templates\home.html:133
 msgid "You’ve waited long enough. Let’s make action your new default."
 msgstr ""
 "Du hast lange genug gewartet. Lass uns das Handeln zu deiner neuen "
 "Standardhaltung machen."
 
-#: .\templates\home.html:114
+#: .\templates\home.html:140
 msgid "Subscribe to the Newsletter"
 msgstr "Newsletter abonnieren"
 
-#: .\templates\home.html:115
+#: .\templates\home.html:142
 msgid "New rewards? Discounts? Subscribe and we will keep you up to date"
 msgstr ""
 "Neue Prämien? Rabatte? Abonniere unseren Newsletter und wir halten dich auf "
 "dem Laufenden."
 
-#: .\templates\home.html:118
+#: .\templates\home.html:146
 msgid "Your E-Mail"
 msgstr "Deine E-Mail"
 
-#: .\templates\home.html:134
+#: .\templates\home.html:157
 msgid "Subscribe to Newsletter"
 msgstr "Newsletter abonnieren"
 
@@ -2432,6 +2494,22 @@ msgstr "Alle Originalinhalte sind durch das deutsche Urheberrecht geschützt."
 #: .\templates\legal_notice.html:54
 msgid "Last updated: September 2025"
 msgstr "Letzte Aktualisierung: September 2025"
+
+#: .\templates\newsletter_confirmation.html:5
+#, fuzzy
+#| msgid "Your Order Confirmation"
+msgid "Newsletter Confirmation"
+msgstr "Deine Bestellbestätigung"
+
+#: .\templates\newsletter_confirmation.html:13
+#, fuzzy
+#| msgid "Login to order your reward"
+msgid "Thank you for subscribing to our newsletter!"
+msgstr "Anmelden, um Ihre Prämie zu bestellen"
+
+#: .\templates\newsletter_confirmation.html:15
+msgid "Return to Home"
+msgstr "Zurück zur Startseite"
 
 #: .\templates\privacy_policy.html:13
 msgid "Last updated: August 08, 2025"
@@ -2587,7 +2665,7 @@ msgstr "Verwaltet von: Uns"
 
 #: .\templates\privacy_policy.html:156
 msgid "Cookies Policy / Notice Acceptance Cookies"
-msgstr ""
+msgstr "Cookie-Richtlinie / Hinweis zur Annahme von Cookies"
 
 #: .\templates\privacy_policy.html:157 .\templates\privacy_policy.html:163
 msgid "Type: Persistent Cookies"
@@ -2622,6 +2700,7 @@ msgstr "Verwendung Ihrer personenbezogenen Daten"
 #: .\templates\privacy_policy.html:172
 msgid "The Company may use Personal Data for the following purposes:"
 msgstr ""
+"Das Unternehmen kann personenbezogene Daten für folgende Zwecke verwenden:"
 
 #: .\templates\privacy_policy.html:175
 msgid "To provide and maintain our Service"
