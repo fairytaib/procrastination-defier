@@ -26,10 +26,6 @@
     transition: box-shadow .2s ease, transform .15s ease;
 }
 
-.card:hover {
-    transform: translateY(-1px);
-}
-
 .ratio img {
     object-fit: cover;
     transition: transform .6s ease;
