@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-24 10:40+0200\n"
-"PO-Revision-Date: 2025-09-24 10:41+0200\n"
+"POT-Creation-Date: 2025-09-24 13:48+0200\n"
+"PO-Revision-Date: 2025-09-24 14:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -224,7 +224,7 @@ msgid "Postal Code"
 msgstr "Postleitzahl"
 
 #: .\checkout\forms.py:42 .\checkout\templates\checkout\order_details.html:134
-#: .\templates\privacy_policy.html:44
+#: .\templates\privacy_policy.html:55
 msgid "Country"
 msgstr "Land"
 
@@ -854,7 +854,7 @@ msgstr "Prämie einlösen"
 msgid "Delete Reward?"
 msgstr "Prämie einlösen"
 
-#: .\rewards\views.py:15
+#: .\rewards\views.py:15 .\templates\legal_notice.html:32
 msgid "Germany"
 msgstr "Deutschland"
 
@@ -2050,7 +2050,7 @@ msgid "View Account"
 msgstr "Konto anzeigen"
 
 #: .\templates\base.html:136 .\templates\base.html:145
-#: .\templates\privacy_policy.html:27
+#: .\templates\privacy_policy.html:35
 msgid "Account"
 msgstr "Konto"
 
@@ -2446,52 +2446,56 @@ msgstr "Newsletter abonnieren"
 msgid "Information according to § 5 TMG:"
 msgstr "Informationen gemäß § 5 TMG:"
 
-#: .\templates\legal_notice.html:31
+#: .\templates\legal_notice.html:24
+msgid "Owner: Max Mustermann"
+msgstr "Eigentümer: Max Mustermann"
+
+#: .\templates\legal_notice.html:36
 msgid "Contact:"
 msgstr "Kontakt:"
 
-#: .\templates\legal_notice.html:34
+#: .\templates\legal_notice.html:39
 msgid "Phone: +49 (0)123 4567890"
 msgstr "Telefon: +49 (0)123 4567890"
 
-#: .\templates\legal_notice.html:35
+#: .\templates\legal_notice.html:40
 msgid "Email: info@proc-def.com"
 msgstr "Email: info@proc-def.com"
 
-#: .\templates\legal_notice.html:39
+#: .\templates\legal_notice.html:44
 msgid "Responsible for content according to § 55 Abs. 2 RStV:"
 msgstr "Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV:"
 
-#: .\templates\legal_notice.html:47
+#: .\templates\legal_notice.html:52
 msgid "Liability for Content"
 msgstr "Haftung für Inhalte"
 
-#: .\templates\legal_notice.html:48
+#: .\templates\legal_notice.html:53
 msgid ""
 "We strive for accurate and timely content but cannot guarantee it fully."
 msgstr ""
 "Wir bemühen uns um genaue und aktuelle Inhalte, können dies jedoch nicht "
 "vollständig garantieren."
 
-#: .\templates\legal_notice.html:50
+#: .\templates\legal_notice.html:55
 msgid "Liability for Links"
 msgstr "Haftung für Links"
 
-#: .\templates\legal_notice.html:51
+#: .\templates\legal_notice.html:56
 msgid "We are not responsible for external content linked on this site."
 msgstr ""
 "Wir sind nicht verantwortlich für externe Inhalte, die auf dieser Website "
 "verlinkt sind."
 
-#: .\templates\legal_notice.html:53
+#: .\templates\legal_notice.html:58
 msgid "Copyright"
 msgstr "Urheberrecht"
 
-#: .\templates\legal_notice.html:54
+#: .\templates\legal_notice.html:59
 msgid "All original content is protected under German copyright law."
 msgstr "Alle Originalinhalte sind durch das deutsche Urheberrecht geschützt."
 
-#: .\templates\legal_notice.html:56
+#: .\templates\legal_notice.html:61
 msgid "Last updated: September 2025"
 msgstr "Letzte Aktualisierung: September 2025"
 
@@ -2511,167 +2515,457 @@ msgstr "Anmelden, um Ihre Prämie zu bestellen"
 msgid "Return to Home"
 msgstr "Zurück zur Startseite"
 
-#: .\templates\privacy_policy.html:13
+#: .\templates\privacy_policy.html:14
 msgid "Last updated: August 08, 2025"
 msgstr "Zuletzt aktualisiert: 08. August 2025"
 
-#: .\templates\privacy_policy.html:18
+#: .\templates\privacy_policy.html:17
+msgid ""
+"This Privacy Policy describes Our policies and procedures on the collection, "
+"use and disclosure of Your information when You use the Service and tells "
+"You about Your privacy rights and how the law protects You."
+msgstr ""
+"Diese Datenschutzerklärung beschreibt unsere Richtlinien und Verfahren zur "
+"Erfassung, Verwendung und Weitergabe Ihrer Daten, wenn Sie den Dienst "
+"nutzen, und informiert Sie über Ihre Datenschutzrechte und wie Sie "
+"gesetzlich geschützt sind."
+
+#: .\templates\privacy_policy.html:20
+msgid ""
+"We use Your Personal data to provide and improve the Service. By using the "
+"Service, You agree to the collection and use of information in accordance "
+"with this Privacy Policy. This Privacy Policy has been created with the help "
+"of the"
+msgstr ""
+"Wir verwenden Ihre personenbezogenen Daten, um den Dienst bereitzustellen "
+"und zu verbessern. Durch die Nutzung des Dienstes stimmen Sie der Erfassung "
+"und Verwendung von Informationen gemäß dieser Datenschutzrichtlinie zu. "
+"Diese Datenschutzrichtlinie wurde mit Hilfe von"
+
+#: .\templates\privacy_policy.html:22
 msgid "Privacy Policy Generator"
 msgstr "Datenschutzerklärung Generator"
 
-#: .\templates\privacy_policy.html:19
+#: .\templates\privacy_policy.html:23
 msgid "Interpretation and Definitions"
 msgstr "Auslegung und Definitionen"
 
-#: .\templates\privacy_policy.html:20
+#: .\templates\privacy_policy.html:24
 msgid "Interpretation"
 msgstr "Auslegung"
 
-#: .\templates\privacy_policy.html:23
+#: .\templates\privacy_policy.html:26
+msgid ""
+"The words of which the initial letter is capitalized have meanings defined "
+"under the following conditions. The following definitions shall have the "
+"same meaning regardless of whether they appear in singular or in plural."
+msgstr ""
+"Die Wörter, deren Anfangsbuchstabe großgeschrieben ist, haben Bedeutungen, "
+"die unter den folgenden Bedingungen definiert sind. Die folgenden "
+"Definitionen haben dieselbe Bedeutung, unabhängig davon, ob sie im Singular "
+"oder im Plural erscheinen."
+
+#: .\templates\privacy_policy.html:28
 msgid "Definitions"
 msgstr "Definitionen"
 
-#: .\templates\privacy_policy.html:24
+#: .\templates\privacy_policy.html:30
 msgid "For the purposes of this Privacy Policy:"
 msgstr "Für die Zwecke dieser Datenschutzerklärung:"
 
-#: .\templates\privacy_policy.html:31
+#: .\templates\privacy_policy.html:35
+msgid ""
+"means a unique account created for You to access our Service or parts of our "
+"Service."
+msgstr ""
+"bezeichnet ein einzigartiges Konto, das für Sie erstellt wurde, damit Sie "
+"auf unseren Dienst oder Teile unseres Dienstes zugreifen können."
+
+#: .\templates\privacy_policy.html:40
 msgid "Affiliate"
 msgstr "Partner"
 
-#: .\templates\privacy_policy.html:36
+#: .\templates\privacy_policy.html:40
+#, python-format
+msgid ""
+"means an entity that controls, is controlled by or is under common control "
+"with a party, where &quot;control&quot; means ownership of 50%% or more of "
+"the shares, equity interest or other securities entitled to vote for "
+"election of directors or other managing authority."
+msgstr ""
+"bezeichnet ein Unternehmen, das eine Partei kontrolliert, von einer Partei "
+"kontrolliert wird oder unter gemeinsamer Kontrolle mit einer Partei steht, "
+"wobei „Kontrolle“ den Besitz von 50 %% oder mehr der Aktien, Kapitalanteile "
+"oder sonstigen Wertpapiere bedeutet, die zur Wahl von Direktoren oder "
+"anderen Führungskräften berechtigen."
+
+#: .\templates\privacy_policy.html:45
 msgid "Company"
 msgstr "Unternehmen"
 
-#: .\templates\privacy_policy.html:40
+#: .\templates\privacy_policy.html:45
+msgid ""
+" (referred to as either &quot;the Company&quot;, &quot;We&quot;, "
+"&quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to "
+"Procrastination Defier, Weg 1."
+msgstr ""
+" (in dieser Vereinbarung entweder als „das Unternehmen“, „wir“, „uns“ oder "
+"„unser“ bezeichnet) bezieht sich auf Procrastination Defier, Weg 1."
+
+#: .\templates\privacy_policy.html:50
 msgid "Cookies"
 msgstr "Cookies"
 
-#: .\templates\privacy_policy.html:44
+#: .\templates\privacy_policy.html:50
+msgid ""
+"are small files that are placed on Your computer, mobile device or any other "
+"device by a website, containing the details of Your browsing history on that "
+"website among its many uses."
+msgstr ""
+"sind kleine Dateien, die von einer Website auf Ihrem Computer, Mobilgerät "
+"oder einem anderen Gerät abgelegt werden und unter anderem die Details Ihres "
+"Browserverlaufs auf dieser Website enthalten."
+
+#: .\templates\privacy_policy.html:55
 msgid "refers to: Nordrhein-Westfalen, Germany"
 msgstr "bezieht sich auf: Nordrhein-Westfalen, Deutschland"
 
-#: .\templates\privacy_policy.html:47
+#: .\templates\privacy_policy.html:60
 msgid "Device"
 msgstr "Gerät"
 
-#: .\templates\privacy_policy.html:51 .\templates\privacy_policy.html:81
+#: .\templates\privacy_policy.html:60
+msgid ""
+"means any device that can access the Service such as a computer, a cellphone "
+"or a digital tablet."
+msgstr ""
+"bezeichnet jedes Gerät, mit dem auf den Dienst zugegriffen werden kann, wie "
+"beispielsweise ein Computer, ein Mobiltelefon oder ein digitales Tablet."
+
+#: .\templates\privacy_policy.html:65 .\templates\privacy_policy.html:101
 msgid "Personal Data"
 msgstr "Personenbezogene Daten"
 
-#: .\templates\privacy_policy.html:51
+#: .\templates\privacy_policy.html:65
 msgid ""
 "is any information that relates to an identified or identifiable individual."
 msgstr ""
 "sind alle Informationen, die sich auf eine identifizierte oder "
 "identifizierbare Person beziehen."
 
-#: .\templates\privacy_policy.html:54
+#: .\templates\privacy_policy.html:70
 msgid "Service"
 msgstr "Dienstleistung"
 
-#: .\templates\privacy_policy.html:54
+#: .\templates\privacy_policy.html:70
 msgid "refers to the Website."
 msgstr "bezieht sich auf die Website."
 
-#: .\templates\privacy_policy.html:57
+#: .\templates\privacy_policy.html:75
 msgid "Service Provider"
 msgstr "Dienstleister"
 
-#: .\templates\privacy_policy.html:63
+#: .\templates\privacy_policy.html:75
+msgid ""
+"means any natural or legal person who processes the data on behalf of the "
+"Company. It refers to third-party companies or individuals employed by the "
+"Company to facilitate the Service, to provide the Service on behalf of the "
+"Company, to perform services related to the Service or to assist the Company "
+"in analyzing how the Service is used."
+msgstr ""
+"bezeichnet jede natürliche oder juristische Person, die die Daten im Auftrag "
+"des Unternehmens verarbeitet. Dies bezieht sich auf Drittunternehmen oder "
+"Personen, die vom Unternehmen beauftragt wurden, um den Dienst zu "
+"erleichtern, den Dienst im Auftrag des Unternehmens bereitzustellen, "
+"Dienstleistungen im Zusammenhang mit dem Dienst zu erbringen oder das "
+"Unternehmen bei der Analyse der Nutzung des Dienstes zu unterstützen."
+
+#: .\templates\privacy_policy.html:80
 msgid "Third-party Social Media Service"
 msgstr "Drittanbieter von Social-Media-Diensten"
 
-#: .\templates\privacy_policy.html:67 .\templates\privacy_policy.html:95
-#: .\templates\privacy_policy.html:98
+#: .\templates\privacy_policy.html:80
+msgid ""
+"refers to any website or any social network website through which a User can "
+"log in or create an account to use the Service."
+msgstr ""
+"bezieht sich auf jede Website oder jede Website eines sozialen Netzwerks, "
+"über die sich ein Nutzer anmelden oder ein Konto erstellen kann, um den "
+"Dienst zu nutzen."
+
+#: .\templates\privacy_policy.html:85 .\templates\privacy_policy.html:123
+#: .\templates\privacy_policy.html:127
 msgid "Usage Data"
 msgstr "Datennutzung"
 
-#: .\templates\privacy_policy.html:71
+#: .\templates\privacy_policy.html:85
+msgid ""
+"refers to data collected automatically, either generated by the use of the "
+"Service or from the Service infrastructure itself (for example, the duration "
+"of a page visit)."
+msgstr ""
+"bezieht sich auf Daten, die automatisch erfasst werden, entweder durch die "
+"Nutzung des Dienstes oder durch die Infrastruktur des Dienstes selbst (z. B. "
+"die Dauer eines Seitenbesuchs)."
+
+#: .\templates\privacy_policy.html:90
 msgid "Website"
 msgstr "Website"
 
-#: .\templates\privacy_policy.html:71
+#: .\templates\privacy_policy.html:90
 msgid "refers to Procrastination Defier, accessible from"
 msgstr "bezieht sich auf Procrastination Defier, zugänglich unter"
 
-#: .\templates\privacy_policy.html:75
+#: .\templates\privacy_policy.html:95
 msgid "You"
 msgstr "Sie"
 
-#: .\templates\privacy_policy.html:79
+#: .\templates\privacy_policy.html:95
+msgid ""
+"means the individual accessing or using the Service, or the company, or "
+"other legal entity on behalf of which such individual is accessing or using "
+"the Service, as applicable."
+msgstr ""
+"bezeichnet die Person, die auf den Dienst zugreift oder ihn nutzt, oder das "
+"Unternehmen oder eine andere juristische Person, in deren Namen diese Person "
+"auf den Dienst zugreift oder ihn nutzt, je nach Fall."
+
+#: .\templates\privacy_policy.html:99
 msgid "Collecting and Using Your Personal Data"
 msgstr "Erhebung und Verwendung Ihrer personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:80
+#: .\templates\privacy_policy.html:100
 msgid "Types of Data Collected"
 msgstr "Arten der erhobenen Daten"
 
-#: .\templates\privacy_policy.html:86
+#: .\templates\privacy_policy.html:103
+msgid ""
+"While using Our Service, We may ask You to provide Us with certain "
+"personally identifiable information that can be used to contact or identify "
+"You. Personally identifiable information may include, but is not limited to:"
+msgstr ""
+"Während der Nutzung unseres Dienstes bitten wir Sie möglicherweise um die "
+"Angabe bestimmter personenbezogener Daten, die zur Kontaktaufnahme mit Ihnen "
+"oder zu Ihrer Identifizierung verwendet werden können. Zu den "
+"personenbezogenen Daten zählen unter anderem:"
+
+#: .\templates\privacy_policy.html:108
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: .\templates\privacy_policy.html:89
+#: .\templates\privacy_policy.html:113
 msgid "First name and last name"
 msgstr "Vorname und Nachname"
 
-#: .\templates\privacy_policy.html:92
+#: .\templates\privacy_policy.html:118
 msgid "Address, State, Province, ZIP/Postal code, City"
 msgstr "Adresse, Bundesland, Provinz, Postleitzahl, Ort"
 
-#: .\templates\privacy_policy.html:99
+#: .\templates\privacy_policy.html:129
 msgid "Usage Data is collected automatically when using the Service."
 msgstr "Nutzungsdaten werden bei der Nutzung des Dienstes automatisch erfasst."
 
-#: .\templates\privacy_policy.html:109
+#: .\templates\privacy_policy.html:132
+msgid ""
+"Usage Data may include information such as Your Device's Internet Protocol "
+"address (e.g. IP address), browser type, browser version, the pages of our "
+"Service that You visit, the time and date of Your visit, the time spent on "
+"those pages, unique device identifiers and other diagnostic data."
+msgstr ""
+"Nutzungsdaten können Informationen wie die Internetprotokolladresse Ihres "
+"Geräts (z. B. IP-Adresse), den Browsertyp, die Browserversion, die von Ihnen "
+"besuchten Seiten unseres Dienstes, die Uhrzeit und das Datum Ihres Besuchs, "
+"die auf diesen Seiten verbrachte Zeit, eindeutige Gerätekennungen und andere "
+"Diagnosedaten umfassen."
+
+#: .\templates\privacy_policy.html:135
+msgid ""
+"When You access the Service by or through a mobile device, We may collect "
+"certain information automatically, including, but not limited to, the type "
+"of mobile device You use, Your mobile device unique ID, the IP address of "
+"Your mobile device, Your mobile operating system, the type of mobile "
+"Internet browser You use, unique device identifiers and other diagnostic "
+"data."
+msgstr ""
+"Wenn Sie über ein mobiles Gerät auf den Dienst zugreifen, erfassen wir "
+"möglicherweise automatisch bestimmte Informationen, darunter unter anderem "
+"den Typ des von Ihnen verwendeten mobilen Geräts, die eindeutige ID Ihres "
+"mobilen Geräts, die IP-Adresse Ihres mobilen Geräts, Ihr mobiles "
+"Betriebssystem, den Typ des von Ihnen verwendeten mobilen Internetbrowsers, "
+"eindeutige Gerätekennungen und andere Diagnosedaten."
+
+#: .\templates\privacy_policy.html:138
+msgid ""
+"We may also collect information that Your browser sends whenever You visit "
+"our Service or when You access the Service by or through a mobile device."
+msgstr ""
+"Wir können auch Informationen erfassen, die Ihr Browser sendet, wenn Sie "
+"unseren Dienst besuchen oder wenn Sie über ein mobiles Gerät auf den Dienst "
+"zugreifen."
+
+#: .\templates\privacy_policy.html:140
 msgid "Information from Third-Party Social Media Services"
 msgstr "Informationen von sozialen Medien von Drittanbietern"
 
-#: .\templates\privacy_policy.html:125
+#: .\templates\privacy_policy.html:142
+msgid ""
+"The Company allows You to create an account and log in to use the Service "
+"through the following Third-party Social Media Services:"
+msgstr ""
+"Das Unternehmen ermöglicht Ihnen, ein Konto zu erstellen und sich über die "
+"folgenden sozialen Medien von Drittanbietern anzumelden, um den Dienst zu "
+"nutzen:"
+
+#: .\templates\privacy_policy.html:152
+msgid ""
+"If You decide to register through or otherwise grant us access to a Third-"
+"Party Social Media Service, We may collect Personal data that is already "
+"associated with Your Third-Party Social Media Service's account, such as "
+"Your name, Your email address, Your activities or Your contact list "
+"associated with that account."
+msgstr ""
+"Wenn Sie sich entscheiden, sich über einen Social-Media-Dienst eines "
+"Drittanbieters zu registrieren oder uns anderweitig Zugriff darauf zu "
+"gewähren, können wir personenbezogene Daten erfassen, die bereits mit Ihrem "
+"Konto bei diesem Social-Media-Dienst eines Drittanbieters verknüpft sind, "
+"wie beispielsweise Ihren Namen, Ihre E-Mail-Adresse, Ihre Aktivitäten oder "
+"Ihre Kontaktliste, die mit diesem Konto verknüpft ist."
+
+#: .\templates\privacy_policy.html:155
+msgid ""
+"You may also have the option of sharing additional information with the "
+"Company through Your Third-Party Social Media Service's account. If You "
+"choose to provide such information and Personal Data, during registration or "
+"otherwise, You are giving the Company permission to use, share, and store it "
+"in a manner consistent with this Privacy Policy."
+msgstr ""
+"Sie haben möglicherweise auch die Möglichkeit, zusätzliche Informationen "
+"über Ihr Konto bei einem sozialen Netzwerk eines Drittanbieters an das "
+"Unternehmen weiterzugeben. Wenn Sie sich dafür entscheiden, solche "
+"Informationen und personenbezogenen Daten bei der Registrierung oder "
+"anderweitig anzugeben, erteilen Sie dem Unternehmen die Erlaubnis, diese in "
+"Übereinstimmung mit dieser Datenschutzerklärung zu verwenden, weiterzugeben "
+"und zu speichern."
+
+#: .\templates\privacy_policy.html:157
 msgid "Tracking Technologies and Cookies"
 msgstr "Tracking-Technologien und Cookies"
 
-#: .\templates\privacy_policy.html:130
+#: .\templates\privacy_policy.html:159
+msgid ""
+"We use Cookies and similar tracking technologies to track the activity on "
+"Our Service and store certain information. Tracking technologies used are "
+"beacons, tags, and scripts to collect and track information and to improve "
+"and analyze Our Service. The technologies We use may include:"
+msgstr ""
+"Wir verwenden Cookies und ähnliche Tracking-Technologien, um die Aktivitäten "
+"auf unserem Dienst zu verfolgen und bestimmte Informationen zu speichern. "
+"Die verwendeten Tracking-Technologien sind Beacons, Tags und Skripte, um "
+"Informationen zu sammeln und zu verfolgen und unseren Dienst zu verbessern "
+"und zu analysieren. Zu den von uns verwendeten Technologien können gehören:"
+
+#: .\templates\privacy_policy.html:163
 msgid "Cookies or Browser Cookies."
 msgstr "Cookies oder Browser-Cookies."
 
-#: .\templates\privacy_policy.html:134
+#: .\templates\privacy_policy.html:163
+msgid ""
+"A cookie is a small file placed on Your Device. You can instruct Your "
+"browser to refuse all Cookies or to indicate when a Cookie is being sent. "
+"However, if You do not accept Cookies, You may not be able to use some parts "
+"of our Service. Unless you have adjusted Your browser setting so that it "
+"will refuse Cookies, our Service may use Cookies."
+msgstr ""
+"Ein Cookie ist eine kleine Datei, die auf Ihrem Gerät gespeichert wird. Sie "
+"können Ihren Browser so einstellen, dass er alle Cookies ablehnt oder "
+"anzeigt, wenn ein Cookie gesendet wird. Wenn Sie jedoch keine Cookies "
+"akzeptieren, können Sie möglicherweise einige Teile unseres Dienstes nicht "
+"nutzen. Sofern Sie Ihre Browsereinstellungen nicht so angepasst haben, dass "
+"Cookies abgelehnt werden, kann unser Dienst Cookies verwenden."
+
+#: .\templates\privacy_policy.html:166
 msgid "Web Beacons."
 msgstr "Web-Beacons."
 
-#: .\templates\privacy_policy.html:143
+#: .\templates\privacy_policy.html:166
+msgid ""
+"Certain sections of our Service and our emails may contain small electronic "
+"files known as web beacons (also referred to as clear gifs, pixel tags, and "
+"single-pixel gifs) that permit the Company, for example, to count users who "
+"have visited those pages or opened an email and for other related website "
+"statistics (for example, recording the popularity of a certain section and "
+"verifying system and server integrity)."
+msgstr ""
+"Bestimmte Bereiche unseres Dienstes und unserer E-Mails können kleine "
+"elektronische Dateien enthalten, die als Web-Beacons (auch als Clear Gifs, "
+"Pixel-Tags und Single-Pixel-Gifs bezeichnet) bekannt sind und es dem "
+"Unternehmen beispielsweise ermöglichen, die Anzahl der Nutzer zu zählen, die "
+"diese Seiten besucht oder eine E-Mail geöffnet haben, sowie andere damit "
+"verbundene Website-Statistiken zu erstellen (z. B. die Beliebtheit eines "
+"bestimmten Bereichs zu erfassen und die System- und Serverintegrität zu "
+"überprüfen)."
+
+#: .\templates\privacy_policy.html:170
+msgid ""
+"Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. "
+"Persistent Cookies remain on Your personal computer or mobile device when "
+"You go offline, while Session Cookies are deleted as soon as You close Your "
+"web browser. You can learn more about cookies on"
+msgstr ""
+"Cookies können „dauerhafte“ oder „Sitzungscookies“ sein. Dauerhafte Cookies "
+"verbleiben auf Ihrem PC oder Mobilgerät, wenn Sie offline gehen, während "
+"Sitzungscookies gelöscht werden, sobald Sie Ihren Webbrowser schließen. "
+"Weitere Informationen zu Cookies finden Sie unter"
+
+#: .\templates\privacy_policy.html:170
 msgid "article."
 msgstr "Artikel."
 
-#: .\templates\privacy_policy.html:144
+#: .\templates\privacy_policy.html:173
 msgid ""
 "We use both Session and Persistent Cookies for the purposes set out below:"
 msgstr ""
 "Wir verwenden sowohl Sitzungscookies als auch dauerhafte Cookies für die "
 "unten aufgeführten Zwecke:"
 
-#: .\templates\privacy_policy.html:147
+#: .\templates\privacy_policy.html:178
 msgid "Necessary / Essential Cookies"
 msgstr "Notwendige/wesentliche Cookies"
 
-#: .\templates\privacy_policy.html:148
+#: .\templates\privacy_policy.html:181
 msgid "Type: Session Cookies"
 msgstr "Typ: Sitzungscookies"
 
-#: .\templates\privacy_policy.html:149 .\templates\privacy_policy.html:158
-#: .\templates\privacy_policy.html:164
+#: .\templates\privacy_policy.html:184 .\templates\privacy_policy.html:198
+#: .\templates\privacy_policy.html:212
 msgid "Administered by: Us"
 msgstr "Verwaltet von: Uns"
 
-#: .\templates\privacy_policy.html:156
+#: .\templates\privacy_policy.html:187
+msgid ""
+"Purpose: These Cookies are essential to provide You with services available "
+"through the Website and to enable You to use some of its features. They help "
+"to authenticate users and prevent fraudulent use of user accounts. Without "
+"these Cookies, the services that You have asked for cannot be provided, and "
+"We only use these Cookies to provide You with those services."
+msgstr ""
+"Zweck: Diese Cookies sind unerlässlich, um Ihnen die über die Website "
+"verfügbaren Dienste bereitzustellen und Ihnen die Nutzung einiger ihrer "
+"Funktionen zu ermöglichen. Sie helfen bei der Authentifizierung von "
+"Benutzern und verhindern die betrügerische Nutzung von Benutzerkonten. Ohne "
+"diese Cookies können die von Ihnen angeforderten Dienste nicht "
+"bereitgestellt werden, und wir verwenden diese Cookies ausschließlich, um "
+"Ihnen diese Dienste bereitzustellen."
+
+#: .\templates\privacy_policy.html:192
 msgid "Cookies Policy / Notice Acceptance Cookies"
 msgstr "Cookie-Richtlinie / Hinweis zur Annahme von Cookies"
 
-#: .\templates\privacy_policy.html:157 .\templates\privacy_policy.html:163
+#: .\templates\privacy_policy.html:195 .\templates\privacy_policy.html:209
 msgid "Type: Persistent Cookies"
 msgstr "Typ: Permanente Cookies"
 
-#: .\templates\privacy_policy.html:159
+#: .\templates\privacy_policy.html:201
 msgid ""
 "Purpose: These Cookies identify if users have accepted the use of cookies on "
 "the Website."
@@ -2679,11 +2973,25 @@ msgstr ""
 "Zweck: Diese Cookies erkennen, ob Nutzer die Verwendung von Cookies auf der "
 "Website akzeptiert haben."
 
-#: .\templates\privacy_policy.html:162
+#: .\templates\privacy_policy.html:206
 msgid "Functionality Cookies"
 msgstr "Funktionscookies"
 
-#: .\templates\privacy_policy.html:170
+#: .\templates\privacy_policy.html:215
+msgid ""
+"Purpose: These Cookies allow us to remember choices You make when You use "
+"the Website, such as remembering your login details or language preference. "
+"The purpose of these Cookies is to provide You with a more personal "
+"experience and to avoid You having to re-enter your preferences every time "
+"You use the Website."
+msgstr ""
+"Zweck: Diese Cookies ermöglichen es uns, Ihre Auswahl bei der Nutzung der "
+"Website zu speichern, beispielsweise Ihre Anmeldedaten oder Ihre "
+"Spracheinstellung. Der Zweck dieser Cookies besteht darin, Ihnen ein "
+"persönlicheres Erlebnis zu bieten und zu vermeiden, dass Sie Ihre "
+"Einstellungen bei jeder Nutzung der Website erneut eingeben müssen."
+
+#: .\templates\privacy_policy.html:220
 msgid ""
 "For more information about the cookies we use and your choices regarding "
 "cookies, please visit our Cookies Policy or the Cookies section of our "
@@ -2693,94 +3001,314 @@ msgstr ""
 "Wahlmöglichkeiten in Bezug auf Cookies finden Sie in unserer Cookie-"
 "Richtlinie oder im Abschnitt „Cookies“ unserer Datenschutzrichtlinie."
 
-#: .\templates\privacy_policy.html:171
+#: .\templates\privacy_policy.html:222
 msgid "Use of Your Personal Data"
 msgstr "Verwendung Ihrer personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:172
+#: .\templates\privacy_policy.html:224
 msgid "The Company may use Personal Data for the following purposes:"
 msgstr ""
 "Das Unternehmen kann personenbezogene Daten für folgende Zwecke verwenden:"
 
-#: .\templates\privacy_policy.html:175
+#: .\templates\privacy_policy.html:229
 msgid "To provide and maintain our Service"
 msgstr "Zur Bereitstellung und Aufrechterhaltung unseres Dienstes"
 
-#: .\templates\privacy_policy.html:175
+#: .\templates\privacy_policy.html:229
 msgid ", including to monitor the usage of our Service."
 msgstr ", einschließlich zur Überwachung der Nutzung unseres Dienstes."
 
-#: .\templates\privacy_policy.html:178
+#: .\templates\privacy_policy.html:234
 msgid "To manage Your Account"
 msgstr "Ihr Konto verwalten"
 
-#: .\templates\privacy_policy.html:183
+#: .\templates\privacy_policy.html:234
+msgid ""
+": to manage Your registration as a user of the Service. The Personal Data "
+"You provide can give You access to different functionalities of the Service "
+"that are available to You as a registered user."
+msgstr ""
+": um Ihre Registrierung als Nutzer des Dienstes zu verwalten. Die von Ihnen "
+"angegebenen personenbezogenen Daten ermöglichen Ihnen den Zugriff auf "
+"verschiedene Funktionen des Dienstes, die Ihnen als registrierter Nutzer zur "
+"Verfügung stehen."
+
+#: .\templates\privacy_policy.html:239
 msgid "For the performance of a contract"
 msgstr "Für die Erfüllung eines Vertrags"
 
-#: .\templates\privacy_policy.html:188
+#: .\templates\privacy_policy.html:239
+msgid ""
+": the development, compliance and undertaking of the purchase contract for "
+"the products, items or services You have purchased or of any other contract "
+"with Us through the Service."
+msgstr ""
+": die Ausarbeitung, Einhaltung und Durchführung des Kaufvertrags für die von "
+"Ihnen über den Dienst erworbenen Produkte, Artikel oder Dienstleistungen "
+"oder jedes anderen Vertrags mit uns."
+
+#: .\templates\privacy_policy.html:244
 msgid "To contact You"
 msgstr "Um Sie zu kontaktieren"
 
-#: .\templates\privacy_policy.html:194
+#: .\templates\privacy_policy.html:244
+msgid ""
+": To contact You by email, telephone calls, SMS, or other equivalent forms "
+"of electronic communication, such as a mobile application's push "
+"notifications regarding updates or informative communications related to the "
+"functionalities, products or contracted services, including the security "
+"updates, when necessary or reasonable for their implementation."
+msgstr ""
+": Um Sie per E-Mail, Telefonanruf, SMS oder anderen gleichwertigen Formen "
+"der elektronischen Kommunikation zu kontaktieren, wie z. B. Push-"
+"Benachrichtigungen einer mobilen Anwendung bezüglich Updates oder "
+"informativen Mitteilungen im Zusammenhang mit den Funktionen, Produkten oder "
+"vertraglich vereinbarten Dienstleistungen, einschließlich "
+"Sicherheitsupdates, wenn dies für deren Umsetzung erforderlich oder "
+"angemessen ist."
+
+#: .\templates\privacy_policy.html:249
 msgid "To provide You"
 msgstr "Um Ihnen zur Verfügung zu stellen"
 
-#: .\templates\privacy_policy.html:199
+#: .\templates\privacy_policy.html:249
+msgid ""
+"with news, special offers and general information about other goods, "
+"services and events which we offer that are similar to those that you have "
+"already purchased or enquired about unless You have opted not to receive "
+"such information."
+msgstr ""
+"mit Neuigkeiten, Sonderangeboten und allgemeinen Informationen zu anderen "
+"Waren, Dienstleistungen und Veranstaltungen, die wir anbieten und die denen "
+"ähneln, die Sie bereits gekauft oder angefragt haben, es sei denn, Sie haben "
+"sich dafür entschieden, solche Informationen nicht zu erhalten."
+
+#: .\templates\privacy_policy.html:254
 msgid "To manage Your requests"
 msgstr "Um Ihre Anfragen zu verwalten"
 
-#: .\templates\privacy_policy.html:199
+#: .\templates\privacy_policy.html:254
 msgid "To attend and manage Your requests to Us."
 msgstr "Um Ihre Anfragen an uns zu bearbeiten und zu verwalten."
 
-#: .\templates\privacy_policy.html:202 .\templates\privacy_policy.html:217
+#: .\templates\privacy_policy.html:259 .\templates\privacy_policy.html:277
 msgid "For business transfers"
 msgstr "Für Unternehmensübertragungen"
 
-#: .\templates\privacy_policy.html:208
+#: .\templates\privacy_policy.html:259
+msgid ""
+"We may use Your information to evaluate or conduct a merger, divestiture, "
+"restructuring, reorganization, dissolution, or other sale or transfer of "
+"some or all of Our  assets, whether as a going concern or as part of "
+"bankruptcy, liquidation, or similar proceeding, in which Personal Data held "
+"by Us about our Service users is among the assets transferred."
+msgstr ""
+"Wir können Ihre Daten verwenden, um eine Fusion, Veräußerung, "
+"Umstrukturierung, Reorganisation, Auflösung oder einen anderen Verkauf oder "
+"eine andere Übertragung eines Teils oder aller unserer Vermögenswerte zu "
+"bewerten oder durchzuführen, sei es im Rahmen der laufenden "
+"Geschäftstätigkeit oder im Rahmen eines Konkurses, einer Liquidation oder "
+"eines ähnlichen Verfahrens, bei dem die von uns über die Nutzer unserer "
+"Dienste gespeicherten personenbezogenen Daten zu den übertragenen "
+"Vermögenswerten gehören."
+
+#: .\templates\privacy_policy.html:264
 msgid "For other purposes"
 msgstr "Für andere Zwecke"
 
-#: .\templates\privacy_policy.html:213
+#: .\templates\privacy_policy.html:264
+msgid ""
+"We may use Your information for other purposes, such as data analysis, "
+"identifying usage trends, determining the effectiveness of our promotional "
+"campaigns and to evaluate and improve our Service, products, services, "
+"marketing and your experience."
+msgstr ""
+"Wir können Ihre Daten für andere Zwecke verwenden, beispielsweise für "
+"Datenanalysen, zur Ermittlung von Nutzungstrends, zur Bestimmung der "
+"Wirksamkeit unserer Werbekampagnen und zur Bewertung und Verbesserung "
+"unserer Dienste, Produkte, Dienstleistungen, unseres Marketings und Ihrer "
+"Erfahrung."
+
+#: .\templates\privacy_policy.html:269
 msgid "We may share Your personal information in the following situations:"
 msgstr ""
 "Wir können Ihre personenbezogenen Daten in den folgenden Situationen "
 "weitergeben:"
 
-#: .\templates\privacy_policy.html:215
+#: .\templates\privacy_policy.html:273
 msgid "With Service Providers"
 msgstr "Mit Dienstleistern"
 
-#: .\templates\privacy_policy.html:220
+#: .\templates\privacy_policy.html:277
+msgid ""
+"We may share or transfer Your personal information in connection with, or "
+"during negotiations of, any merger, sale of Company assets, financing, or "
+"acquisition of all or a portion of Our business to another company."
+msgstr ""
+"Wir können Ihre personenbezogenen Daten im Zusammenhang mit oder während "
+"Verhandlungen über eine Fusion, den Verkauf von Unternehmensvermögen, die "
+"Finanzierung oder den Erwerb unseres gesamten Unternehmens oder eines Teils "
+"davon durch ein anderes Unternehmen weitergeben oder übertragen."
+
+#: .\templates\privacy_policy.html:280
 msgid "With Affiliates"
 msgstr "Mit Partnern"
 
-#: .\templates\privacy_policy.html:224
+#: .\templates\privacy_policy.html:280
+msgid ""
+"We may share Your information with Our affiliates, in which case we will "
+"require those affiliates to honor this Privacy Policy. Affiliates include "
+"Our parent company and any other subsidiaries, joint venture partners or "
+"other companies that We control or that are under common control with Us."
+msgstr ""
+"Wir können Ihre Daten an unsere verbundenen Unternehmen weitergeben. In "
+"diesem Fall verlangen wir von diesen verbundenen Unternehmen, dass sie diese "
+"Datenschutzrichtlinie einhalten. Zu den verbundenen Unternehmen gehören "
+"unsere Muttergesellschaft und alle anderen Tochtergesellschaften, Joint-"
+"Venture-Partner oder andere Unternehmen, die wir kontrollieren oder die "
+"unter gemeinsamer Kontrolle mit uns stehen."
+
+#: .\templates\privacy_policy.html:283
 msgid "With business partners"
 msgstr "Mit Geschäftspartnern"
 
-#: .\templates\privacy_policy.html:226
+#: .\templates\privacy_policy.html:283
+msgid ""
+"We may share Your information with Our business partners to offer You "
+"certain products, services or promotions."
+msgstr ""
+"Wir können Ihre Daten an unsere Geschäftspartner weitergeben, um Ihnen "
+"bestimmte Produkte, Dienstleistungen oder Werbeaktionen anzubieten."
+
+#: .\templates\privacy_policy.html:286
 msgid "With other users"
 msgstr "Mit anderen Benutzern"
 
-#: .\templates\privacy_policy.html:232
+#: .\templates\privacy_policy.html:286
+msgid ""
+"when You share personal information or otherwise interact in the public "
+"areas with other users, such information may be viewed by all users and may "
+"be publicly distributed outside. If You interact with other users or "
+"register through a Third-Party Social Media Service, Your contacts on the "
+"Third-Party Social Media Service may see Your name, profile, pictures and "
+"description of Your activity. Similarly, other users will be able to view "
+"descriptions of Your activity, communicate with You and view Your profile."
+msgstr ""
+"Wenn Sie personenbezogene Daten weitergeben oder anderweitig in öffentlichen "
+"Bereichen mit anderen Nutzern interagieren, können diese Daten von allen "
+"Nutzern eingesehen und außerhalb öffentlich verbreitet werden. Wenn Sie mit "
+"anderen Nutzern interagieren oder sich über einen sozialen Mediendienst "
+"eines Drittanbieters registrieren, können Ihre Kontakte in diesem sozialen "
+"Mediendienst Ihren Namen, Ihr Profil, Ihre Bilder und die Beschreibung Ihrer "
+"Aktivitäten sehen. Ebenso können andere Nutzer Beschreibungen Ihrer "
+"Aktivitäten einsehen, mit Ihnen kommunizieren und Ihr Profil anzeigen."
+
+#: .\templates\privacy_policy.html:289
 msgid "With Your consent"
 msgstr "Mit Ihrer Zustimmung"
 
-#: .\templates\privacy_policy.html:235
+#: .\templates\privacy_policy.html:289
+#, fuzzy
+#| msgid "We may share Your personal information in the following situations:"
+msgid ""
+"We may disclose Your personal information for any other purpose with Your "
+"consent."
+msgstr ""
+"Wir können Ihre personenbezogenen Daten in den folgenden Situationen "
+"weitergeben:"
+
+#: .\templates\privacy_policy.html:292
 msgid "Retention of Your Personal Data"
 msgstr "Aufbewahrung Ihrer personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:243
+#: .\templates\privacy_policy.html:294
+msgid ""
+"The Company will retain Your Personal Data only for as long as is necessary "
+"for the purposes set out in this Privacy Policy. We will retain and use Your "
+"Personal Data to the extent necessary to comply with our legal obligations "
+"(for example, if we are required to retain your data to comply with applicab "
+"laws), resolve disputes, and enforce our legal agreements and policies."
+msgstr ""
+"Das Unternehmen speichert Ihre personenbezogenen Daten nur so lange, wie es "
+"für die in dieser Datenschutzerklärung genannten Zwecke erforderlich ist. "
+"Wir speichern und verwenden Ihre personenbezogenen Daten in dem Umfang, der "
+"zur Erfüllung unserer gesetzlichen Verpflichtungen (z. B. wenn wir Ihre "
+"Daten zur Einhaltung geltender Gesetze speichern müssen), zur Beilegung von "
+"Streitigkeiten und zur Durchsetzung unserer rechtlichen Vereinbarungen und "
+"Richtlinien erforderlich ist."
+
+#: .\templates\privacy_policy.html:297
+msgid ""
+"The Company will also retain Usage Data for internal analysis purposes. "
+"Usage Data is generally retained for a shorter period of time, except when "
+"this data is used to strengthen the security or to improve the functionality "
+"of Our Service, or We are legally obligated to retain this data for longer "
+"time periods."
+msgstr ""
+"Das Unternehmen speichert Nutzungsdaten auch für interne Analysezwecke. "
+"Nutzungsdaten werden in der Regel für einen kürzeren Zeitraum gespeichert, "
+"es sei denn, diese Daten werden zur Stärkung der Sicherheit oder zur "
+"Verbesserung der Funktionalität unseres Dienstes verwendet oder wir sind "
+"gesetzlich verpflichtet, diese Daten für einen längeren Zeitraum zu "
+"speichern."
+
+#: .\templates\privacy_policy.html:299
 msgid "Transfer of Your Personal Data"
 msgstr "Weitergabe Ihrer personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:253
+#: .\templates\privacy_policy.html:301
+msgid ""
+"Your information, including Personal Data, is processed at the Company's "
+"operating offices and in any other places where the parties involved in the "
+"processing are located. It means that th information may be transferred to — "
+"and maintained on — computers located outside of Your state, province, "
+"country  other governmental jurisdiction where the data protection laws may "
+"differ than those from Your jurisdiction."
+msgstr ""
+"Ihre Daten, einschließlich personenbezogener Daten, werden in den "
+"Betriebsbüros des Unternehmens und an allen anderen Orten verarbeitet, an "
+"denen sich die an der Verarbeitung beteiligten Parteien befinden. Das "
+"bedeutet, dass die Daten an Computer außerhalb Ihres Bundesstaates, Ihrer "
+"Provinz, Ihres Landes oder einer anderen staatlichen Gerichtsbarkeit "
+"übertragen und dort gespeichert werden können, wo die Datenschutzgesetze von "
+"denen Ihrer Gerichtsbarkeit abweichen können."
+
+#: .\templates\privacy_policy.html:304
+msgid ""
+"Your consent to this Privacy Policy followed by Your submission of such "
+"information represents Your agreement to that transfer."
+msgstr ""
+"Ihre Zustimmung zu dieser Datenschutzerklärung, gefolgt von der Übermittlung "
+"solcher Informationen, stellt Ihre Zustimmung zu dieser Übertragung dar."
+
+#: .\templates\privacy_policy.html:307
+msgid ""
+"The Company will take all steps reasonably necessary to ensure that Your "
+"data is treated securely and in accordance with this Privacy Policy and no "
+"transfer of Your Personal Data will take pla to an organization or a country "
+"unless there are adequate controls in place including the security of Yo "
+"data and other personal information."
+msgstr ""
+"Das Unternehmen wird alle angemessenen Maßnahmen ergreifen, um "
+"sicherzustellen, dass Ihre Daten sicher und in Übereinstimmung mit dieser "
+"Datenschutzerklärung behandelt werden, und es wird keine Übertragung Ihrer "
+"personenbezogenen Daten an eine Organisation oder ein Land erfolgen, es sei "
+"denn, es gibt angemessene Kontrollen, einschließlich der Sicherheit Ihrer "
+"Daten und anderer personenbezogener Informationen."
+
+#: .\templates\privacy_policy.html:309
 msgid "Delete Your Personal Data"
 msgstr "Löschen Sie Ihre personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:256
+#: .\templates\privacy_policy.html:311
+msgid ""
+"You have the right to delete or request that We assist in deleting the "
+"Personal Data that We have collected about You."
+msgstr ""
+"Sie haben das Recht, die von uns über Sie erhobenen personenbezogenen Daten "
+"zu löschen oder uns um Unterstützung bei der Löschung zu bitten."
+
+#: .\templates\privacy_policy.html:314
 msgid ""
 "Our Service may give You the ability to delete certain information about You "
 "from within the Service."
@@ -2788,23 +3316,71 @@ msgstr ""
 "Unser Dienst kann Ihnen die Möglichkeit bieten, bestimmte Informationen über "
 "Sie innerhalb des Dienstes zu löschen."
 
-#: .\templates\privacy_policy.html:262
+#: .\templates\privacy_policy.html:317
+msgid ""
+"You may update, amend, or delete Your information at any time by signing in "
+"to Your Account, if you have one, and visiting the account settings section "
+"that allows you to manage Your person information. You may also contact Us "
+"to request access to, correct, or delete any personal information that Y "
+"have provided to Us."
+msgstr ""
+"Sie können Ihre Daten jederzeit aktualisieren, ändern oder löschen, indem "
+"Sie sich bei Ihrem Konto anmelden, sofern Sie eines haben, und den Bereich "
+"„Kontoeinstellungen“ aufrufen, in dem Sie Ihre persönlichen Daten verwalten "
+"können. Sie können sich auch an uns wenden, um Zugriff auf die "
+"personenbezogenen Daten, die Sie uns zur Verfügung gestellt haben, zu "
+"beantragen, diese zu korrigieren oder zu löschen."
+
+#: .\templates\privacy_policy.html:320
+msgid ""
+"Please note, however, that We may need to retain certain information when we "
+"have a legal obligation or lawful basis to do so."
+msgstr ""
+"Bitte beachten Sie jedoch, dass wir bestimmte Informationen möglicherweise "
+"aufbewahren müssen, wenn wir dazu gesetzlich verpflichtet sind oder eine "
+"rechtmäßige Grundlage dafür haben."
+
+#: .\templates\privacy_policy.html:322
 msgid "Disclosure of Your Personal Data"
 msgstr "Weitergabe Ihrer personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:263
+#: .\templates\privacy_policy.html:323
 msgid "Business Transactions"
 msgstr "Geschäftstransaktionen"
 
-#: .\templates\privacy_policy.html:266
+#: .\templates\privacy_policy.html:325
+msgid ""
+"If the Company is involved in a merger, acquisition or asset sale, Your "
+"Personal Data may be transferred. We will provide notice before Your "
+"Personal Data is transferred and becomes subject to a different Privacy "
+"Policy."
+msgstr ""
+"Wenn das Unternehmen an einer Fusion, einer Übernahme oder einem Verkauf von "
+"Vermögenswerten beteiligt ist, können Ihre personenbezogenen Daten "
+"übertragen werden. Wir werden Sie benachrichtigen, bevor Ihre "
+"personenbezogenen Daten übertragen werden und einer anderen "
+"Datenschutzrichtlinie unterliegen."
+
+#: .\templates\privacy_policy.html:327
 msgid "Law enforcement"
 msgstr "Strafverfolgung"
 
-#: .\templates\privacy_policy.html:269
+#: .\templates\privacy_policy.html:329
+msgid ""
+"Under certain circumstances, the Company may be required to disclose Your "
+"Personal Data if required to do so by law or in response to valid requests "
+"by public authorities (e.g. a court or government agency)."
+msgstr ""
+"Unter bestimmten Umständen kann das Unternehmen verpflichtet sein, Ihre "
+"personenbezogenen Daten offenzulegen, wenn dies gesetzlich vorgeschrieben "
+"ist oder aufgrund gültiger Anfragen von Behörden (z. B. einem Gericht oder "
+"einer Regierungsbehörde)."
+
+#: .\templates\privacy_policy.html:331
 msgid "Other legal requirements"
 msgstr "Sonstige gesetzliche Anforderungen"
 
-#: .\templates\privacy_policy.html:270
+#: .\templates\privacy_policy.html:333
 msgid ""
 "The Company may disclose Your Personal Data in the good faith belief that "
 "such action is necessary to:"
@@ -2813,52 +3389,147 @@ msgstr ""
 "Glauben offenlegen, wenn es der Ansicht ist, dass dies erforderlich ist, um: "
 "alle gesetzlichen Anforderungen zu erfüllen."
 
-#: .\templates\privacy_policy.html:272
+#: .\templates\privacy_policy.html:337
 msgid "Comply with a legal obligation"
 msgstr "Einer gesetzlichen Verpflichtung nachkommen"
 
-#: .\templates\privacy_policy.html:273
+#: .\templates\privacy_policy.html:340
 msgid "Protect and defend the rights or property of the Company"
 msgstr "Die Rechte oder das Eigentum des Unternehmens schützen und verteidigen"
 
-#: .\templates\privacy_policy.html:274
+#: .\templates\privacy_policy.html:343
 msgid ""
 "Prevent or investigate possible wrongdoing in connection with the Service"
 msgstr ""
 "Verhindern oder untersuchen Sie mögliche Fehlverhalten im Zusammenhang mit "
 "dem Dienst."
 
-#: .\templates\privacy_policy.html:275
+#: .\templates\privacy_policy.html:346
 msgid "Protect the personal safety of Users of the Service or the public"
 msgstr ""
 "Schutz der persönlichen Sicherheit der Nutzer des Dienstes oder der "
 "Öffentlichkeit"
 
-#: .\templates\privacy_policy.html:276
+#: .\templates\privacy_policy.html:349
 msgid "Protect against legal liability"
 msgstr "Schutz vor rechtlicher Haftung"
 
-#: .\templates\privacy_policy.html:278
+#: .\templates\privacy_policy.html:352
 msgid "Security of Your Personal Data"
 msgstr "Sicherheit Ihrer personenbezogenen Daten"
 
-#: .\templates\privacy_policy.html:282
+#: .\templates\privacy_policy.html:354
+#, python-format
+msgid ""
+"The security of Your Personal Data is important to Us, but remember that no "
+"method of transmission over the Internet, or method of electronic storage is "
+"100%% secure. While We strive to u commercially acceptable means to protect "
+"Your Personal Data, We cannot guarantee its absolute security."
+msgstr ""
+"Die Sicherheit Ihrer personenbezogenen Daten ist uns wichtig, aber bitte "
+"beachten Sie, dass keine Methode der Übertragung über das Internet oder der "
+"elektronischen Speicherung zu 100 %% sicher ist. Wir bemühen uns zwar, Ihre "
+"personenbezogenen Daten mit wirtschaftlich vertretbaren Mitteln zu schützen, "
+"können jedoch keine absolute Sicherheit garantieren."
+
+#: .\templates\privacy_policy.html:356
 msgid "Children's Privacy"
 msgstr "Datenschutz für Kinder"
 
-#: .\templates\privacy_policy.html:290
+#: .\templates\privacy_policy.html:358
+msgid ""
+"Our Service does not address anyone under the age of 13. We do not knowingly "
+"collect personally identifiable information from anyone under the age of 13. "
+"If You are a parent or guardi and You are aware that Your child has provided "
+"Us with Personal Data, please contact Us. If We become aware that  have "
+"collected Personal Data from anyone under the age of 13 without verification "
+"of parental consent, We ta steps to remove that information from Our servers."
+msgstr ""
+"Unser Service richtet sich nicht an Personen unter 13 Jahren. Wir sammeln "
+"wissentlich keine personenbezogenen Daten von Personen unter 13 Jahren. Wenn "
+"Sie ein Elternteil oder Erziehungsberechtigter sind und Ihnen bekannt ist, "
+"dass Ihr Kind uns personenbezogene Daten zur Verfügung gestellt hat, "
+"kontaktieren Sie uns bitte. Wenn wir feststellen, dass wir personenbezogene "
+"Daten von Personen unter 13 Jahren ohne Überprüfung der elterlichen "
+"Zustimmung gesammelt haben, ergreifen wir Maßnahmen, um diese Informationen "
+"von unseren Servern zu entfernen."
+
+#: .\templates\privacy_policy.html:361
+msgid ""
+"If We need to rely on consent as a legal basis for processing Your "
+"information and Your country requires consent fromat a parent, We may "
+"require Your parent's consent before We collect and use that information."
+msgstr ""
+"Wenn wir uns auf die Einwilligung als Rechtsgrundlage für die Verarbeitung "
+"Ihrer Daten stützen müssen und Ihr Land die Einwilligung eines Elternteils "
+"verlangt, benötigen wir möglicherweise die Einwilligung Ihrer Eltern, bevor "
+"wir diese Daten erfassen und verwenden."
+
+#: .\templates\privacy_policy.html:363
 msgid "Links to Other Websites"
 msgstr "Links zu anderen Websites"
 
-#: .\templates\privacy_policy.html:296
+#: .\templates\privacy_policy.html:365
+msgid ""
+"Our Service may contain links to other websites that are not operated by Us. "
+"If You click on a third party link, You will be directed to that third "
+"party's site. We strongly advise You to revi the Privacy Policy of every "
+"site You visit."
+msgstr ""
+"Unser Service kann Links zu anderen Websites enthalten, die nicht von uns "
+"betrieben werden. Wenn Sie auf einen Link eines Drittanbieters klicken, "
+"werden Sie zur Website dieses Drittanbieters weitergeleitet. Wir empfehlen "
+"Ihnen dringend, die Datenschutzrichtlinien jeder Website, die Sie besuchen, "
+"zu überprüfen."
+
+#: .\templates\privacy_policy.html:368
+msgid ""
+"We have no control over and assume no responsibility for the content, "
+"privacy policies or practices of any third party sites or services."
+msgstr ""
+"Wir haben keine Kontrolle über die Inhalte, Datenschutzrichtlinien oder "
+"Praktiken von Websites oder Diensten Dritter und übernehmen keine "
+"Verantwortung dafür."
+
+#: .\templates\privacy_policy.html:370
 msgid "Changes to this Privacy Policy"
 msgstr "Änderungen dieser Datenschutzerklärung"
 
-#: .\templates\privacy_policy.html:303
+#: .\templates\privacy_policy.html:372
+msgid ""
+"We may update Our Privacy Policy from time to time. We will notify You of "
+"any changes by posting the new Privacy Policy on this page."
+msgstr ""
+"Wir können unsere Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir "
+"werden Sie über alle Änderungen informieren, indem wir die neue "
+"Datenschutzerklärung auf dieser Seite veröffentlichen."
+
+#: .\templates\privacy_policy.html:375
+msgid ""
+"We will let You know via email and/or a prominent notice on Our Service, "
+"prior to the change becoming effective and update the &quot;Last "
+"updated&quot; date at the top of this Privacy Policy."
+msgstr ""
+"Wir werden Sie vor Inkrafttreten der Änderung per E-Mail und/oder durch "
+"einen gut sichtbaren Hinweis auf unserer Website informieren und das Datum "
+"der letzten Aktualisierung am Anfang dieser Datenschutzerklärung "
+"aktualisieren."
+
+#: .\templates\privacy_policy.html:378
+msgid ""
+"You are advised to review this Privacy Policy periodically for any changes. "
+"Changes to this Privacy Policy are effective when they are posted on this "
+"page."
+msgstr ""
+"Wir empfehlen Ihnen, diese Datenschutzerklärung regelmäßig auf Änderungen zu "
+"überprüfen. Änderungen dieser Datenschutzerklärung treten mit ihrer "
+"Veröffentlichung auf dieser Seite in Kraft."
+
+#: .\templates\privacy_policy.html:380
 msgid "Contact Us"
 msgstr "Kontaktieren Sie uns"
 
-#: .\templates\privacy_policy.html:304
+#: .\templates\privacy_policy.html:382
 msgid ""
 "If you have any questions about this Privacy Policy, You can contact us:"
 msgstr ""
@@ -2873,7 +3544,15 @@ msgstr "Allgemeine Geschäftsbedingungen (AGB)"
 msgid "1. Scope"
 msgstr "1. Geltungsbereich"
 
-#: .\templates\terms_and_conditions.html:23
+#: .\templates\terms_and_conditions.html:20
+msgid ""
+"These General Terms and Conditions (GTC) apply to all deliveries by "
+"<strong>Procrastination Defier</strong> to consumers."
+msgstr ""
+"Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Lieferungen von "
+"<strong>Procrastination Defier</strong> an Verbraucher."
+
+#: .\templates\terms_and_conditions.html:22
 msgid ""
 "A consumer is any natural person who enters into a legal transaction for "
 "purposes that predominantly are neither commercial nor attributable to their "
@@ -2883,19 +3562,19 @@ msgstr ""
 "Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer "
 "selbständigen beruflichen Tätigkeit zugerechnet werden können."
 
-#: .\templates\terms_and_conditions.html:27
+#: .\templates\terms_and_conditions.html:26
 msgid "2. Contracting Party"
 msgstr "2. Vertragspartei"
 
-#: .\templates\terms_and_conditions.html:29
+#: .\templates\terms_and_conditions.html:28
 msgid "The purchase agreement is concluded with"
 msgstr "Der Kaufvertrag wird abgeschlossen mit"
 
-#: .\templates\terms_and_conditions.html:40
+#: .\templates\terms_and_conditions.html:39
 msgid "3. Conclusion of Contract"
 msgstr "3. Vertragsabschluss"
 
-#: .\templates\terms_and_conditions.html:41
+#: .\templates\terms_and_conditions.html:40
 msgid ""
 "The presentation of products in the online shop does not constitute a "
 "legally binding offer, but an invitation to place an order."
@@ -2903,7 +3582,7 @@ msgstr ""
 "Die Darstellung der Produkte im Online-Shop stellt kein rechtlich bindendes "
 "Angebot dar, sondern eine Aufforderung zur Abgabe einer Bestellung."
 
-#: .\templates\terms_and_conditions.html:42
+#: .\templates\terms_and_conditions.html:41
 msgid ""
 "By clicking the purchase confirmation you place a binding order for the "
 "goods listed on the checkout page. Your purchase contract is concluded when "
@@ -2918,11 +3597,11 @@ msgstr ""
 "Sie, dass Sie während des Bestellvorgangs eine E-Mail-Adresse angeben "
 "müssen, auf die Sie Zugriff haben."
 
-#: .\templates\terms_and_conditions.html:46
+#: .\templates\terms_and_conditions.html:45
 msgid "4. Prices &amp; Packaging"
 msgstr "4. Preise & Verpackung"
 
-#: .\templates\terms_and_conditions.html:47
+#: .\templates\terms_and_conditions.html:46
 msgid ""
 "The prices stated at the time of ordering apply. They are final prices and "
 "include the statutory value-added tax applicable in Germany. If items are on "
@@ -2935,15 +3614,15 @@ msgstr ""
 "Sonderangebot oder wird ein Gutschein eingelöst, wird der reduzierte Preis "
 "in die endgültige Bestellung übernommen."
 
-#: .\templates\terms_and_conditions.html:48
+#: .\templates\terms_and_conditions.html:47
 msgid "The packaging becomes the property of the customer upon handover."
 msgstr "Die Verpackung geht mit der Übergabe in das Eigentum des Kunden über."
 
-#: .\templates\terms_and_conditions.html:52
+#: .\templates\terms_and_conditions.html:51
 msgid "5. Payment"
 msgstr "5. Zahlung"
 
-#: .\templates\terms_and_conditions.html:53
+#: .\templates\terms_and_conditions.html:52
 msgid ""
 "As a rule, we offer the following payment methods and reserve the right to "
 "restrict available options for individual orders:"
@@ -2952,11 +3631,11 @@ msgstr ""
 "das Recht vor, die verfügbaren Optionen für einzelne Bestellungen "
 "einzuschränken:"
 
-#: .\templates\terms_and_conditions.html:56
+#: .\templates\terms_and_conditions.html:55
 msgid "Credit card:"
 msgstr "Kreditkarte:"
 
-#: .\templates\terms_and_conditions.html:56
+#: .\templates\terms_and_conditions.html:55
 msgid ""
 "You pay directly during the checkout process by entering your credit card "
 "details. When the goods are dispatched, your card is charged with the actual "
@@ -2973,7 +3652,7 @@ msgstr ""
 "sofort mit dem tatsächlichen Rechnungsbetrag nach Abzug etwaiger Rabatte "
 "oder Geschenkgutscheine belastet."
 
-#: .\templates\terms_and_conditions.html:59
+#: .\templates\terms_and_conditions.html:58
 msgid ""
 "Please note that we only accept payments from accounts within the European "
 "Union (EU)."
@@ -2981,23 +3660,23 @@ msgstr ""
 "Bitte beachten Sie, dass wir nur Zahlungen von Konten innerhalb der "
 "Europäischen Union (EU) akzeptieren."
 
-#: .\templates\terms_and_conditions.html:63
+#: .\templates\terms_and_conditions.html:62
 msgid "6. Vouchers and Codes"
 msgstr "6. Gutscheine und Codes"
 
-#: .\templates\terms_and_conditions.html:64
+#: .\templates\terms_and_conditions.html:63
 msgid "No vouchers or codes were selected."
 msgstr "Es wurden keine Gutscheine oder Codes ausgewählt."
 
-#: .\templates\terms_and_conditions.html:68
+#: .\templates\terms_and_conditions.html:67
 msgid "7. Right of Withdrawal"
 msgstr "7. Widerrufsrecht"
 
-#: .\templates\terms_and_conditions.html:69
+#: .\templates\terms_and_conditions.html:68
 msgid "Right of Withdrawal"
 msgstr "Widerrufsrecht"
 
-#: .\templates\terms_and_conditions.html:70
+#: .\templates\terms_and_conditions.html:69
 msgid ""
 "You have the right to withdraw from this contract within fourteen days "
 "without giving any reason."
@@ -3005,7 +3684,7 @@ msgstr ""
 "Sie haben das Recht, diesen Vertrag innerhalb von vierzehn Tagen ohne Angabe "
 "von Gründen zu widerrufen."
 
-#: .\templates\terms_and_conditions.html:71
+#: .\templates\terms_and_conditions.html:70
 msgid ""
 "The withdrawal period is fourteen days from the day on which you or a third "
 "party named by you, who is not the carrier, has taken possession of the "
@@ -3015,7 +3694,7 @@ msgstr ""
 "Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz "
 "genommen haben bzw. hat."
 
-#: .\templates\terms_and_conditions.html:72
+#: .\templates\terms_and_conditions.html:71
 msgid ""
 "To exercise your right of withdrawal, you must inform us of your decision to "
 "withdraw from this contract by means of a clear statement (e.g. a letter "
@@ -3036,7 +3715,7 @@ msgstr ""
 "Wenn Sie von Ihrem Widerrufsrecht Gebrauch machen, senden wir Ihnen "
 "unverzüglich eine Bestätigung über den Eingang des Widerrufs per E-Mail zu."
 
-#: .\templates\terms_and_conditions.html:73
+#: .\templates\terms_and_conditions.html:72
 msgid ""
 "To meet the withdrawal deadline, it is sufficient for you to send your "
 "communication concerning your exercise of the right of withdrawal before the "
@@ -3045,11 +3724,11 @@ msgstr ""
 "Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie Ihre Mitteilung über "
 "die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden."
 
-#: .\templates\terms_and_conditions.html:75
+#: .\templates\terms_and_conditions.html:74
 msgid "Effects of Withdrawal"
 msgstr "Auswirkungen des Rückzugs"
 
-#: .\templates\terms_and_conditions.html:76
+#: .\templates\terms_and_conditions.html:75
 msgid ""
 "If you withdraw from this contract, we shall reimburse you for all payments "
 "we have received from you, including delivery costs (with the exception of "
@@ -3077,7 +3756,7 @@ msgstr ""
 "haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren "
 "zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist."
 
-#: .\templates\terms_and_conditions.html:77
+#: .\templates\terms_and_conditions.html:76
 msgid ""
 "You shall send back the goods or hand them over to us (or to a person "
 "authorized by us to receive the goods) without undue delay and in any event "
@@ -3092,11 +3771,11 @@ msgstr ""
 "gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen "
 "zurücksenden."
 
-#: .\templates\terms_and_conditions.html:78
+#: .\templates\terms_and_conditions.html:77
 msgid "You bear the direct cost of returning the goods."
 msgstr "Sie tragen die direkten Kosten für die Rücksendung der Waren."
 
-#: .\templates\terms_and_conditions.html:79
+#: .\templates\terms_and_conditions.html:78
 msgid ""
 "You are only liable for any diminished value of the goods resulting from the "
 "handling other than what is necessary to establish the nature, "
@@ -3108,11 +3787,11 @@ msgstr ""
 "notwendigen Umgang mit ihnen zurückzuführen ist. Diese Widerrufsbelehrung "
 "gilt nicht für die getrennte Lieferung von Waren."
 
-#: .\templates\terms_and_conditions.html:83
+#: .\templates\terms_and_conditions.html:82
 msgid "8. Exclusion / Expiry of the Right of Withdrawal"
 msgstr "8. Ausschluss / Erlöschen des Widerrufsrechts"
 
-#: .\templates\terms_and_conditions.html:84
+#: .\templates\terms_and_conditions.html:83
 msgid ""
 "In accordance with § 312g (2) of the German Civil Code (BGB), the right of "
 "withdrawal does not apply, among other things, to contracts for the supply "
@@ -3132,19 +3811,19 @@ msgstr ""
 "der Hygiene nicht zur Rückgabe geeignet sind, wenn ihre Versiegelung nach "
 "der Lieferung entfernt wurde."
 
-#: .\templates\terms_and_conditions.html:88
+#: .\templates\terms_and_conditions.html:87
 msgid "9. Voluntary Return Policy"
 msgstr "9. Freiwillige Rückgaberegelung"
 
-#: .\templates\terms_and_conditions.html:89
+#: .\templates\terms_and_conditions.html:88
 msgid "We do not offer a voluntary return policy."
 msgstr "Wir bieten keine freiwillige Rückgabemöglichkeit an."
 
-#: .\templates\terms_and_conditions.html:93
+#: .\templates\terms_and_conditions.html:92
 msgid "10. Delivery and Delivery Time"
 msgstr "10. Lieferung und Lieferzeit"
 
-#: .\templates\terms_and_conditions.html:94
+#: .\templates\terms_and_conditions.html:93
 msgid ""
 "Deliveries abroad are also possible. Items are supplied only in household "
 "quantities and only to end consumers."
@@ -3152,31 +3831,31 @@ msgstr ""
 "Lieferungen ins Ausland sind ebenfalls möglich. Die Artikel werden nur in "
 "haushaltsüblichen Mengen und nur an Endverbraucher geliefert."
 
-#: .\templates\terms_and_conditions.html:98
+#: .\templates\terms_and_conditions.html:97
 msgid "11. Shipping Costs"
 msgstr "11. Versandkosten"
 
-#: .\templates\terms_and_conditions.html:100
+#: .\templates\terms_and_conditions.html:99
 msgid "Orders from"
 msgstr "Bestellungen von"
 
-#: .\templates\terms_and_conditions.html:100
+#: .\templates\terms_and_conditions.html:99
 msgid "are shipped free of charge."
 msgstr "werden kostenlos versandt."
 
-#: .\templates\terms_and_conditions.html:105
+#: .\templates\terms_and_conditions.html:104
 msgid "12. Retention of Title"
 msgstr "12. Eigentumsvorbehalt"
 
-#: .\templates\terms_and_conditions.html:107
+#: .\templates\terms_and_conditions.html:106
 msgid "Until full payment has been received, the goods remain the property of"
 msgstr "Bis zur vollständigen Bezahlung bleiben die Waren Eigentum von"
 
-#: .\templates\terms_and_conditions.html:112
+#: .\templates\terms_and_conditions.html:111
 msgid "13. Liability"
 msgstr "13. Haftung"
 
-#: .\templates\terms_and_conditions.html:113
+#: .\templates\terms_and_conditions.html:112
 msgid ""
 "We are liable without limitation for intent and gross negligence and in "
 "accordance with the provisions of the German Product Liability Act. In the "
@@ -3203,7 +3882,7 @@ msgstr ""
 "aufgrund der damals bekannten Umstände zu erwarten hatten. Die vorstehende "
 "Haftungsbeschränkung gilt auch zugunsten unserer Erfüllungsgehilfen."
 
-#: .\templates\terms_and_conditions.html:117
+#: .\templates\terms_and_conditions.html:116
 msgid "This policy is effective from Monday, 08 September 2025, 12:08."
 msgstr ""
 "Diese Richtlinie tritt am Montag, dem 8. September 2025, um 12:08 Uhr in "
