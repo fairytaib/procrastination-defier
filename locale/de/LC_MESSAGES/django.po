@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-23 18:13+0200\n"
-"PO-Revision-Date: 2025-09-24 07:08+0200\n"
+"POT-Creation-Date: 2025-09-24 10:40+0200\n"
+"PO-Revision-Date: 2025-09-24 10:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -285,7 +285,7 @@ msgstr "Frühere Bestellungen"
 msgid "No past orders found."
 msgstr "Keine früheren Bestellungen gefunden."
 
-#: .\checkout\templates\checkout\all_orders.html:52
+#: .\checkout\templates\checkout\all_orders.html:53
 msgid "View all orders"
 msgstr "Alle Bestellungen anzeigen"
 
@@ -439,15 +439,15 @@ msgstr "Versanddetails"
 msgid "View Full Details"
 msgstr "Alle Details anzeigen"
 
-#: .\checkout\templates\checkout\order_history.html:146
+#: .\checkout\templates\checkout\order_history.html:148
 msgid "Previous"
 msgstr "Zurück"
 
-#: .\checkout\templates\checkout\order_history.html:164
+#: .\checkout\templates\checkout\order_history.html:166
 msgid "Next"
 msgstr "Weiter"
 
-#: .\checkout\templates\checkout\order_history.html:167
+#: .\checkout\templates\checkout\order_history.html:169
 msgid "Last"
 msgstr "Letze"
 
@@ -1819,6 +1819,12 @@ msgstr "Konto erstellen"
 msgid "Already have an account? Then please"
 msgstr "Habst du bereits ein Konto? Dann bitte"
 
+#: .\templates\allauth\account\signup.html:41
+#, fuzzy
+#| msgid "Sign In"
+msgid "sign in"
+msgstr "Anmelden"
+
 #: .\templates\allauth\account\signup_closed.html:5
 #: .\templates\allauth\account\signup_closed.html:8
 msgid "Sign Up Closed"
@@ -2440,44 +2446,52 @@ msgstr "Newsletter abonnieren"
 msgid "Information according to § 5 TMG:"
 msgstr "Informationen gemäß § 5 TMG:"
 
-#: .\templates\legal_notice.html:29
+#: .\templates\legal_notice.html:31
 msgid "Contact:"
 msgstr "Kontakt:"
 
-#: .\templates\legal_notice.html:37
+#: .\templates\legal_notice.html:34
+msgid "Phone: +49 (0)123 4567890"
+msgstr "Telefon: +49 (0)123 4567890"
+
+#: .\templates\legal_notice.html:35
+msgid "Email: info@proc-def.com"
+msgstr "Email: info@proc-def.com"
+
+#: .\templates\legal_notice.html:39
 msgid "Responsible for content according to § 55 Abs. 2 RStV:"
 msgstr "Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV:"
 
-#: .\templates\legal_notice.html:45
+#: .\templates\legal_notice.html:47
 msgid "Liability for Content"
 msgstr "Haftung für Inhalte"
 
-#: .\templates\legal_notice.html:46
+#: .\templates\legal_notice.html:48
 msgid ""
 "We strive for accurate and timely content but cannot guarantee it fully."
 msgstr ""
 "Wir bemühen uns um genaue und aktuelle Inhalte, können dies jedoch nicht "
 "vollständig garantieren."
 
-#: .\templates\legal_notice.html:48
+#: .\templates\legal_notice.html:50
 msgid "Liability for Links"
 msgstr "Haftung für Links"
 
-#: .\templates\legal_notice.html:49
+#: .\templates\legal_notice.html:51
 msgid "We are not responsible for external content linked on this site."
 msgstr ""
 "Wir sind nicht verantwortlich für externe Inhalte, die auf dieser Website "
 "verlinkt sind."
 
-#: .\templates\legal_notice.html:51
+#: .\templates\legal_notice.html:53
 msgid "Copyright"
 msgstr "Urheberrecht"
 
-#: .\templates\legal_notice.html:52
+#: .\templates\legal_notice.html:54
 msgid "All original content is protected under German copyright law."
 msgstr "Alle Originalinhalte sind durch das deutsche Urheberrecht geschützt."
 
-#: .\templates\legal_notice.html:54
+#: .\templates\legal_notice.html:56
 msgid "Last updated: September 2025"
 msgstr "Letzte Aktualisierung: September 2025"
 
