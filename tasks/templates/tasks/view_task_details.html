@@ -89,7 +89,7 @@
           <section class="card mb-2">
             <div class="card-body">
               <h3 class="h5 mb-3">Upload Proof</h3>
-              {% if not task_checkup and not task.checkup_state %}
+              {% if not task_checkup and not task.checkup_state  %}
                 <form method="post" enctype="multipart/form-data">
                   {% csrf_token %}
                   {# Comments #}
