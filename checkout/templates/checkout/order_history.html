@@ -112,12 +112,14 @@
                       {{ order_item.shipping.city }}, {{ order_item.shipping.postal_code }}<br />
                       {{ order_item.shipping.country }}
                     </p>
-                  {% endif %}
+                  
                 </div>
                 <div>
                   <a href="{% url 'view_order_details' order_item.history.id %}" class="btn btn-primary btn-sm"> {% trans "View Full Details" %}</a>
                 </div>
+                {% endif %}
               </div>
+              
 
               {% if order_item.history.reward.image %}
                 <div class="col-md-4">
@@ -133,7 +135,7 @@
             </div>
           </div>
         </div>
-      {% endfor %}
+      {% endif %}
 
       {% if page_obj.paginator.num_pages > 1 %}
         <nav aria-label="Order history pagination">
