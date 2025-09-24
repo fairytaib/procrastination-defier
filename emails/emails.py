@@ -28,7 +28,7 @@ def send_reward_purchase_email(*, order, reward, history, language):
 
 
 def send_subscription_email(*, user, subscription, language):
-    ctx = {"user": user, "subscription": subscription, "language": language}
+    ctx = {"user": user, "subscription": subscription}
 
     with translation.override(language):
         subject = _("Subscription Confirmation")

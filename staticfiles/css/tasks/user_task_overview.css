@@ -49,6 +49,10 @@
     letter-spacing: .2px;
 }
 
+.no-subscription h1 {
+    color: #F95A4E;
+}
+
 .no-subscription p.text-muted {
     line-height: 1.6;
 }
@@ -110,6 +114,7 @@
     text-decoration: underline;
     text-underline-offset: 2px;
 }
+
 
 /* Responsive tweaks */
 @media (max-width: 575.98px) {
