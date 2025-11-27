@@ -13,7 +13,7 @@ The application consists of several integrated components:
 
 ## Live Version
 
-You can access the live application here: [Procrastination Defier](https://procdef-live-28abebbb180a.herokuapp.com/de/))
+You can access the live application here: [Procrastination Defier](https://procdef-live-28abebbb180a.herokuapp.com/de/)
 
 To test the application, you can use these credentials:
 Regular User
@@ -1196,3 +1196,4 @@ The following libraries and packages were used in this project (as listed in `re
 
 
 - **Code Institute & Code Institute Student Support**: Teaching me the needed skills and the knowledge to work on this project. 
+
